@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Name>"DatabaseProject"</Name>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectVersion>3.5</ProjectVersion>
+    <ProjectVersion>4.0</ProjectVersion>
     <ProjectGuid>{269a6558-92fe-46c9-9d0d-1107120ebfe9}</ProjectGuid>
-    <DSP>Microsoft.Data.Schema.Sql.SqlDsp.Sql100DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <ShowWizard>False</ShowWizard>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
     <IncludeSchemaNameInFileName>False</IncludeSchemaNameInFileName>
-    <ModelCollation>1033,CI</ModelCollation>
+    <ModelCollation>2057,CS</ModelCollation>
     <DefaultFileStructure>BySchema</DefaultFileStructure>
     <DeployToDatabaseAddToServerExplorer>False</DeployToDatabaseAddToServerExplorer>
     <DeployToScript>True</DeployToScript>
     <CatalogPropertiesFile>Properties\Database.sqlsettings</CatalogPropertiesFile>
     <RootNamespace>WhoCanHelpMe</RootNamespace>
     <DefaultSchema>dbo</DefaultSchema>
-    <PreviousProjectVersion>3.5</PreviousProjectVersion>
     <SccProjectName>SAK</SccProjectName>
     <SccProvider>SAK</SccProvider>
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
+    <PreviousProjectVersion>4.0</PreviousProjectVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <OutputPath>.\sql\release\</OutputPath>
@@ -54,7 +54,7 @@
     <DeployToDatabase>True</DeployToDatabase>
   </PropertyGroup>
   <!--Import the settings-->
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\TeamData\Microsoft.Data.Schema.SqlTasks.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\TeamData\Microsoft.Data.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties\" />
     <Folder Include="Schema Objects\" />
@@ -216,9 +216,7 @@
     </PostDeploy>
   </ItemGroup>
   <ItemGroup>
-    <ArtifactReference Include="$(VSTSDBDirectory)\Extensions\SqlServer\2008\DBSchemas\Microsoft.SqlTypes.dbschema">
-      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 9.0\VSTSDB\Extensions\SqlServer\2008\DBSchemas\Microsoft.SqlTypes.dbschema</HintPath>
-    </ArtifactReference>
+    <BuildContributorArgument Include="OutDir=$(OutDir)" />
   </ItemGroup>
   <ItemGroup>
     <NotInBuild Include="Scripts\Post-Deployment\Script.Data.Categories.sql">

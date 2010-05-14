@@ -12,5 +12,10 @@ namespace WhoCanHelpMe.Infrastructure.Analytics.Configuration
         {
             get { return AnalyticsConfigurationSection.Instance.AnalyticsIdentifier; }
         }
+
+        public string Verification
+        {
+            get { return AnalyticsConfigurationSection.Instance.SiteVerification; }
+        }
     }
 }

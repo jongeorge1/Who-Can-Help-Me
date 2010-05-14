@@ -16,6 +16,8 @@ namespace WhoCanHelpMe.Domain
 
         public string AnalyticsIdentifier { get; set; }
 
+        public string SiteVerification { get; set; }
+
         public IList<string> Scripts { get; set; }
 
         public IList<string> Styles { get; set; }

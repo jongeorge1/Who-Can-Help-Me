@@ -20,6 +20,10 @@ namespace WhoCanHelpMe.Infrastructure.Analytics.Configuration
 		/// The XML name of the <see cref="AnalyticsIdentifier"/> property.
 		/// </summary>
 		internal const global::System.String AnalyticsIdentifierPropertyName = "analyticsIdentifier";
+        /// <summary>
+		/// The XML name of the <see cref="SiteVerification"/> property.
+		/// </summary>
+        internal const global::System.String SiteVerificationPropertyName = "siteVerification";
 		
 		/// <summary>
 		/// Gets or sets the AnalyticsIdentifier.
@@ -36,6 +40,22 @@ namespace WhoCanHelpMe.Infrastructure.Analytics.Configuration
 				base[AnalyticsIdentifierPropertyName] = value;
 			}
 		}
+
+        /// <summary>
+        /// Gets or sets the SiteVerification.
+        /// </summary>
+        [global::System.Configuration.ConfigurationProperty(SiteVerificationPropertyName, IsRequired = true, IsKey = false, IsDefaultCollection = false)]
+        public global::System.String SiteVerification
+        {
+            get
+            {
+                return (global::System.String)base[SiteVerificationPropertyName];
+            }
+            set
+            {
+                base[SiteVerificationPropertyName] = value;
+            }
+        }
 		
 		#endregion
 

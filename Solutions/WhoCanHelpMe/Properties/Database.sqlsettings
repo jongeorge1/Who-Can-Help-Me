@@ -1,51 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<CatalogProperties xmlns="urn:Microsoft.VisualStudio.Data.Schema.Project.CatalogProperties" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Version>1</Version>
+<CatalogProperties xmlns="urn:Microsoft.VisualStudio.Data.Schema.Package.CatalogProperties">
+  <Version>1.0</Version>
   <Properties>
-    <!--Sql Server 2000-->
-    <DefaultCollation>SQL_Latin1_General_CP1_CS_AS</DefaultCollation>
+    <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
     <AnsiNullDefault>True</AnsiNullDefault>
     <AnsiNulls>True</AnsiNulls>
     <AnsiPadding>True</AnsiPadding>
     <AnsiWarnings>True</AnsiWarnings>
     <ArithAbort>True</ArithAbort>
-    <ConcatNullYieldsNull>True</ConcatNullYieldsNull>
-    <QuotedIdentifier>True</QuotedIdentifier>
-    <NumericRoundAbort>False</NumericRoundAbort>
-    <RecursiveTriggersEnabled>False</RecursiveTriggersEnabled>
-    <DatabaseState>ONLINE</DatabaseState>
-    <UpdateOptions>READ_WRITE</UpdateOptions>
-    <CloseCursorOnCommitEnabled>False</CloseCursorOnCommitEnabled>
-    <DefaultCursor>LOCAL</DefaultCursor>
     <AutoClose>False</AutoClose>
     <AutoCreateStatistics>True</AutoCreateStatistics>
     <AutoShrink>False</AutoShrink>
     <AutoUpdateStatistics>True</AutoUpdateStatistics>
-    <TornPageDetection>False</TornPageDetection>
-    <DatabaseAccess>MULTI_USER</DatabaseAccess>
-    <Recovery>FULL</Recovery>
-    <EnableFullTextSearch>True</EnableFullTextSearch>
-    <DatabaseChaining>False</DatabaseChaining>
-    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
-    <!--Sql Server 2005-->
-    <!--<CompatibilityMode></CompatibilityMode>-->
-    <Trustworthy>False</Trustworthy>
     <AutoUpdateStatisticsAsynchronously>False</AutoUpdateStatisticsAsynchronously>
-    <PageVerify>NONE</PageVerify>
-    <ServiceBrokerOption>DisableBroker</ServiceBrokerOption>
-    <DateCorrelationOptimizationOn>False</DateCorrelationOptimizationOn>
-    <Parameterization>SIMPLE</Parameterization>
-    <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
-    <ReadCommittedSnapshot>False</ReadCommittedSnapshot>
-    <VardecimalStorageFormatOn>True</VardecimalStorageFormatOn>
-    <!--Sql Server 2008-->
-    <DefaultFileStreamFilegroup></DefaultFileStreamFilegroup>
-    <IsChangeTrackingOn>False</IsChangeTrackingOn>
-    <IsChangeTrackingAutoCleanupOn>True</IsChangeTrackingAutoCleanupOn>
     <ChangeTrackingRetentionPeriod>2</ChangeTrackingRetentionPeriod>
     <ChangeTrackingRetentionUnit>Days</ChangeTrackingRetentionUnit>
-    <IsEncryptionOn>False</IsEncryptionOn>
+    <CloseCursorOnCommitEnabled>False</CloseCursorOnCommitEnabled>
+    <ConcatNullYieldsNull>True</ConcatNullYieldsNull>
+    <DatabaseAccess>MULTI_USER</DatabaseAccess>
+    <DatabaseChaining>False</DatabaseChaining>
+    <DatabaseState>ONLINE</DatabaseState>
+    <DateCorrelationOptimizationOn>False</DateCorrelationOptimizationOn>
+    <DefaultCollation>SQL_Latin1_General_CP1_CS_AS</DefaultCollation>
+    <DefaultCursor>LOCAL</DefaultCursor>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <DefaultFileStreamFilegroup />
+    <EnableFullTextSearch>True</EnableFullTextSearch>
     <IsBrokerPriorityHonored>False</IsBrokerPriorityHonored>
+    <IsChangeTrackingAutoCleanupOn>True</IsChangeTrackingAutoCleanupOn>
+    <IsChangeTrackingOn>False</IsChangeTrackingOn>
+    <IsEncryptionOn>False</IsEncryptionOn>
+    <NumericRoundAbort>False</NumericRoundAbort>
+    <PageVerify>NONE</PageVerify>
+    <Parameterization>SIMPLE</Parameterization>
+    <QuotedIdentifier>True</QuotedIdentifier>
+    <ReadCommittedSnapshot>False</ReadCommittedSnapshot>
+    <Recovery>FULL</Recovery>
+    <RecursiveTriggersEnabled>False</RecursiveTriggersEnabled>
+    <ServiceBrokerOption>DisableBroker</ServiceBrokerOption>
+    <TornPageDetection>False</TornPageDetection>
+    <Trustworthy>False</Trustworthy>
+    <UpdateOptions>READ_WRITE</UpdateOptions>
+    <VardecimalStorageFormatOn>True</VardecimalStorageFormatOn>
   </Properties>
 </CatalogProperties>
-
