@@ -1,0 +1,26 @@
+﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Profile.ViewModels.ProfilePageViewModel"/>
+
+<content name="title">
+Show off your 'Guns'
+</content>
+
+<h2>${Model.FirstName}&nbsp;${Model.LastName}</h2>
+
+<form method="post">
+	!{Html.AntiForgeryToken()}
+	!{Html.DropDownList("addAssertion.CategoryId", new SelectList(Model.Categories, "Id", "Name"))}
+	!{Html.TextBox("addAssertion.TagName")}
+	!{Html.ValidationMessage("addAssertion.TagName")}
+	<input type="submit" value="Add" />
+    !{Html.ClientSideValidation<WhoCanHelpMe.Web.Controllers.Profile.ViewModels.AddAssertionFormViewModel>("addAssertion")}
+</form>
+
+<ul id="skill_list">
+	<li each="var assertion in Model.Assertions">
+		${assertion.CategoryName}&nbsp;
+		!{Html.ActionLink<WhoCanHelpMe.Web.Controllers.Search.SearchController>(c => c.ByTag(assertion.TagName), assertion.TagName)}
+		!{Html.ActionLink<WhoCanHelpMe.Web.Controllers.Profile.ProfileController>(p => p.DeleteAssertion(assertion.Id), "Delete", new { class = "remove_tag" })}	
+	</li>
+</ul>
+
+<p>&nbsp;</p>

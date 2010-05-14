@@ -1,0 +1,15 @@
+﻿<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Northwind.Entities.OrderDetail, Northwind.Entities" table="[Order Details]">
+    <composite-id name="PK_Order_Details" class="Northwind.Entities.AbstractOrderDetail+OrderDetailKey, Northwind.Entities" unsaved-value="none" access="property">
+      <key-many-to-one name="Order" class="Northwind.Entities.Order, Northwind.Entities">
+        <column name="OrderID" />
+      </key-many-to-one>
+      <key-many-to-one name="Product" class="Northwind.Entities.Product, Northwind.Entities">
+        <column name="ProductID" />
+      </key-many-to-one>
+    </composite-id>
+    <property name="Discount" type="System.Single" column="Discount" not-null="true" />
+    <property name="Quantity" type="System.Int16" column="Quantity" not-null="true" />
+    <property name="UnitPrice" type="System.Decimal" column="UnitPrice" not-null="true" />
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,10 @@
+A sample build command:
+
+nant -D:project.config=release
+
+If you want to run tests:
+
+nant test -D:connection.string.test="Server=.\SQLExpress;AttachDbFilename=C:\directory_to_extract\Databases\test.mdf;Database=test; Trusted_Connection=Yes;" -D:connection.string.northwind="Server=.\SQLExpress;AttachDbFilename=C:\directory_to_extract\Databases\northwnd.mdf;Database=northwind; Trusted_Connection=Yes;"
+
+where c:\directory\ is the directory that databases are kept
+

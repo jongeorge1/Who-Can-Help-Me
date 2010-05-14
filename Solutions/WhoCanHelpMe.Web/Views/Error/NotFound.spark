@@ -1,0 +1,9 @@
+﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Shared.ViewModels.PageViewModel"/>
+
+<content name="title">
+404!
+</content>
+
+<h2>The page you seek<br />
+cannot be found<br />
+but countless others exist.</h2>

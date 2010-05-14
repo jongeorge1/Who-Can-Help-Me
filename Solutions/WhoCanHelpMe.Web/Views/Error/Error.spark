@@ -1,0 +1,8 @@
+﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Shared.ViewModels.PageViewModel"/>
+
+<content name="title">
+It's gone a bit pear shaped...
+</content>
+
+<h2>And it's your fault.</h2>
+<p>Well maybe that's a bit harsh. But since you've found a bug, please let us know what you did to cause it - or better still, have a look at the code and see if you can fix the problem yourself.</p>

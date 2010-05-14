@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9544D94B-9B6E-4B61-8A09-88382205BF86}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WhoCanHelpMe.Infrastructure</RootNamespace>
+    <AssemblyName>WhoCanHelpMe.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\Build\Signing\WhoCanHelpMe.snk</AssemblyOriginatorKeyFile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\Castle\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MicroKernel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\Castle\Castle.MicroKernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\Castle\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=1.0.0.593, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\NHibernate\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\NHibernate\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Inflector.Net, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\NHibernate\Inflector.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\TweetSharp\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.1.0.2001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\NHibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Linq, Version=1.0.0.0, Culture=neutral, PublicKeyToken=444cf6a87fdab271, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\NHibernate\NHibernate.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpArch.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition, Version=2009.22.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\MEF\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TweetSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\TweetSharp\TweetSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="TweetSharp.Twitter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\TweetSharp\TweetSharp.Twitter.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Common\AssemblyVersion.cs">
+      <Link>Properties\AssemblyVersion.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Analytics\Configuration\AnalyticsConfiguration.cs" />
+    <Compile Include="Analytics\Configuration\AnalyticsConfigurationSectionCode.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnalyticsConfigurationSectionCode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Caching\HttpCachingService.cs" />
+    <Compile Include="Configuration\ConfigurationService.cs" />
+    <Compile Include="News\Configuration\NewsConfiguration.cs" />
+    <Compile Include="News\Configuration\NewsConfigurationSectionCode.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsConfigurationSectionCode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="News\TwitterNewsService.cs" />
+    <Compile Include="NHibernateMaps\Conventions\CustomForeignKeyConvention.cs" />
+    <Compile Include="Registrars\ConfigurationRegistrar.cs" />
+    <Compile Include="Registrars\GenericRepositoryRegistrar.cs" />
+    <Compile Include="Registrars\ServiceRegistrar.cs" />
+    <Compile Include="Registrars\RepositoryRegistrar.cs" />
+    <Compile Include="Properties\InfrastructureRegistrarMarker.cs" />
+    <Compile Include="NHibernateMaps\Conventions\HasManyConvention.cs" />
+    <Compile Include="NHibernateMaps\Conventions\PrimaryKeyConvention.cs" />
+    <Compile Include="NHibernateMaps\Conventions\TableNameConvention.cs" />
+    <Compile Include="NHibernateMaps\AutoPersistenceModelGenerator.cs" />
+    <Compile Include="NHibernate\LinqRepository.cs" />
+    <Compile Include="NHibernate\SessionKeys.cs" />
+    <Compile Include="Repositories\AssertionRepository.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\ProfileRepository.cs" />
+    <Compile Include="Repositories\TagRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WhoCanHelpMe.Domain\WhoCanHelpMe.Domain.csproj">
+      <Project>{8DEF56CD-601E-443C-9DCE-C4EC54C0B6A6}</Project>
+      <Name>WhoCanHelpMe.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WhoCanHelpMe.Framework\WhoCanHelpMe.Framework.csproj">
+      <Project>{B3CA9DAB-0279-4637-BF8E-DFAE36F7A7CB}</Project>
+      <Name>WhoCanHelpMe.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Analytics\Configuration\AnalyticsConfigurationSection.csd" />
+    <None Include="Analytics\Configuration\AnalyticsConfigurationSection.csd.diagram">
+      <DependentUpon>AnalyticsConfigurationSection.csd</DependentUpon>
+    </None>
+    <None Include="Analytics\Configuration\AnalyticsConfigurationSectionCode.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AnalyticsConfigurationSectionCode.cs</LastGenOutput>
+    </None>
+    <None Include="Analytics\Configuration\AnalyticsConfigurationSectionSample.config">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnalyticsConfigurationSectionSample.tt</DependentUpon>
+    </None>
+    <None Include="Analytics\Configuration\AnalyticsConfigurationSectionSample.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AnalyticsConfigurationSectionSample.config</LastGenOutput>
+    </None>
+    <None Include="Analytics\Configuration\AnalyticsConfigurationSectionSchema.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AnalyticsConfigurationSectionSchema.xsd</LastGenOutput>
+    </None>
+    <None Include="Analytics\Configuration\AnalyticsConfigurationSectionSchema.xsd">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnalyticsConfigurationSectionSchema.tt</DependentUpon>
+    </None>
+    <None Include="News\Configuration\NewsConfigurationSection.csd" />
+    <None Include="News\Configuration\NewsConfigurationSection.csd.diagram">
+      <DependentUpon>NewsConfigurationSection.csd</DependentUpon>
+    </None>
+    <None Include="News\Configuration\NewsConfigurationSectionCode.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NewsConfigurationSectionCode.cs</LastGenOutput>
+    </None>
+    <None Include="News\Configuration\NewsConfigurationSectionSample.config">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsConfigurationSectionSample.tt</DependentUpon>
+    </None>
+    <None Include="News\Configuration\NewsConfigurationSectionSample.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NewsConfigurationSectionSample.config</LastGenOutput>
+    </None>
+    <None Include="News\Configuration\NewsConfigurationSectionSchema.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NewsConfigurationSectionSchema.xsd</LastGenOutput>
+    </None>
+    <None Include="News\Configuration\NewsConfigurationSectionSchema.xsd">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsConfigurationSectionSchema.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

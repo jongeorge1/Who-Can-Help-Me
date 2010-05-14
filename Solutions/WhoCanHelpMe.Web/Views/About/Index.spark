@@ -1,0 +1,39 @@
+﻿<viewdata model="WhoCanHelpMe.Web.Controllers.About.ViewModels.AboutPageViewModel"/>
+
+<content name="title">
+What is going on here?
+</content>
+
+<p>Who Can Help Me? allows you to create a profile of your skills, knowledge and experience so that other people within the community can seek your advice.</p>
+<h2>Who Can Help Me is Open Source</h2>
+<p>Who Can Help Me? is a technology demo, using the following Open Source Frameworks & Tools:</p>
+<ul class="about_list">
+	<li><a href="http://sharparchitecture.net/">Sharp Architecture</a></li>  
+	<li><a href="http://www.asp.net/mvc/">ASP.NET MVC</a></li> 
+	<li><a href="http://www.codeplex.com/MVCContrib/">ASP.NET MVC Contrib</a></li> 
+	<li><a href="http://nhforge.org/">NHibernate</a> </li> 
+	<li><a href="http://fluentnhibernate.org/">Fluent NHibernate</a></li> 
+	<li><a href="http://www.castleproject.org/container/index.html">Castle Windsor</a></li>
+	<li><a href="http://automapper.codeplex.com/">AutoMapper</a> </li> 
+	<li><a href="http://dotnetopenauth.net/">DotNetOpenAuth</a></li> 
+	<li><a href="http://code.google.com/p/elmah/">ELMAH</a></li> 
+	<li><a href="http://dotlesscss.com/">Less CSS for .NET</a></li> 
+	<li><a href="http://github.com/machine/machine.specifications/">Machine.Specifications (MSpec) BDD Framework</a></li> 
+	<li><a href="http://www.codeplex.com/MEF/">MEF</a></li> 
+	<li><a href="http://www.postsharp.org/">PostSharp</a></li> 
+	<li><a href="http://www.ayende.com/projects/rhino-mocks.aspx">RhinoMocks</a></li> 
+	<li><a href="http://sparkviewengine.com/">Spark View Engine</a></li> 
+	<li><a href="http://tweetsharp.com/">TweetSharp</a></li> 
+	<li><a href="http://xval.codeplex.com/">xVal Validation Framework</a></li>
+</ul> 
+<p>The source for Who Can Help Me? is available on Codeplex: <a href="http://whocanhelpme.codeplex.com">http://whocanhelpme.codeplex.com</a></p>
+<h2>The Development Team</h2>
+<p>Who Can Help Me? was developed by:</p>
+<ul class="about_list">
+	<li><a href="http://howard.vanrooijen.co.uk/blog">Howard van Rooijen</a> - <a href="http://twitter.com/HowardvRooijen">@HowardvRooijen</a></li> 
+	<li><a href="http://jonathangeorge.co.uk/">Jonathan George</a> - <a href="http://twitter.com/jon_george1">@jon_george1</a></li> 
+	<li><a href="http://jamesbroo.me/">James Broome</a> - <a href="http://twitter.com/broomej">@broomej</a></li>
+</ul>
+<p>If you want to tweet about Who Can Help Me? please use the hashtag #wchm.</p>
+<h3>The latest Development Team buzz...</h3>
+<NewsHeadlines />

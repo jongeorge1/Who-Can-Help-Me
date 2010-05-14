@@ -1,0 +1,9 @@
+﻿!{"<meta name=\"description\" content=\"{0}\" />".FormatWith(Model.MetaData.Description)}
+!{"<meta name=\"Keywords\" content=\"{0}\" >".FormatWith(Model.MetaData.Keywords)}
+!{"<meta http-equiv=\"Content-Type\" content=\"{0}\"/>".FormatWith(Model.MetaData.ContentType)}
+!{"<meta http-equiv=\"Content-Language\" content=\"{0}\">".FormatWith(Model.MetaData.ContentLanguage)}
+!{"<meta name=\"country\" content=\"{0}\">".FormatWith(Model.MetaData.Country)}
+!{"<meta name=\"geo.position\" content=\"{0}\" />".FormatWith(Model.MetaData.GeoPosition)}
+!{"<meta name=\"geo.country\" content=\"{0}\" />".FormatWith(Model.MetaData.GeoCountry)}
+!{"<meta name=\"ICBM\" content=\"{0}\" />".FormatWith(Model.MetaData.ICBM)}
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/> 

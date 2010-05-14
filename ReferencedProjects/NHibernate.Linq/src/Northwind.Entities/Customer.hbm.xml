@@ -1,0 +1,29 @@
+﻿<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Northwind.Entities.Customer, Northwind.Entities" table="Customers">
+    <id name="CustomerID" type="System.String" column="CustomerID" unsaved-value="0">
+      <generator class="assigned" />
+    </id>
+    <property name="Address" type="System.String" column="Address" not-null="false" />
+    <property name="City" type="System.String" column="City" not-null="false" />
+    <property name="CompanyName" type="System.String" column="CompanyName" not-null="true" />
+    <property name="ContactName" type="System.String" column="ContactName" not-null="false" />
+    <property name="ContactTitle" type="System.String" column="ContactTitle" not-null="false" />
+    <property name="Country" type="System.String" column="Country" not-null="false" />
+    <property name="Fax" type="System.String" column="Fax" not-null="false" />
+    <property name="Phone" type="System.String" column="Phone" not-null="false" />
+    <property name="PostalCode" type="System.String" column="PostalCode" not-null="false" />
+    <property name="Region" type="System.String" column="Region" not-null="false" />
+    <bag name="CustomerCustomerDemos" inverse="true" lazy="true" cascade="none">
+      <key>
+        <column name="CustomerID" not-null="true" />
+      </key>
+      <one-to-many class="Northwind.Entities.CustomerCustomerDemo, Northwind.Entities" />
+    </bag>
+    <bag name="Orders" inverse="false" lazy="true" cascade="none">
+      <key>
+        <column name="CustomerID" not-null="false" />
+      </key>
+      <one-to-many class="Northwind.Entities.Order, Northwind.Entities" />
+    </bag>
+  </class>
+</hibernate-mapping>

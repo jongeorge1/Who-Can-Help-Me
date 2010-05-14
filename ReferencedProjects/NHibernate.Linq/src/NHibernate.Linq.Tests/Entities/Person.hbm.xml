@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="NHibernate.Linq.Tests.Entities" assembly="NHibernate.Linq.Tests">
+	<class name="Person" entity-name="person">
+		<id name="Id" type="Int32">
+			<generator class="native" />
+		</id>
+		<property name="Name" />
+	</class>
+</hibernate-mapping>

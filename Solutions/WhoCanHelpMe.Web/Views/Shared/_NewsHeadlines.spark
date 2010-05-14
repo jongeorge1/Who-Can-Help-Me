@@ -1,0 +1,17 @@
+﻿<ol class="statuses" id="timeline" each="var newsItem in Model.NewsItems">
+    <li class="hentry status">
+        <span class="thumb vcard author">
+            <a class="tweet-url profile-pic url" href="${newsItem.AuthorUrl}">
+                <img height="48" width="48" src="${newsItem.AuthorPhotoUrl}" class="photo fn" alt="${newsItem.Author}" />
+            </a>
+        </span> 
+        <span class="status-body">
+            <strong>
+                <a title="${newsItem.Author}" class="tweet-url screen-name" href="${newsItem.AuthorUrl}">${newsItem.Author}</a>
+            </strong> 
+            <span class="entry-content">
+                !{newsItem.Headline}
+            </span>
+        </span>
+    </li>
+</ol>

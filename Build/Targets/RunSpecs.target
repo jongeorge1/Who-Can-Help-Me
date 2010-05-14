@@ -1,0 +1,31 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Choose>
+      <When Condition="('$(OutputPath)'!='')">
+      </When>
+      <!-- Running outside of the build -->
+      <Otherwise>
+        <PropertyGroup>
+          <OutputPath>bin\debug</OutputPath>
+        </PropertyGroup>
+      </Otherwise>
+    </Choose>
+  
+  <Target Name="RunSpecs"
+          DependsOnTargets="CreateDrops">
+
+    <MakeDir Directories="$(DropsPath)\$(GlobalBuildVersionNumber)\BDDSpecs"/>
+    
+    <PropertyGroup>
+      <MSpecOptions>--html $(DropsPath)\$(GlobalBuildVersionNumber)\BDDSpecs\Specs.html</MSpecOptions>
+      <MSpecArgs>$(SolutionsPath)\MSpecTests.WhoCanHelpMe\Bin\Release\MSpecTests.WhoCanHelpMe.dll</MSpecArgs>
+      <MSpecCommand>$(ReferencedAssembliesPath)\Machine.Specifications\Machine.Specifications.ConsoleRunner.exe $(MSpecOptions) $(MSpecArgs)</MSpecCommand>
+    </PropertyGroup>
+    
+    <Message Importance="high" Text="Running Specs with this command: $(MSpecCommand)"/>
+    
+    <Exec Command="$(MSpecCommand)" />
+  
+  </Target>
+
+</Project>

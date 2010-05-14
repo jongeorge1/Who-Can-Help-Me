@@ -1,0 +1,27 @@
+﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Profile.ViewModels.CreateProfilePageViewModel"/>
+
+<content name="title">
+Hey there stranger!
+</content>
+
+<h2>Tell me about yourself!</h2>
+<p>You haven't created a profile yet, please supply the following details:</p>
+
+<form method="post">
+
+	!{Html.AntiForgeryToken()}
+
+	<div class="formInput">
+		!{this.TextBox(x => x.FirstName).Label("First name:")}
+		!{this.ValidationMessage(x => x.FirstName)}
+	</div>
+
+	<div class="formInput">
+		!{this.TextBox(x => x.LastName).Label("Last name:")}
+		!{this.ValidationMessage(x => x.LastName)}
+	</div>
+	
+	!{this.SubmitButton("Continue")}
+    !{Html.ClientSideValidation<WhoCanHelpMe.Web.Controllers.Profile.ViewModels.CreateProfileFormViewModel>()}
+
+</form>

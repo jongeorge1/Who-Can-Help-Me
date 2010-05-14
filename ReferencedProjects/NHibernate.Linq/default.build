@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<project
+    name="NHibernate.Linq"
+    default="build"
+    description="NHibernate criteria based Linq provider"
+	xmlns="http://nant.sf.net/release/0.85-rc3/nant.xsd">
+	<property name="root.dir" value="." />
+	<include buildfile="${root.dir}/common.xml" />
+
+	<!-- Pass -D:skip.tests=true to NAnt to skip running tests when building -->
+	<property name="skip.tests" value="false" overwrite="false" />
+	<property name="supported.frameworks" value="net-3.5" />
+	<fileset id="buildfiles.all" basedir="src">
+		<include name="NHibernate.Linq/NHibernate.Linq.build" />
+		<include name="Northwind.Entities/Northwind.Entities.build" />
+		<include name="NHibernate.Linq.Tests/NHibernate.Linq.Tests.build" />
+	</fileset>
+	<fileset id="buildfiles.tests" basedir="src">
+		<include name="NHibernate.Linq.Tests/NHibernate.Linq.Tests.build" />
+	</fileset>
+	
+	
+	<target name="init" depends="common.init"
+		description="Initializes build properties" />
+
+	<target name="prepare-build-directory" depends="init">
+		<mkdir dir="${bin.dir}" />
+		<mkdir dir="${testresults.dir}" />
+		<call target="copy-referenced-assemblies" />
+	</target>
+
+	<target name="copy-referenced-assemblies">
+		<!-- Copy framework-neutral libraries -->
+		
+		<copy todir="${bin.dir}" >
+			<fileset basedir="${lib.dir}">
+				<include name="*.dll" />
+				<include name="*.xml" />
+				<include name="*.license.txt" />
+				<include name="nant/*.*" />
+			</fileset>
+		</copy>
+		
+		<!-- Copy family-specific libraries -->
+		<!-- 
+			The builds of log4net and nunit work just fine for all versions of .NET.
+			When they do get framework specific extensions then we
+			can just move them to the framework specific section
+		-->
+		<copy todir="${bin.dir}">
+			<fileset basedir="${lib.family.dir}">
+				<include name="*.dll" />
+				<include name="*.xml" />
+				<include name="*.license.txt" />
+			</fileset>
+		</copy>
+
+		<!-- Copy framework-specific libraries -->
+		<copy todir="${bin.dir}">
+			<fileset basedir="${lib.framework.dir}">
+				<!-- 
+					Excludes the Iesi.Collections assembly because it is built during the build
+					of NHibernate.  It is in the lib folder for VS.NET convenience.  However, we
+					do want to copy the license file.
+				-->
+				<include name="*.dll" />
+				<include name="*.xml" />
+				<include name="*.license.txt" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="build"
+		depends="check-framework-version init prepare-build-directory"
+		description="Builds NHibernate in the current configuration">
+
+		<nant target="build">
+			<buildfiles refid="buildfiles.all" />
+		</nant>
+
+	</target>
+	
+	
+	<target name="check-framework-version">
+			<echo>Running with ${framework::get-target-framework()}</echo>
+			<fail message="ERROR: NHibernate requires .Net 3.5 to compile (but can run on .Net 2.0), please use the -t:net-3.5 (or mono-3.5) parameter when starting nant" unless="${framework::get-target-framework()=='net-3.5' or framework::get-target-framework()=='mono-3.5'}"/>
+	</target>
+	
+	
+	<target name="test" depends="init build" description="Runs all NHibernate tests for the current framework" unless="${skip.tests}">
+		<nant target="test">
+			<buildfiles refid="buildfiles.tests" />
+		</nant>
+	</target>
+	
+	<target name="binaries" depends="init">
+		<property name="clover.enabled" value="false" />
+		<call target="build" />
+	</target>
+	
+	<target name="sources">
+		<property name="source.tmpdir" value="${build.dir}/tmp-src" />
+		<property name="source.tmpdir.database" value="${source.tmpdir}/Databases" />
+		<copy todir="${source.tmpdir.database}">
+			<fileset>
+				<include name="Databases/*.mdf"/>
+			</fileset>
+		</copy>
+		<copy todir="${source.tmpdir}">
+			<fileset>
+				<!-- copy dlls used by this build -->
+				<include name="${lib.dir}/**"  />
+
+				<!-- copy all of the NHibernate source -->
+				<include name="src/**" />
+				<include name="src/*.*" />
+
+				<include name="*.xml" />
+
+				<include name="*.build" />
+				<include name="gfdl.txt" />
+				<include name="lgpl.txt" />
+				<include name="releasenotes.txt" />
+				<include name="readme.html" />
+
+				<!-- exclude ReSharper stuff -->
+				<exclude name="**/_ReSharper*/**" />
+				<exclude name="**/*.resharperoptions" />
+				<exclude name="**/*resharper*" />
+
+				<!-- exclude VS.NET stuff -->
+				<exclude name="**/*.suo" />
+				<exclude name="**/*.user" />
+				<exclude name="**/bin/**" />
+				<exclude name="**/obj/**" />
+			</fileset>
+		</copy>
+
+		<!-- Generate AssemblyInfo.cs files for Visual Studio -->
+		<nant buildfile="${source.tmpdir}/default.build" target="visual-studio" />
+
+	</target>
+	<target name="visual-studio" depends="init" description="Modifies AssemblyInfo.cs files to work with Visual Studio">
+		<property name="visual-studio" value="true" />
+		<nant target="generate-assemblyinfo">
+			<buildfiles refid="buildfiles.all" />
+		</nant>
+	</target>
+	<target name="sources-zip" depends="init sources">
+		<zip zipfile="${build.dir}/NHibernate.Linq-${project.version}-src.zip">
+			
+			<fileset basedir="${source.tmpdir}">
+				<include name="**/*" />
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="binaries-zip" depends="init binaries">
+		<zip zipfile="${build.dir}/NHibernate.Linq-${project.version}-bin.zip">
+			<fileset basedir="${bin.dir}"  prefix="bin">
+				<include name="**/*" />
+			</fileset>
+			<fileset basedir="${root.dir}">
+				<include name="releasenotes.txt" />
+			</fileset>
+		</zip>
+	</target>
+		
+	<target name="package" depends="init binaries test sources-zip binaries-zip"
+		description="Creates files for the General Available Release on SourceForge">
+
+		<echo message="Created a '${project.config}' package in ${build.dir}" />
+	</target>
+	
+	<target name="release" depends="init binaries binaries-zip sources-zip"
+		description="Creates files for the partial (Alpha-Beta-Candidate) Release on SourceForge">
+
+		<echo message="Created a '${project.config}' package in ${build.dir}" />
+	</target>
+	
+	
+	<target name="clean" depends="init" description="Deletes current build">
+		<delete dir="${build.dir}" failonerror="false" />
+	</target>
+</project>

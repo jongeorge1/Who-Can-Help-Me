@@ -1,0 +1,15 @@
+﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Navigation.ViewModels.MenuViewModel"/>
+# Html.BeginForm("ByTag","Search");
+	!{Html.TextBox("tagName", "Search", new
+        {
+          style = "clear: both;",
+          onblur = "if(this.value=='') this.value='Search';",
+          onfocus = "if(this.value=='Search') this.value='';",
+        })}
+</form>
+<ul>
+	<li class="leaf first">!{Html.ActionLink<WhoCanHelpMe.Web.Controllers.Home.HomeController>(x => x.Index(), "Home")}</li>
+	<li>!{Html.ActionLink<WhoCanHelpMe.Web.Controllers.Profile.ProfileController>(x => x.Update(), "You!")}</li>
+	<li if="Model.IsLoggedIn" class="leaf last">!{Html.ActionLink<WhoCanHelpMe.Web.Controllers.User.UserController>(x => x.SignOut(), "Sign Out")}</li>
+	<li>!{Html.ActionLink<WhoCanHelpMe.Web.Controllers.About.AboutController>(x => x.Index(), "About")}</li>
+</ul>

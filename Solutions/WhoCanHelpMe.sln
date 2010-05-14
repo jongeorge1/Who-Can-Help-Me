@@ -1,0 +1,144 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{D2AD5B1A-C8C2-487F-89CA-04900885F946}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{045B1414-D492-496E-93D6-0C6A20C246F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E6A458E6-AF91-4FB7-9224-5FC5E00C3996}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{BDC8840A-C964-4EFB-8778-9BC01F516491}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{D5E689AA-BE7E-4F5F-AF51-03F71C6C31B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{B9465FBB-3DAC-4051-B79A-FEFD17B674D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{6A46521E-275E-4029-8D9E-0B9FE4369B9F}"
+EndProject
+Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "WhoCanHelpMe", "WhoCanHelpMe\WhoCanHelpMe.dbproj", "{269A6558-92FE-46C9-9D0D-1107120EBFE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoCanHelpMe.Domain", "WhoCanHelpMe.Domain\WhoCanHelpMe.Domain.csproj", "{8DEF56CD-601E-443C-9DCE-C4EC54C0B6A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoCanHelpMe.Framework", "WhoCanHelpMe.Framework\WhoCanHelpMe.Framework.csproj", "{B3CA9DAB-0279-4637-BF8E-DFAE36F7A7CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoCanHelpMe.Infrastructure", "WhoCanHelpMe.Infrastructure\WhoCanHelpMe.Infrastructure.csproj", "{9544D94B-9B6E-4B61-8A09-88382205BF86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoCanHelpMe.Web", "WhoCanHelpMe.Web\WhoCanHelpMe.Web.csproj", "{6F92992D-8D75-4BA8-87C3-146581235054}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoCanHelpMe.Tasks", "WhoCanHelpMe.Tasks\WhoCanHelpMe.Tasks.csproj", "{C9AAC14B-E695-4508-83B7-ACB8FC5A7284}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoCanHelpMe.Web.Controllers", "WhoCanHelpMe.Web.Controllers\WhoCanHelpMe.Web.Controllers.csproj", "{DBCFAF64-DD59-4D14-887B-BB98B8E63540}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specs", "Specs", "{2322D330-1A60-4F79-B553-53DED803A098}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoCanHelpMe.Aspects", "WhoCanHelpMe.Aspects\WhoCanHelpMe.Aspects.csproj", "{A557B251-FE2C-481E-9E28-CCD7FAEBF398}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSpecTests.WhoCanHelpMe", "MSpecTests.WhoCanHelpMe\MSpecTests.WhoCanHelpMe.csproj", "{F63E0957-B60B-47A3-96BB-76DC243D0C8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoCanHelpMe.Build", "..\Build\WhoCanHelpMe.Build.csproj", "{D0393E31-6D4B-4580-9718-A8A730CDCB69}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 11
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs04.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = WhoCanHelpMe\\WhoCanHelpMe.dbproj
+		SccProjectTopLevelParentUniqueName1 = WhoCanHelpMe.sln
+		SccProjectName1 = WhoCanHelpMe
+		SccLocalPath1 = WhoCanHelpMe
+		SccProjectUniqueName2 = WhoCanHelpMe.Domain\\WhoCanHelpMe.Domain.csproj
+		SccProjectTopLevelParentUniqueName2 = WhoCanHelpMe.sln
+		SccProjectName2 = WhoCanHelpMe.Domain
+		SccLocalPath2 = WhoCanHelpMe.Domain
+		SccProjectUniqueName3 = WhoCanHelpMe.Framework\\WhoCanHelpMe.Framework.csproj
+		SccProjectTopLevelParentUniqueName3 = WhoCanHelpMe.sln
+		SccProjectName3 = WhoCanHelpMe.Framework
+		SccLocalPath3 = WhoCanHelpMe.Framework
+		SccProjectUniqueName4 = WhoCanHelpMe.Infrastructure\\WhoCanHelpMe.Infrastructure.csproj
+		SccProjectTopLevelParentUniqueName4 = WhoCanHelpMe.sln
+		SccProjectName4 = WhoCanHelpMe.Infrastructure
+		SccLocalPath4 = WhoCanHelpMe.Infrastructure
+		SccProjectUniqueName5 = WhoCanHelpMe.Web\\WhoCanHelpMe.Web.csproj
+		SccProjectTopLevelParentUniqueName5 = WhoCanHelpMe.sln
+		SccProjectName5 = WhoCanHelpMe.Web
+		SccLocalPath5 = WhoCanHelpMe.Web
+		SccProjectUniqueName6 = WhoCanHelpMe.Tasks\\WhoCanHelpMe.Tasks.csproj
+		SccProjectTopLevelParentUniqueName6 = WhoCanHelpMe.sln
+		SccProjectName6 = WhoCanHelpMe.Tasks
+		SccLocalPath6 = WhoCanHelpMe.Tasks
+		SccProjectUniqueName7 = WhoCanHelpMe.Web.Controllers\\WhoCanHelpMe.Web.Controllers.csproj
+		SccProjectTopLevelParentUniqueName7 = WhoCanHelpMe.sln
+		SccProjectName7 = WhoCanHelpMe.Web.Controllers
+		SccLocalPath7 = WhoCanHelpMe.Web.Controllers
+		SccProjectUniqueName8 = WhoCanHelpMe.Aspects\\WhoCanHelpMe.Aspects.csproj
+		SccProjectTopLevelParentUniqueName8 = WhoCanHelpMe.sln
+		SccProjectName8 = WhoCanHelpMe.Aspects
+		SccLocalPath8 = WhoCanHelpMe.Aspects
+		SccProjectUniqueName9 = MSpecTests.WhoCanHelpMe\\MSpecTests.WhoCanHelpMe.csproj
+		SccProjectTopLevelParentUniqueName9 = WhoCanHelpMe.sln
+		SccProjectName9 = MSpecTests.WhoCanHelpMe
+		SccLocalPath9 = MSpecTests.WhoCanHelpMe
+		SccProjectUniqueName10 = ..\\Build\\WhoCanHelpMe.Build.csproj
+		SccProjectTopLevelParentUniqueName10 = WhoCanHelpMe.sln
+		SccProjectName10 = ../Build
+		SccLocalPath10 = ..\\Build
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{269A6558-92FE-46C9-9D0D-1107120EBFE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{269A6558-92FE-46C9-9D0D-1107120EBFE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DEF56CD-601E-443C-9DCE-C4EC54C0B6A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DEF56CD-601E-443C-9DCE-C4EC54C0B6A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DEF56CD-601E-443C-9DCE-C4EC54C0B6A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DEF56CD-601E-443C-9DCE-C4EC54C0B6A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3CA9DAB-0279-4637-BF8E-DFAE36F7A7CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3CA9DAB-0279-4637-BF8E-DFAE36F7A7CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3CA9DAB-0279-4637-BF8E-DFAE36F7A7CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3CA9DAB-0279-4637-BF8E-DFAE36F7A7CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9544D94B-9B6E-4B61-8A09-88382205BF86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9544D94B-9B6E-4B61-8A09-88382205BF86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9544D94B-9B6E-4B61-8A09-88382205BF86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9544D94B-9B6E-4B61-8A09-88382205BF86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F92992D-8D75-4BA8-87C3-146581235054}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F92992D-8D75-4BA8-87C3-146581235054}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F92992D-8D75-4BA8-87C3-146581235054}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F92992D-8D75-4BA8-87C3-146581235054}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9AAC14B-E695-4508-83B7-ACB8FC5A7284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9AAC14B-E695-4508-83B7-ACB8FC5A7284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9AAC14B-E695-4508-83B7-ACB8FC5A7284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9AAC14B-E695-4508-83B7-ACB8FC5A7284}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBCFAF64-DD59-4D14-887B-BB98B8E63540}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBCFAF64-DD59-4D14-887B-BB98B8E63540}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBCFAF64-DD59-4D14-887B-BB98B8E63540}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBCFAF64-DD59-4D14-887B-BB98B8E63540}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A557B251-FE2C-481E-9E28-CCD7FAEBF398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A557B251-FE2C-481E-9E28-CCD7FAEBF398}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A557B251-FE2C-481E-9E28-CCD7FAEBF398}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A557B251-FE2C-481E-9E28-CCD7FAEBF398}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F63E0957-B60B-47A3-96BB-76DC243D0C8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F63E0957-B60B-47A3-96BB-76DC243D0C8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F63E0957-B60B-47A3-96BB-76DC243D0C8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F63E0957-B60B-47A3-96BB-76DC243D0C8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0393E31-6D4B-4580-9718-A8A730CDCB69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0393E31-6D4B-4580-9718-A8A730CDCB69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8DEF56CD-601E-443C-9DCE-C4EC54C0B6A6} = {D2AD5B1A-C8C2-487F-89CA-04900885F946}
+		{269A6558-92FE-46C9-9D0D-1107120EBFE9} = {045B1414-D492-496E-93D6-0C6A20C246F6}
+		{9544D94B-9B6E-4B61-8A09-88382205BF86} = {E6A458E6-AF91-4FB7-9224-5FC5E00C3996}
+		{C9AAC14B-E695-4508-83B7-ACB8FC5A7284} = {BDC8840A-C964-4EFB-8778-9BC01F516491}
+		{6F92992D-8D75-4BA8-87C3-146581235054} = {D5E689AA-BE7E-4F5F-AF51-03F71C6C31B2}
+		{DBCFAF64-DD59-4D14-887B-BB98B8E63540} = {D5E689AA-BE7E-4F5F-AF51-03F71C6C31B2}
+		{D0393E31-6D4B-4580-9718-A8A730CDCB69} = {B9465FBB-3DAC-4051-B79A-FEFD17B674D4}
+		{B3CA9DAB-0279-4637-BF8E-DFAE36F7A7CB} = {6A46521E-275E-4029-8D9E-0B9FE4369B9F}
+		{A557B251-FE2C-481E-9E28-CCD7FAEBF398} = {6A46521E-275E-4029-8D9E-0B9FE4369B9F}
+		{F63E0957-B60B-47A3-96BB-76DC243D0C8A} = {2322D330-1A60-4F79-B553-53DED803A098}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,12 @@
+﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Home.ViewModels.HomePageViewModel"/>
+
+<content name="title">
+What's all this then?
+</content>
+
+<h2>Show off your ninja skills!</h2>
+<p>This site is to help find people within the community who have the skills you need.</p>
+<p>Keep your list of skills and expertise up to date by clicking the "You!" link on the menu.</p>
+
+<h3>The latest WCHM buzz...</h3>
+<NewsHeadlines />

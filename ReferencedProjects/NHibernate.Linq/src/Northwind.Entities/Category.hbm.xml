@@ -1,0 +1,16 @@
+﻿<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Northwind.Entities.Category, Northwind.Entities" table="Categories">
+    <id name="CategoryID" type="System.Int32" column="CategoryID" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="CategoryName" type="System.String" column="CategoryName" not-null="true" />
+    <property name="Description" type="System.String" column="Description" not-null="false" />
+    <property name="Picture" type="System.Byte[]" column="Picture" not-null="false" />
+    <bag name="Products" inverse="false" lazy="true" cascade="none">
+      <key>
+        <column name="CategoryID" not-null="false" />
+      </key>
+      <one-to-many class="Northwind.Entities.Product, Northwind.Entities" />
+    </bag>
+  </class>
+</hibernate-mapping>

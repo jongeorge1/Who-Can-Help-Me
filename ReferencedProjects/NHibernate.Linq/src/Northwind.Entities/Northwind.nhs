@@ -1,0 +1,594 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelRoot dslVersion="1.0.0.0" Id="d94f47de-881a-4d3e-8dac-16771dd48de2" databaseConnectionString="Data Source=(local);Initial Catalog=Northwind;Integrated Security=True;" nHibernateVersion="v1_0" language="CSharp" xmlns="http://schemas.microsoft.com/dsltools/NHibernate">
+  <modelTypes>
+    <modelType Id="e6d9524b-8ed6-4490-bed6-4e398bd53ad8" name="Category" sourceTable="Categories" isOneToOneChild="false">
+      <attributes>
+        <modelAttribute Id="46d3d856-669b-429f-9b10-413735024780" name="CategoryID" sourceColumn="CategoryID" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="1" numericPrecision="10" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="9bb0b38e-6e98-4f8b-ad27-2c1c232c9514" name="CategoryName" sourceColumn="CategoryName" sqlType="nvarchar" type="System.String" maximumCharacterLength="15" ordinalPosition="2" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="20240749-df1e-4685-8be2-f1b0c06b5ff1" name="Description" sourceColumn="Description" sqlType="ntext" type="System.String" maximumCharacterLength="1073741823" ordinalPosition="3" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="91377b9b-b243-4e53-9196-808724b9aac4" name="Picture" sourceColumn="Picture" sqlType="image" type="System.Byte[]" maximumCharacterLength="2147483647" ordinalPosition="4" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+      </attributes>
+      <modelKeys>
+        <modelPrimaryKey Id="7481245e-aa67-4a0b-a1f8-a7105a3efba8" name="PK_Categories" sourceIndex="PK_Categories">
+          <attributes>
+            <modelAttributeReference name="CategoryID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="46d3d856-669b-429f-9b10-413735024780" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelPrimaryKey>
+      </modelKeys>
+      <primaryKey>
+        <modelPrimaryKeyMoniker Id="7481245e-aa67-4a0b-a1f8-a7105a3efba8" />
+      </primaryKey>
+    </modelType>
+    <modelType Id="61a28b70-09c6-44f2-90ed-507375bc1095" name="Territory" sourceTable="Territories" isOneToOneChild="false">
+      <attributes>
+        <modelAttribute Id="f6e1c309-4b27-4ffb-9239-7407d8d81b1a" name="RegionID" sourceColumn="RegionID" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="3" numericPrecision="10" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="5bf2265a-5a17-4ee6-ab46-1a9a1b100c81" name="TerritoryDescription" sourceColumn="TerritoryDescription" sqlType="nchar" type="System.String" maximumCharacterLength="50" ordinalPosition="2" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="20c9fbea-f831-4112-8d25-bde6dbbf6825" name="TerritoryID" sourceColumn="TerritoryID" sqlType="nvarchar" type="System.String" maximumCharacterLength="20" ordinalPosition="1" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+      </attributes>
+      <modelKeys>
+        <modelForeignKey Id="4c773c09-1977-408a-9f2f-25d6e89243b8" name="FK_Territories_Region" sourceIndex="FK_Territories_Region">
+          <attributes>
+            <modelAttributeReference name="RegionID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="f6e1c309-4b27-4ffb-9239-7407d8d81b1a" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelForeignKey>
+        <modelPrimaryKey Id="48c786d9-12a9-45a5-8ebb-8d5a548b7728" name="PK_Territories" sourceIndex="PK_Territories">
+          <attributes>
+            <modelAttributeReference name="TerritoryID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="20c9fbea-f831-4112-8d25-bde6dbbf6825" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelPrimaryKey>
+      </modelKeys>
+      <primaryKey>
+        <modelPrimaryKeyMoniker Id="48c786d9-12a9-45a5-8ebb-8d5a548b7728" />
+      </primaryKey>
+    </modelType>
+    <modelType Id="383c6683-2394-431b-bac4-07d7639a02d4" name="CustomerCustomerDemo" sourceTable="CustomerCustomerDemo" isOneToOneChild="false">
+      <attributes>
+        <modelAttribute Id="217dc5a6-1caf-47aa-92c9-994c39ff0bee" name="CustomerID" sourceColumn="CustomerID" sqlType="nchar" type="System.String" maximumCharacterLength="5" ordinalPosition="1" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="3a21f304-dda4-4cf3-a34b-4e5623eb88cf" name="CustomerTypeID" sourceColumn="CustomerTypeID" sqlType="nchar" type="System.String" maximumCharacterLength="10" ordinalPosition="2" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+      </attributes>
+      <modelKeys>
+        <modelForeignKey Id="b0338124-671a-4be0-bdcc-4db38674baa1" name="FK_CustomerCustomerDemo" sourceIndex="FK_CustomerCustomerDemo">
+          <attributes>
+            <modelAttributeReference name="CustomerTypeID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="3a21f304-dda4-4cf3-a34b-4e5623eb88cf" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelForeignKey>
+        <modelForeignKey Id="5720a9ee-e6e4-469c-907b-61999995d477" name="FK_CustomerCustomerDemo_Customers" sourceIndex="FK_CustomerCustomerDemo_Customers">
+          <attributes>
+            <modelAttributeReference name="CustomerID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="217dc5a6-1caf-47aa-92c9-994c39ff0bee" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelForeignKey>
+        <modelPrimaryKey Id="613c043c-0c84-4b45-b50a-007a12d27322" name="PK_CustomerCustomerDemo" sourceIndex="PK_CustomerCustomerDemo">
+          <attributes>
+            <modelAttributeReference name="CustomerID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="217dc5a6-1caf-47aa-92c9-994c39ff0bee" />
+              </modelAttribute>
+            </modelAttributeReference>
+            <modelAttributeReference name="CustomerTypeID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="3a21f304-dda4-4cf3-a34b-4e5623eb88cf" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelPrimaryKey>
+      </modelKeys>
+      <primaryKey>
+        <modelPrimaryKeyMoniker Id="613c043c-0c84-4b45-b50a-007a12d27322" />
+      </primaryKey>
+    </modelType>
+    <modelType Id="bafdf636-2db4-4d23-9902-80796b568678" name="CustomerDemographic" sourceTable="CustomerDemographics" isOneToOneChild="false">
+      <attributes>
+        <modelAttribute Id="9b05b8fc-2691-4e42-93e6-95b023e23a61" name="CustomerDesc" sourceColumn="CustomerDesc" sqlType="ntext" type="System.String" maximumCharacterLength="1073741823" ordinalPosition="2" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="ff1e8aac-23cb-4cde-81f6-500218cf6e1d" name="CustomerTypeID" sourceColumn="CustomerTypeID" sqlType="nchar" type="System.String" maximumCharacterLength="10" ordinalPosition="1" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+      </attributes>
+      <associationTargets>
+        <bidirectionalAssociation Id="57164c94-a115-4a7a-a6c5-deab4a673c1e" updateRule="NoAction" deleteRule="NoAction" fetch="Select" ordering="None" sourceIsMany="false" deleteOrphan="false" targetRoleName="CustomerCustomerDemos" isInverse="true" isTargetLazy="false" sourceRoleName="CustomerDemographic" isSourceLazy="false">
+          <modelTypeMoniker Id="383c6683-2394-431b-bac4-07d7639a02d4" />
+          <sourceKey>
+            <modelPrimaryKeyMoniker Id="38d59d85-e0f9-4e80-9111-cb278d1655e1" />
+          </sourceKey>
+          <targetKey>
+            <modelForeignKeyMoniker Id="b0338124-671a-4be0-bdcc-4db38674baa1" />
+          </targetKey>
+        </bidirectionalAssociation>
+      </associationTargets>
+      <modelKeys>
+        <modelPrimaryKey Id="38d59d85-e0f9-4e80-9111-cb278d1655e1" name="PK_CustomerDemographics" sourceIndex="PK_CustomerDemographics">
+          <attributes>
+            <modelAttributeReference name="CustomerTypeID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="ff1e8aac-23cb-4cde-81f6-500218cf6e1d" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelPrimaryKey>
+      </modelKeys>
+      <primaryKey>
+        <modelPrimaryKeyMoniker Id="38d59d85-e0f9-4e80-9111-cb278d1655e1" />
+      </primaryKey>
+    </modelType>
+    <modelType Id="1f8b2e02-3697-494a-af29-d4df263a3b8d" name="Customer" sourceTable="Customers" isOneToOneChild="false">
+      <attributes>
+        <modelAttribute Id="333252c4-ce5a-4deb-82f3-d09a64ebbcbf" name="Address" sourceColumn="Address" sqlType="nvarchar" type="System.String" maximumCharacterLength="60" ordinalPosition="5" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="3f6329d5-c8f5-491a-975a-21325d35849f" name="City" sourceColumn="City" sqlType="nvarchar" type="System.String" maximumCharacterLength="15" ordinalPosition="6" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="409d0d45-4e6e-4405-a4bc-fbaed23a0ae9" name="CompanyName" sourceColumn="CompanyName" sqlType="nvarchar" type="System.String" maximumCharacterLength="40" ordinalPosition="2" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="ce63d8d2-883f-414c-9d17-4423940084cf" name="ContactName" sourceColumn="ContactName" sqlType="nvarchar" type="System.String" maximumCharacterLength="30" ordinalPosition="3" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="4ae2b312-b7da-43bd-a63f-c68bdc5978eb" name="ContactTitle" sourceColumn="ContactTitle" sqlType="nvarchar" type="System.String" maximumCharacterLength="30" ordinalPosition="4" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="bc9336a3-ea25-4ecc-8704-e11b48660016" name="Country" sourceColumn="Country" sqlType="nvarchar" type="System.String" maximumCharacterLength="15" ordinalPosition="9" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="4cac1ce6-aeb6-4d9a-a825-546277277f4c" name="CustomerID" sourceColumn="CustomerID" sqlType="nchar" type="System.String" maximumCharacterLength="5" ordinalPosition="1" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="846228b5-87c3-4d9e-b717-3d302da44de2" name="Fax" sourceColumn="Fax" sqlType="nvarchar" type="System.String" maximumCharacterLength="24" ordinalPosition="11" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="c48866f5-53d7-44b6-bef2-9a8e481c7c82" name="Phone" sourceColumn="Phone" sqlType="nvarchar" type="System.String" maximumCharacterLength="24" ordinalPosition="10" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="2af7dbaa-903f-4f36-adee-64b78a562dad" name="PostalCode" sourceColumn="PostalCode" sqlType="nvarchar" type="System.String" maximumCharacterLength="10" ordinalPosition="8" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="172b55be-ff55-4b35-9a26-010a938d2dd8" name="Region" sourceColumn="Region" sqlType="nvarchar" type="System.String" maximumCharacterLength="15" ordinalPosition="7" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+      </attributes>
+      <associationTargets>
+        <bidirectionalAssociation Id="0f414c5a-36c1-455b-9fb5-af9e37df3861" updateRule="NoAction" deleteRule="NoAction" fetch="Select" ordering="None" sourceIsMany="false" deleteOrphan="false" targetRoleName="CustomerCustomerDemos" isInverse="true" isTargetLazy="false" sourceRoleName="Customer" isSourceLazy="false">
+          <modelTypeMoniker Id="383c6683-2394-431b-bac4-07d7639a02d4" />
+          <sourceKey>
+            <modelPrimaryKeyMoniker Id="0f7ed483-3db1-4597-9570-d8b206b48c45" />
+          </sourceKey>
+          <targetKey>
+            <modelForeignKeyMoniker Id="5720a9ee-e6e4-469c-907b-61999995d477" />
+          </targetKey>
+        </bidirectionalAssociation>
+      </associationTargets>
+      <modelKeys>
+        <modelPrimaryKey Id="0f7ed483-3db1-4597-9570-d8b206b48c45" name="PK_Customers" sourceIndex="PK_Customers">
+          <attributes>
+            <modelAttributeReference name="CustomerID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="4cac1ce6-aeb6-4d9a-a825-546277277f4c" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelPrimaryKey>
+      </modelKeys>
+      <primaryKey>
+        <modelPrimaryKeyMoniker Id="0f7ed483-3db1-4597-9570-d8b206b48c45" />
+      </primaryKey>
+    </modelType>
+    <modelType Id="5aaca9de-a8cb-4c48-9f3f-81bb29623c58" name="Employee" sourceTable="Employees" isOneToOneChild="false">
+      <attributes>
+        <modelAttribute Id="7a5b877c-416b-4079-8e13-7b1f479e89c8" name="Address" sourceColumn="Address" sqlType="nvarchar" type="System.String" maximumCharacterLength="60" ordinalPosition="8" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="ffbff080-2e67-48c5-b7bb-044c3beaa71b" name="BirthDate" sourceColumn="BirthDate" sqlType="datetime" type="System.DateTime" maximumCharacterLength="0" ordinalPosition="6" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="850b641d-dcbf-412f-959b-1d5bf9d11478" name="City" sourceColumn="City" sqlType="nvarchar" type="System.String" maximumCharacterLength="15" ordinalPosition="9" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="baa6cc11-6e04-495b-ae82-d41553a43075" name="Country" sourceColumn="Country" sqlType="nvarchar" type="System.String" maximumCharacterLength="15" ordinalPosition="12" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="e7681e85-77a3-42df-922e-bc4d899e3ce4" name="EmployeeID" sourceColumn="EmployeeID" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="1" numericPrecision="10" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="f59e7d07-e691-48ae-8aa7-74bbbca5ce42" name="Extension" sourceColumn="Extension" sqlType="nvarchar" type="System.String" maximumCharacterLength="4" ordinalPosition="14" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="727cacbf-74a7-4c91-bf6c-2cb81d3e0974" name="FirstName" sourceColumn="FirstName" sqlType="nvarchar" type="System.String" maximumCharacterLength="10" ordinalPosition="3" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="4cc843c3-3832-4b15-94e2-908380d2eff9" name="HireDate" sourceColumn="HireDate" sqlType="datetime" type="System.DateTime" maximumCharacterLength="0" ordinalPosition="7" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="7d7feb01-e6c8-431c-86b0-e3df38ab3039" name="HomePhone" sourceColumn="HomePhone" sqlType="nvarchar" type="System.String" maximumCharacterLength="24" ordinalPosition="13" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="7370864d-a0e0-4fa6-b4dd-3ba83cb80760" name="LastName" sourceColumn="LastName" sqlType="nvarchar" type="System.String" maximumCharacterLength="20" ordinalPosition="2" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="e094d522-5f2f-4998-913e-6e6456a15d9f" name="Notes" sourceColumn="Notes" sqlType="ntext" type="System.String" maximumCharacterLength="1073741823" ordinalPosition="16" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="4c305528-aa72-4de5-99dd-c5f20cf24a6c" name="Photo" sourceColumn="Photo" sqlType="image" type="System.Byte[]" maximumCharacterLength="2147483647" ordinalPosition="15" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="ec92acc4-0653-449a-9b1a-8ed6a31e85e1" name="PhotoPath" sourceColumn="PhotoPath" sqlType="nvarchar" type="System.String" maximumCharacterLength="255" ordinalPosition="18" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="f8651626-9e62-4655-9203-29abb8b99796" name="PostalCode" sourceColumn="PostalCode" sqlType="nvarchar" type="System.String" maximumCharacterLength="10" ordinalPosition="11" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="7866bada-89f8-42ad-a497-c0cc47ae2ee9" name="Region" sourceColumn="Region" sqlType="nvarchar" type="System.String" maximumCharacterLength="15" ordinalPosition="10" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="dd7e0c84-4863-4a35-abca-dfbb1e3a1fd1" name="ReportsTo" sourceColumn="ReportsTo" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="17" numericPrecision="10" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="8b3761c6-972b-4acc-a75e-e919e0c5c575" name="Title" sourceColumn="Title" sqlType="nvarchar" type="System.String" maximumCharacterLength="30" ordinalPosition="4" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="6075ff26-d5b1-4df3-91c1-52e936c7425d" name="TitleOfCourtesy" sourceColumn="TitleOfCourtesy" sqlType="nvarchar" type="System.String" maximumCharacterLength="25" ordinalPosition="5" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+      </attributes>
+      <associationTargets>
+        <bidirectionalAssociation Id="4767c139-f0e8-4b0f-bee4-b6b814fbad9f" updateRule="NoAction" deleteRule="NoAction" fetch="Select" ordering="None" sourceIsMany="false" deleteOrphan="false" targetRoleName="Employees" isInverse="false" isTargetLazy="false" sourceRoleName="Employees" isSourceLazy="false">
+          <modelTypeMoniker Id="5aaca9de-a8cb-4c48-9f3f-81bb29623c58" />
+          <sourceKey>
+            <modelPrimaryKeyMoniker Id="81944d6a-758c-4dac-ae47-f717b24f7018" />
+          </sourceKey>
+          <targetKey>
+            <modelForeignKeyMoniker Id="7d242ace-40c6-42f2-9f86-9a10bf30ea60" />
+          </targetKey>
+        </bidirectionalAssociation>
+      </associationTargets>
+      <modelKeys>
+        <modelForeignKey Id="7d242ace-40c6-42f2-9f86-9a10bf30ea60" name="FK_Employees_Employees" sourceIndex="FK_Employees_Employees">
+          <attributes>
+            <modelAttributeReference name="ReportsTo">
+              <modelAttribute>
+                <modelAttributeMoniker Id="dd7e0c84-4863-4a35-abca-dfbb1e3a1fd1" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelForeignKey>
+        <modelPrimaryKey Id="81944d6a-758c-4dac-ae47-f717b24f7018" name="PK_Employees" sourceIndex="PK_Employees">
+          <attributes>
+            <modelAttributeReference name="EmployeeID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="e7681e85-77a3-42df-922e-bc4d899e3ce4" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelPrimaryKey>
+      </modelKeys>
+      <primaryKey>
+        <modelPrimaryKeyMoniker Id="81944d6a-758c-4dac-ae47-f717b24f7018" />
+      </primaryKey>
+    </modelType>
+    <modelType Id="feaa9d0c-0989-4ae7-887f-0f9a2e995298" name="EmployeeTerritory" sourceTable="EmployeeTerritories" isOneToOneChild="false">
+      <attributes>
+        <modelAttribute Id="825cdbd4-1592-4c0e-a274-5c8d0fbb8ddc" name="EmployeeID" sourceColumn="EmployeeID" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="1" numericPrecision="10" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="e19018f8-618f-4360-a716-f9b4dd825e6c" name="TerritoryID" sourceColumn="TerritoryID" sqlType="nvarchar" type="System.String" maximumCharacterLength="20" ordinalPosition="2" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+      </attributes>
+      <associationTargets>
+        <bidirectionalAssociation Id="6fe6f70b-1860-4da8-927c-e3d5768c8d1a" updateRule="NoAction" deleteRule="NoAction" fetch="Select" ordering="None" sourceIsMany="false" deleteOrphan="false" targetRoleName="Employee" isInverse="true" isTargetLazy="false" sourceRoleName="EmployeeTerritories" isSourceLazy="false">
+          <modelTypeMoniker Id="5aaca9de-a8cb-4c48-9f3f-81bb29623c58" />
+          <sourceKey>
+            <modelForeignKeyMoniker Id="65a955ae-5e7d-4ba9-9b30-902bb99a107b" />
+          </sourceKey>
+          <targetKey>
+            <modelPrimaryKeyMoniker Id="81944d6a-758c-4dac-ae47-f717b24f7018" />
+          </targetKey>
+        </bidirectionalAssociation>
+        <bidirectionalAssociation Id="fe8e2e33-c8e0-4c3d-b73e-26d6a8c98c06" updateRule="NoAction" deleteRule="NoAction" fetch="Select" ordering="None" sourceIsMany="false" deleteOrphan="false" targetRoleName="Territory" isInverse="true" isTargetLazy="false" sourceRoleName="EmployeeTerritories" isSourceLazy="false">
+          <modelTypeMoniker Id="61a28b70-09c6-44f2-90ed-507375bc1095" />
+          <sourceKey>
+            <modelForeignKeyMoniker Id="4df86152-feb6-4a05-9abc-e8d369a1cce4" />
+          </sourceKey>
+          <targetKey>
+            <modelPrimaryKeyMoniker Id="48c786d9-12a9-45a5-8ebb-8d5a548b7728" />
+          </targetKey>
+        </bidirectionalAssociation>
+      </associationTargets>
+      <modelKeys>
+        <modelForeignKey Id="65a955ae-5e7d-4ba9-9b30-902bb99a107b" name="FK_EmployeeTerritories_Employees" sourceIndex="FK_EmployeeTerritories_Employees">
+          <attributes>
+            <modelAttributeReference name="EmployeeID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="825cdbd4-1592-4c0e-a274-5c8d0fbb8ddc" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelForeignKey>
+        <modelForeignKey Id="4df86152-feb6-4a05-9abc-e8d369a1cce4" name="FK_EmployeeTerritories_Territories" sourceIndex="FK_EmployeeTerritories_Territories">
+          <attributes>
+            <modelAttributeReference name="TerritoryID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="e19018f8-618f-4360-a716-f9b4dd825e6c" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelForeignKey>
+        <modelPrimaryKey Id="7ab8ba17-713f-4e4a-a12f-916ea1d7d960" name="PK_EmployeeTerritories" sourceIndex="PK_EmployeeTerritories">
+          <attributes>
+            <modelAttributeReference name="EmployeeID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="825cdbd4-1592-4c0e-a274-5c8d0fbb8ddc" />
+              </modelAttribute>
+            </modelAttributeReference>
+            <modelAttributeReference name="TerritoryID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="e19018f8-618f-4360-a716-f9b4dd825e6c" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelPrimaryKey>
+      </modelKeys>
+      <primaryKey>
+        <modelPrimaryKeyMoniker Id="7ab8ba17-713f-4e4a-a12f-916ea1d7d960" />
+      </primaryKey>
+    </modelType>
+    <modelType Id="85144adc-a478-4525-b60b-5f6a35cffab4" name="OrderDetail" sourceTable="Order Details" isOneToOneChild="false">
+      <attributes>
+        <modelAttribute Id="af81be10-0e13-4134-ae67-d8fdf904d194" name="Discount" sourceColumn="Discount" sqlType="real" type="System.Single" maximumCharacterLength="0" ordinalPosition="5" numericPrecision="24" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="c81c7d55-0b92-41da-834c-36e4d72bbc11" name="OrderID" sourceColumn="OrderID" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="1" numericPrecision="10" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="84c1602f-e978-44cb-905b-08d62a49f96a" name="ProductID" sourceColumn="ProductID" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="2" numericPrecision="10" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="6eff81fa-782b-4704-8eb6-d5349742538a" name="Quantity" sourceColumn="Quantity" sqlType="smallint" type="System.Int16" maximumCharacterLength="0" ordinalPosition="4" numericPrecision="5" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="22f6c4c9-9331-4570-ae6a-a8c96fe0db07" name="UnitPrice" sourceColumn="UnitPrice" sqlType="money" type="System.Decimal" maximumCharacterLength="0" ordinalPosition="3" numericPrecision="19" numericScale="4" notNull="true" isIdentity="false" />
+      </attributes>
+      <modelKeys>
+        <modelForeignKey Id="510a5257-ecc0-48d8-8e2c-0e583e03767e" name="FK_Order_Details_Orders" sourceIndex="FK_Order_Details_Orders">
+          <attributes>
+            <modelAttributeReference name="OrderID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="c81c7d55-0b92-41da-834c-36e4d72bbc11" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelForeignKey>
+        <modelForeignKey Id="0b177b73-14c6-40e4-a401-16cb0a3b4811" name="FK_Order_Details_Products" sourceIndex="FK_Order_Details_Products">
+          <attributes>
+            <modelAttributeReference name="ProductID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="84c1602f-e978-44cb-905b-08d62a49f96a" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelForeignKey>
+        <modelPrimaryKey Id="0ac9cae0-dd54-44c0-8417-0465cf86043a" name="PK_Order_Details" sourceIndex="PK_Order_Details">
+          <attributes>
+            <modelAttributeReference name="OrderID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="c81c7d55-0b92-41da-834c-36e4d72bbc11" />
+              </modelAttribute>
+            </modelAttributeReference>
+            <modelAttributeReference name="ProductID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="84c1602f-e978-44cb-905b-08d62a49f96a" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelPrimaryKey>
+      </modelKeys>
+      <primaryKey>
+        <modelPrimaryKeyMoniker Id="0ac9cae0-dd54-44c0-8417-0465cf86043a" />
+      </primaryKey>
+    </modelType>
+    <modelType Id="5b6efb08-5ae5-4462-bfe7-d2b1cf1b25b2" name="Order" sourceTable="Orders" isOneToOneChild="false">
+      <attributes>
+        <modelAttribute Id="aa7436bd-a538-44f5-a4df-09eb369f3a14" name="CustomerID" sourceColumn="CustomerID" sqlType="nchar" type="System.String" maximumCharacterLength="5" ordinalPosition="2" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="c0424f07-2c93-405c-a7da-d53e0d37a7ba" name="EmployeeID" sourceColumn="EmployeeID" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="3" numericPrecision="10" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="78a83a3f-9426-42c4-b97e-8fbe6a697287" name="Freight" sourceColumn="Freight" sqlType="money" type="System.Decimal" maximumCharacterLength="0" ordinalPosition="8" numericPrecision="19" numericScale="4" notNull="false" isIdentity="false" />
+        <modelAttribute Id="f3890d0d-b6ef-43f2-8b4b-5570b58c27a3" name="OrderDate" sourceColumn="OrderDate" sqlType="datetime" type="System.DateTime" maximumCharacterLength="0" ordinalPosition="4" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="0600ee5a-b2c9-4901-b7f1-60b5c4e03ba6" name="OrderID" sourceColumn="OrderID" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="1" numericPrecision="10" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="c874ca29-7c0d-480f-afd0-6c9b0eb69c7c" name="RequiredDate" sourceColumn="RequiredDate" sqlType="datetime" type="System.DateTime" maximumCharacterLength="0" ordinalPosition="5" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="bb8aa0ca-7bf0-4d7a-ad37-1f1c9511d734" name="ShipAddress" sourceColumn="ShipAddress" sqlType="nvarchar" type="System.String" maximumCharacterLength="60" ordinalPosition="10" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="704bd2de-24b3-4ecd-82a5-fe30c5817580" name="ShipCity" sourceColumn="ShipCity" sqlType="nvarchar" type="System.String" maximumCharacterLength="15" ordinalPosition="11" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="8f3d3d7e-b992-47b4-b1d7-1ae34d34434f" name="ShipCountry" sourceColumn="ShipCountry" sqlType="nvarchar" type="System.String" maximumCharacterLength="15" ordinalPosition="14" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="61c7d780-7392-4f57-bfd3-db7426234d98" name="ShipName" sourceColumn="ShipName" sqlType="nvarchar" type="System.String" maximumCharacterLength="40" ordinalPosition="9" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="8680485b-7fb6-4b3d-8c58-f21f634e705c" name="ShippedDate" sourceColumn="ShippedDate" sqlType="datetime" type="System.DateTime" maximumCharacterLength="0" ordinalPosition="6" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="c7a3d057-3fa2-4169-80d8-9a0e041cf764" name="ShipPostalCode" sourceColumn="ShipPostalCode" sqlType="nvarchar" type="System.String" maximumCharacterLength="10" ordinalPosition="13" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="c45053fe-2bac-4deb-8092-a21ba2e6d6bc" name="ShipRegion" sourceColumn="ShipRegion" sqlType="nvarchar" type="System.String" maximumCharacterLength="15" ordinalPosition="12" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="5c15cc43-ad1e-4235-9739-3c10379dced9" name="ShipVia" sourceColumn="ShipVia" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="7" numericPrecision="10" numericScale="0" notNull="false" isIdentity="false" />
+      </attributes>
+      <associationTargets>
+        <bidirectionalAssociation Id="303eb7fb-e917-4c72-9747-318f13a8d39f" updateRule="NoAction" deleteRule="NoAction" fetch="Select" ordering="None" sourceIsMany="false" deleteOrphan="false" targetRoleName="Customer" isInverse="false" isTargetLazy="false" sourceRoleName="Orders" isSourceLazy="false">
+          <modelTypeMoniker Id="1f8b2e02-3697-494a-af29-d4df263a3b8d" />
+          <sourceKey>
+            <modelForeignKeyMoniker Id="6b6a03c9-73d8-48c8-9cb2-997d0ffa2ce7" />
+          </sourceKey>
+          <targetKey>
+            <modelPrimaryKeyMoniker Id="0f7ed483-3db1-4597-9570-d8b206b48c45" />
+          </targetKey>
+        </bidirectionalAssociation>
+        <bidirectionalAssociation Id="c0fefa0c-158f-4b00-b2d3-ac95af42401e" updateRule="NoAction" deleteRule="NoAction" fetch="Select" ordering="None" sourceIsMany="false" deleteOrphan="false" targetRoleName="Employee" isInverse="false" isTargetLazy="false" sourceRoleName="Orders" isSourceLazy="false">
+          <modelTypeMoniker Id="5aaca9de-a8cb-4c48-9f3f-81bb29623c58" />
+          <sourceKey>
+            <modelForeignKeyMoniker Id="80137f93-46e0-4459-b082-0a39c523482f" />
+          </sourceKey>
+          <targetKey>
+            <modelPrimaryKeyMoniker Id="81944d6a-758c-4dac-ae47-f717b24f7018" />
+          </targetKey>
+        </bidirectionalAssociation>
+        <bidirectionalAssociation Id="cced8afe-8d33-4b14-befd-f5d60214f26a" updateRule="NoAction" deleteRule="NoAction" fetch="Select" ordering="None" sourceIsMany="false" deleteOrphan="false" targetRoleName="OrderDetails" isInverse="true" isTargetLazy="false" sourceRoleName="Order" isSourceLazy="false">
+          <modelTypeMoniker Id="85144adc-a478-4525-b60b-5f6a35cffab4" />
+          <sourceKey>
+            <modelPrimaryKeyMoniker Id="db6a0059-2ff6-4ac7-a22c-f40cef8e2da8" />
+          </sourceKey>
+          <targetKey>
+            <modelForeignKeyMoniker Id="510a5257-ecc0-48d8-8e2c-0e583e03767e" />
+          </targetKey>
+        </bidirectionalAssociation>
+      </associationTargets>
+      <modelKeys>
+        <modelForeignKey Id="6b6a03c9-73d8-48c8-9cb2-997d0ffa2ce7" name="FK_Orders_Customers" sourceIndex="FK_Orders_Customers">
+          <attributes>
+            <modelAttributeReference name="CustomerID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="aa7436bd-a538-44f5-a4df-09eb369f3a14" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelForeignKey>
+        <modelForeignKey Id="80137f93-46e0-4459-b082-0a39c523482f" name="FK_Orders_Employees" sourceIndex="FK_Orders_Employees">
+          <attributes>
+            <modelAttributeReference name="EmployeeID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="c0424f07-2c93-405c-a7da-d53e0d37a7ba" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelForeignKey>
+        <modelForeignKey Id="333dff93-2e7b-4000-9524-8dd35fe176f2" name="FK_Orders_Shippers" sourceIndex="FK_Orders_Shippers">
+          <attributes>
+            <modelAttributeReference name="ShipVia">
+              <modelAttribute>
+                <modelAttributeMoniker Id="5c15cc43-ad1e-4235-9739-3c10379dced9" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelForeignKey>
+        <modelPrimaryKey Id="db6a0059-2ff6-4ac7-a22c-f40cef8e2da8" name="PK_Orders" sourceIndex="PK_Orders">
+          <attributes>
+            <modelAttributeReference name="OrderID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="0600ee5a-b2c9-4901-b7f1-60b5c4e03ba6" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelPrimaryKey>
+      </modelKeys>
+      <primaryKey>
+        <modelPrimaryKeyMoniker Id="db6a0059-2ff6-4ac7-a22c-f40cef8e2da8" />
+      </primaryKey>
+    </modelType>
+    <modelType Id="5aef6991-794e-4cad-9619-3528a00edbf7" name="Product" sourceTable="Products" isOneToOneChild="false">
+      <attributes>
+        <modelAttribute Id="e07942b1-8870-4c01-8174-86861924a264" name="CategoryID" sourceColumn="CategoryID" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="4" numericPrecision="10" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="e4239b57-920b-40ba-80c3-101479230a23" name="Discontinued" sourceColumn="Discontinued" sqlType="bit" type="System.Boolean" maximumCharacterLength="0" ordinalPosition="10" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="17284ff0-d685-4006-b7c0-b834fe421f31" name="ProductID" sourceColumn="ProductID" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="1" numericPrecision="10" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="e9ae1980-7e65-486f-ba07-76a768cf5f9e" name="ProductName" sourceColumn="ProductName" sqlType="nvarchar" type="System.String" maximumCharacterLength="40" ordinalPosition="2" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="80d2caec-5f47-400d-910d-a3cd7915425a" name="QuantityPerUnit" sourceColumn="QuantityPerUnit" sqlType="nvarchar" type="System.String" maximumCharacterLength="20" ordinalPosition="5" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="1c8f23ba-e6f7-49ba-880c-850c7d46b60a" name="ReorderLevel" sourceColumn="ReorderLevel" sqlType="smallint" type="System.Int16" maximumCharacterLength="0" ordinalPosition="9" numericPrecision="5" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="28da6d06-def5-4ea7-89d3-75dac5990b2e" name="SupplierID" sourceColumn="SupplierID" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="3" numericPrecision="10" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="5c140503-ef10-497e-be72-cbc899669bd5" name="UnitPrice" sourceColumn="UnitPrice" sqlType="money" type="System.Decimal" maximumCharacterLength="0" ordinalPosition="6" numericPrecision="19" numericScale="4" notNull="false" isIdentity="false" />
+        <modelAttribute Id="d9bed6f0-a12f-4c7e-b107-35e610b3f8e1" name="UnitsInStock" sourceColumn="UnitsInStock" sqlType="smallint" type="System.Int16" maximumCharacterLength="0" ordinalPosition="7" numericPrecision="5" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="b3729aef-7653-490a-a5e3-290652632902" name="UnitsOnOrder" sourceColumn="UnitsOnOrder" sqlType="smallint" type="System.Int16" maximumCharacterLength="0" ordinalPosition="8" numericPrecision="5" numericScale="0" notNull="false" isIdentity="false" />
+      </attributes>
+      <associationTargets>
+        <bidirectionalAssociation Id="96383224-55be-4db9-b46b-b9df44aeec14" updateRule="NoAction" deleteRule="NoAction" fetch="Select" ordering="None" sourceIsMany="false" deleteOrphan="false" targetRoleName="Category" isInverse="false" isTargetLazy="false" sourceRoleName="Products" isSourceLazy="false">
+          <modelTypeMoniker Id="e6d9524b-8ed6-4490-bed6-4e398bd53ad8" />
+          <sourceKey>
+            <modelForeignKeyMoniker Id="f2b8c2ee-df43-46e8-a795-8778567e03fd" />
+          </sourceKey>
+          <targetKey>
+            <modelPrimaryKeyMoniker Id="7481245e-aa67-4a0b-a1f8-a7105a3efba8" />
+          </targetKey>
+        </bidirectionalAssociation>
+        <bidirectionalAssociation Id="9c83c692-169f-440c-9bd6-c00f02305c43" updateRule="NoAction" deleteRule="NoAction" fetch="Select" ordering="None" sourceIsMany="false" deleteOrphan="false" targetRoleName="OrderDetails" isInverse="true" isTargetLazy="false" sourceRoleName="Product" isSourceLazy="false">
+          <modelTypeMoniker Id="85144adc-a478-4525-b60b-5f6a35cffab4" />
+          <sourceKey>
+            <modelPrimaryKeyMoniker Id="df37bf97-d220-4120-85e5-ec6373c970d3" />
+          </sourceKey>
+          <targetKey>
+            <modelForeignKeyMoniker Id="0b177b73-14c6-40e4-a401-16cb0a3b4811" />
+          </targetKey>
+        </bidirectionalAssociation>
+      </associationTargets>
+      <modelKeys>
+        <modelForeignKey Id="f2b8c2ee-df43-46e8-a795-8778567e03fd" name="FK_Products_Categories" sourceIndex="FK_Products_Categories">
+          <attributes>
+            <modelAttributeReference name="CategoryID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="e07942b1-8870-4c01-8174-86861924a264" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelForeignKey>
+        <modelForeignKey Id="0b0f5a72-a863-4016-8a7f-d19ed06db45c" name="FK_Products_Suppliers" sourceIndex="FK_Products_Suppliers">
+          <attributes>
+            <modelAttributeReference name="SupplierID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="28da6d06-def5-4ea7-89d3-75dac5990b2e" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelForeignKey>
+        <modelPrimaryKey Id="df37bf97-d220-4120-85e5-ec6373c970d3" name="PK_Products" sourceIndex="PK_Products">
+          <attributes>
+            <modelAttributeReference name="ProductID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="17284ff0-d685-4006-b7c0-b834fe421f31" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelPrimaryKey>
+      </modelKeys>
+      <primaryKey>
+        <modelPrimaryKeyMoniker Id="df37bf97-d220-4120-85e5-ec6373c970d3" />
+      </primaryKey>
+    </modelType>
+    <modelType Id="da7381f0-f04d-4e71-be5c-3d0aa7a887e9" name="Region" sourceTable="Region" isOneToOneChild="false">
+      <attributes>
+        <modelAttribute Id="5b2ffb7d-29ac-43e8-a0d8-571d14b94896" name="RegionDescription" sourceColumn="RegionDescription" sqlType="nchar" type="System.String" maximumCharacterLength="50" ordinalPosition="2" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="0ae70401-0673-4c73-a80d-3713b702fd89" name="RegionID" sourceColumn="RegionID" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="1" numericPrecision="10" numericScale="0" notNull="true" isIdentity="false" />
+      </attributes>
+      <associationTargets>
+        <bidirectionalAssociation Id="0631afb3-8208-463b-9d30-ebe41e76e14e" updateRule="NoAction" deleteRule="NoAction" fetch="Select" ordering="None" sourceIsMany="false" deleteOrphan="false" targetRoleName="Territories" isInverse="true" isTargetLazy="false" sourceRoleName="Region" isSourceLazy="false">
+          <modelTypeMoniker Id="61a28b70-09c6-44f2-90ed-507375bc1095" />
+          <sourceKey>
+            <modelPrimaryKeyMoniker Id="04adf370-a67b-4127-89d4-4f1ebbbb04d7" />
+          </sourceKey>
+          <targetKey>
+            <modelForeignKeyMoniker Id="4c773c09-1977-408a-9f2f-25d6e89243b8" />
+          </targetKey>
+        </bidirectionalAssociation>
+      </associationTargets>
+      <modelKeys>
+        <modelPrimaryKey Id="04adf370-a67b-4127-89d4-4f1ebbbb04d7" name="PK_Region" sourceIndex="PK_Region">
+          <attributes>
+            <modelAttributeReference name="RegionID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="0ae70401-0673-4c73-a80d-3713b702fd89" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelPrimaryKey>
+      </modelKeys>
+      <primaryKey>
+        <modelPrimaryKeyMoniker Id="04adf370-a67b-4127-89d4-4f1ebbbb04d7" />
+      </primaryKey>
+    </modelType>
+    <modelType Id="24cb9a43-76a5-4be0-bbff-610a06f13896" name="Shipper" sourceTable="Shippers" isOneToOneChild="false">
+      <attributes>
+        <modelAttribute Id="be930e1a-ce0a-4cb6-9bc4-cabc1a1647ef" name="CompanyName" sourceColumn="CompanyName" sqlType="nvarchar" type="System.String" maximumCharacterLength="40" ordinalPosition="2" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="aedaebb2-2df7-4f4d-80f6-6d90b97e8f2e" name="Phone" sourceColumn="Phone" sqlType="nvarchar" type="System.String" maximumCharacterLength="24" ordinalPosition="3" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="2a05342d-5a01-43ec-8aa5-2ceea63e9a33" name="ShipperID" sourceColumn="ShipperID" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="1" numericPrecision="10" numericScale="0" notNull="true" isIdentity="false" />
+      </attributes>
+      <associationTargets>
+        <bidirectionalAssociation Id="a11e87e2-04fe-4934-83e8-52caac531350" updateRule="NoAction" deleteRule="NoAction" fetch="Select" ordering="None" sourceIsMany="false" deleteOrphan="false" targetRoleName="Orders" isInverse="false" isTargetLazy="false" sourceRoleName="Shipper" isSourceLazy="false">
+          <modelTypeMoniker Id="5b6efb08-5ae5-4462-bfe7-d2b1cf1b25b2" />
+          <sourceKey>
+            <modelPrimaryKeyMoniker Id="868051d8-336b-40d4-af2c-e600cf612be9" />
+          </sourceKey>
+          <targetKey>
+            <modelForeignKeyMoniker Id="333dff93-2e7b-4000-9524-8dd35fe176f2" />
+          </targetKey>
+        </bidirectionalAssociation>
+      </associationTargets>
+      <modelKeys>
+        <modelPrimaryKey Id="868051d8-336b-40d4-af2c-e600cf612be9" name="PK_Shippers" sourceIndex="PK_Shippers">
+          <attributes>
+            <modelAttributeReference name="ShipperID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="2a05342d-5a01-43ec-8aa5-2ceea63e9a33" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelPrimaryKey>
+      </modelKeys>
+      <primaryKey>
+        <modelPrimaryKeyMoniker Id="868051d8-336b-40d4-af2c-e600cf612be9" />
+      </primaryKey>
+    </modelType>
+    <modelType Id="8a67084f-45df-48dd-a70d-2d70752b3f65" name="Supplier" sourceTable="Suppliers" isOneToOneChild="false">
+      <attributes>
+        <modelAttribute Id="a8bb23e1-3bc5-4c41-84fe-1eb201b5bc35" name="Address" sourceColumn="Address" sqlType="nvarchar" type="System.String" maximumCharacterLength="60" ordinalPosition="5" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="20aaab4f-d577-4ee7-846f-5b7d2df72a0e" name="City" sourceColumn="City" sqlType="nvarchar" type="System.String" maximumCharacterLength="15" ordinalPosition="6" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="9b50787f-6be7-4894-ab61-232e4013e6f1" name="CompanyName" sourceColumn="CompanyName" sqlType="nvarchar" type="System.String" maximumCharacterLength="40" ordinalPosition="2" numericPrecision="0" numericScale="0" notNull="true" isIdentity="false" />
+        <modelAttribute Id="7e30cae7-a12d-4f66-a06c-12da0127dc21" name="ContactName" sourceColumn="ContactName" sqlType="nvarchar" type="System.String" maximumCharacterLength="30" ordinalPosition="3" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="9059ca02-e5a4-4730-a5b6-4848f97ff781" name="ContactTitle" sourceColumn="ContactTitle" sqlType="nvarchar" type="System.String" maximumCharacterLength="30" ordinalPosition="4" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="27271442-bebb-4507-9ecc-1f1fd6374eda" name="Country" sourceColumn="Country" sqlType="nvarchar" type="System.String" maximumCharacterLength="15" ordinalPosition="9" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="0769ec7a-1128-4f0f-be48-8e155b4aac61" name="Fax" sourceColumn="Fax" sqlType="nvarchar" type="System.String" maximumCharacterLength="24" ordinalPosition="11" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="07de16cd-a391-43b8-acdb-5a9ca986eee0" name="HomePage" sourceColumn="HomePage" sqlType="ntext" type="System.String" maximumCharacterLength="1073741823" ordinalPosition="12" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="a4000276-6599-47e6-9ec2-398480a3ccad" name="Phone" sourceColumn="Phone" sqlType="nvarchar" type="System.String" maximumCharacterLength="24" ordinalPosition="10" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="eef81688-458e-4739-8fbd-5c2c768e31d2" name="PostalCode" sourceColumn="PostalCode" sqlType="nvarchar" type="System.String" maximumCharacterLength="10" ordinalPosition="8" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="81edac24-0478-434b-980e-e93daa149369" name="Region" sourceColumn="Region" sqlType="nvarchar" type="System.String" maximumCharacterLength="15" ordinalPosition="7" numericPrecision="0" numericScale="0" notNull="false" isIdentity="false" />
+        <modelAttribute Id="33b3f0b9-4403-467c-978d-ade14b585805" name="SupplierID" sourceColumn="SupplierID" sqlType="int" type="System.Int32" maximumCharacterLength="0" ordinalPosition="1" numericPrecision="10" numericScale="0" notNull="true" isIdentity="false" />
+      </attributes>
+      <associationTargets>
+        <bidirectionalAssociation Id="b2b8fd64-8fa6-42e3-90ce-81f13e3092ec" updateRule="NoAction" deleteRule="NoAction" fetch="Select" ordering="None" sourceIsMany="false" deleteOrphan="false" targetRoleName="Products" isInverse="false" isTargetLazy="false" sourceRoleName="Supplier" isSourceLazy="false">
+          <modelTypeMoniker Id="5aef6991-794e-4cad-9619-3528a00edbf7" />
+          <sourceKey>
+            <modelPrimaryKeyMoniker Id="29079ce7-755f-419b-a6fb-53ac1b0a0d2d" />
+          </sourceKey>
+          <targetKey>
+            <modelForeignKeyMoniker Id="0b0f5a72-a863-4016-8a7f-d19ed06db45c" />
+          </targetKey>
+        </bidirectionalAssociation>
+      </associationTargets>
+      <modelKeys>
+        <modelPrimaryKey Id="29079ce7-755f-419b-a6fb-53ac1b0a0d2d" name="PK_Suppliers" sourceIndex="PK_Suppliers">
+          <attributes>
+            <modelAttributeReference name="SupplierID">
+              <modelAttribute>
+                <modelAttributeMoniker Id="33b3f0b9-4403-467c-978d-ade14b585805" />
+              </modelAttribute>
+            </modelAttributeReference>
+          </attributes>
+        </modelPrimaryKey>
+      </modelKeys>
+      <primaryKey>
+        <modelPrimaryKeyMoniker Id="29079ce7-755f-419b-a6fb-53ac1b0a0d2d" />
+      </primaryKey>
+    </modelType>
+  </modelTypes>
+</modelRoot>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="NHibernate.Linq.Tests.Entities" assembly="NHibernate.Linq.Tests">
+	<class name="ProxiedEntity" table="ProxiedEntity" proxy="IProxiedEntity">
+		<id name="Id">
+			<generator class="native"/>
+		</id>
+
+		<property name="Dummy"/>
+	</class>
+	<class name="AnotherProxiedEntity" table="AnotherProxiedEntity" proxy="IProxiedEntity">
+		<id name="Id">
+			<generator class="native"/>
+		</id>
+
+		<property name="Dummy"/>
+	</class>
+</hibernate-mapping>

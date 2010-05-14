@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>${Model.WebTitle}</title>
+    <Styles />
+    <Scripts />
+    <SeoContent />
+    <Analytics />
+</head>
+<body leftmargin="0" marginwidth="0" topmargin="0" rightmargin="0">
+	<div id="container">
+        <div id="hdr">
+            <div id="hdr_bar"></div>
+            <div id="hdr_logo">
+                <img src="${Url.Images('logo.png')}" alt=" height="45" width="623" border="0"/>
+            </div>
+            <div id="hdr_strap">
+                <p>helping to find people with the skills you need</p>
+            </div>
+            <div id="hdr_title">
+                <h1><use content="title" /></h1>
+            </div>
+        </div>
+        <div id="body">
+            <div id="body_content">
+                <div>
+                    <use content="view"/>                  
+                </div>
+            </div>
+            <div id="body_nav">
+                <div id="block-menu-primary-links">
+                    <div>
+                        <div>
+                            #Html.RenderAction<WhoCanHelpMe.Web.Controllers.Navigation.NavigationController>(c => c.Menu());
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ftr"></div>
+    </div>
+</body>
+</html>

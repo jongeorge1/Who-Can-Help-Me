@@ -1,0 +1,513 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<nHibernateDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12.25" isCompleteView="false" name="Northwind">
+  <modelRootMoniker Id="d94f47de-881a-4d3e-8dac-16771dd48de2" />
+  <nestedChildShapes>
+    <typeShape Id="832029bc-77d2-46d7-93c0-0335bac77e06" absoluteBounds="0.5, 1.25, 1.5, 1.6566536458333334">
+      <modelTypeMoniker Id="e6d9524b-8ed6-4490-bed6-4e398bd53ad8" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4665f611-a5bd-4be4-a3fb-9fa05f7eb9fe" absoluteBounds="0.515, 1.56, 1.4700000000000002, 0.86484781901041652" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+        <elementListCompartment Id="a6c8f4f3-66f6-48da-95a8-b658bfeeb021" absoluteBounds="0.515, 2.4348478190104164, 1.4700000000000002, 0.37180582682291674" name="Keys" title="Keys" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </typeShape>
+    <keyShape Id="b9ae3d89-8e9c-452b-95fd-566efc327986" absoluteBounds="0.5, 0.5, 1.5, 0.78180582682291666">
+      <modelPrimaryKeyMoniker Id="7481245e-aa67-4a0b-a1f8-a7105a3efba8" />
+      <nestedChildShapes>
+        <elementListCompartment Id="55ec68f3-06ea-4a1e-9260-353ded627b3f" absoluteBounds="0.5, 0.5, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <modelTypeHasModelKeysConnector edgePoints="[(1.25 : 1.25); (1.25 : 0.890902913411458); (2 : 0.890902913411458)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="832029bc-77d2-46d7-93c0-0335bac77e06" />
+        <keyShapeMoniker Id="b9ae3d89-8e9c-452b-95fd-566efc327986" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <typeShape Id="6010c8fe-e1be-493d-b463-ef5b80f9059e" absoluteBounds="2.5, 0.5, 1.5, 1.6566536458333334">
+      <modelTypeMoniker Id="61a28b70-09c6-44f2-90ed-507375bc1095" />
+      <nestedChildShapes>
+        <elementListCompartment Id="090e64be-5c58-457a-b14b-8822beaaebf3" absoluteBounds="2.515, 0.81, 1.4700000000000002, 0.70050048828125" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+        <elementListCompartment Id="cdcaca19-9106-49cf-ade5-2dd61cd40e70" absoluteBounds="2.515, 1.52050048828125, 1.4700000000000002, 0.53615315755208326" name="Keys" title="Keys" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </typeShape>
+    <keyShape Id="9eed1bba-8454-4726-86df-ec356979d561" absoluteBounds="2.5, 0.5, 1.5, 0.78180582682291666">
+      <modelForeignKeyMoniker Id="4c773c09-1977-408a-9f2f-25d6e89243b8" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4602bd15-d60a-4628-a0ba-3658bd4357ac" absoluteBounds="2.5, 0.5, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <keyShape Id="524e789d-cda9-40ef-9c06-3865e388da7f" absoluteBounds="2.5, 0.5, 1.5, 0.78180582682291666">
+      <modelPrimaryKeyMoniker Id="48c786d9-12a9-45a5-8ebb-8d5a548b7728" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f50fd591-f85b-4568-80bf-f080d0f90076" absoluteBounds="2.5, 0.5, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <modelTypeHasModelKeysConnector edgePoints="[(3.25 : 0.5); (3.25 : 1.28180582682292)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="6010c8fe-e1be-493d-b463-ef5b80f9059e" />
+        <keyShapeMoniker Id="9eed1bba-8454-4726-86df-ec356979d561" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(3.6875 : 0.5); (3.6875 : 1.28180582682292)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="6010c8fe-e1be-493d-b463-ef5b80f9059e" />
+        <keyShapeMoniker Id="524e789d-cda9-40ef-9c06-3865e388da7f" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <typeShape Id="888c7053-9539-4c08-a571-08ebe2980daf" absoluteBounds="3.625, 2.625, 1.5, 1.656653645833333">
+      <modelTypeMoniker Id="383c6683-2394-431b-bac4-07d7639a02d4" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2cba367e-f40b-4cf7-83ee-3ff5b1e58cd3" absoluteBounds="3.64, 2.935, 1.4700000000000002, 0.53615315755208326" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+        <elementListCompartment Id="1745ce0b-bdbf-40d6-ab45-8c6cc2831f82" absoluteBounds="3.64, 3.4811531575520833, 1.4700000000000002, 0.70050048828125" name="Keys" title="Keys" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </typeShape>
+    <keyShape Id="62c92ed5-ec81-42e6-9647-fdd056d3466d" absoluteBounds="0.5, 0.5, 1.5, 0.78180582682291666">
+      <modelForeignKeyMoniker Id="b0338124-671a-4be0-bdcc-4db38674baa1" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5e06720d-bc71-4797-a291-9231be16d5e8" absoluteBounds="0.5, 0.5, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <keyShape Id="4179b0c4-856c-43a6-8f4c-f61c940419c1" absoluteBounds="0.5, 0.5, 1.5, 0.78180582682291666">
+      <modelForeignKeyMoniker Id="5720a9ee-e6e4-469c-907b-61999995d477" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3544353f-e723-42df-942e-9e6668113cf3" absoluteBounds="0.5, 0.5, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <keyShape Id="21cc295d-6196-4797-b160-ef19b9c8bf46" absoluteBounds="2.5, 2.625, 1.5, 0.94615315755208362">
+      <modelPrimaryKeyMoniker Id="613c043c-0c84-4b45-b50a-007a12d27322" />
+      <nestedChildShapes>
+        <elementListCompartment Id="edb65681-9653-44cb-8fc7-05776ada19cd" absoluteBounds="2.5, 2.625, 0.125, 0.53615315755208326" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <modelTypeHasModelKeysConnector edgePoints="[(4.5 : 2.625); (4.5 : 0.375); (2.15625 : 0.375); (2.15625 : 1.06093050594076); (2 : 1.06093050594076)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="888c7053-9539-4c08-a571-08ebe2980daf" />
+        <keyShapeMoniker Id="62c92ed5-ec81-42e6-9647-fdd056d3466d" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(4.2499975 : 2.625); (4.2499975 : 0.3125); (1.84375 : 0.3125); (1.84375 : 0.664199456705729); (2 : 0.664199456705729)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="888c7053-9539-4c08-a571-08ebe2980daf" />
+        <keyShapeMoniker Id="4179b0c4-856c-43a6-8f4c-f61c940419c1" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(3.625 : 3.45332682291667); (3.45833458333333 : 3.45332682291667 : JumpStart); (3.29166791666667 : 3.45332682291667 : JumpEnd); (3.14583583333333 : 3.45332682291667 : JumpStart); (2.97916916666667 : 3.45332682291667 : JumpEnd); (2.86458458333333 : 3.45332682291667 : JumpStart); (2.69791791666667 : 3.45332682291667 : JumpEnd); (2.5 : 3.45332682291667); (2.5 : 3.09807657877604); (2.5 : 3.09807657877604)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="888c7053-9539-4c08-a571-08ebe2980daf" />
+        <keyShapeMoniker Id="21cc295d-6196-4797-b160-ef19b9c8bf46" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <typeShape Id="ff647ae7-e94a-400f-940f-0085846d8e91" absoluteBounds="0.5, 3.375, 1.5, 1.327958984375">
+      <modelTypeMoniker Id="bafdf636-2db4-4d23-9902-80796b568678" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f57f4574-8f70-4989-8546-ac202f49789e" absoluteBounds="0.515, 3.685, 1.4700000000000002, 0.53615315755208326" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+        <elementListCompartment Id="52001997-09d4-45c8-9350-8aee853fc98b" absoluteBounds="0.515, 4.2311531575520833, 1.4700000000000002, 0.37180582682291652" name="Keys" title="Keys" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </typeShape>
+    <keyShape Id="2cd2b5fb-f359-446c-a2aa-ddd9044d1366" absoluteBounds="0.5, 3.375, 1.5, 0.78180582682291622">
+      <modelPrimaryKeyMoniker Id="38d59d85-e0f9-4e80-9111-cb278d1655e1" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f5e1443e-8e49-4fea-a3a9-9a41ababfd15" absoluteBounds="0.5, 3.375, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <modelTypeHasModelKeysConnector edgePoints="[(1.25 : 3.375); (1.25 : 4.15680582682292)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="ff647ae7-e94a-400f-940f-0085846d8e91" />
+        <keyShapeMoniker Id="2cd2b5fb-f359-446c-a2aa-ddd9044d1366" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <bidirectionalAssociationConnector edgePoints="[(2 : 3.929990234375); (2.15666666666667 : 3.929990234375 : JumpStart); (2.33333333333333 : 3.929990234375 : JumpEnd); (2.69791791666667 : 3.929990234375 : JumpStart); (2.86458458333333 : 3.929990234375 : JumpEnd); (2.97916916666667 : 3.929990234375 : JumpStart); (3.14583583333333 : 3.929990234375 : JumpEnd); (3.29166791666667 : 3.929990234375 : JumpStart); (3.45833458333333 : 3.929990234375 : JumpEnd); (3.625 : 3.929990234375)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <bidirectionalAssociationMoniker Id="57164c94-a115-4a7a-a6c5-deab4a673c1e" />
+      <relativeChildShapes />
+      <nodes>
+        <typeShapeMoniker Id="ff647ae7-e94a-400f-940f-0085846d8e91" />
+        <typeShapeMoniker Id="888c7053-9539-4c08-a571-08ebe2980daf" />
+      </nodes>
+    </bidirectionalAssociationConnector>
+    <typeShape Id="7ee2459a-db34-4bcc-b296-19246f7b9dff" absoluteBounds="5, 0.5, 1.5, 2.8070849609374995">
+      <modelTypeMoniker Id="1f8b2e02-3697-494a-af29-d4df263a3b8d" />
+      <nestedChildShapes>
+        <elementListCompartment Id="217214e4-3061-445b-9c20-3e8e85898447" absoluteBounds="5.015, 0.81, 1.4700000000000002, 2.015279134114583" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+        <elementListCompartment Id="3a48345a-bd0d-4bc6-b2ec-31790d3adc2f" absoluteBounds="5.015, 2.8352791341145829, 1.4700000000000002, 0.37180582682291652" name="Keys" title="Keys" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </typeShape>
+    <keyShape Id="92e2b8bc-2fa4-4101-bb79-83192980407a" absoluteBounds="0.5, 0.5, 1.5, 0.78180582682291666">
+      <modelPrimaryKeyMoniker Id="0f7ed483-3db1-4597-9570-d8b206b48c45" />
+      <nestedChildShapes>
+        <elementListCompartment Id="98d64c70-278a-41c9-add2-3681dfff4176" absoluteBounds="0.5, 0.5, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <modelTypeHasModelKeysConnector edgePoints="[(5.75 : 0.5); (5.75 : 0.4375); (4.33333083333333 : 0.437499999999999 : JumpStart); (4.16666416666667 : 0.4375 : JumpEnd); (2.09375 : 0.4375); (2.09375 : 1.23095809847005); (2 : 1.23095809847005)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="7ee2459a-db34-4bcc-b296-19246f7b9dff" />
+        <keyShapeMoniker Id="92e2b8bc-2fa4-4101-bb79-83192980407a" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <bidirectionalAssociationConnector edgePoints="[(5 : 1.90354248046875); (4.7812515 : 1.90354248046875); (4.7812515 : 2.625)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <bidirectionalAssociationMoniker Id="0f414c5a-36c1-455b-9fb5-af9e37df3861" />
+      <relativeChildShapes />
+      <nodes>
+        <typeShapeMoniker Id="7ee2459a-db34-4bcc-b296-19246f7b9dff" />
+        <typeShapeMoniker Id="888c7053-9539-4c08-a571-08ebe2980daf" />
+      </nodes>
+    </bidirectionalAssociationConnector>
+    <typeShape Id="ac1bcbaf-df21-4d76-bfc1-fd11d1940a40" absoluteBounds="4.625, 3.625, 1.5, 4.1218636067708339">
+      <modelTypeMoniker Id="5aaca9de-a8cb-4c48-9f3f-81bb29623c58" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f8d35a29-068c-41b4-95aa-b4a5a00f50a1" absoluteBounds="4.64, 3.9349999999999996, 1.4700000000000002, 3.16571044921875" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+        <elementListCompartment Id="c120c2d0-0c2c-4de9-bc30-46044dbf2045" absoluteBounds="4.64, 7.11071044921875, 1.4700000000000002, 0.53615315755208348" name="Keys" title="Keys" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </typeShape>
+    <keyShape Id="14378c51-d307-40ee-81a7-892061a34247" absoluteBounds="0.5, 0.5, 1.5, 0.78180582682291666">
+      <modelForeignKeyMoniker Id="7d242ace-40c6-42f2-9f86-9a10bf30ea60" />
+      <nestedChildShapes>
+        <elementListCompartment Id="80ae20be-3fe4-4bbf-b653-55f8aa9c8113" absoluteBounds="0.5, 0.5, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <keyShape Id="6671eb3f-cc5c-465b-856f-ec142a1c972b" absoluteBounds="0.5, 0.5, 1.5, 0.78180582682291666">
+      <modelPrimaryKeyMoniker Id="81944d6a-758c-4dac-ae47-f717b24f7018" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dee36a40-1310-4468-ba6d-2b0a18ecfe2b" absoluteBounds="0.5, 0.5, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <bidirectionalAssociationConnector edgePoints="[(5.15692307692308 : 7.74686360677083); (5.15692307692308 : 7.99686360677083); (5.60346153846154 : 7.99686360677083); (5.60346153846154 : 7.74686360677083)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <bidirectionalAssociationMoniker Id="4767c139-f0e8-4b0f-bee4-b6b814fbad9f" />
+      <relativeChildShapes />
+      <nodes>
+        <typeShapeMoniker Id="ac1bcbaf-df21-4d76-bfc1-fd11d1940a40" />
+        <typeShapeMoniker Id="ac1bcbaf-df21-4d76-bfc1-fd11d1940a40" />
+      </nodes>
+    </bidirectionalAssociationConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(4.625 : 6.35809333683894); (4.16 : 6.35809333683894); (4.16 : 4.59); (3.45833458333333 : 4.59 : JumpStart); (3.29166791666667 : 4.59 : JumpEnd); (3.14583583333333 : 4.59 : JumpStart); (2.97916916666667 : 4.59 : JumpEnd); (2.86458458333333 : 4.59 : JumpStart); (2.69791791666667 : 4.59 : JumpEnd); (2.24 : 4.59); (2.24 : 0.896732049235026); (2.23958333333333 : 0.896732049235025 : JumpStart); (2.01041666666667 : 0.896732049235026 : JumpEnd); (2 : 0.896732049235026)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="Algorithm" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="ac1bcbaf-df21-4d76-bfc1-fd11d1940a40" />
+        <keyShapeMoniker Id="14378c51-d307-40ee-81a7-892061a34247" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(4.625 : 5.04432306690705); (4.16 : 5.04432306690705); (4.16 : 4.59); (3.45833458333333 : 4.59 : JumpStart); (3.29166791666667 : 4.59 : JumpEnd); (3.14583583333333 : 4.59 : JumpStart); (2.97916916666667 : 4.59 : JumpEnd); (2.86458458333333 : 4.59 : JumpStart); (2.69791791666667 : 4.59 : JumpEnd); (2.24 : 4.59); (2.24 : 0.896732049235026); (2.23958333333333 : 0.896732049235025 : JumpStart); (2.01041666666667 : 0.896732049235026 : JumpEnd); (2 : 0.896732049235026)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="Algorithm" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="ac1bcbaf-df21-4d76-bfc1-fd11d1940a40" />
+        <keyShapeMoniker Id="6671eb3f-cc5c-465b-856f-ec142a1c972b" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <typeShape Id="d3c1733d-9efa-4f2b-b437-6fb42c2cd21e" absoluteBounds="2.5, 4.75, 1.5, 1.656653645833333">
+      <modelTypeMoniker Id="feaa9d0c-0989-4ae7-887f-0f9a2e995298" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d6d86751-668e-49e3-b78f-8a808a133f0b" absoluteBounds="2.515, 5.06, 1.4700000000000002, 0.53615315755208326" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+        <elementListCompartment Id="6ad50448-e8df-4c29-b2ce-c1dab13df077" absoluteBounds="2.515, 5.6061531575520833, 1.4700000000000002, 0.70050048828125" name="Keys" title="Keys" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </typeShape>
+    <keyShape Id="4a61d42d-83b1-4bc5-bb64-ad7de2c48d22" absoluteBounds="0.5, 0.5, 1.5, 0.78180582682291666">
+      <modelForeignKeyMoniker Id="65a955ae-5e7d-4ba9-9b30-902bb99a107b" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7e95a98a-4fee-4c84-a664-a7d5317fc769" absoluteBounds="0.5, 0.5, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <keyShape Id="cb91dd19-b26a-4fd7-8b70-2fb5b9596125" absoluteBounds="2.5, 4.75, 1.5, 0.78180582682291622">
+      <modelForeignKeyMoniker Id="4df86152-feb6-4a05-9abc-e8d369a1cce4" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f953b767-6272-4357-927a-b396efd1ee9f" absoluteBounds="2.5, 4.75, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <keyShape Id="a7be74e1-c294-411a-ac04-1794f6e9de7d" absoluteBounds="0.5, 0.5, 1.5, 0.9461531575520834">
+      <modelPrimaryKeyMoniker Id="7ab8ba17-713f-4e4a-a12f-916ea1d7d960" />
+      <nestedChildShapes>
+        <elementListCompartment Id="190b5436-bb47-4f13-89aa-1fc80111fda7" absoluteBounds="0.5, 0.5, 0.125, 0.53615315755208326" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <modelTypeHasModelKeysConnector edgePoints="[(3.0625025 : 4.75); (3.0625025 : 2.40665364583333); (2.25 : 2.40665364583333); (2.25 : 0.664199456705729); (2.23958333333333 : 0.664199456705728 : JumpStart); (2.01041666666667 : 0.664199456705729 : JumpEnd); (2 : 0.664199456705729)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="d3c1733d-9efa-4f2b-b437-6fb42c2cd21e" />
+        <keyShapeMoniker Id="4a61d42d-83b1-4bc5-bb64-ad7de2c48d22" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(3.59375125 : 4.75); (3.59375125 : 5.53180582682292)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="d3c1733d-9efa-4f2b-b437-6fb42c2cd21e" />
+        <keyShapeMoniker Id="cb91dd19-b26a-4fd7-8b70-2fb5b9596125" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(2.78125125 : 4.75); (2.78125125 : 2.43790364583333); (2.25 : 2.43790364583333); (2.25 : 1.36980762801107); (2 : 1.36980762801107)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="d3c1733d-9efa-4f2b-b437-6fb42c2cd21e" />
+        <keyShapeMoniker Id="a7be74e1-c294-411a-ac04-1794f6e9de7d" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <bidirectionalAssociationConnector edgePoints="[(4 : 5.701208201873); (4.07666666666667 : 5.701208201873 : JumpStart); (4.24333333333333 : 5.701208201873 : JumpEnd); (4.625 : 5.701208201873)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <bidirectionalAssociationMoniker Id="6fe6f70b-1860-4da8-927c-e3d5768c8d1a" />
+      <relativeChildShapes />
+      <nodes>
+        <typeShapeMoniker Id="d3c1733d-9efa-4f2b-b437-6fb42c2cd21e" />
+        <typeShapeMoniker Id="ac1bcbaf-df21-4d76-bfc1-fd11d1940a40" />
+      </nodes>
+    </bidirectionalAssociationConnector>
+    <bidirectionalAssociationConnector edgePoints="[(3.37500125 : 4.75); (3.37500125 : 2.15665364583333)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <bidirectionalAssociationMoniker Id="fe8e2e33-c8e0-4c3d-b73e-26d6a8c98c06" />
+      <relativeChildShapes />
+      <nodes>
+        <typeShapeMoniker Id="d3c1733d-9efa-4f2b-b437-6fb42c2cd21e" />
+        <typeShapeMoniker Id="6010c8fe-e1be-493d-b463-ef5b80f9059e" />
+      </nodes>
+    </bidirectionalAssociationConnector>
+    <typeShape Id="626513e9-f5f6-4812-853e-ed0ee4eacbbd" absoluteBounds="0.5, 5.125, 1.5, 2.149695638020833">
+      <modelTypeMoniker Id="85144adc-a478-4525-b60b-5f6a35cffab4" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e75ae95d-e9d5-4000-946a-246485a27f2f" absoluteBounds="0.515, 5.435, 1.4700000000000002, 1.0291951497395833" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+        <elementListCompartment Id="f014a04b-cac7-494a-a559-86a6a900a0d8" absoluteBounds="0.515, 6.4741951497395833, 1.4700000000000002, 0.70050048828125" name="Keys" title="Keys" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </typeShape>
+    <keyShape Id="62da7277-772c-4620-9d6c-8653ad256a33" absoluteBounds="0.5, 0.5, 1.5, 0.78180582682291666">
+      <modelForeignKeyMoniker Id="510a5257-ecc0-48d8-8e2c-0e583e03767e" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f8189452-10b4-4bba-b969-9d0abdd85d90" absoluteBounds="0.5, 0.5, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <keyShape Id="358f349a-70d1-42b2-a97b-413097850edb" absoluteBounds="0.5, 0.5, 1.5, 0.78180582682291666">
+      <modelForeignKeyMoniker Id="0b177b73-14c6-40e4-a401-16cb0a3b4811" />
+      <nestedChildShapes>
+        <elementListCompartment Id="77dd5717-fb92-4be3-aa77-1e8891a3466a" absoluteBounds="0.5, 0.5, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <keyShape Id="55aecb0c-b1a3-4f3b-93eb-dbe706e1928f" absoluteBounds="0.5, 0.5, 1.5, 0.9461531575520834">
+      <modelPrimaryKeyMoniker Id="0ac9cae0-dd54-44c0-8417-0465cf86043a" />
+      <nestedChildShapes>
+        <elementListCompartment Id="245d53fb-8129-4ca6-9ab9-d61ad16501da" absoluteBounds="0.5, 0.5, 0.125, 0.53615315755208326" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <modelTypeHasModelKeysConnector edgePoints="[(1.25 : 5.125); (1.25 : 4.875); (2.25 : 4.875); (2.25 : 0.777551185058593); (2.23958333333333 : 0.777551185058593 : JumpStart); (2.01041666666667 : 0.777551185058593 : JumpEnd); (2 : 0.777551185058593)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="626513e9-f5f6-4812-853e-ed0ee4eacbbd" />
+        <keyShapeMoniker Id="62da7277-772c-4620-9d6c-8653ad256a33" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(1.656252 : 5.125); (1.656252 : 5); (2.25 : 5); (2.25 : 0.550847728352865); (2.23958333333333 : 0.550847728352864 : JumpStart); (2.01041666666667 : 0.550847728352865 : JumpEnd); (2 : 0.550847728352865)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="626513e9-f5f6-4812-853e-ed0ee4eacbbd" />
+        <keyShapeMoniker Id="358f349a-70d1-42b2-a97b-413097850edb" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(0.843748 : 5.125); (0.843748 : 4.9375); (2.25 : 4.9375); (2.25 : 1.40106012801107); (2 : 1.40106012801107)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="626513e9-f5f6-4812-853e-ed0ee4eacbbd" />
+        <keyShapeMoniker Id="55aecb0c-b1a3-4f3b-93eb-dbe706e1928f" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <typeShape Id="12c9c415-8846-4e7c-bef3-5b6b99e7c0ae" absoluteBounds="7.5, 0.5, 1.5, 3.793168945312499">
+      <modelTypeMoniker Id="5b6efb08-5ae5-4462-bfe7-d2b1cf1b25b2" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d0b5e916-75f0-4a03-a636-9938c9951564" absoluteBounds="7.515, 0.81, 1.4700000000000002, 2.508321126302083" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+        <elementListCompartment Id="70124803-0ba1-44df-b676-c8c35866ef3d" absoluteBounds="7.515, 3.3283211263020829, 1.4700000000000002, 0.86484781901041652" name="Keys" title="Keys" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </typeShape>
+    <keyShape Id="71b6ecb9-9363-4e4a-8cb2-612cbdf91333" absoluteBounds="6.5, 0.5, 1.5, 0.78180582682291666">
+      <modelForeignKeyMoniker Id="6b6a03c9-73d8-48c8-9cb2-997d0ffa2ce7" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8c598e20-0900-45f7-9abb-8f01ad6e2d00" absoluteBounds="6.5, 0.5, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <keyShape Id="dff67341-593b-4cf5-a53c-970011dfc379" absoluteBounds="6.5, 0.5, 1.5, 0.78180582682291666">
+      <modelForeignKeyMoniker Id="80137f93-46e0-4459-b082-0a39c523482f" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b47c1baf-f4d1-4c3c-bf03-e0cf68075ed1" absoluteBounds="6.5, 0.5, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <keyShape Id="a12e4a33-2be4-49e2-9873-01db1d830809" absoluteBounds="6.5, 0.5, 1.5, 0.78180582682291666">
+      <modelForeignKeyMoniker Id="333dff93-2e7b-4000-9524-8dd35fe176f2" />
+      <nestedChildShapes>
+        <elementListCompartment Id="24e3d6b6-39cd-4a36-a3d5-9ba0d8294bb4" absoluteBounds="6.5, 0.5, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <keyShape Id="f69e1863-a4d3-4707-9e12-9f4106c0686c" absoluteBounds="6.5, 0.5, 1.5, 0.78180582682291666">
+      <modelPrimaryKeyMoniker Id="db6a0059-2ff6-4ac7-a22c-f40cef8e2da8" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b508f5f2-5b48-4d44-929d-9dfdfb852722" absoluteBounds="6.5, 0.5, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <bidirectionalAssociationConnector edgePoints="[(8.398436125 : 4.2931689453125); (8.398436125 : 7.80936360677083); (7.84896058333333 : 7.80936360677083 : JumpStart); (7.68229391666667 : 7.80936360677083 : JumpEnd); (4.0625 : 7.80936360677083); (4.0625 : 6.8125); (2.09375 : 6.8125); (2.09375 : 6.19984781901042); (2 : 6.19984781901042)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <bidirectionalAssociationMoniker Id="cced8afe-8d33-4b14-befd-f5d60214f26a" />
+      <relativeChildShapes />
+      <nodes>
+        <typeShapeMoniker Id="12c9c415-8846-4e7c-bef3-5b6b99e7c0ae" />
+        <typeShapeMoniker Id="626513e9-f5f6-4812-853e-ed0ee4eacbbd" />
+      </nodes>
+    </bidirectionalAssociationConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(8.47846153846154 : 0.5); (8.47846153846154 : 0.375); (8.11525641025641 : 0.374999999999999 : JumpStart); (7.94858974358974 : 0.375 : JumpEnd); (7.25 : 0.375); (7.25 : 0.5)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="12c9c415-8846-4e7c-bef3-5b6b99e7c0ae" />
+        <keyShapeMoniker Id="71b6ecb9-9363-4e4a-8cb2-612cbdf91333" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(7.5 : 2.39658447265625); (6.84895833333333 : 2.39658447265625 : JumpStart); (6.68229166666667 : 2.39658447265625 : JumpEnd); (6.25 : 2.39658447265625); (6.25 : 0.890902913411458); (6.5 : 0.890902913411458)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="12c9c415-8846-4e7c-bef3-5b6b99e7c0ae" />
+        <keyShapeMoniker Id="dff67341-593b-4cf5-a53c-970011dfc379" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(9 : 2.39658447265625); (9.25 : 2.39658447265625); (9.25 : 0.890902913411458); (8 : 0.890902913411458)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="12c9c415-8846-4e7c-bef3-5b6b99e7c0ae" />
+        <keyShapeMoniker Id="a12e4a33-2be4-49e2-9873-01db1d830809" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(8.03192307692308 : 0.5); (8.03192307692308 : 0.25); (7.25 : 0.25); (7.25 : 0.5)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="12c9c415-8846-4e7c-bef3-5b6b99e7c0ae" />
+        <keyShapeMoniker Id="f69e1863-a4d3-4707-9e12-9f4106c0686c" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <bidirectionalAssociationConnector edgePoints="[(7.5 : 1.61249619303385); (6.84895833333333 : 1.61249619303385 : JumpStart); (6.68229166666667 : 1.61249619303385 : JumpEnd); (6.5 : 1.61249619303385)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <bidirectionalAssociationMoniker Id="303eb7fb-e917-4c72-9747-318f13a8d39f" />
+      <relativeChildShapes />
+      <nodes>
+        <typeShapeMoniker Id="12c9c415-8846-4e7c-bef3-5b6b99e7c0ae" />
+        <typeShapeMoniker Id="7ee2459a-db34-4bcc-b296-19246f7b9dff" />
+      </nodes>
+    </bidirectionalAssociationConnector>
+    <bidirectionalAssociationConnector edgePoints="[(7.5 : 3.95908447265625); (6.84895833333333 : 3.95908447265625 : JumpStart); (6.68229166666667 : 3.95908447265625 : JumpEnd); (6.125 : 3.95908447265625)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <bidirectionalAssociationMoniker Id="c0fefa0c-158f-4b00-b2d3-ac95af42401e" />
+      <relativeChildShapes />
+      <nodes>
+        <typeShapeMoniker Id="12c9c415-8846-4e7c-bef3-5b6b99e7c0ae" />
+        <typeShapeMoniker Id="ac1bcbaf-df21-4d76-bfc1-fd11d1940a40" />
+      </nodes>
+    </bidirectionalAssociationConnector>
+    <typeShape Id="32083f64-9f09-4b66-a3d5-9c4423b5c1bf" absoluteBounds="6.5, 4.75, 1.5, 2.971432291666666">
+      <modelTypeMoniker Id="5aef6991-794e-4cad-9619-3528a00edbf7" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5328c0f8-b65d-4760-b96a-4d55d05faeeb" absoluteBounds="6.515, 5.06, 1.4700000000000002, 1.8509318033854165" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+        <elementListCompartment Id="2ab197c4-5a71-4674-8cd0-651e3e047d2c" absoluteBounds="6.515, 6.9209318033854164, 1.4700000000000002, 0.70050048828125" name="Keys" title="Keys" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </typeShape>
+    <keyShape Id="80a5dd81-4578-4a81-85b5-3a7f7fc50449" absoluteBounds="6.5, 4.75, 1.5, 0.78180582682291622">
+      <modelForeignKeyMoniker Id="f2b8c2ee-df43-46e8-a795-8778567e03fd" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b2e514c3-086a-4718-9dba-f3e23be1f724" absoluteBounds="6.5, 4.75, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <keyShape Id="91a50a55-c1e6-4908-bc51-b386af512293" absoluteBounds="6.5, 4.75, 1.5, 0.78180582682291622">
+      <modelForeignKeyMoniker Id="0b0f5a72-a863-4016-8a7f-d19ed06db45c" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1ee1610f-6c7e-4877-acbd-b7ccd5ff043c" absoluteBounds="6.5, 4.75, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <keyShape Id="77856eaa-c86a-41d0-ab65-8b6a795477f4" absoluteBounds="6.5, 4.75, 1.5, 0.78180582682291622">
+      <modelPrimaryKeyMoniker Id="df37bf97-d220-4120-85e5-ec6373c970d3" />
+      <nestedChildShapes>
+        <elementListCompartment Id="af3bfb64-945e-470a-a2bf-f0e80dbf6d91" absoluteBounds="6.5, 4.75, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <bidirectionalAssociationConnector edgePoints="[(6.5 : 6.23571614583333); (6.1875 : 6.23571614583333); (6.1875 : 7.80936360677083); (4.125 : 7.80936360677083); (4.125 : 6.8125); (2.1875 : 6.8125); (2.1875 : 7.33719563802083); (1.25 : 7.33719563802083); (1.25 : 7.27469563802083)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <bidirectionalAssociationMoniker Id="9c83c692-169f-440c-9bd6-c00f02305c43" />
+      <relativeChildShapes />
+      <nodes>
+        <typeShapeMoniker Id="32083f64-9f09-4b66-a3d5-9c4423b5c1bf" />
+        <typeShapeMoniker Id="626513e9-f5f6-4812-853e-ed0ee4eacbbd" />
+      </nodes>
+    </bidirectionalAssociationConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(7.03125 : 4.75); (7.03125 : 5.53180582682292)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="32083f64-9f09-4b66-a3d5-9c4423b5c1bf" />
+        <keyShapeMoniker Id="80a5dd81-4578-4a81-85b5-3a7f7fc50449" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(7.6875 : 4.75); (7.6875 : 5.53180582682292)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="32083f64-9f09-4b66-a3d5-9c4423b5c1bf" />
+        <keyShapeMoniker Id="91a50a55-c1e6-4908-bc51-b386af512293" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <modelTypeHasModelKeysConnector edgePoints="[(7.359375 : 4.75); (7.359375 : 5.53180582682292)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="32083f64-9f09-4b66-a3d5-9c4423b5c1bf" />
+        <keyShapeMoniker Id="77856eaa-c86a-41d0-ab65-8b6a795477f4" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <bidirectionalAssociationConnector edgePoints="[(6.765625 : 4.75); (6.765625 : 0.215); (0.26 : 0.215); (0.26 : 2.07832682291667); (0.5 : 2.07832682291667)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <bidirectionalAssociationMoniker Id="96383224-55be-4db9-b46b-b9df44aeec14" />
+      <relativeChildShapes />
+      <nodes>
+        <typeShapeMoniker Id="32083f64-9f09-4b66-a3d5-9c4423b5c1bf" />
+        <typeShapeMoniker Id="832029bc-77d2-46d7-93c0-0335bac77e06" />
+      </nodes>
+    </bidirectionalAssociationConnector>
+    <typeShape Id="05b81426-e764-45b2-83ee-f00192e9f3e9" absoluteBounds="2.5, 6.875, 1.5, 1.327958984375">
+      <modelTypeMoniker Id="da7381f0-f04d-4e71-be5c-3d0aa7a887e9" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1fe06c3e-2e3f-43ab-b84b-0a2210bce4ae" absoluteBounds="2.515, 7.185, 1.4700000000000002, 0.53615315755208326" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+        <elementListCompartment Id="ef6a4212-84d2-4342-ad38-3ed00d2a8b4b" absoluteBounds="2.515, 7.7311531575520833, 1.4700000000000002, 0.37180582682291652" name="Keys" title="Keys" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </typeShape>
+    <keyShape Id="eefe361c-515b-40d7-9381-430e532f4cfe" absoluteBounds="2.5, 6.875, 1.5, 0.78180582682291622">
+      <modelPrimaryKeyMoniker Id="04adf370-a67b-4127-89d4-4f1ebbbb04d7" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a53d3ed3-bc55-45cb-ab34-2a673630c99a" absoluteBounds="2.5, 6.875, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <modelTypeHasModelKeysConnector edgePoints="[(3.015626 : 6.875); (3.015626 : 7.65680582682292)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="05b81426-e764-45b2-83ee-f00192e9f3e9" />
+        <keyShapeMoniker Id="eefe361c-515b-40d7-9381-430e532f4cfe" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <bidirectionalAssociationConnector edgePoints="[(3.25 : 6.875); (3.25 : 6.625); (2.25 : 6.625); (2.25 : 1.7788563869222); (2.5 : 1.7788563869222)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <bidirectionalAssociationMoniker Id="0631afb3-8208-463b-9d30-ebe41e76e14e" />
+      <relativeChildShapes />
+      <nodes>
+        <typeShapeMoniker Id="05b81426-e764-45b2-83ee-f00192e9f3e9" />
+        <typeShapeMoniker Id="6010c8fe-e1be-493d-b463-ef5b80f9059e" />
+      </nodes>
+    </bidirectionalAssociationConnector>
+    <typeShape Id="90bc5af0-6f35-4165-8ff9-7c10eb628d50" absoluteBounds="0.5, 7.75, 1.5, 1.492306315104166">
+      <modelTypeMoniker Id="24cb9a43-76a5-4be0-bbff-610a06f13896" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e9958f6e-bc2c-47b4-a779-07eb21233d54" absoluteBounds="0.515, 8.06, 1.4700000000000002, 0.70050048828125" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+        <elementListCompartment Id="f6f05eb5-7243-441a-b0e9-db9e022382d6" absoluteBounds="0.515, 8.77050048828125, 1.4700000000000002, 0.37180582682291674" name="Keys" title="Keys" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </typeShape>
+    <keyShape Id="854babf0-6841-401c-a619-5b796c50d1f1" absoluteBounds="0.5, 7.75, 1.5, 0.78180582682291622">
+      <modelPrimaryKeyMoniker Id="868051d8-336b-40d4-af2c-e600cf612be9" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eb503879-f85d-4508-9d95-2026eec09110" absoluteBounds="0.5, 7.75, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <modelTypeHasModelKeysConnector edgePoints="[(1.25 : 9.24230631510417); (1.25 : 7.75)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="90bc5af0-6f35-4165-8ff9-7c10eb628d50" />
+        <keyShapeMoniker Id="854babf0-6841-401c-a619-5b796c50d1f1" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <bidirectionalAssociationConnector edgePoints="[(2 : 8.52968180338542); (7.68229391666667 : 8.52968180338542 : JumpStart); (7.84896058333333 : 8.52968180338542 : JumpEnd); (8.79687725 : 8.52968180338542); (8.79687725 : 4.2931689453125)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <bidirectionalAssociationMoniker Id="a11e87e2-04fe-4934-83e8-52caac531350" />
+      <relativeChildShapes />
+      <nodes>
+        <typeShapeMoniker Id="90bc5af0-6f35-4165-8ff9-7c10eb628d50" />
+        <typeShapeMoniker Id="12c9c415-8846-4e7c-bef3-5b6b99e7c0ae" />
+      </nodes>
+    </bidirectionalAssociationConnector>
+    <typeShape Id="42baa76b-fb1e-4621-97ec-4333c1e82a7d" absoluteBounds="2.5, 8.75, 1.5, 2.971432291666666">
+      <modelTypeMoniker Id="8a67084f-45df-48dd-a70d-2d70752b3f65" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3d29b76f-0915-42b2-9844-724d532604ae" absoluteBounds="2.515, 9.06, 1.4700000000000002, 2.17962646484375" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+        <elementListCompartment Id="1e3a27e0-9abf-4b17-a848-594b22700f5e" absoluteBounds="2.515, 11.24962646484375, 1.4700000000000002, 0.37180582682291652" name="Keys" title="Keys" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </typeShape>
+    <keyShape Id="1eaed8d4-e24e-431b-8bc7-2512786284a1" absoluteBounds="2.5, 8.75, 1.5, 0.78180582682291622">
+      <modelPrimaryKeyMoniker Id="29079ce7-755f-419b-a6fb-53ac1b0a0d2d" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f0c47c02-ee24-4b4f-8458-8bdebf680358" absoluteBounds="2.5, 8.75, 0.125, 0.37180582682291663" name="Attributes" title="Attributes" titleFillColor="LightGray" compartmentFillColor="White" />
+      </nestedChildShapes>
+    </keyShape>
+    <modelTypeHasModelKeysConnector edgePoints="[(3.25 : 11.7214322916667); (3.25 : 8.75)]" manuallyRouted="false" fixedFrom="NotFixed" fixedTo="NotFixed" TargetRelationshipDomainClassId="c3ec7131-adfa-45ef-8b6c-dedc8ed2ab35">
+      <nodes>
+        <typeShapeMoniker Id="42baa76b-fb1e-4621-97ec-4333c1e82a7d" />
+        <keyShapeMoniker Id="1eaed8d4-e24e-431b-8bc7-2512786284a1" />
+      </nodes>
+    </modelTypeHasModelKeysConnector>
+    <bidirectionalAssociationConnector edgePoints="[(4 : 10.2357161458333); (7.76562725 : 10.2357161458333); (7.76562725 : 7.72143229166667)]" manuallyRouted="false" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <bidirectionalAssociationMoniker Id="b2b8fd64-8fa6-42e3-90ce-81f13e3092ec" />
+      <relativeChildShapes />
+      <nodes>
+        <typeShapeMoniker Id="42baa76b-fb1e-4621-97ec-4333c1e82a7d" />
+        <typeShapeMoniker Id="32083f64-9f09-4b66-a3d5-9c4423b5c1bf" />
+      </nodes>
+    </bidirectionalAssociationConnector>
+  </nestedChildShapes>
+</nHibernateDiagram>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns='urn:nhibernate-configuration-2.2'>
+  <session-factory>
+    <property name="show_sql">true</property>
+    <property name="dialect">NHibernate.Dialect.MsSql2005Dialect</property>
+    <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
+    <property name="proxyfactory.factory_class">NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle</property>
+    <property name="connection.connection_string_name">Test</property>
+    <mapping assembly="NHibernate.Linq.Tests"/>
+    <mapping assembly="Northwind.Entities"/>
+  </session-factory>
+</hibernate-configuration>

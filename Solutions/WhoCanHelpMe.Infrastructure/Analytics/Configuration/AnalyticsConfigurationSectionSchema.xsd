@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<xs:schema xmlns:tns="http://schemas.who-can-help.me/analytics/configuration" elementFormDefault="qualified" targetNamespace="http://schemas.who-can-help.me/analytics/configuration" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="analyticsConfigurationSection" type="tns:WhoCanHelpMe.Infrastructure.Analytics.Configuration.AnalyticsConfigurationSectionCT" />
+	<xs:complexType name="WhoCanHelpMe.Infrastructure.Analytics.Configuration.AnalyticsConfigurationSectionCT">
+		<xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="analyticsIdentifier" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The AnalyticsIdentifier.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>
+

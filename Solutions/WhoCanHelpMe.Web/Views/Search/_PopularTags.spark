@@ -1,0 +1,6 @@
+﻿<h3 id="popular_tags_heading">Popular tags</h3>
+<ul id="popular_tags">
+	<li each="var current in tags">
+	!{Html.ActionLink<SearchController>(c => c.ByTag(current.Name), current.Name)}
+	</li>
+</ul>

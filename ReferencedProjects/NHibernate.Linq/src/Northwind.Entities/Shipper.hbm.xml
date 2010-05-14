@@ -1,0 +1,15 @@
+﻿<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Northwind.Entities.Shipper, Northwind.Entities" table="Shippers">
+    <id name="ShipperID" type="System.Int32" column="ShipperID" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="CompanyName" type="System.String" column="CompanyName" not-null="true" />
+    <property name="Phone" type="System.String" column="Phone" not-null="false" />
+    <bag name="Orders" inverse="false" lazy="true" cascade="none">
+      <key>
+        <column name="ShipVia" not-null="false" />
+      </key>
+      <one-to-many class="Northwind.Entities.Order, Northwind.Entities" />
+    </bag>
+  </class>
+</hibernate-mapping>

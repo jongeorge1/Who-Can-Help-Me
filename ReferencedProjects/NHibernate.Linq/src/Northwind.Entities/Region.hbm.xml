@@ -1,0 +1,14 @@
+﻿<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Northwind.Entities.Region, Northwind.Entities" table="Region">
+    <id name="RegionID" type="System.Int32" column="RegionID" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="RegionDescription" type="System.String" column="RegionDescription" not-null="true" />
+    <bag name="Territories" inverse="true" lazy="true" cascade="none">
+      <key>
+        <column name="RegionID" not-null="true" />
+      </key>
+      <one-to-many class="Northwind.Entities.Territory, Northwind.Entities" />
+    </bag>
+  </class>
+</hibernate-mapping>

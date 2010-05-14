@@ -1,0 +1,19 @@
+﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Search.ViewModels.SearchResultsPageViewModel"/>
+
+<content name="title">
+Et Voila!
+</content>
+
+<h2>
+	You asked for 
+	<br/>'!{Model.SearchTerm}',
+	<br/> we give you:
+</h2>
+<ul id="search_results">
+	<li each="var current in Model.MatchingAssertions">
+	!{Html.ActionLink<WhoCanHelpMe.Web.Controllers.Profile.ProfileController>(p => p.View(current.ProfileId), "{0} {1}".FormatWith(current.ProfileFirstName, current.ProfileLastName))}&nbsp;
+	${current.CategoryName}
+	!{Html.ActionLink<WhoCanHelpMe.Web.Controllers.Search.SearchController>(c => c.ByTag(current.TagName), current.TagName)}
+	</li>
+</ul>
+<PopularTags tags="Model.PopularTags" />

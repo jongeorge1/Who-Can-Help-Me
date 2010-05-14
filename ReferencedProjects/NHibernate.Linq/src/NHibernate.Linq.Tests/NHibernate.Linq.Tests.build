@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+
+<project 
+	name="NHibernate.Linq.Tests" 
+	default="build" 
+	xmlns="http://nant.sf.net/release/0.85-rc3/nant.xsd"
+>
+
+	<property name="root.dir" value="../.." />
+	<include buildfile="${root.dir}/common-project.xml" />
+
+	<target name="init" depends="common.init">
+		<property name="assembly.description" value="A linq provider for NHibernate" />
+		<property name="assembly.allow-partially-trusted-callers" value="true" />
+
+		<assemblyfileset id="project.references" basedir="${bin.dir}" defaultexcludes="false">
+			<include name="log4net.dll" />
+			<include name="NHibernate.dll" />
+			<include name="NHibernate.Linq.dll" />
+			<include name="NHibernate.ByteCode.Castle.dll" />
+			<include name="nunit.framework.dll" />
+			<include name="System.dll" />
+			<include name="System.Core.dll" />
+			<include name="System.configuration.dll" />
+			<include name="System.Data.dll" />
+			<include name="System.Data.Services.dll" />
+			<include name="System.Linq.Dynamic.dll" />
+			<include name="System.Xml.dll" />
+			<include name="Northwind.Entities.dll" />
+		</assemblyfileset>
+
+		<resourcefileset id="project.resources" prefix="NHibernate.Linq" dynamicprefix="true">
+			<include name="*.xsd" />
+			<include name="**/*.xml" />
+			<exclude name="bin/**/*.xml" />
+		</resourcefileset>
+		
+		<fileset id="project.sources">
+			<include name="**/*.cs" />
+		</fileset>
+	</target>
+
+	<target name="generate-assemblyinfo" depends="init common.generate-assemblyinfo" />
+
+	<target name="build" description="Build NHibernate"
+		depends="generate-assemblyinfo common.compile-tests">
+		<if test="${property::exists('connection.string.test')}">
+			<xmlpoke
+				file="${bin.dir}/${project::get-name()}.dll.config"
+				xpath="/configuration/connectionStrings/add[@name = 'Test']/@connectionString"
+				value="${connection.string.test}"/>
+		</if>
+		<if test="${property::exists('connection.string.northwind')}">
+			<xmlpoke
+				file="${bin.dir}/${project::get-name()}.dll.config"
+				xpath="/configuration/connectionStrings/add[@name = 'Northwind']/@connectionString"
+				value="${connection.string.northwind}" />
+		</if>
+
+		<if test="${file::exists('hibernate.cfg.xml')}">
+			<copy file="hibernate.cfg.xml" tofile="${bin.dir}/hibernate.cfg.xml" />
+		</if>
+	</target>
+	
+	<target name="test" depends="init build common.run-tests" />
+
+</project>

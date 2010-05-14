@@ -1,0 +1,1 @@
+﻿<script each="var script in Model.Scripts" type="text/javascript" src="${Url.Scripts(script)}"></script> 

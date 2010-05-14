@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<minimalLanguageDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="AnalyticsConfigurationSection">
+  <configurationSectionModelMoniker Id="89c59a43-14ea-44f5-8b31-0b1354a145b8" />
+  <nestedChildShapes>
+    <configurationSectionShape Id="340ddbe1-d8cf-4a8f-959b-ac99f87aa548" absoluteBounds="3, 2.5, 1.5, 1.211080729166667">
+      <configurationSectionMoniker name="/89c59a43-14ea-44f5-8b31-0b1354a145b8/AnalyticsConfigurationSection" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7207a3f9-70a3-4417-a2e9-329278a812b0" absoluteBounds="3.015, 2.91, 1.4700000000000002, 0.44169108072916663" name="AttributeProperties" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="87ba480a-0d32-4d83-8b49-1ae46e1fe8ad" absoluteBounds="3.015, 3.3616910807291669, 1.4700000000000002, 0.2493896484375" name="ElementProperties" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </configurationSectionShape>
+  </nestedChildShapes>
+</minimalLanguageDiagram>

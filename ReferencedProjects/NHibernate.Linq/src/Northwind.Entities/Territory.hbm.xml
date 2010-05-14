@@ -1,0 +1,17 @@
+<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+ <class name="Northwind.Entities.Territory, Northwind.Entities" table="Territories">
+   <id name="TerritoryID" type="System.String" column="TerritoryID" unsaved-value="0">
+     <generator class="assigned" />
+   </id>
+   <property name="TerritoryDescription" type="System.String" column="TerritoryDescription" not-null="true" />
+   <bag name="EmployeeTerritories" inverse="true" lazy="true" cascade="none">
+     <key>
+       <column name="TerritoryID" not-null="true" />
+     </key>
+     <one-to-many class="Northwind.Entities.EmployeeTerritory, Northwind.Entities" />
+   </bag>
+   <many-to-one name="Region" class="Northwind.Entities.Region, Northwind.Entities" fetch="select">
+     <column name="RegionID" not-null="true" />
+   </many-to-one>
+ </class>
+</hibernate-mapping>

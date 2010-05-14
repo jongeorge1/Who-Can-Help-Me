@@ -1,0 +1,14 @@
+﻿<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Northwind.Entities.CustomerDemographic, Northwind.Entities" table="CustomerDemographics">
+    <id name="CustomerTypeID" type="System.String" column="CustomerTypeID" unsaved-value="0">
+      <generator class="assigned" />
+    </id>
+    <property name="CustomerDesc" type="System.String" column="CustomerDesc" not-null="false" />
+    <bag name="CustomerCustomerDemos" inverse="true" lazy="true" cascade="none">
+      <key>
+        <column name="CustomerTypeID" not-null="true" />
+      </key>
+      <one-to-many class="Northwind.Entities.CustomerCustomerDemo, Northwind.Entities" />
+    </bag>
+  </class>
+</hibernate-mapping>

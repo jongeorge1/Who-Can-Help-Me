@@ -1,0 +1,12 @@
+﻿<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Northwind.Entities.EmployeeTerritory, Northwind.Entities" table="EmployeeTerritories">
+    <composite-id name="PK_EmployeeTerritories" class="Northwind.Entities.AbstractEmployeeTerritory+EmployeeTerritoryKey, Northwind.Entities" unsaved-value="none" access="property">
+      <key-many-to-one name="Employee" class="Northwind.Entities.Employee, Northwind.Entities">
+        <column name="EmployeeID" />
+      </key-many-to-one>
+      <key-many-to-one name="Territory" class="Northwind.Entities.Territory, Northwind.Entities">
+        <column name="TerritoryID" />
+      </key-many-to-one>
+    </composite-id>
+  </class>
+</hibernate-mapping>

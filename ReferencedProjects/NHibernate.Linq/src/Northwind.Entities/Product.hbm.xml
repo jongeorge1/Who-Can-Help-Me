@@ -1,0 +1,26 @@
+﻿<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Northwind.Entities.Product, Northwind.Entities" table="Products">
+    <id name="ProductID" type="System.Int32" column="ProductID" unsaved-value="0">
+      <generator class="native" />
+    </id>
+    <property name="Discontinued" type="System.Boolean" column="Discontinued" not-null="true" />
+    <property name="ProductName" type="System.String" column="ProductName" not-null="true" />
+    <property name="QuantityPerUnit" type="System.String" column="QuantityPerUnit" not-null="false" />
+    <property name="ReorderLevel" type="System.Int16" column="ReorderLevel" not-null="false" />
+    <property name="UnitPrice" type="System.Decimal" column="UnitPrice" not-null="false" />
+    <property name="UnitsInStock" type="System.Int16" column="UnitsInStock" not-null="false" />
+    <property name="UnitsOnOrder" type="System.Int16" column="UnitsOnOrder" not-null="false" />
+    <many-to-one name="Category" class="Northwind.Entities.Category, Northwind.Entities" fetch="select">
+      <column name="CategoryID" not-null="false" />
+    </many-to-one>
+    <bag name="OrderDetails" inverse="true" lazy="true" cascade="none">
+      <key>
+        <column name="ProductID" not-null="true" />
+      </key>
+      <one-to-many class="Northwind.Entities.OrderDetail, Northwind.Entities" />
+    </bag>
+    <many-to-one name="Supplier" class="Northwind.Entities.Supplier, Northwind.Entities" fetch="select">
+      <column name="SupplierID" not-null="false" />
+    </many-to-one>
+  </class>
+</hibernate-mapping>

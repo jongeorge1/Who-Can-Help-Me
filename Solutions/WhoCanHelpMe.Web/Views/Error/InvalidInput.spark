@@ -1,0 +1,8 @@
+﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Shared.ViewModels.PageViewModel"/>
+
+<content name="title">
+Are you disrespecting me?
+</content>
+
+<h2>It looks like you're sending us something a bit scary...</h2>
+<p>so we've decided to ignore it and hope it goes away.</p>

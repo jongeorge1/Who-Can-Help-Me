@@ -1,0 +1,2 @@
+﻿<#@ include file="ConfigurationSectionDesignerSample.tt" #>
+<#@ ConfigurationSectionDesigner processor="ConfigurationSectionDesignerDirectiveProcessor" requires="fileName='NewsConfigurationSection.csd'" #>

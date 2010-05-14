@@ -1,0 +1,12 @@
+﻿<hibernate-mapping default-cascade="none" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Northwind.Entities.CustomerCustomerDemo, Northwind.Entities" table="CustomerCustomerDemo">
+    <composite-id name="PK_CustomerCustomerDemo" class="Northwind.Entities.AbstractCustomerCustomerDemo+CustomerCustomerDemoKey, Northwind.Entities" unsaved-value="none" access="property">
+      <key-many-to-one name="CustomerDemographic" class="Northwind.Entities.CustomerDemographic, Northwind.Entities">
+        <column name="CustomerTypeID" />
+      </key-many-to-one>
+      <key-many-to-one name="Customer" class="Northwind.Entities.Customer, Northwind.Entities">
+        <column name="CustomerID" />
+      </key-many-to-one>
+    </composite-id>
+  </class>
+</hibernate-mapping>
