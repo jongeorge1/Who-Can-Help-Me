@@ -36,7 +36,7 @@ namespace WhoCanHelpMe.Tasks
         {
             var scripts = new List<string>
                               {
-                                  "jquery-1.4.1.min.js",
+                                  "jquery-1.3.2.min.js",
                                   "jquery.autocomplete.custom.js",
                                   "jquery.validate.js",
                                   "xVal.jquery.validate.js",

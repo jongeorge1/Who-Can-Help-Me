@@ -5,18 +5,19 @@
     using System.Web.Mvc;
 
     using Aspects.Caching;
-
+    using Domain.Cms.Pages;
     using Domain.Contracts.Tasks;
 
     using Framework.Caching;
 
     using Mappers.Contracts;
-
+    using N2.Web;
     using Shared.ViewModels;
 
     #endregion
 
-    public class HomeController : BaseController
+    [Controls(typeof(HomePage))]
+    public class HomeController : N2Controller<HomePage>
     {
         private readonly IHomePageViewModelMapper homePageViewModelMapper;
 
@@ -30,7 +31,7 @@
             this.homePageViewModelMapper = homePageViewModelMapper;
         }
 
-        public ActionResult Index()
+        public override ActionResult Index()
         {
             var pageViewModel = this.IndexInner();
 
@@ -42,7 +43,7 @@
         {
             var buzz = this.newsTasks.GetProjectBuzz();
 
-            return this.homePageViewModelMapper.MapFrom(buzz);
+            return this.homePageViewModelMapper.MapFrom(buzz, CurrentItem);
         }
     }
 }

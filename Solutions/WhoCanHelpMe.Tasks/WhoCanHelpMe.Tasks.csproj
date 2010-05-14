@@ -53,6 +53,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\DotNetOpenAuth\DotNetOpenAuth.dll</HintPath>
     </Reference>
+    <Reference Include="N2, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\N2CMS\N2.dll</HintPath>
+    </Reference>
     <Reference Include="SharpArch.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.Core.dll</HintPath>
@@ -86,6 +90,7 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="CategoryTasks.cs" />
+    <Compile Include="CmsTasks.cs" />
     <Compile Include="IdentityTasks.cs" />
     <Compile Include="NewsTasks.cs" />
     <Compile Include="Properties\TasksRegistrarMarker.cs" />

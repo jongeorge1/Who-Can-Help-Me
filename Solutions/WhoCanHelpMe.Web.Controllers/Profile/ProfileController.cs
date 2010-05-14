@@ -63,7 +63,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         }
 
         [Authorize]
-        [HttpGet]
+        [AcceptGet]
         [ModelStateToTempData]
         [RequireNoExistingProfile("Profile", "Update")]
         public ActionResult Create()
@@ -76,7 +76,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         }
 
         [Authorize]
-        [HttpPost]
+        [AcceptPost]
         [ValidateAntiForgeryToken]
         [ModelStateToTempData]
         [RequireNoExistingProfile("Profile", "Update")]
@@ -103,7 +103,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         }
 
         [Authorize]
-        [HttpGet]
+        [AcceptGet]
         [RequireExistingProfile("Profile", "Create")]
         public ActionResult Delete()
         {
@@ -115,7 +115,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         }
 
         [Authorize]
-        [HttpGet]
+        [AcceptGet]
         [RequireExistingProfile("Profile", "Create")]
         public ActionResult DeleteAssertion(int assertionId)
         {
@@ -130,14 +130,14 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
             return this.RedirectToAction(x => x.Update());
         }
 
-        [HttpGet]
+        [AcceptGet]
         public ActionResult Index()
         {
             return this.RedirectToAction(x => x.Update());
         }
 
         [Authorize]
-        [HttpGet]
+        [AcceptGet]
         [ModelStateToTempData]
         [RequireExistingProfile("Profile", "Create")]
         public ActionResult Update()
@@ -156,7 +156,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         }
 
         [Authorize]
-        [HttpPost]
+        [AcceptPost]
         [ValidateAntiForgeryToken]
         [ModelStateToTempData]
         [RequireExistingProfile("Profile", "Create")]
@@ -182,7 +182,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
             return this.RedirectToAction(x => x.Update());
         }
 
-        [HttpGet]
+        [AcceptGet]
         public ActionResult View(int id)
         {
             var user = this.userTasks.GetProfileById(id);

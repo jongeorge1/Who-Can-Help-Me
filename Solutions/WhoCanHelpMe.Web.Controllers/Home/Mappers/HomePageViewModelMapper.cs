@@ -2,6 +2,7 @@
 {
     #region Using Directives
 
+    using System;
     using System.Collections.Generic;
 
     using AutoMapper;
@@ -9,7 +10,7 @@
     using Contracts;
 
     using Domain;
-
+    using Domain.Cms.Pages;
     using Framework.Mapper;
 
     using Shared.Mappers.Contracts;
@@ -18,7 +19,7 @@
 
     #endregion
 
-    public class HomePageViewModelMapper : BasePageViewModelMapper<IList<NewsItem>, HomePageViewModel>,
+    public class HomePageViewModelMapper : BasePageViewModelMapper<IList<NewsItem>, HomePage, HomePageViewModel>,
                                            IHomePageViewModelMapper
     {
         private readonly INewsItemViewModelMapper newsItemViewModelMapper;
@@ -34,14 +35,15 @@
         protected override void CreateMap()
         {
             Mapper.CreateMap<IList<NewsItem>, HomePageViewModel>().ConvertUsing(list => this.DoMapping(list));
+            Mapper.CreateMap<HomePage, HomePageViewModel>();
         }
 
         private HomePageViewModel DoMapping(IList<NewsItem> input)
         {
             return new HomePageViewModel
-                {
-                    NewsItems = input.MapAllUsing(this.newsItemViewModelMapper)
-                };
+            {
+                NewsItems = input.MapAllUsing(this.newsItemViewModelMapper)
+            };
         }
     }
 }

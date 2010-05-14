@@ -5,14 +5,14 @@
     using System.Collections.Generic;
 
     using Domain;
-
+    using Domain.Cms.Pages;
     using Framework.Mapper;
 
     using ViewModels;
 
     #endregion
 
-    public interface IHomePageViewModelMapper : IMapper<IList<NewsItem>, HomePageViewModel>
+    public interface IHomePageViewModelMapper : IMapper<IList<NewsItem>, HomePage, HomePageViewModel>
     {
     }
 }

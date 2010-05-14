@@ -1,4 +1,8 @@
-﻿namespace MSpecTests.WhoCanHelpMe.Web.Controllers
+﻿using System.Collections.Generic;
+using N2;
+using WhoCanHelpMe.Domain.Cms.Pages;
+
+namespace MSpecTests.WhoCanHelpMe.Web.Controllers
 {
     #region Using Directives
 
@@ -18,8 +22,15 @@
     public abstract class specification_for_navigation_controller : Specification<NavigationController>
     {
         protected static IIdentityTasks identity_tasks;
+        protected static ICmsTasks cms_tasks;
 
-        Establish context = () => identity_tasks = DependencyOf<IIdentityTasks>();
+        Establish context = () =>
+        {
+            identity_tasks = DependencyOf<IIdentityTasks>();
+            cms_tasks = DependencyOf<ICmsTasks>();
+            cms_tasks.Stub(x => x.GetNavigationItems()).Return(new List<ContentItem>
+                                                                   {new TextPage(), new TextPage(), new TextPage()});
+        };
     }
 
     [Subject(typeof(HomeController))]
@@ -43,5 +54,11 @@
 
         It should_set_the_properties_of_the_view_model_correctly = () => 
             result.Model<MenuViewModel>().IsLoggedIn.ShouldBeTrue();
+
+        It should_ask_the_cms_tasks_for_the_navigation_items = () =>
+            cms_tasks.AssertWasCalled(x => x.GetNavigationItems());
+
+        It should_set_the_list_of_cms_links_correctly = () =>
+            result.Model<MenuViewModel>().CmsLinks.Count.ShouldEqual(3);
     }
 }

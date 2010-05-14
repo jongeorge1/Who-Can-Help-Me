@@ -18,7 +18,7 @@ namespace WhoCanHelpMe.Infrastructure.NHibernate
         {
             this.Session.Delete(target);
         }
-        
+
         public T FindOne(int id)
         {
             return this.Session.Get<T>(id);
@@ -29,12 +29,22 @@ namespace WhoCanHelpMe.Infrastructure.NHibernate
             return specification.SatisfyingElementsFrom(this.Session.Linq<T>()).SingleOrDefault();
         }
 
+        public T FindOne(ILinqSpecification<T, T> specification)
+        {
+            return specification.SatisfyingElementsFrom(this.Session.Linq<T>()).SingleOrDefault();
+        }
+
         public IQueryable<T> FindAll()
         {
             return this.Session.Linq<T>().AsQueryable();
         }
 
         public IQueryable<T> FindAll(ILinqSpecification<T> specification)
+        {
+            return specification.SatisfyingElementsFrom(this.Session.Linq<T>());
+        }
+
+        public IQueryable<T> FindAll(ILinqSpecification<T, T> specification)
         {
             return specification.SatisfyingElementsFrom(this.Session.Linq<T>());
         }

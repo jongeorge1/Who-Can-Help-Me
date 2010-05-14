@@ -37,9 +37,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSpecTests.WhoCanHelpMe", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoCanHelpMe.Build", "..\Build\WhoCanHelpMe.Build.csproj", "{D0393E31-6D4B-4580-9718-A8A730CDCB69}"
 EndProject
+Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "N2CMS", "N2CMS\N2CMS.dbproj", "{4B9FCAE5-699A-4B84-9394-4B210FBB62AC}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 11
+		SccNumberOfProjects = 12
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs04.codeplex.com/
 		SccLocalPath0 = .
@@ -83,6 +85,10 @@ Global
 		SccProjectTopLevelParentUniqueName10 = WhoCanHelpMe.sln
 		SccProjectName10 = ../Build
 		SccLocalPath10 = ..\\Build
+		SccProjectUniqueName11 = N2CMS\\N2CMS.dbproj
+		SccProjectTopLevelParentUniqueName11 = WhoCanHelpMe.sln
+		SccProjectName11 = N2CMS
+		SccLocalPath11 = N2CMS
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -125,6 +131,12 @@ Global
 		{F63E0957-B60B-47A3-96BB-76DC243D0C8A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D0393E31-6D4B-4580-9718-A8A730CDCB69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D0393E31-6D4B-4580-9718-A8A730CDCB69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B9FCAE5-699A-4B84-9394-4B210FBB62AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B9FCAE5-699A-4B84-9394-4B210FBB62AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B9FCAE5-699A-4B84-9394-4B210FBB62AC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4B9FCAE5-699A-4B84-9394-4B210FBB62AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B9FCAE5-699A-4B84-9394-4B210FBB62AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B9FCAE5-699A-4B84-9394-4B210FBB62AC}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,6 +144,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8DEF56CD-601E-443C-9DCE-C4EC54C0B6A6} = {D2AD5B1A-C8C2-487F-89CA-04900885F946}
 		{269A6558-92FE-46C9-9D0D-1107120EBFE9} = {045B1414-D492-496E-93D6-0C6A20C246F6}
+		{4B9FCAE5-699A-4B84-9394-4B210FBB62AC} = {045B1414-D492-496E-93D6-0C6A20C246F6}
 		{9544D94B-9B6E-4B61-8A09-88382205BF86} = {E6A458E6-AF91-4FB7-9224-5FC5E00C3996}
 		{C9AAC14B-E695-4508-83B7-ACB8FC5A7284} = {BDC8840A-C964-4EFB-8778-9BC01F516491}
 		{6F92992D-8D75-4BA8-87C3-146581235054} = {D5E689AA-BE7E-4F5F-AF51-03F71C6C31B2}

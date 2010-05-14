@@ -13,12 +13,12 @@ namespace WhoCanHelpMe.Infrastructure.News
     using Framework.Extensions;
     using Framework.Traversal;
 
+    // Provides access to the fluent API; required
+    using Dimebrain.TweetSharp.Fluent;
+
     // Provides access to features like relative time, and casting from XML/JSON to
     // Twitter data classes
-    using TweetSharp.Twitter.Extensions;
-    
-    // Provides access to the fluent API; required
-    using TweetSharp.Twitter.Fluent;
+    using Dimebrain.TweetSharp.Extensions;
 
     #endregion
 

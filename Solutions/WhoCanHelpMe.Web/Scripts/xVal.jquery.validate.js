@@ -2,12 +2,12 @@
 var xVal = xVal || {};
 xVal.Plugins = xVal.Plugins || {};
 xVal.Messages = xVal.Messages || {};
-xVal.AttachValidator = function(elementPrefix, rulesConfig, options, pluginName) {
+xVal.AttachValidator = function(elementPrefix, rulesConfig, pluginName) {
     if (pluginName != null)
-        this.Plugins[pluginName].AttachValidator(elementPrefix, rulesConfig, options);
+        this.Plugins[pluginName].AttachValidator(elementPrefix, rulesConfig);
     else
         for (var key in this.Plugins) {
-        this.Plugins[key].AttachValidator(elementPrefix, rulesConfig, options);
+        this.Plugins[key].AttachValidator(elementPrefix, rulesConfig);
         return;
     }
 };
@@ -20,49 +20,56 @@ xVal.AttachValidator = function(elementPrefix, rulesConfig, options, pluginName)
 
 (function($) {
     xVal.Plugins["jquery.validate"] = {
-        AttachValidator: function(elementPrefix, rulesConfig, options) {
-            var self = this;
-            self._ensureCustomFunctionsRegistered();
-            $(function() {
-                self._ensureValidationSummaryContainerExistsIfRequired(options);
+        AttachValidator: function(elementPrefix, rulesConfig) {
+            this._ensureCustomFunctionsRegistered();
+            for (var i = 0; i < rulesConfig.Fields.length; i++) {
+                var fieldName = rulesConfig.Fields[i].FieldName;
+                var fieldRules = rulesConfig.Fields[i].FieldRules;
 
-                for (var i = 0; i < rulesConfig.Fields.length; i++) {
-                    var fieldName = rulesConfig.Fields[i].FieldName;
-                    var fieldRules = rulesConfig.Fields[i].FieldRules;
+                // Is there a matching DOM element?
+                var elemId = this._makeAspNetMvcHtmlHelperID((elementPrefix ? elementPrefix + "." : "") + fieldName);
+                var elem = document.getElementById(elemId);
 
-                    // Is there a matching DOM element?
-                    var elemId = self._makeAspNetMvcHtmlHelperID((elementPrefix ? elementPrefix + "." : "") + fieldName);
-                    var elem = document.getElementById(elemId);
-                    if (elem) {
-                        for (var j = 0; j < fieldRules.length; j++) {
-                            var rule = fieldRules[j];
-                            if (rule != null) {
-                                var ruleName = rule.RuleName;
-                                var ruleParams = rule.RuleParameters;
-                                var errorText = (typeof (rule.Message) == 'undefined' ? null : rule.Message);
-                                self._attachRuleToDOMElement(ruleName, ruleParams, errorText, $(elem), elementPrefix, options);
-                            }
-                        }
+                if (!elem) {
+                    elem = $('[name=' + elemId + ']')[0];
+                }
+
+                if (!elem) {
+                    elem = $('[name=' + elementPrefix + '.' + fieldName + ']')[0];
+                }
+
+                if (elem) {
+                    for (var j = 0; j < fieldRules.length; j++) {
+                        var ruleName = fieldRules[j].RuleName;
+                        var ruleParams = fieldRules[j].RuleParameters;
+                        var errorText = (typeof (fieldRules[j].Message) == 'undefined' ? null : fieldRules[j].Message);
+                        this._attachRuleToDOMElement(ruleName, ruleParams, errorText, $(elem), elementPrefix);
                     }
                 }
-            });
+            }
         },
 
         _makeAspNetMvcHtmlHelperID: function(fullyQualifiedModelName) {
             // If you have changed HtmlHelper.IdAttributeDotReplacement from "_" to something else, then you must also change the following line to match
-            return fullyQualifiedModelName.replace(/\./g, "_");
+            return fullyQualifiedModelName.replace(".", "_");
         },
 
-        _attachRuleToDOMElement: function(ruleName, ruleParams, errorText, element, elementPrefix, options) {
+        _attachRuleToDOMElement: function(ruleName, ruleParams, errorText, element, elementPrefix) {
             var parentForm = element.parents("form");
             if (parentForm.length != 1)
                 alert("Error: Element " + element.attr("id") + " is not in a form");
-            this._ensureFormIsMarkedForValidation($(parentForm[0]), options);
+            this._ensureFormIsMarkedForValidation($(parentForm[0]));
             this._associateNearbyValidationMessageSpanWithElement(element);
 
             var options = {};
 
             switch (ruleName) {
+
+                case "AssertTrue":
+                    options.required = true;
+                    options.messages = { required: errorText || xVal.Messages.Required };
+                    break;
+
                 case "Required":
                     options.required = true;
                     options.messages = { required: errorText || xVal.Messages.Required };
@@ -77,7 +84,7 @@ xVal.AttachValidator = function(elementPrefix, rulesConfig, options, pluginName)
                         var minDate, maxDate;
                         if (typeof (ruleParams.MinYear) != 'undefined')
                             minDate = new Date(ruleParams.MinYear, ruleParams.MinMonth - 1, ruleParams.MinDay, ruleParams.MinHour, ruleParams.MinMinute, ruleParams.MinSecond);
-                        if (typeof (ruleParams.MaxYear) != 'undefined')
+                        else if (typeof (ruleParams.MaxYear) != 'undefined')
                             maxDate = new Date(ruleParams.MaxYear, ruleParams.MaxMonth - 1, ruleParams.MaxDay, ruleParams.MaxHour, ruleParams.MaxMinute, ruleParams.MaxSecond);
                         options.xVal_dateRange = [minDate, maxDate];
                         if (errorText != null) options.messages = { xVal_dateRange: $.format(errorText) };
@@ -165,19 +172,6 @@ xVal.AttachValidator = function(elementPrefix, rulesConfig, options, pluginName)
                     }
                     break;
 
-                case "Remote":
-                    var dataAccessor = {};
-                    parentForm.find("input[name], textarea[name], select[name]").each(function() {
-                        var input = this;
-                        dataAccessor[input.name] = function() { return $(input).val(); };
-                    });
-                    options.remote = {
-                        url: ruleParams.url,
-                        data: dataAccessor,
-                        type: 'post'
-                    };
-                    break;
-
                 case "Custom":
                     var ruleFunction = this._parseAsFunctionWithWarnings(ruleParams.Function);
                     if (ruleFunction != null) {
@@ -209,7 +203,7 @@ xVal.AttachValidator = function(elementPrefix, rulesConfig, options, pluginName)
 
         _associateNearbyValidationMessageSpanWithElement: function(element) {
             // If there's a <span class='field-validation-error'> soon after, it's probably supposed to display the error message
-            // jquery.validation goes looking for an attribute called "htmlfor" as follows
+            // jquery.validation goes looking for attributes called "htmlfor" and "generated", set as follows
             var nearbyMessages = element.nextAll("span.field-validation-error");
             if (nearbyMessages.length > 0) {
                 $(nearbyMessages[0]).attr("generated", "true")
@@ -217,22 +211,47 @@ xVal.AttachValidator = function(elementPrefix, rulesConfig, options, pluginName)
             }
         },
 
-        _ensureFormIsMarkedForValidation: function(formElement, options) {
+        _ensureFormIsMarkedForValidation: function(formElement) {
+            
             if (!formElement.data("isMarkedForValidation")) {
                 formElement.data("isMarkedForValidation", true);
-                var validationOptions = {
+                formElement.validate({
                     errorClass: "field-validation-error",
                     errorElement: "span",
-                    highlight: function(element) { $(element).addClass("input-validation-error"); },
-                    unhighlight: function(element) { $(element).removeClass("input-validation-error"); }
-                };
-                if (options.ValidationSummary) {
-                    validationOptions.wrapper = "li";
-                    validationOptions.errorLabelContainer = "#" + options.ValidationSummary.ElementID + " ul:first";
-                }
-                var validator = formElement.validate(validationOptions);
-                if (options.ValidationSummary)
-                    this._modifyJQueryValidationElementHidingBehaviourToSupportValidationSummary(validator, options);
+
+                    highlight: function(element) {
+                        $(element).addClass("input-validation-error");
+                        if ($(element).parents('div').hasClass('has-legend')) {
+                            $(element).parents('fieldset').find('legend span.header').addClass('error');
+                        }
+                        else if ($(element).parents('fieldset').hasClass('cardtype')){
+                            $(element).parents('fieldset').find('legend span').addClass('error');
+                        }
+                        else if ($(element).parents('fieldset').hasClass('delivery')) {
+                            $(element).parents().children('label.add-info').addClass('error');
+                        }
+                        else {
+                            $(element).parents().children('label').not('.label-prod-info').addClass('error');
+                        }
+                       
+                    },
+                   
+                    unhighlight: function(element) {
+                        $(element).removeClass("input-validation-error");
+                        if ($(element).parents('div').hasClass('has-legend')) {
+                            $(element).parents('fieldset').find('legend span.header').removeClass('error');
+                        }
+                        else if ($(element).parents('fieldset').hasClass('cardtype')) {
+                            $(element).parents('fieldset').find('legend span').removeClass('error');
+                        }
+                        
+                        else {
+                            $(element).parent().children('label').removeClass('error');
+                        }
+                        $(element).parent('.form-row').removeClass('validate-notice');
+
+                    }
+                });
             }
         },
 
@@ -338,46 +357,7 @@ xVal.AttachValidator = function(elementPrefix, rulesConfig, options, pluginName)
                         case "DoesNotEqual": return $.format(xVal.Messages.Comparison_DoesNotEqual || "This value must be different from {0}.", propertyToCompareName);
                     }
                 });
-
-                $.expr[":"].displayableValidationSummaryMessage = function(object) {
-                    var span = $(object).find("span:first");
-                    if (span.length == 0)
-                        return true;
-                    return !(span.css("display") === "none") && !span.is(":empty");
-                };
             }
-        },
-
-        _ensureValidationSummaryContainerExistsIfRequired: function(options) {
-            // If we're using a validation summary, make sure the container contains an UL
-            // (If there were no server-generated errors, there won't be until we create one)
-            if (options.ValidationSummary) {
-                var validationSummaryContainer = $("#" + options.ValidationSummary.ElementID);
-                if (validationSummaryContainer.length == 0)
-                    alert("Cannot find validation summary element \"" + options.ValidationSummary.ElementID + "\". Make sure you've put an element with this ID into your HTML document.");
-                if (!validationSummaryContainer.is(":has(ul)")) {
-                    validationSummaryContainer.append($("<span class='validation-summary-errors' />").text(options.ValidationSummary.HeaderMessage))
-                                              .append($("<ul />"))
-                                              .hide();
-                }
-            }
-        },
-
-        _modifyJQueryValidationElementHidingBehaviourToSupportValidationSummary: function(validator, options) {
-            // Intercept the hideErrors() and showErrors() methods. Pity there isn't a proper API for this.
-            var originalHideErrorsMethod = validator.hideErrors;
-            var originalShowErrorsMethod = validator.showErrors;
-            validator.hideErrors = function() {
-                this.toHide = this.toHide.not("ul"); // Don't ever hide ULs, because these might still contain server-generated error messages
-                originalHideErrorsMethod.apply(this, arguments);
-                // If the summary container contains no displayable messages, hide the whole thing
-                $("#" + options.ValidationSummary.ElementID + ":not(:has(li:displayableValidationSummaryMessage))").hide();
-            };
-            validator.showErrors = function() {
-                originalShowErrorsMethod.apply(this, arguments);
-                // If the summary container contains any displayable messages, show it
-                $("#" + options.ValidationSummary.ElementID + ":has(li:displayableValidationSummaryMessage)").show();
-            };
         }
     };
 })(jQuery);

@@ -53,7 +53,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\Microsoft\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate.Validator, Version=1.2.0.3001, Culture=neutral, PublicKeyToken=70154e18752585bd, processorArchitecture=MSIL">
+    <Reference Include="N2, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\N2CMS\N2.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Validator, Version=1.2.0.1004, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\NHibernate\NHibernate.Validator.dll</HintPath>
     </Reference>
@@ -66,6 +70,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +82,11 @@
     </Compile>
     <Compile Include="AddAssertionDetails.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="Cms\Pages\AbstractPage.cs" />
+    <Compile Include="Cms\Pages\HomePage.cs" />
+    <Compile Include="Cms\Pages\SiteRoot.cs" />
+    <Compile Include="Cms\Pages\TextPage.cs" />
+    <Compile Include="Cms\Tabs.cs" />
     <Compile Include="Contracts\Configuration\IAnalyticsConfiguration.cs" />
     <Compile Include="Contracts\Configuration\INewsConfiguration.cs" />
     <Compile Include="Contracts\Container\IComponentInitialiser.cs" />
@@ -91,6 +101,7 @@
     <Compile Include="Contracts\Specifications\ILinqSpecification.cs" />
     <Compile Include="Contracts\Specifications\ISpecification.cs" />
     <Compile Include="Contracts\Tasks\ICategoryTasks.cs" />
+    <Compile Include="Contracts\Tasks\ICmsTasks.cs" />
     <Compile Include="Contracts\Tasks\IIdentityTasks.cs" />
     <Compile Include="Contracts\Tasks\INewsTasks.cs" />
     <Compile Include="Contracts\Tasks\ISearchTasks.cs" />

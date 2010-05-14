@@ -77,6 +77,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\MvcContrib\MvcContrib.TestHelper.dll</HintPath>
     </Reference>
+    <Reference Include="N2, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\N2CMS\N2.dll</HintPath>
+    </Reference>
+    <Reference Include="N2.Extensions, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\N2CMS\N2.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate.Validator, Version=1.2.0.1004, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\NHibernate\NHibernate.Validator.dll</HintPath>
@@ -130,6 +138,13 @@
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="N2Controller.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Navigation\Mappers\ILinkViewModelMapper.cs" />
+    <Compile Include="Navigation\Mappers\LinkViewModelMapper.cs" />
+    <Compile Include="Navigation\ViewModels\LinkViewModel.cs" />
+    <Compile Include="Registrars\N2RouteRegistrar.cs" />
     <Compile Include="Shared\Mappers\Contracts\INewsItemViewModelMapper.cs" />
     <Compile Include="Shared\Mappers\NewsItemViewModelMapper.cs" />
     <Compile Include="BasePageViewModelMapper.cs" />
@@ -155,6 +170,10 @@
     <Compile Include="Search\Mappers\Contracts\IAssertionViewModelMapper.cs" />
     <Compile Include="Profile\Mappers\Contracts\ICreateProfileDetailsMapper.cs" />
     <Compile Include="Profile\Mappers\Contracts\ICreateProfilePageViewModelMapper.cs" />
+    <Compile Include="Text\Mappers\ITextPageViewModelMapper.cs" />
+    <Compile Include="Text\Mappers\TextPageViewModelMapper.cs" />
+    <Compile Include="Text\Model\TextPageViewModel.cs" />
+    <Compile Include="Text\TextController.cs" />
     <Compile Include="User\Mappers\Contracts\ILoginPageViewModelMapper.cs" />
     <Compile Include="Profile\Mappers\Contracts\IProfileAssertionViewModelMapper.cs" />
     <Compile Include="Search\Mappers\Contracts\ISearchResultsPageViewModelMapper.cs" />
@@ -190,7 +209,6 @@
     <Compile Include="Profile\Mappers\ProfilePageViewModelMapper.cs" />
     <Compile Include="Search\Mappers\SearchPageViewModelMapper.cs" />
     <Compile Include="Profile\ProfileController.cs" />
-    <Compile Include="Initialisers\RouteInitialiser.cs" />
     <Compile Include="Search\SearchController.cs" />
     <Compile Include="Tag\TagController.cs" />
     <Compile Include="Shared\ViewModels\MetaDataViewModel.cs" />

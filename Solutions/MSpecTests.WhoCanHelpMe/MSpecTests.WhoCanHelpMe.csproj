@@ -57,6 +57,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\Microsoft\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
+    <Reference Include="N2, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\N2CMS\N2.dll</HintPath>
+    </Reference>
+    <Reference Include="N2.Extensions, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\N2CMS\N2.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="Rhino.Mocks, Version=3.5.0.1337, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\RhinoMocks\Rhino.Mocks.dll</HintPath>
@@ -73,13 +81,18 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ReferencedAssemblies\ASP.NET MVC\System.Web.Mvc.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Routing">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
     <Reference Include="xVal, Version=4.5.14361.0, Culture=neutral, PublicKeyToken=7d36a26be2c5e23c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\xVal\xVal.dll</HintPath>
@@ -94,11 +107,13 @@
     </Compile>
     <Compile Include="ServiceLocatorHelper.cs" />
     <Compile Include="Tasks\CategoryTasksSpecs.cs" />
+    <Compile Include="Tasks\CmsTasksSpecs.cs" />
     <Compile Include="Tasks\NewsTasksSpecs.cs" />
     <Compile Include="Tasks\ProfileTasksSpecs.cs" />
     <Compile Include="Tasks\SearchTasksSpecs.cs" />
     <Compile Include="Tasks\TagTasksSpecs.cs" />
     <Compile Include="TestHelperExtensions.cs" />
+    <Compile Include="Web.Controllers\N2ControllerSpecs.cs" />
     <Compile Include="Web.Controllers\RequireNoExistingProfileAttributeSpecs.cs" />
     <Compile Include="Web.Controllers\HomeControllerSpecs.cs" />
     <Compile Include="Web.Controllers\NavigationControllerSpecs.cs" />
@@ -125,6 +140,9 @@
       <Project>{DBCFAF64-DD59-4D14-887B-BB98B8E63540}</Project>
       <Name>WhoCanHelpMe.Web.Controllers</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,6 +3,7 @@
     #region Using Directives
 
     using System;
+    using System.Collections.Generic;
     using System.Configuration;
     using System.Globalization;
     using System.Threading;
@@ -13,22 +14,31 @@
     using Castle.Windsor;
     using Castle.Windsor.Configuration.Interpreters;
 
+    using Code;
+
     using CommonServiceLocator.WindsorAdapter;
+
+    using Controllers;
 
     using Elmah;
 
+    using Framework.Container;
+    using Framework.Extensions;
+    using Framework.Traversal;
+
+    using log4net;
+
     using Microsoft.Practices.ServiceLocation;
+
+    using Registrars;
+
+    using Infrastructure.NHibernate;
+    using Infrastructure.NHibernateMaps;
 
     using SharpArch.Data.NHibernate;
     using SharpArch.Web.NHibernate;
 
-    using WhoCanHelpMe.Framework.Container;
-    using WhoCanHelpMe.Framework.Extensions;
-
-    using WhoCanHelpMe.Infrastructure.NHibernate;
-    using WhoCanHelpMe.Infrastructure.NHibernateMaps;
-
-    using WhoCanHelpMe.Web.Code;
+    using NHibernateInitializer=Infrastructure.NHibernate.NHibernateInitializer;
 
     #endregion
 
@@ -61,7 +71,7 @@
             // Only initialise the NHibernate Sessions for a non static, i.e. Controller Action request
             if (!this.Request.IsStaticFile())
             {
-                NHibernateInitializer.Instance().InitializeNHibernateOnce(this.InitialiseNHibernateSessions);
+                NHibernateInitializer.Instance().Initialize(this.InitialiseNHibernateSessions);
             }
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-GB");
@@ -91,7 +101,7 @@
                 signal.Raise(exception, context);
             }
 
-            // Show custom error page if necessary
+            //  Show custom error page if necessary
             if (showCustomErrorPages)
             {
                 if (exception is HttpRequestValidationException)
@@ -139,7 +149,7 @@
         private void InitialiseNHibernateSessions()
         {
             NHibernateSession.Init(
-                this.webSessionStorage,
+                webSessionStorage,
                 new[] { Server.MapPath("~/bin/WhoCanHelpMe.Infrastructure.dll") },
                 new AutoPersistenceModelGenerator().Generate(),
                 Server.MapPath("~/Configuration/NHibernate/{0}.config").FormatWith(SessionKeys.Data));

@@ -1,0 +1,8 @@
+﻿<viewdata model="Text.Model.TextPageViewModel"/>
+
+<content name="title">
+ ${Model.Title}
+</content>
+
+!{Model.BodyText}
+

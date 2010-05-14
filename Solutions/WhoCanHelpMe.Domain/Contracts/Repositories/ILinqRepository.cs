@@ -52,6 +52,14 @@ namespace WhoCanHelpMe.Domain.Contracts.Repositories
         T FindOne(ILinqSpecification<T> specification);
         
         /// <summary>
+        /// Finds an item by a specification
+        /// </summary>
+        /// <typeparam name="T">Specified Type and Returned Type</typeparam>
+        /// <param name="specification">The specification.</param>
+        /// <returns>The the matching item</returns>
+        T FindOne(ILinqSpecification<T, T> specification);
+
+        /// <summary>
         /// Finds all items within the repository.
         /// </summary>
         /// <typeparam name="T">Type of entity to find</typeparam>
@@ -65,5 +73,13 @@ namespace WhoCanHelpMe.Domain.Contracts.Repositories
         /// <typeparam name="T">Type of entity to find</typeparam>
         /// <returns>All matching items</returns>
         IQueryable<T> FindAll(ILinqSpecification<T> specification);
+
+        /// <summary>
+        /// Finds all items by a specification
+        /// </summary>
+        /// <typeparam name="T">Specified Type</typeparam>
+        /// <param name="specification">The specification.</param>
+        /// <returns>The the matching item as an IQueryable</returns>
+        IQueryable<T> FindAll(ILinqSpecification<T, T> specification);
     }
 }

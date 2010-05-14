@@ -2,6 +2,7 @@
 {
     #region Using Directives
 
+    using System;
     using System.Collections.Generic;
 
     using Shared.ViewModels;
@@ -16,5 +17,7 @@
         }
 
         public IList<NewsItemViewModel> NewsItems { get; set; }
+
+        public string BodyText { get; set; }
     }
 }
