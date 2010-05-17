@@ -13,7 +13,7 @@
 
     using Microsoft.Practices.ServiceLocation;
 
-    using PostSharp.Laos;
+    using PostSharp.Aspects;
 
     #endregion
 
@@ -25,7 +25,7 @@
     /// </summary>
     [Serializable]
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property, AllowMultiple = false)]
-    public sealed class CachedAttribute : OnMethodInvocationAspect
+    public sealed class CachedAttribute : MethodInterceptionAspect
     {
         /// <summary>
         /// Used as part of the null object pattern for testing
@@ -90,7 +90,10 @@
         /// <param name="method">
         /// Method to be executed.
         /// </param>
-        public override void CompileTimeInitialize(MethodBase method)
+        /// <param name="aspectInfo">
+        /// The aspect Info.
+        /// </param>
+        public override void CompileTimeInitialize(MethodBase method, AspectInfo aspectInfo)
         {
             AspectHelper.GetMethodSignature(method);
 
@@ -102,43 +105,43 @@
             // Store the compiled cache key in a local variable.
             this.cacheKey = cacheKeyBuilder.ToString();
 
-            base.CompileTimeInitialize(method);
+            base.CompileTimeInitialize(method, aspectInfo);
         }
 
         /// <summary>
         /// Performs the caching / retrievel of the object.
         /// </summary>
-        /// <param name="eventArgs">
+        /// <param name="args">
         /// The event args.
         /// </param>
-        public override void OnInvocation(MethodInvocationEventArgs eventArgs)
+        public override void OnInvoke(MethodInterceptionArgs args)
         {
             // Get the full cache key
-            CacheKey fullCacheKey = this.GetCacheKey(eventArgs);
+            CacheKey fullCacheKey = this.GetCacheKey(args);
 
             // Check to see if the cache contains the target item
-            eventArgs.ReturnValue = CachingService[fullCacheKey];
+            args.ReturnValue = CachingService[fullCacheKey];
 
-            if (eventArgs.ReturnValue == null)
+            if (args.ReturnValue == null)
             {
                 lock (LockableObjectProvider.GetLockableObject(fullCacheKey))
                 {
                     // Check again to see if the cache contains the target item (double check lock pattern)
-                    eventArgs.ReturnValue = cachingService[fullCacheKey];
+                    args.ReturnValue = cachingService[fullCacheKey];
 
                     // If we still don't have a return value, proceed with the original method to populate it
-                    if (eventArgs.ReturnValue == null)
+                    if (args.ReturnValue == null)
                     {
-                        eventArgs.Proceed();
+                        args.Proceed();
 
-                        CachingService.Add(fullCacheKey, eventArgs.ReturnValue ?? NullObject);
+                        CachingService.Add(fullCacheKey, args.ReturnValue ?? NullObject);
                     }
                 }
             }
 
-            if (eventArgs.ReturnValue is string && (string)eventArgs.ReturnValue == NullObject)
+            if (args.ReturnValue is string && (string)args.ReturnValue == NullObject)
             {
-                eventArgs.ReturnValue = null;
+                args.ReturnValue = null;
             }
         }
 
@@ -183,11 +186,11 @@
         /// to the previously built cache key and returned. Otherwise, just the previously built key is 
         /// returned.
         /// </returns>
-        private CacheKey GetCacheKey(MethodInvocationEventArgs eventArgs)
+        private CacheKey GetCacheKey(MethodInterceptionArgs eventArgs)
         {
             var fullCacheKey = new StringBuilder(this.cacheKey);
 
-            object[] arguments = eventArgs.GetArgumentArray();
+            object[] arguments = eventArgs.Arguments.ToArray();
 
             if (arguments != null)
             {
