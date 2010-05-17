@@ -38,7 +38,7 @@ namespace WhoCanHelpMe.Web.Controllers.About
             return this.View(pageViewModel);
         }
 
-        //[Cached(CacheName.AdHoc)]
+        [Cached(CacheName.AdHoc)]
         private PageViewModel IndexInner()
         {
             var developmentTeamBuzz = this.newsTasks.GetDevelopmentTeamBuzz();
