@@ -1,0 +1,16 @@
+AssemblyVersion.cs
+obj
+bin
+_Resharper.*
+_ReSharper.*
+*.csproj.user
+*.resharper.user
+*.ReSharper.user
+*.resharper
+*.suo
+*.cache
+*~
+*.swp
+*.dbproj.user
+*.dbmdl
+*.Web/Logs
