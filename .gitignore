@@ -1,9 +1,13 @@
+AssemblyVersion.cs
 obj
 bin
 _Resharper.*
+_ReSharper.*
 *.csproj.user
 *.resharper.user
+*.ReSharper.user
 *.resharper
+*.ReSharper
 *.suo
 *.cache
 *~
