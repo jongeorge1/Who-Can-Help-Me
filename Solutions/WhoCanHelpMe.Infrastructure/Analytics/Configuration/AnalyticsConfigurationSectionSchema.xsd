@@ -9,6 +9,11 @@
 				<xs:documentation>The AnalyticsIdentifier.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+    <xs:attribute name="siteVerification" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Site Verification Id.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 </xs:schema>
 

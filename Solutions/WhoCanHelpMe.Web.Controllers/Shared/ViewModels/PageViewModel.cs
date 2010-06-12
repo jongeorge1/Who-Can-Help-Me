@@ -19,10 +19,12 @@ namespace WhoCanHelpMe.Web.Controllers.Shared.ViewModels
         }
 
         public string AnalyticsIdentifier { get; set; }
-        
+
         public MetaDataViewModel MetaData { get; set; }
 
         public IList<string> Scripts { get; set; }
+
+        public string SiteVerification { get; set; }
 
         public IList<string> Styles { get; set; }
 

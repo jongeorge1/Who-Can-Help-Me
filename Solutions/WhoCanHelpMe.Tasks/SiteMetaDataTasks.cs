@@ -23,8 +23,9 @@ namespace WhoCanHelpMe.Tasks
         {
             var siteMetaData = new SiteMetaData
                                    {
-                                       AnalyticsIdentifier = this.configurationService.Analytics.Idenfitier, 
-                                       Scripts = this.GetScripts(), 
+                                       AnalyticsIdentifier = this.configurationService.Analytics.Idenfitier,
+                                       Scripts = this.GetScripts(),
+                                       SiteVerification = this.configurationService.Analytics.Verification, 
                                        Styles = this.GetStyles(),
                                        Title = "Who Can Help Me?"
                                    };
