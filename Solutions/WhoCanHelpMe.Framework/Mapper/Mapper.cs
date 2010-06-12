@@ -8,7 +8,7 @@
 
     public class Mapper<TInput, TOutput> : IMapper<TInput, TOutput>
     {
-        protected Mapper()
+        public Mapper()
         {
             this.CreateMap();
         }
@@ -24,9 +24,9 @@
         }
     }
 
-    public abstract class Mapper<TInput1, TInput2, TOutput> : IMapper<TInput1, TInput2, TOutput>
+    public class Mapper<TInput1, TInput2, TOutput> : IMapper<TInput1, TInput2, TOutput>
     {
-        protected Mapper()
+        public Mapper()
         {
             this.CreateMap();
         }
