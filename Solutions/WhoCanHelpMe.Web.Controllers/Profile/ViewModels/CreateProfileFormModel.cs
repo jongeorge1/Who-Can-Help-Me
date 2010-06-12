@@ -6,7 +6,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile.ViewModels
 
     #endregion
 
-    public class CreateProfileFormViewModel
+    public class CreateProfileFormModel
     {
         [NotNull(Message = "*")]
         [NotEmpty(Message = "*")]

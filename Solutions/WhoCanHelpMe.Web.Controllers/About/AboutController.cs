@@ -3,6 +3,7 @@ namespace WhoCanHelpMe.Web.Controllers.About
     #region Using Directives
 
     using System;
+    using System.Collections.Generic;
     using System.Web.Mvc;
 
     using Aspects.Caching;
@@ -11,21 +12,23 @@ namespace WhoCanHelpMe.Web.Controllers.About
 
     using Framework.Caching;
 
-    using Mappers.Contracts;
-
     using Shared.ViewModels;
+
+    using WhoCanHelpMe.Domain;
+    using WhoCanHelpMe.Framework.Mapper;
+    using WhoCanHelpMe.Web.Controllers.About.ViewModels;
 
     #endregion
 
     public class AboutController : BaseController
     {
-        private readonly IAboutPageViewModelMapper aboutPageViewModelMapper;
+        private readonly IMapper<IList<NewsItem>, AboutPageViewModel> aboutPageViewModelMapper;
 
         private readonly INewsTasks newsTasks;
 
         public AboutController(
             INewsTasks newsTasks,
-            IAboutPageViewModelMapper aboutPageViewModelMapper)
+            IMapper<IList<NewsItem>, AboutPageViewModel> aboutPageViewModelMapper)
         {
             this.newsTasks = newsTasks;
             this.aboutPageViewModelMapper = aboutPageViewModelMapper;

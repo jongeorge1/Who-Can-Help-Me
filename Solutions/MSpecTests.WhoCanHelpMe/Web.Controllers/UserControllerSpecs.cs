@@ -6,9 +6,10 @@
     using System.Web.Mvc;
 
     using global::WhoCanHelpMe.Domain.Contracts.Tasks;
+    using global::WhoCanHelpMe.Framework.Mapper;
     using global::WhoCanHelpMe.Web.Controllers.Home;
     using global::WhoCanHelpMe.Web.Controllers.User;
-    using global::WhoCanHelpMe.Web.Controllers.User.Mappers.Contracts;
+    using global::WhoCanHelpMe.Web.Controllers.User.ViewModels;
 
     using Machine.Specifications;
     using Machine.Specifications.AutoMocking.Rhino;
@@ -19,13 +20,13 @@
 
     public abstract class specification_for_user_controller : Specification<UserController>
     {
-        protected static ILoginPageViewModelMapper login_page_view_model_mapper;
+        protected static IMapper<string, string, LoginPageViewModel> login_page_view_model_mapper;
         protected static IIdentityTasks identity_tasks;
 
         Establish context = () =>
             {
                 identity_tasks = DependencyOf<IIdentityTasks>();
-                login_page_view_model_mapper = DependencyOf<ILoginPageViewModelMapper>();
+                login_page_view_model_mapper = DependencyOf<IMapper<string, string, LoginPageViewModel>>();
             };
     }
 

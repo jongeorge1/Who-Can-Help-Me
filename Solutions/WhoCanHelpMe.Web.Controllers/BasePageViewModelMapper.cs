@@ -9,7 +9,7 @@ namespace WhoCanHelpMe.Web.Controllers
 
     #endregion
 
-    public abstract class BasePageViewModelMapper<TInput, TOutput> : BaseMapper<TInput, TOutput>
+    public abstract class BasePageViewModelMapper<TInput, TOutput> : Mapper<TInput, TOutput>
         where TOutput : PageViewModel
     {
         private readonly IPageViewModelBuilder pageViewModelBuilder;

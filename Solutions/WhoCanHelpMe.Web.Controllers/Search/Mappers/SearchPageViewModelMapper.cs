@@ -4,8 +4,6 @@
 
     using System.Collections.Generic;
 
-    using Contracts;
-
     using Domain;
 
     using Framework.Mapper;
@@ -16,15 +14,15 @@
 
     #endregion
 
-    public class SearchPageViewModelMapper : ISearchPageViewModelMapper
+    public class SearchPageViewModelMapper : IMapper<IList<Tag>, SearchPageViewModel>
     {
         private readonly IPageViewModelBuilder pageViewModelBuilder;
 
-        private readonly ITagViewModelMapper tagViewModelMapper;
+        private readonly IMapper<Tag, TagViewModel> tagViewModelMapper;
 
         public SearchPageViewModelMapper(
             IPageViewModelBuilder pageViewModelBuilder,
-            ITagViewModelMapper tagViewModelMapper)
+            IMapper<Tag, TagViewModel> tagViewModelMapper)
         {
             this.pageViewModelBuilder = pageViewModelBuilder;
             this.tagViewModelMapper = tagViewModelMapper;

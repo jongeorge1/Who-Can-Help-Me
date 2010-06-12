@@ -130,7 +130,7 @@
     <Compile Include="Enumerable\EnumerableExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\WindsorExtensions.cs" />
-    <Compile Include="Mapper\BaseMapper.cs" />
+    <Compile Include="Mapper\Mapper.cs" />
     <Compile Include="Mapper\Extensions.cs" />
     <Compile Include="Mapper\IMapper.cs" />
     <Compile Include="Threading\LockableObjectProvider.cs" />

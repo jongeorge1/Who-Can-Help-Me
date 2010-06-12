@@ -1,3 +1,5 @@
+using WhoCanHelpMe.Framework.Mapper;
+
 namespace WhoCanHelpMe.Web.Controllers.Registrars
 {
     #region Using Directives
@@ -28,7 +30,10 @@ namespace WhoCanHelpMe.Web.Controllers.Registrars
                    AllTypes.Pick()
                            .FromAssembly(Assembly.GetAssembly(typeof(ControllersRegistrarMarker)))
                            .If(f => f.Namespace.Contains(".Mappers"))
-                           .WithService.FirstNonGenericCoreInterface("WhoCanHelpMe.Web.Controllers"));
+                           .WithService.FirstInterface());
+
+            container.AddComponent("mapper1", typeof(IMapper<,>), typeof(Mapper<,>));
+            container.AddComponent("mapper2", typeof(IMapper<,,>), typeof(Mapper<,,>));
         }
     }
 }

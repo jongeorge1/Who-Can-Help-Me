@@ -2,35 +2,33 @@
 {
     #region Using Directives
 
+    using System.Collections.Generic;
     using System.Web.Mvc;
-
-    using Aspects.Caching;
 
     using Domain.Contracts.Tasks;
 
-    using Framework.Caching;
-
-    using Mappers.Contracts;
-
     using ViewModels;
+
+    using WhoCanHelpMe.Domain;
+    using WhoCanHelpMe.Framework.Mapper;
 
     #endregion
 
     public class SearchController : BaseController
     {
-        private readonly ISearchResultsPageViewModelMapper searchResultsPageViewModelMapper;
+        private readonly IMapper<IList<Assertion>, IList<Tag>, SearchResultsPageViewModel> searchResultsPageViewModelMapper;
 
         private readonly ISearchTasks searchTasks;
 
-        private readonly ISearchPageViewModelMapper searchPageViewModelMapper;
+        private readonly IMapper<IList<Tag>, SearchPageViewModel> searchPageViewModelMapper;
 
         private readonly ITagTasks tagTasks;
 
         public SearchController(
             ISearchTasks searchTasks,
             ITagTasks tagTasks,
-            ISearchPageViewModelMapper searchPageViewModelMapper,
-            ISearchResultsPageViewModelMapper searchResultsPageViewModelMapper)
+            IMapper<IList<Tag>, SearchPageViewModel> searchPageViewModelMapper,
+            IMapper<IList<Assertion>, IList<Tag>, SearchResultsPageViewModel> searchResultsPageViewModelMapper)
         {
             this.searchTasks = searchTasks;
             this.tagTasks = tagTasks;

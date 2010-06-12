@@ -3,6 +3,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
     #region Using Directives
 
     using System;
+    using System.Collections.Generic;
     using System.Web.Mvc;
 
     using ActionFilters;
@@ -14,15 +15,14 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
 
     using Home;
 
-    using Mappers.Contracts;
-
     using MvcContrib;
-    using MvcContrib.Attributes;
     using MvcContrib.Filters;
 
     using Shared.ActionResults;
 
     using ViewModels;
+
+    using WhoCanHelpMe.Framework.Mapper;
 
     using xVal.ServerSide;
 
@@ -30,17 +30,19 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
 
     public class ProfileController : BaseController
     {
-        private readonly IAddAssertionDetailsMapper addAssertionDetailsMapper;
+        private readonly IMapper<AddAssertionFormModel, Identity, AddAssertionDetails> addAssertionDetailsMapper;
 
         private readonly ICategoryTasks categoryTasks;
 
-        private readonly ICreateProfileDetailsMapper createProfileDetailsMapper;
+        private readonly IMapper<CreateProfileFormModel, Identity, CreateProfileDetails> createProfileDetailsMapper;
 
-        private readonly ICreateProfilePageViewModelMapper createProfilePageViewModelMapper;
+        private readonly IMapper<CreateProfileDetails, CreateProfilePageViewModel> createProfilePageViewModelMapper;
 
         private readonly IIdentityTasks identityTasks;
 
-        private readonly IProfilePageViewModelMapper profilePageViewModelMapper;
+        private readonly IMapper<Profile, ViewProfilePageViewModel> viewProfilePageViewModelMapper;
+
+        private readonly IMapper<Profile, IList<Category>, UpdateProfilePageViewModel> updateProfilePageViewModelMapper;
 
         private readonly IProfileTasks userTasks;
 
@@ -48,15 +50,17 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
             IIdentityTasks identityTasks,
             IProfileTasks userTasks,
             ICategoryTasks categoryTasks,
-            IProfilePageViewModelMapper profilePageViewModelMapper,
-            IAddAssertionDetailsMapper addAssertionDetailsMapper,
-            ICreateProfilePageViewModelMapper createProfilePageViewModelMapper,
-            ICreateProfileDetailsMapper createProfileDetailsMapper)
+            IMapper<Profile, ViewProfilePageViewModel> viewProfilePageViewModelMapper,
+            IMapper<Profile, IList<Category>, UpdateProfilePageViewModel> updateProfilePageViewModelMapper,
+            IMapper<AddAssertionFormModel, Identity, AddAssertionDetails> addAssertionDetailsMapper,
+            IMapper<CreateProfileDetails, CreateProfilePageViewModel> createProfilePageViewModelMapper,
+            IMapper<CreateProfileFormModel, Identity, CreateProfileDetails> createProfileDetailsMapper)
         {
             this.identityTasks = identityTasks;
             this.userTasks = userTasks;
             this.categoryTasks = categoryTasks;
-            this.profilePageViewModelMapper = profilePageViewModelMapper;
+            this.viewProfilePageViewModelMapper = viewProfilePageViewModelMapper;
+            this.updateProfilePageViewModelMapper = updateProfilePageViewModelMapper;
             this.addAssertionDetailsMapper = addAssertionDetailsMapper;
             this.createProfilePageViewModelMapper = createProfilePageViewModelMapper;
             this.createProfileDetailsMapper = createProfileDetailsMapper;
@@ -80,7 +84,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         [ValidateAntiForgeryToken]
         [ModelStateToTempData]
         [RequireNoExistingProfile("Profile", "Update")]
-        public ActionResult Create(CreateProfileFormViewModel createProfile)
+        public ActionResult Create(CreateProfileFormModel createProfile)
         {
             var identity = this.identityTasks.GetCurrentIdentity();
 
@@ -148,7 +152,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
 
             var categories = this.categoryTasks.GetAll();
 
-            var viewModel = this.profilePageViewModelMapper.MapFrom(
+            var viewModel = this.updateProfilePageViewModelMapper.MapFrom(
                 user,
                 categories);
 
@@ -160,7 +164,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         [ValidateAntiForgeryToken]
         [ModelStateToTempData]
         [RequireExistingProfile("Profile", "Create")]
-        public ActionResult Update(AddAssertionFormViewModel addAssertion)
+        public ActionResult Update(AddAssertionFormModel addAssertion)
         {
             var identity = this.identityTasks.GetCurrentIdentity();
 
@@ -189,7 +193,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
 
             if (user != null)
             {
-                var profileViewModel = this.profilePageViewModelMapper.MapFrom(user);
+                var profileViewModel = this.viewProfilePageViewModelMapper.MapFrom(user);
 
                 return this.View(profileViewModel);
             }

@@ -7,8 +7,8 @@
 
     using global::WhoCanHelpMe.Domain;
     using global::WhoCanHelpMe.Domain.Contracts.Tasks;
+    using global::WhoCanHelpMe.Framework.Mapper;
     using global::WhoCanHelpMe.Web.Controllers.Home;
-    using global::WhoCanHelpMe.Web.Controllers.Home.Mappers.Contracts;
     using global::WhoCanHelpMe.Web.Controllers.Home.ViewModels;
 
     using Machine.Specifications;
@@ -20,12 +20,12 @@
 
     public abstract class specification_for_home_controller : Specification<HomeController>
     {
-        protected static IHomePageViewModelMapper home_view_model_mapper;
+        protected static IMapper<IList<NewsItem>, HomePageViewModel> home_view_model_mapper;
         protected static INewsTasks news_tasks;
 
         Establish context = () =>
         {
-            home_view_model_mapper = DependencyOf<IHomePageViewModelMapper>();
+            home_view_model_mapper = DependencyOf<IMapper<IList<NewsItem>, HomePageViewModel>>();
             news_tasks = DependencyOf<INewsTasks>();
 
             ServiceLocatorHelper.AddCachingService();

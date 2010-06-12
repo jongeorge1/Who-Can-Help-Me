@@ -6,8 +6,6 @@
 
     using AutoMapper;
 
-    using Contracts;
-
     using Domain;
 
     using Framework.Mapper;
@@ -16,16 +14,17 @@
 
     using ViewModels;
 
+    using WhoCanHelpMe.Web.Controllers.Home.ViewModels;
+
     #endregion
 
-    public class AboutPageViewModelMapper : BasePageViewModelMapper<IList<NewsItem>, AboutPageViewModel>,
-                                            IAboutPageViewModelMapper
+    public class AboutPageViewModelMapper : BasePageViewModelMapper<IList<NewsItem>, AboutPageViewModel>
     {
-        private readonly INewsItemViewModelMapper newsItemViewModelMapper;
+        private readonly IMapper<NewsItem, NewsItemViewModel> newsItemViewModelMapper;
 
         public AboutPageViewModelMapper(
             IPageViewModelBuilder pageViewModelBuilder,
-            INewsItemViewModelMapper newsItemViewModelMapper)
+            IMapper<NewsItem, NewsItemViewModel> newsItemViewModelMapper)
             : base(pageViewModelBuilder)
         {
             this.newsItemViewModelMapper = newsItemViewModelMapper;

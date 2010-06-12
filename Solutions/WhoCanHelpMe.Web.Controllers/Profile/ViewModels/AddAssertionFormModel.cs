@@ -6,7 +6,7 @@
 
     #endregion
 
-    public class AddAssertionFormViewModel
+    public class AddAssertionFormModel
     {
         public int CategoryId { get; set; }
 

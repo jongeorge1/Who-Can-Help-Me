@@ -2,8 +2,6 @@ namespace WhoCanHelpMe.Web.Controllers.Profile.Mappers
 {
     #region Using Directives
 
-    using Contracts;
-
     using Domain;
 
     using Shared.Mappers.Contracts;
@@ -13,8 +11,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile.Mappers
     #endregion
 
     public class CreateProfilePageViewModelMapper :
-        BasePageViewModelMapper<CreateProfileDetails, CreateProfilePageViewModel>,
-        ICreateProfilePageViewModelMapper
+        BasePageViewModelMapper<CreateProfileDetails, CreateProfilePageViewModel>
     {
         public CreateProfilePageViewModelMapper(IPageViewModelBuilder pageViewModelBuilder)
             : base(pageViewModelBuilder)

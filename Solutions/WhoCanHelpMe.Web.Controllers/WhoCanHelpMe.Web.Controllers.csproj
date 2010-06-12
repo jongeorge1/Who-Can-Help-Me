@@ -138,64 +138,45 @@
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Shared\Mappers\Contracts\INewsItemViewModelMapper.cs" />
-    <Compile Include="Shared\Mappers\NewsItemViewModelMapper.cs" />
     <Compile Include="BasePageViewModelMapper.cs" />
     <Compile Include="Extensions\RouteCollectionExtensions.cs" />
     <Compile Include="LowerCaseRoute.cs" />
     <Compile Include="Profile\ActionFilters\ProfileCheckBaseAttribute.cs" />
     <Compile Include="Profile\ActionFilters\RequireExistingProfileAttribute.cs" />
     <Compile Include="Profile\ActionFilters\RequireNoExistingProfileAttribute.cs" />
+    <Compile Include="Profile\Mappers\UpdateProfilePageViewModelMapper.cs" />
+    <Compile Include="Profile\ViewModels\UpdateProfilePageViewModel.cs" />
     <Compile Include="Shared\ActionResults\NotFoundResult.cs" />
     <Compile Include="BaseController.cs" />
     <Compile Include="About\AboutController.cs" />
     <Compile Include="Error\ErrorController.cs" />
     <Compile Include="Extensions\RulesExceptionExtensions.cs" />
     <Compile Include="Home\HomeController.cs" />
-    <Compile Include="About\Mappers\Contracts\IAboutPageViewModelMapper.cs" />
     <Compile Include="Shared\Mappers\Contracts\IPageViewModelBuilder.cs" />
     <Compile Include="About\Mappers\AboutPageViewModelMapper.cs" />
     <Compile Include="Properties\ControllersRegistrarMarker.cs" />
-    <Compile Include="Profile\Mappers\AddAssertionDetailsMapper.cs" />
-    <Compile Include="Profile\Mappers\Contracts\IAddAssertionDetailsMapper.cs" />
-    <Compile Include="Search\Mappers\AssertionViewModelMapper.cs" />
-    <Compile Include="Profile\Mappers\CategoryViewModelMapper.cs" />
-    <Compile Include="Search\Mappers\Contracts\IAssertionViewModelMapper.cs" />
-    <Compile Include="Profile\Mappers\Contracts\ICreateProfileDetailsMapper.cs" />
-    <Compile Include="Profile\Mappers\Contracts\ICreateProfilePageViewModelMapper.cs" />
-    <Compile Include="User\Mappers\Contracts\ILoginPageViewModelMapper.cs" />
-    <Compile Include="Profile\Mappers\Contracts\IProfileAssertionViewModelMapper.cs" />
-    <Compile Include="Search\Mappers\Contracts\ISearchResultsPageViewModelMapper.cs" />
-    <Compile Include="Home\Mappers\Contracts\IHomePageViewModelMapper.cs" />
-    <Compile Include="Profile\Mappers\Contracts\IProfilePageViewModelMapper.cs" />
-    <Compile Include="Search\Mappers\Contracts\ISearchPageViewModelMapper.cs" />
-    <Compile Include="Search\Mappers\Contracts\ITagViewModelMapper.cs" />
-    <Compile Include="Profile\Mappers\Contracts\ICategoryViewModelMapper.cs" />
-    <Compile Include="Profile\Mappers\CreateProfileDetailsMapper.cs" />
     <Compile Include="Profile\Mappers\CreateProfilePageViewModelMapper.cs" />
     <Compile Include="User\Mappers\LoginPageViewModelMapper.cs" />
-    <Compile Include="Profile\Mappers\ProfileAssertionViewModelMapper.cs" />
     <Compile Include="Search\Mappers\SearchResultsPageViewModelMapper.cs" />
-    <Compile Include="Search\Mappers\TagViewModelMapper.cs" />
     <Compile Include="Extensions\TempDataExtensions.cs" />
     <Compile Include="Navigation\NavigationController.cs" />
     <Compile Include="Registrars\ControllerFactoryRegistrar.cs" />
     <Compile Include="Registrars\ControllerRegistrar.cs" />
     <Compile Include="Registrars\MapperRegistrar.cs" />
     <Compile Include="User\UserController.cs" />
-    <Compile Include="Profile\ViewModels\AddAssertionFormViewModel.cs" />
+    <Compile Include="Profile\ViewModels\AddAssertionFormModel.cs" />
     <Compile Include="Search\ViewModels\AssertionViewModel.cs" />
     <Compile Include="Profile\ViewModels\CategoryViewModel.cs" />
     <Compile Include="About\ViewModels\AboutPageViewModel.cs" />
     <Compile Include="Profile\ViewModels\CreateProfilePageViewModel.cs" />
-    <Compile Include="Profile\ViewModels\CreateProfileFormViewModel.cs" />
+    <Compile Include="Profile\ViewModels\CreateProfileFormModel.cs" />
     <Compile Include="Home\ViewModels\HomePageViewModel.cs" />
     <Compile Include="User\ViewModels\LoginPageViewModel.cs" />
     <Compile Include="Home\ViewModels\NewsItemViewModel.cs" />
     <Compile Include="Search\ViewModels\SearchResultsPageViewModel.cs" />
     <Compile Include="Home\Mappers\HomePageViewModelMapper.cs" />
     <Compile Include="Shared\Mappers\PageViewModelBuilder.cs" />
-    <Compile Include="Profile\Mappers\ProfilePageViewModelMapper.cs" />
+    <Compile Include="Profile\Mappers\ViewProfilePageViewModelMapper.cs" />
     <Compile Include="Search\Mappers\SearchPageViewModelMapper.cs" />
     <Compile Include="Profile\ProfileController.cs" />
     <Compile Include="Initialisers\RouteInitialiser.cs" />
@@ -205,7 +186,7 @@
     <Compile Include="Navigation\ViewModels\MenuViewModel.cs" />
     <Compile Include="Shared\ViewModels\PageViewModel.cs" />
     <Compile Include="Profile\ViewModels\ProfileAssertionViewModel.cs" />
-    <Compile Include="Profile\ViewModels\ProfilePageViewModel.cs" />
+    <Compile Include="Profile\ViewModels\ViewProfilePageViewModel.cs" />
     <Compile Include="Search\ViewModels\SearchPageViewModel.cs" />
     <Compile Include="Search\ViewModels\TagViewModel.cs" />
   </ItemGroup>
@@ -240,5 +221,6 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

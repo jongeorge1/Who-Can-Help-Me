@@ -9,10 +9,11 @@
 
     using Home;
 
-    using Mappers.Contracts;
-
     using MvcContrib;
     using MvcContrib.Filters;
+
+    using WhoCanHelpMe.Framework.Mapper;
+    using WhoCanHelpMe.Web.Controllers.User.ViewModels;
 
     #endregion
 
@@ -20,11 +21,11 @@
     {
         private readonly IIdentityTasks identityTasks;
 
-        private readonly ILoginPageViewModelMapper loginPageViewModelMapper;
+        private readonly IMapper<string, string, LoginPageViewModel> loginPageViewModelMapper;
 
         public UserController(
             IIdentityTasks identityTasks,
-            ILoginPageViewModelMapper loginPageViewModelMapper)
+            IMapper<string, string, LoginPageViewModel> loginPageViewModelMapper)
         {
             this.identityTasks = identityTasks;
             this.loginPageViewModelMapper = loginPageViewModelMapper;

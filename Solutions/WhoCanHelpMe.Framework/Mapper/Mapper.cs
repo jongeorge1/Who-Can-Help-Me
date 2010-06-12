@@ -6,9 +6,9 @@
 
     #endregion
 
-    public abstract class BaseMapper<TInput, TOutput> : IMapper<TInput, TOutput>
+    public class Mapper<TInput, TOutput> : IMapper<TInput, TOutput>
     {
-        protected BaseMapper()
+        protected Mapper()
         {
             this.CreateMap();
         }
@@ -24,9 +24,9 @@
         }
     }
 
-    public abstract class BaseMapper<TInput1, TInput2, TOutput> : IMapper<TInput1, TInput2, TOutput>
+    public abstract class Mapper<TInput1, TInput2, TOutput> : IMapper<TInput1, TInput2, TOutput>
     {
-        protected BaseMapper()
+        protected Mapper()
         {
             this.CreateMap();
         }

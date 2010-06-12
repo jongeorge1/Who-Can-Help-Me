@@ -13,12 +13,12 @@
     /// The profile view model.
     /// </summary>
     [DebuggerDisplay("{FirstName} {LastName}")]
-    public class ProfilePageViewModel : PageViewModel
+    public class ViewProfilePageViewModel : PageViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProfilePageViewModel"/> class.
+        /// Initializes a new instance of the <see cref="ViewProfilePageViewModel"/> class.
         /// </summary>
-        public ProfilePageViewModel()
+        public ViewProfilePageViewModel()
         {
             this.Assertions = new List<ProfileAssertionViewModel>();
         }
@@ -27,11 +27,6 @@
         /// Gets or sets Assertions.
         /// </summary>
         public IList<ProfileAssertionViewModel> Assertions { get; set; }
-
-        /// <summary>
-        /// Gets or sets Categories.
-        /// </summary>
-        public IList<CategoryViewModel> Categories { get; set; }
 
         /// <summary>
         /// Gets or sets FirstName.

@@ -7,8 +7,8 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
 
     using global::WhoCanHelpMe.Domain;
     using global::WhoCanHelpMe.Domain.Contracts.Tasks;
+    using global::WhoCanHelpMe.Framework.Mapper;
     using global::WhoCanHelpMe.Web.Controllers.Search;
-    using global::WhoCanHelpMe.Web.Controllers.Search.Mappers.Contracts;
     using global::WhoCanHelpMe.Web.Controllers.Search.ViewModels;
 
     using Machine.Specifications;
@@ -23,15 +23,15 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
         protected static ITagTasks tag_tasks;
         protected static List<Tag> the_popular_tags;
         public static ISearchTasks search_tasks;
-        protected static ISearchPageViewModelMapper search_view_model_mapper;
-        protected static ISearchResultsPageViewModelMapper search_results_view_model_mapper;
+        protected static IMapper<IList<Tag>, SearchPageViewModel> search_view_model_mapper;
+        protected static IMapper<IList<Assertion>, IList<Tag>, SearchResultsPageViewModel> search_results_view_model_mapper;
 
         Establish context= () =>
         {
             search_tasks = DependencyOf<ISearchTasks>();
             tag_tasks = DependencyOf<ITagTasks>();
-            search_view_model_mapper = DependencyOf<ISearchPageViewModelMapper>();
-            search_results_view_model_mapper = DependencyOf<ISearchResultsPageViewModelMapper>();
+            search_view_model_mapper = DependencyOf<IMapper<IList<Tag>, SearchPageViewModel>>();
+            search_results_view_model_mapper = DependencyOf<IMapper<IList<Assertion>, IList<Tag>, SearchResultsPageViewModel>>();
 
             the_popular_tags = new List<Tag>();
 
