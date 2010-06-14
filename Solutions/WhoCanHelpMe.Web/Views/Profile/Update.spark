@@ -1,4 +1,4 @@
-﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Profile.ViewModels.ProfilePageViewModel"/>
+﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Profile.ViewModels.UpdateProfilePageViewModel"/>
 
 <content name="title">
 Show off your 'Guns'
@@ -12,7 +12,7 @@ Show off your 'Guns'
 	!{Html.TextBox("addAssertion.TagName")}
 	!{Html.ValidationMessage("addAssertion.TagName")}
 	<input type="submit" value="Add" />
-    !{Html.ClientSideValidation<WhoCanHelpMe.Web.Controllers.Profile.ViewModels.AddAssertionFormViewModel>("addAssertion")}
+    !{Html.ClientSideValidation<WhoCanHelpMe.Web.Controllers.Profile.ViewModels.AddAssertionFormModel>("addAssertion")}
 </form>
 
 <ul id="skill_list">

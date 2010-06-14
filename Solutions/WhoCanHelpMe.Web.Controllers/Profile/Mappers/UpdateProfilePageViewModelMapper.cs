@@ -35,7 +35,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile.Mappers
             this.pageViewModelBuilder = pageViewModelBuilder;
             this.profileAssertionViewModelMapper = profileAssertionViewModelMapper;
             this.categoryViewModelMapper = categoryViewModelMapper;
-            Mapper.CreateMap<Profile, ViewProfilePageViewModel>();
+            Mapper.CreateMap<Profile, UpdateProfilePageViewModel>();
         }
 
         public UpdateProfilePageViewModel MapFrom(
