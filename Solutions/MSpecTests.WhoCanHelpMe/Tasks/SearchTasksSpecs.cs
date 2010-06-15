@@ -29,6 +29,7 @@
         };
     }
 
+    [Subject(typeof(SearchTasks))]
     public class when_the_search_tasks_are_asked_to_search_by_tag_name_and_there_are_matching_assertions : specification_for_search_tasks
     {
         static IList<Assertion> result;
@@ -83,6 +84,7 @@
             };
     }
 
+    [Subject(typeof(SearchTasks))]
     public class when_the_search_tasks_are_asked_to_search_by_tag_name_and_there_are_no_matching_assertions : specification_for_search_tasks
     {
         static IList<Assertion> result;
@@ -123,6 +125,7 @@
         It should_return_an_empty_list = () => result.ShouldBeEmpty();
     }
 
+    [Subject(typeof(SearchTasks))]
     public class when_the_search_tasks_are_asked_to_search_by_tag_name_and_there_is_no_matching_tag : specification_for_search_tasks
     {
         static IList<Assertion> result;

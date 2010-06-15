@@ -2,7 +2,6 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
 {
     #region Using Directives
 
-    using System;
     using System.Collections.Generic;
     using System.Web.Mvc;
 
@@ -23,6 +22,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
     using ViewModels;
 
     using WhoCanHelpMe.Framework.Mapper;
+    using WhoCanHelpMe.Web.Controllers.Profile.Mappers.Contracts;
 
     using xVal.ServerSide;
 
@@ -30,15 +30,11 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
 
     public class ProfileController : BaseController
     {
-        private readonly IMapper<AddAssertionFormModel, Identity, AddAssertionDetails> addAssertionDetailsMapper;
-
         private readonly ICategoryTasks categoryTasks;
 
-        private readonly IMapper<CreateProfileFormModel, Identity, CreateProfileDetails> createProfileDetailsMapper;
-
-        private readonly IMapper<CreateProfileDetails, CreateProfilePageViewModel> createProfilePageViewModelMapper;
-
         private readonly IIdentityTasks identityTasks;
+
+        private readonly ICreateProfilePageViewModelBuilder createProfilePageViewModelBuilder;
 
         private readonly IMapper<Profile, ViewProfilePageViewModel> viewProfilePageViewModelMapper;
 
@@ -51,19 +47,15 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
             IProfileTasks userTasks,
             ICategoryTasks categoryTasks,
             IMapper<Profile, ViewProfilePageViewModel> viewProfilePageViewModelMapper,
-            IMapper<Profile, IList<Category>, UpdateProfilePageViewModel> updateProfilePageViewModelMapper,
-            IMapper<AddAssertionFormModel, Identity, AddAssertionDetails> addAssertionDetailsMapper,
-            IMapper<CreateProfileDetails, CreateProfilePageViewModel> createProfilePageViewModelMapper,
-            IMapper<CreateProfileFormModel, Identity, CreateProfileDetails> createProfileDetailsMapper)
+            IMapper<Profile, IList<Category>, UpdateProfilePageViewModel> updateProfilePageViewModelMapper, 
+            ICreateProfilePageViewModelBuilder createProfilePageViewModelBuilder)
         {
             this.identityTasks = identityTasks;
+            this.createProfilePageViewModelBuilder = createProfilePageViewModelBuilder;
             this.userTasks = userTasks;
             this.categoryTasks = categoryTasks;
             this.viewProfilePageViewModelMapper = viewProfilePageViewModelMapper;
             this.updateProfilePageViewModelMapper = updateProfilePageViewModelMapper;
-            this.addAssertionDetailsMapper = addAssertionDetailsMapper;
-            this.createProfilePageViewModelMapper = createProfilePageViewModelMapper;
-            this.createProfileDetailsMapper = createProfileDetailsMapper;
         }
 
         [Authorize]
@@ -72,9 +64,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         [RequireNoExistingProfile("Profile", "Update")]
         public ActionResult Create()
         {
-            var createProfileDetails = this.TempData.Get<CreateProfileDetails>();
-
-            var viewModel = this.createProfilePageViewModelMapper.MapFrom(createProfileDetails);
+            var viewModel = this.createProfilePageViewModelBuilder.Get();
 
             return this.View(viewModel);
         }
@@ -90,11 +80,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
 
             try
             {
-                var createProfileDetails = this.createProfileDetailsMapper.MapFrom(
-                    createProfile,
-                    identity);
-
-                this.userTasks.CreateProfile(createProfileDetails);
+                this.userTasks.CreateProfile(identity.UserName, createProfile.FirstName, createProfile.LastName);
 
                 return this.RedirectToAction(x => x.Update());
             }
@@ -168,13 +154,9 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         {
             var identity = this.identityTasks.GetCurrentIdentity();
 
-            var addAssertionDetails = this.addAssertionDetailsMapper.MapFrom(
-                addAssertion,
-                identity);
-
             try
             {
-                this.userTasks.AddAssertion(addAssertionDetails);
+                this.userTasks.AddAssertion(identity.UserName, addAssertion.CategoryId, addAssertion.TagName);
             }
             catch (RulesException ex)
             {

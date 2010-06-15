@@ -11,6 +11,11 @@
     using Domain.Specifications;
 
     using Framework.Validation;
+
+    using SharpArch.Core;
+
+    using WhoCanHelpMe.Framework.Extensions;
+
     using xVal.ServerSide;
 
     #endregion
@@ -35,21 +40,22 @@
             this.categoryRepository = categoryRepository;
         }
 
-        public void AddAssertion(AddAssertionDetails addAssertionDetails) 
+        public void AddAssertion(string userName, int categoryId, string tagName) 
         {
-            addAssertionDetails.Validate();
+            Check.Require(!userName.IsNullOrEmpty(), "userName must be provided.");
+            Check.Require(categoryId > 0, "categoryId must be greater than 0.");
+            Check.Require(!tagName.IsNullOrEmpty(), "tagName must be provided.");
 
             // TODO: Ideally we want a transaction here as we are potentially doing two updates.
+            var profile = this.GetProfileByUserName(userName);
 
-            var profile = this.GetProfileByUserName(addAssertionDetails.UserName);
-
-            var tag = this.tagRepository.FindOne(new TagByNameSpecification(addAssertionDetails.TagName));
+            var tag = this.tagRepository.FindOne(new TagByNameSpecification(tagName));
 
             if (tag == null)
             {
                 tag = new Tag 
                     {
-                        Name = addAssertionDetails.TagName
+                        Name = tagName
                     };
 
                 this.tagRepository.Save(tag);
@@ -57,12 +63,12 @@
 
             // See if there's already an assertion for this tag/category combination
             var existingAssertion = profile.Assertions.FirstOrDefault(
-                a => (a.Tag == tag) && (a.Category.Id == addAssertionDetails.CategoryId));
+                a => (a.Tag == tag) && (a.Category.Id == categoryId));
 
             // If not add it. If there is, do nothing further - there's no point returning an error, since the user has what they wanted
             if (existingAssertion == null)
             {
-                var category = this.GetCategory(addAssertionDetails.CategoryId);
+                var category = this.GetCategory(categoryId);
 
                 var newAssertion = new Assertion
                     {
@@ -77,16 +83,19 @@
             }
         }
 
-        public void CreateProfile(CreateProfileDetails createProfileDetails)
+        public void CreateProfile(string userName, string firstName, string lastName)
         {
-            createProfileDetails.Validate();
+            Check.Require(!userName.IsNullOrEmpty(), "userName must be provided.");
+            Check.Require(!firstName.IsNullOrEmpty(), "firstName must be provided.");
+            Check.Require(!lastName.IsNullOrEmpty(), "lastName must be provided.");
 
-            var profile = new Profile {
-                                          UserName = createProfileDetails.UserName,
-                                          FirstName = createProfileDetails.FirstName,
-                                          LastName = createProfileDetails.LastName,
-                                          CreatedOn = DateTime.Now.Date
-                                      };
+            var profile = new Profile
+                {
+                    UserName = userName, 
+                    FirstName = firstName, 
+                    LastName = lastName, 
+                    CreatedOn = DateTime.Now.Date 
+                };
 
             try
             {
@@ -94,15 +103,17 @@
             }
             catch (Exception)
             {
-                // Catching DB unique constraint violation and converting to validation error
-                // Should use nhibernate sql exception convertor to do this properly
-                throw new RulesException("UserName", "User name already exists");
+                // Catching DB unique constraint violation and converting to DbC error
+                // TODO: Should use nhibernate sql exception convertor to do this properly
+                Check.Ensure(false, "Unable to create new profile; userName is already in use.");
             }
         }
 
-        public void DeleteProfile(string userId)
+        public void DeleteProfile(string userName)
         {
-            var profile = this.GetProfileByUserName(userId);
+            Check.Require(!userName.IsNullOrEmpty(), "userName must be provided.");
+
+            var profile = this.GetProfileByUserName(userName);
 
             if (profile != null)
             {
@@ -117,11 +128,15 @@
 
         public Profile GetProfileByUserName(string userName)
         {
+            Check.Require(!userName.IsNullOrEmpty(), "userName must be provided.");
+
             return this.profileRepository.FindOne(new ProfileByUserNameSpecification(userName));
         }
 
         public void RemoveAssertion(Profile profile, int assertionId)
         {
+            Check.Require(profile != null, "profile must be provided.");
+
             var assertionToRemove = profile.Assertions.FirstOrDefault(a => a.Id == assertionId);
 
             if (assertionToRemove != null)
@@ -132,15 +147,11 @@
             }
         }
 
-        Category GetCategory(int categoryId)
+        private Category GetCategory(int categoryId)
         {
             var category = this.categoryRepository.FindOne(new CategoryByIdSpecification(categoryId));
             
-            if (category == null)
-            {
-                // If no category found, throw validation exception.
-                throw new RulesException("CategoryId", "Invalid Category Id");
-            }
+            Check.Ensure(category != null, "Invalid categoryId");
 
             return category;
         }

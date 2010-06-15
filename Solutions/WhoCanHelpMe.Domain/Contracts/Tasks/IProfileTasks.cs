@@ -8,10 +8,10 @@ namespace WhoCanHelpMe.Domain.Contracts.Tasks
 
         void RemoveAssertion(Profile profile, int assertionId);
 
-        void AddAssertion(AddAssertionDetails addAssertionDetails);
+        void AddAssertion(string userName, int categoryId, string tagName);
 
-        void CreateProfile(CreateProfileDetails createProfileDetails);
+        void CreateProfile(string userName, string firstName, string lastName);
 
-        void DeleteProfile(string userId);
+        void DeleteProfile(string userName);
     }
 }

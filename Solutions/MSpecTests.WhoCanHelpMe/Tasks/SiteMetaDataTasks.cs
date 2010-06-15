@@ -25,6 +25,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
         };
     }
 
+    [Subject(typeof(SiteMetaDataTasks))]
     public class when_the_site_metadata_tasks_is_asked_to_get_metadata : specification_for_site_metadata_tasks
     {
         protected static IAnalyticsConfiguration the_analytics_configuration;

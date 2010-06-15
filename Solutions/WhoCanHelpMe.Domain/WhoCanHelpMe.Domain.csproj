@@ -101,7 +101,6 @@
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="AddAssertionDetails.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Contracts\Configuration\IAnalyticsConfiguration.cs" />
     <Compile Include="Contracts\Configuration\INewsConfiguration.cs" />
@@ -123,7 +122,6 @@
     <Compile Include="Contracts\Tasks\ISiteMetaDataTasks.cs" />
     <Compile Include="Contracts\Tasks\ITagTasks.cs" />
     <Compile Include="Contracts\Tasks\IProfileTasks.cs" />
-    <Compile Include="CreateProfileDetails.cs" />
     <Compile Include="Identity.cs" />
     <Compile Include="NewsItem.cs" />
     <Compile Include="Contracts\Services\INewsService.cs" />

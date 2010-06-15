@@ -16,6 +16,7 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
     using global::WhoCanHelpMe.Framework.Mapper;
     using global::WhoCanHelpMe.Web.Controllers.Home;
     using global::WhoCanHelpMe.Web.Controllers.Profile;
+    using global::WhoCanHelpMe.Web.Controllers.Profile.Mappers.Contracts;
     using global::WhoCanHelpMe.Web.Controllers.Profile.ViewModels;
     using global::WhoCanHelpMe.Web.Controllers.Shared.ActionResults;
     using Machine.Specifications;
@@ -34,21 +35,17 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
         protected static ICategoryTasks category_tasks;
         protected static IMapper<Profile, ViewProfilePageViewModel> view_profile_view_model_mapper;
         protected static IMapper<Profile, IList<Category>, UpdateProfilePageViewModel> update_profile_view_model_mapper;
+        protected static ICreateProfilePageViewModelBuilder create_profile_page_view_model_builder;
         protected static ITagTasks tag_tasks;
-        protected static IMapper<AddAssertionFormModel, Identity, AddAssertionDetails> add_assertion_details_mapper;
-        protected static IMapper<CreateProfileDetails, CreateProfilePageViewModel> create_profile_page_view_model_mapper;
-        protected static IMapper<CreateProfileFormModel, Identity, CreateProfileDetails> create_profile_details_mapper;
             
         Establish context = () =>
             {
                 identity_tasks = DependencyOf<IIdentityTasks>();
                 user_tasks = DependencyOf<IProfileTasks>();
                 category_tasks = DependencyOf<ICategoryTasks>();
+                create_profile_page_view_model_builder = DependencyOf<ICreateProfilePageViewModelBuilder>();
                 view_profile_view_model_mapper = DependencyOf<IMapper<Profile, ViewProfilePageViewModel>>();
                 update_profile_view_model_mapper = DependencyOf<IMapper<Profile, IList<Category>, UpdateProfilePageViewModel>>();
-                add_assertion_details_mapper = DependencyOf<IMapper<AddAssertionFormModel, Identity, AddAssertionDetails>>();
-                create_profile_page_view_model_mapper = DependencyOf<IMapper<CreateProfileDetails, CreateProfilePageViewModel>>();
-                create_profile_details_mapper = DependencyOf<IMapper<CreateProfileFormModel, Identity, CreateProfileDetails>>();
             };
     }
 
@@ -62,13 +59,13 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
             {
                 the_view_model = new CreateProfilePageViewModel();
 
-                create_profile_page_view_model_mapper.Stub(m => m.MapFrom(null)).Return(the_view_model);
+                create_profile_page_view_model_builder.Stub(m => m.Get()).Return(the_view_model);
             };
 
         Because of = () => result = subject.Create();
 
-        It should_ask_the_create_profile_page_view_model_mapper_to_map_the_view_model =
-            () => create_profile_page_view_model_mapper.AssertWasCalled(m => m.MapFrom(null));
+        It should_ask_the_create_profile_page_view_model_builder_to_map_the_view_model =
+            () => create_profile_page_view_model_builder.AssertWasCalled(m => m.Get());
 
         It should_return_the_default_view =
             () => result.ShouldBeAView().And().ShouldUseDefaultView();
@@ -76,40 +73,6 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
         It should_pass_the_view_model_to_the_view =
             () => result.Model<CreateProfilePageViewModel>().ShouldBeTheSameAs(the_view_model);
 
-    }
-
-    [Subject(typeof(ProfileController))]
-    public class when_the_profile_controller_is_asked_for_the_create_view_after_a_failed_submission_has_occurred : specification_for_profile_controller
-    {
-        static ActionResult result;
-        static CreateProfileDetails create_profile_details;
-        static CreateProfilePageViewModel the_view_model;
-        static ITempDataProvider temp_data_provider;
-        static IDictionary<string, object> temp_data_dictionary;
-
-        Establish context = () =>
-        {
-            the_view_model = new CreateProfilePageViewModel();
-
-            temp_data_provider = MockRepository.GenerateStub<ITempDataProvider>();
-            temp_data_dictionary = new Dictionary<string, object>();
-            temp_data_dictionary.Add(typeof(CreateProfileDetails).Name, create_profile_details);
-
-            create_profile_page_view_model_mapper.Stub(m => m.MapFrom(create_profile_details)).Return(the_view_model);
-
-            temp_data_provider.Stub(t => t.LoadTempData(subject.ControllerContext)).Return(temp_data_dictionary);
-        };
-
-        Because of = () => result = subject.Create();
-
-        It should_ask_the_create_profile_page_view_model_mapper_to_map_the_view_model =
-            () => create_profile_page_view_model_mapper.AssertWasCalled(m => m.MapFrom(create_profile_details));
-
-        It should_return_the_default_view =
-            () => result.ShouldBeAView().And().ShouldUseDefaultView();
-
-        It should_pass_the_view_model_to_the_view =
-            () => result.Model<CreateProfilePageViewModel>().ShouldBeTheSameAs(the_view_model);
     }
 
     [Subject(typeof(ProfileController))]
@@ -119,7 +82,6 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
         static Identity the_identity;
         static ActionResult result;
         static CreateProfileFormModel create_profile_view_model;
-        static CreateProfileDetails create_profile_details;
 
         Establish context = () =>
             {
@@ -129,11 +91,13 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
                                                 UserName = user_name
                                             };
 
-                create_profile_view_model = new CreateProfileFormModel();
-                create_profile_details = new CreateProfileDetails();
+                create_profile_view_model = new CreateProfileFormModel
+                    {
+                        FirstName = "First name", 
+                        LastName = "Last name"
+                    };
 
                 identity_tasks.Stub(i => i.GetCurrentIdentity()).Return(the_identity);
-                create_profile_details_mapper.Stub(m => m.MapFrom(create_profile_view_model, the_identity)).Return(create_profile_details);
             };
 
         Because of = () => result = subject.Create(create_profile_view_model);
@@ -141,11 +105,8 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
         It should_ask_the_identity_tasks_for_the_logged_in_user =
             () => identity_tasks.AssertWasCalled(i => i.GetCurrentIdentity());
 
-        It should_ask_the_create_profile_details_mapper_to_map_from_the_submitted_view_model =
-            () => create_profile_details_mapper.AssertWasCalled(m => m.MapFrom(create_profile_view_model, the_identity));
-
         It should_ask_the_user_tasks_to_create_the_new_profile =
-            () => user_tasks.AssertWasCalled(u => u.CreateProfile(create_profile_details));
+            () => user_tasks.AssertWasCalled(u => u.CreateProfile(the_identity.UserName, create_profile_view_model.FirstName, create_profile_view_model.LastName));
 
         It should_redirect_to_the_update_action =
             () => result.ShouldRedirectToAction<ProfileController>(x => x.Update()); 
@@ -158,7 +119,6 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
         static Identity the_identity;
         static ActionResult result;
         static CreateProfileFormModel create_profile_view_model;
-        static CreateProfileDetails create_profile_details;
 
         Establish context = () =>
         {
@@ -169,12 +129,14 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
                 UserName = user_name
             };
 
-            create_profile_view_model = new CreateProfileFormModel();
-            create_profile_details = new CreateProfileDetails();
+            create_profile_view_model = new CreateProfileFormModel
+                {
+                    FirstName = "First name", 
+                    LastName = "Last name"
+                };
 
             identity_tasks.Stub(i => i.GetCurrentIdentity()).Return(the_identity);
-            create_profile_details_mapper.Stub(m => m.MapFrom(create_profile_view_model, the_identity)).Return(create_profile_details);
-            user_tasks.Stub(u => u.CreateProfile(create_profile_details)).Throw(new RulesException(new List<ErrorInfo>()));
+            user_tasks.Stub(u => u.CreateProfile(user_name, create_profile_view_model.FirstName, create_profile_view_model.LastName)).Throw(new RulesException(new List<ErrorInfo>()));
         };
 
         Because of = () => result = subject.Create(create_profile_view_model);
@@ -182,11 +144,8 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
         It should_ask_the_identity_tasks_for_the_logged_in_user =
             () => identity_tasks.AssertWasCalled(i => i.GetCurrentIdentity());
 
-        It should_ask_the_create_profile_details_mapper_to_map_from_the_submitted_view_model =
-            () => create_profile_details_mapper.AssertWasCalled(m => m.MapFrom(create_profile_view_model, the_identity));
-
         It should_ask_the_user_tasks_to_create_the_new_profile =
-            () => user_tasks.AssertWasCalled(u => u.CreateProfile(create_profile_details));
+            () => user_tasks.AssertWasCalled(u => u.CreateProfile(user_name, create_profile_view_model.FirstName, create_profile_view_model.LastName));
 
         It should_redirect_to_the_create_action =
             () => result.ShouldRedirectToAction<ProfileController>(x => x.Create());
@@ -334,21 +293,21 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
         static ActionResult result;
         static AddAssertionFormModel the_view_model;
         static Identity the_identity;
-        static AddAssertionDetails the_add_assertion_details;
 
         Establish context = () =>
             {
-                the_view_model = new AddAssertionFormModel();
+                the_view_model = new AddAssertionFormModel
+                    {
+                        CategoryId = 1,
+                        TagName = "Tag name"
+                    };
 
-                the_identity = new Identity();
-
-                the_add_assertion_details = new AddAssertionDetails();
+                the_identity = new Identity
+                    {
+                        UserName = "User name"
+                    };
 
                 identity_tasks.Stub(i => i.GetCurrentIdentity()).Return(the_identity);
-                add_assertion_details_mapper.Stub(
-                    m => m.MapFrom(
-                             the_view_model,
-                             the_identity)).Return(the_add_assertion_details);
             };
 
         Because of = () => result = subject.Update(the_view_model);
@@ -356,14 +315,8 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
         It should_ask_the_identity_tasks_for_the_current_identity =
             () => identity_tasks.AssertWasCalled(i => i.GetCurrentIdentity());
 
-        It should_ask_the_add_assertion_details_mapper_to_map_from_the_submitted_view_model_and_identity =
-            () => add_assertion_details_mapper.AssertWasCalled(
-                      m => m.MapFrom(
-                               the_view_model,
-                               the_identity));
-
         It should_ask_the_user_tasks_to_add_the_new_assertion =
-            () => user_tasks.AssertWasCalled(u => u.AddAssertion(the_add_assertion_details));
+            () => user_tasks.AssertWasCalled(u => u.AddAssertion(the_identity.UserName, the_view_model.CategoryId, the_view_model.TagName));
 
         It should_redirect_to_the_update_action =
             () => result.ShouldRedirectToAction<ProfileController>(x => x.Update());
@@ -375,25 +328,24 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
         static ActionResult result;
         static AddAssertionFormModel the_view_model;
         static Identity the_identity;
-        static AddAssertionDetails the_add_assertion_details;
 
         Establish context = () =>
         {
-            the_view_model = new AddAssertionFormModel();
+            the_view_model = new AddAssertionFormModel
+                {
+                    CategoryId = 1,
+                    TagName = "Tag name"
+                };
 
-            the_identity = new Identity();
-
-            the_add_assertion_details = new AddAssertionDetails();
+            the_identity = new Identity
+                {
+                    UserName = "User name"
+                };
 
             identity_tasks.Stub(i => i.GetCurrentIdentity()).Return(the_identity);
             
-            add_assertion_details_mapper.Stub(
-                m => m.MapFrom(
-                         the_view_model,
-                         the_identity)).Return(the_add_assertion_details);
-
-            user_tasks.Stub(u => u.AddAssertion(the_add_assertion_details)).Throw(
-                new RulesException(new List<ErrorInfo>()));
+            user_tasks.Stub(u => u.AddAssertion(the_identity.UserName, the_view_model.CategoryId, the_view_model.TagName))
+                .Throw(new RulesException(new List<ErrorInfo>()));
         };
 
         Because of = () => result = subject.Update(the_view_model);
@@ -401,14 +353,8 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
         It should_ask_the_identity_tasks_for_the_current_identity =
             () => identity_tasks.AssertWasCalled(i => i.GetCurrentIdentity());
 
-        It should_ask_the_add_assertion_details_mapper_to_map_from_the_submitted_view_model_and_identity =
-            () => add_assertion_details_mapper.AssertWasCalled(
-                      m => m.MapFrom(
-                               the_view_model,
-                               the_identity));
-
         It should_ask_the_user_tasks_to_add_the_new_assertion =
-            () => user_tasks.AssertWasCalled(u => u.AddAssertion(the_add_assertion_details));
+            () => user_tasks.AssertWasCalled(u => u.AddAssertion(the_identity.UserName, the_view_model.CategoryId, the_view_model.TagName));
 
         It should_redirect_to_the_update_action =
             () => result.ShouldRedirectToAction<ProfileController>(x => x.Update());

@@ -16,6 +16,8 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
     using Machine.Specifications.AutoMocking.Rhino;
     using Rhino.Mocks;
 
+    using SharpArch.Core;
+
     using xVal.ServerSide;
 
     #endregion
@@ -181,7 +183,6 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
         static Tag the_tag;
         static Category the_category;
         static string the_tag_name;
-        static AddAssertionDetails the_add_assertion_details;
         static string the_user_name;
         static int the_category_id;
 
@@ -196,12 +197,6 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
                 the_category = new Category();
                 the_category_id = 10;
 
-                the_add_assertion_details = new AddAssertionDetails {
-                                                                        CategoryId = the_category_id,
-                                                                        TagName = the_tag_name,
-                                                                        UserName = the_user_name
-                                                                    };
-
                 the_profile_repository.StubFindOne().Return(the_profile);
 
                 the_category_repository.StubFindOne().Return(the_category);
@@ -209,7 +204,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
                 the_tag_repository.StubFindOne().Return(the_tag);
             };
 
-        Because of = () => subject.AddAssertion(the_add_assertion_details);
+        Because of = () => subject.AddAssertion(the_user_name, the_category_id, the_tag_name);
 
         It should_ask_the_profile_repository_for_the_users_profile = () => the_profile_repository.AssertFindOneWasCalledWithSpecification<ProfileByUserNameSpecification, Profile>(spec => spec.UserName == the_user_name);
 
@@ -230,7 +225,6 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
     [Subject(typeof(ProfileTasks))]
     public class when_the_profile_tasks_is_asked_to_add_an_assertion_with_a_new_tag_name : specification_for_profile_tasks
     {
-        static AddAssertionDetails the_add_assertion_details;
         static int the_category_id;
         static string the_tag_name;
         static string the_user_name;
@@ -247,13 +241,6 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
                 the_category = new Category();
                 the_category_id = 10;
 
-                the_add_assertion_details = new AddAssertionDetails
-                {
-                    CategoryId = the_category_id,
-                    TagName = the_tag_name,
-                    UserName = the_user_name
-                };
-
                 the_profile_repository.StubFindOne().Return(the_profile);
 
                 the_category_repository.StubFindOne().Return(the_category);
@@ -261,7 +248,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
                 the_tag_repository.StubFindOne().Return(null);
             };
 
-        Because of = () => subject.AddAssertion(the_add_assertion_details);
+        Because of = () => subject.AddAssertion(the_user_name, the_category_id, the_tag_name);
         
         It should_ask_the_profile_repository_for_the_users_profile = () => the_profile_repository.AssertFindOneWasCalledWithSpecification<ProfileByUserNameSpecification, Profile>(spec => spec.UserName == the_user_name);
 
@@ -294,95 +281,57 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
     [Subject(typeof(ProfileTasks))]
     public class when_the_profile_tasks_is_asked_to_add_an_assertion_without_specifying_a_tag_name : specification_for_profile_tasks
     {
-        static AddAssertionDetails the_add_assertion_details;
+        static string the_user_name;
+        static string the_tag_name;
+        static int the_category_id;
         static Exception the_exception;
 
         Establish context = () => 
         {
-            the_add_assertion_details = new AddAssertionDetails {
-                                                                    CategoryId = 1,
-                                                                    TagName = string.Empty,
-                                                                    UserName = "username"
-                                                                };
+            the_user_name = "user name";
+            the_tag_name = string.Empty;
+            the_category_id = 1;
         };
 
-        Because of = () =>
-        {
-            try
-            {
-                subject.AddAssertion(the_add_assertion_details);
-            }
-            catch (Exception e)
-            {
-                the_exception = e;
-            }
-        };
+        Because of = () => the_exception = Catch.Exception(() => subject.AddAssertion(the_user_name, the_category_id, the_tag_name));
 
-        It should_throw_a_rules_exception_containing_the_error = () =>
-        {
-            the_exception.ShouldNotBeNull();
-            the_exception.ShouldBe(typeof(RulesException));
-
-            var the_rules_exception = the_exception as RulesException;
-            the_rules_exception.Errors.Count().ShouldEqual(1);
-            the_rules_exception.Errors.First().PropertyName.ShouldEqual("TagName");
-        };
+        It should_throw_a_precondition_exception_containing_the_error = () => the_exception.ShouldBe(typeof(PreconditionException));
     }
 
     [Subject(typeof(ProfileTasks))]
     public class when_the_profile_tasks_is_asked_to_add_an_assertion_without_specifying_a_user_name : specification_for_profile_tasks
     {
-        static AddAssertionDetails the_add_assertion_details;
+        static string the_user_name;
+        static string the_tag_name;
+        static int the_category_id;
         static Exception the_exception;
 
         Establish context = () =>
         {
-            the_add_assertion_details = new AddAssertionDetails
-            {
-                CategoryId = 1,
-                TagName = "tagname",
-                UserName = string.Empty
-            };
+            the_user_name = string.Empty;
+            the_tag_name = "tag name";
+            the_category_id = 1;
         };
 
-        Because of = () =>
-        {
-            try
-            {
-                subject.AddAssertion(the_add_assertion_details);
-            }
-            catch (Exception e)
-            {
-                the_exception = e;
-            }
-        };
+        Because of = () => the_exception = Catch.Exception(() => subject.AddAssertion(the_user_name, the_category_id, the_tag_name));
 
-        It should_throw_a_rules_exception_containing_the_error = () =>
-        {
-            the_exception.ShouldNotBeNull();
-            the_exception.ShouldBe(typeof(RulesException));
-
-            var the_rules_exception = the_exception as RulesException;
-            the_rules_exception.Errors.Count().ShouldEqual(1);
-            the_rules_exception.Errors.First().PropertyName.ShouldEqual("UserName");
-        };
+        It should_throw_a_precondition_exception_containing_the_error = () => the_exception.ShouldBe(typeof(PreconditionException));
     }
 
     [Subject(typeof(ProfileTasks))]
     public class when_the_profile_tasks_is_asked_to_add_an_assertion_with_an_invalid_category_id : specification_for_profile_tasks
     {
         static Exception the_exception;
-        static AddAssertionDetails the_add_assertion_details;
+        static string the_user_name;
+        static string the_tag_name;
+        static int the_category_id;
         static Profile the_profile;
 
         Establish context = () =>
         {
-            the_add_assertion_details = new AddAssertionDetails
-            {
-                CategoryId = 99999,
-                TagName = "tagname",
-                UserName = "USER"
-            };
+            the_category_id = 1;
+            the_tag_name = "tag name";
+            the_user_name = "user";
 
             the_profile = new Profile();
 
@@ -391,48 +340,28 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
             the_category_repository.StubFindOne().Return(null);
         };
 
-        Because of = () =>
-        {
-            try
-            {
-                subject.AddAssertion(the_add_assertion_details);
-            }
-            catch (Exception e)
-            {
-                the_exception = e;
-            }
-        };
+        Because of = () => the_exception = Catch.Exception(() => subject.AddAssertion(the_user_name, the_category_id, the_tag_name));
 
-        It should_throw_a_rules_exception_containing_the_error = () =>
-        {
-            the_exception.ShouldNotBeNull();
-            the_exception.ShouldBe(typeof(RulesException));
-
-            var the_rules_exception = the_exception as RulesException;
-            the_rules_exception.Errors.Count().ShouldEqual(1);
-            the_rules_exception.Errors.First().PropertyName.ShouldEqual("CategoryId");
-        };
+        It should_throw_a_postcondition_exception_containing_the_error = () => the_exception.ShouldBe(typeof(PostconditionException));
     }
 
     [Subject(typeof(ProfileTasks))]
     public class when_the_profile_tasks_is_asked_to_create_a_profile : specification_for_profile_tasks
     {
-        static CreateProfileDetails create_profile_details;
-
+        static string the_first_name;
+        static string the_last_name;
+        static string the_user_name;
         static Profile dummy_profile;
 
         Establish context = () =>
             {
-                create_profile_details = new CreateProfileDetails {
-                                                                      FirstName = "First Name",
-                                                                      LastName = "Last Name",
-                                                                      UserName = "User Name"
-                                                                  };
-
                 dummy_profile = new Profile();
+                the_first_name = "First name";
+                the_last_name = "Last name";
+                the_user_name = "User name";
             };
 
-        Because of = () => subject.CreateProfile(create_profile_details);
+        Because of = () => subject.CreateProfile(the_user_name, the_first_name, the_last_name);
 
         It should_create_a_new_profile_based_on_the_create_profile_details = () =>
             {
@@ -444,9 +373,9 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
 
                 var created_profile = arguments.First().First() as Profile;
 
-                created_profile.FirstName.ShouldEqual(create_profile_details.FirstName);
-                created_profile.LastName.ShouldEqual(create_profile_details.LastName);
-                created_profile.UserName.ShouldEqual(create_profile_details.UserName);
+                created_profile.FirstName.ShouldEqual(the_first_name);
+                created_profile.LastName.ShouldEqual(the_last_name);
+                created_profile.UserName.ShouldEqual(the_user_name);
             };
 
         It should_ask_the_profile_repository_to_save_the_new_profile = () => the_profile_repository.AssertWasCalled(
@@ -458,177 +387,93 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
     [Subject(typeof(ProfileTasks))]
     public class when_the_profile_tasks_is_asked_to_create_a_profile_without_specifying_a_user_name : specification_for_profile_tasks
     {
-        static CreateProfileDetails create_profile_details;
-
+        static string the_first_name;
+        static string the_last_name;
+        static string the_user_name;
         static Exception the_exception;
 
         Establish context = () =>
         {
-            create_profile_details = new CreateProfileDetails
-            {
-                FirstName = "First Name",
-                LastName = "Last Name",
-                UserName = string.Empty
-            };
+            the_first_name = "First name";
+            the_last_name = "Last name";
+            the_user_name = string.Empty;
         };
 
-        Because of = () =>
-            {
-                try
-                {
-                    subject.CreateProfile(create_profile_details);
-                }
-                catch (Exception e)
-                {
-                    the_exception = e;
-                }
-            };
+        Because of = () => the_exception = Catch.Exception(() => subject.CreateProfile(the_user_name, the_first_name, the_last_name));
 
-        It should_throw_a_rules_exception_containing_the_error = () =>
-            {
-                the_exception.ShouldNotBeNull();
-                the_exception.ShouldBe(typeof(RulesException));
-
-                var the_rules_exception = the_exception as RulesException;
-                the_rules_exception.Errors.Count().ShouldEqual(1);
-                the_rules_exception.Errors.First().PropertyName.ShouldEqual("UserName");
-            };
+        It should_throw_a_precondition_exception_containing_the_error = () => the_exception.ShouldBe(typeof(PreconditionException));
     }
 
     [Subject(typeof(ProfileTasks))]
     public class when_the_profile_tasks_is_asked_to_create_a_profile_without_specifying_a_first_name : specification_for_profile_tasks
     {
-        static CreateProfileDetails create_profile_details;
+        static string the_first_name;
+        static string the_last_name;
+        static string the_user_name;
         static Exception the_exception;
 
         Establish context = () =>
         {
-            create_profile_details = new CreateProfileDetails
-            {
-                FirstName = string.Empty,
-                LastName = "Last Name",
-                UserName = "User Name"
-            };
+            the_first_name = string.Empty;
+            the_last_name = "Last name";
+            the_user_name = "User name";
         };
 
-        Because of = () =>
-        {
-            try
-            {
-                subject.CreateProfile(create_profile_details);
-            }
-            catch (Exception e)
-            {
-                the_exception = e;
-            }
-        };
+        Because of = () => the_exception = Catch.Exception(() => subject.CreateProfile(the_user_name, the_first_name, the_last_name));
 
-        It should_throw_a_rules_exception_containing_the_error = () =>
-        {
-            the_exception.ShouldNotBeNull();
-            the_exception.ShouldBe(typeof(RulesException));
-
-            var the_rules_exception = the_exception as RulesException;
-            the_rules_exception.Errors.Count().ShouldEqual(1);
-            the_rules_exception.Errors.First().PropertyName.ShouldEqual("FirstName");
-        };
+        It should_throw_a_precondition_exception_containing_the_error = () => the_exception.ShouldBe(typeof(PreconditionException));
     }
 
     [Subject(typeof(ProfileTasks))]
     public class when_the_profile_tasks_is_asked_to_create_a_profile_without_specifying_a_last_name : specification_for_profile_tasks
     {
-        static CreateProfileDetails create_profile_details;
+        static string the_first_name;
+        static string the_last_name;
+        static string the_user_name;
         static Exception the_exception;
 
         Establish context = () =>
         {
-            create_profile_details = new CreateProfileDetails
-            {
-                FirstName = "First Name",
-                LastName = string.Empty,
-                UserName = "User Name"
-            };
+            the_first_name = "First name";
+            the_last_name = string.Empty;
+            the_user_name = "User name";
         };
 
-        Because of = () =>
-        {
-            try
-            {
-                subject.CreateProfile(create_profile_details);
-            }
-            catch (Exception e)
-            {
-                the_exception = e;
-            }
-        };
+        Because of = () => the_exception = Catch.Exception(() => subject.CreateProfile(the_user_name, the_first_name, the_last_name));
 
-        It should_throw_a_rules_exception_containing_the_error = () =>
-        {
-            the_exception.ShouldNotBeNull();
-            the_exception.ShouldBe(typeof(RulesException));
-
-            var the_rules_exception = the_exception as RulesException;
-            the_rules_exception.Errors.Count().ShouldEqual(1);
-            the_rules_exception.Errors.First().PropertyName.ShouldEqual("LastName");
-        };
+        It should_throw_a_precondition_exception_containing_the_error = () => the_exception.ShouldBe(typeof(PreconditionException));
     }
 
     [Subject(typeof(ProfileTasks))]
     public class when_the_profile_tasks_is_asked_to_create_a_profile_with_a_user_name_that_already_has_a_profile : specification_for_profile_tasks
     {
-        static CreateProfileDetails create_profile_details;
+        static string the_first_name;
+        static string the_last_name;
+        static string the_user_name;
         static Profile the_profile;
         static Exception the_unique_constraint_exception;
         static Exception the_exception;
 
         Establish context = () =>
         {
-            create_profile_details = new CreateProfileDetails
-            {
-                FirstName = "First Name",
-                LastName = "Last Name",
-                UserName = "User Name"
-            };
+            the_first_name = "First name";
+            the_last_name = "Last name";
+            the_user_name = "User name";
 
             the_unique_constraint_exception = new Exception();
 
-            the_profile = new Profile()
-                              {
-                                  FirstName = "First Name",
-                                  LastName = "Last Name",
-                                  UserName = "User Name"
-                              };
-
-            the_profile_repository.Stub(x => x.Save(the_profile)).Throw(the_unique_constraint_exception);
+            the_profile_repository.Stub(x => x.Save(null)).IgnoreArguments().Throw(the_unique_constraint_exception);
         };
 
-        Because of = () =>
-        {
-            try
-            {
-                subject.CreateProfile(create_profile_details);
-            }
-            catch (Exception e)
-            {
-                the_exception = e;
-            }
-        };
+        Because of = () => the_exception = Catch.Exception(() => subject.CreateProfile(the_user_name, the_first_name, the_last_name));
         
         It should_ask_the_profile_repository_to_save_the_new_profile = () =>
-            the_profile_repository.AssertWasCalled(x => x.Save(the_profile));
+            the_profile_repository.AssertWasCalled(x => x.Save(null), o => o.IgnoreArguments());
 
         It should_catch_the_exception_thrown_by_the_repository = () =>
             the_exception.ShouldNotEqual(the_unique_constraint_exception);
 
-        It should_throw_a_rules_exception_containing_the_error = () =>
-        {
-            the_exception.ShouldNotBeNull();
-            the_exception.ShouldBe(typeof(RulesException));
-
-            var the_rules_exception = the_exception as RulesException;
-            the_rules_exception.Errors.Count().ShouldEqual(1);
-            the_rules_exception.Errors.First().PropertyName.ShouldEqual("UserName");
-        };
+        It should_throw_a_postcondition_exception_containing_the_error = () => the_exception.ShouldBe(typeof(PostconditionException));
     }
 
     [Subject(typeof(ProfileTasks))]

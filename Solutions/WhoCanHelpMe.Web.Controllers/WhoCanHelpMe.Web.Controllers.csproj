@@ -144,6 +144,7 @@
     <Compile Include="Profile\ActionFilters\ProfileCheckBaseAttribute.cs" />
     <Compile Include="Profile\ActionFilters\RequireExistingProfileAttribute.cs" />
     <Compile Include="Profile\ActionFilters\RequireNoExistingProfileAttribute.cs" />
+    <Compile Include="Profile\Mappers\Contracts\ICreateProfilePageViewModelBuilder.cs" />
     <Compile Include="Profile\Mappers\UpdateProfilePageViewModelMapper.cs" />
     <Compile Include="Profile\ViewModels\UpdateProfilePageViewModel.cs" />
     <Compile Include="Shared\ActionResults\NotFoundResult.cs" />
@@ -155,7 +156,7 @@
     <Compile Include="Shared\Mappers\Contracts\IPageViewModelBuilder.cs" />
     <Compile Include="About\Mappers\AboutPageViewModelMapper.cs" />
     <Compile Include="Properties\ControllersRegistrarMarker.cs" />
-    <Compile Include="Profile\Mappers\CreateProfilePageViewModelMapper.cs" />
+    <Compile Include="Profile\Mappers\CreateProfilePageViewModelBuilder.cs" />
     <Compile Include="User\Mappers\LoginPageViewModelMapper.cs" />
     <Compile Include="Search\Mappers\SearchResultsPageViewModelMapper.cs" />
     <Compile Include="Extensions\TempDataExtensions.cs" />

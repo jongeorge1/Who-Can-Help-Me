@@ -40,6 +40,7 @@
         }
     }
 
+    [Subject(typeof(RequireExistingProfileAttribute))]
     public class when_the_require_existing_profile_attribute_is_used_and_the_user_has_a_profile : specification_for_require_existing_profile_attribute
     {
         static Identity the_identity;
@@ -72,6 +73,7 @@
         It should_not_redirect = () => filter_context.Result.ShouldBeNull();
     }
 
+    [Subject(typeof(RequireExistingProfileAttribute))]
     public class when_the_require_existing_profile_attribute_is_used_and_the_user_does_not_have_a_profile : specification_for_require_existing_profile_attribute
     {
         static Identity the_identity;
