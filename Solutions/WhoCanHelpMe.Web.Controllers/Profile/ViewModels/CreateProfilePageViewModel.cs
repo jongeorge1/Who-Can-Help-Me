@@ -10,12 +10,11 @@ namespace WhoCanHelpMe.Web.Controllers.Profile.ViewModels
 
     public class CreateProfilePageViewModel : PageViewModel
     {
-        [NotNull]
-        [NotEmpty]
-        public string FirstName { get; set; }
+        public CreateProfilePageViewModel()
+        {
+            this.FormModel = new CreateProfileFormModel();
+        }
 
-        [NotNull]
-        [NotEmpty]
-        public string LastName { get; set; }
+        public CreateProfileFormModel FormModel { get; set; }
     }
 }

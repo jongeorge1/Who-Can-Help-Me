@@ -7,12 +7,12 @@ Show off your 'Guns'
 <h2>${Model.FirstName}&nbsp;${Model.LastName}</h2>
 
 <form method="post">
-	!{Html.AntiForgeryToken()}
-	!{Html.DropDownList("addAssertion.CategoryId", new SelectList(Model.Categories, "Id", "Name"))}
-	!{Html.TextBox("addAssertion.TagName")}
-	!{Html.ValidationMessage("addAssertion.TagName")}
-	<input type="submit" value="Add" />
-    !{Html.ClientSideValidation<WhoCanHelpMe.Web.Controllers.Profile.ViewModels.AddAssertionFormModel>("addAssertion")}
+  !{Html.AntiForgeryToken()}
+  !{Html.DropDownList("formModel.CategoryId", new SelectList(Model.Categories, "Id", "Name"))}
+  !{Html.TextBox("formModel.TagName")}
+  !{Html.ValidationMessage("formModel.TagName")}
+  <input type="submit" value="Add" />
+    !{Html.ClientSideValidation<WhoCanHelpMe.Web.Controllers.Profile.ViewModels.AddAssertionFormModel>("formModel")}
 </form>
 
 <ul id="skill_list">

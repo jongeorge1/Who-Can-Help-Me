@@ -22,6 +22,7 @@
         {
             this.Assertions = new List<ProfileAssertionViewModel>();
             this.Categories = new List<CategoryViewModel>();
+            this.FormModel = new AddAssertionFormModel();
         }
 
         /// <summary>
@@ -43,5 +44,10 @@
         /// Gets or sets Categories.
         /// </summary>
         public IList<CategoryViewModel> Categories { get; set; }
+
+        /// <summary>
+        /// Gets or sets the form model.
+        /// </summary>
+        public AddAssertionFormModel FormModel { get; set; }
     }
 }

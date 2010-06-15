@@ -74,13 +74,13 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         [ValidateAntiForgeryToken]
         [ModelStateToTempData]
         [RequireNoExistingProfile("Profile", "Update")]
-        public ActionResult Create(CreateProfileFormModel createProfile)
+        public ActionResult Create(CreateProfileFormModel formModel)
         {
             var identity = this.identityTasks.GetCurrentIdentity();
 
             try
             {
-                this.userTasks.CreateProfile(identity.UserName, createProfile.FirstName, createProfile.LastName);
+                this.userTasks.CreateProfile(identity.UserName, formModel.FirstName, formModel.LastName);
 
                 return this.RedirectToAction(x => x.Update());
             }
@@ -150,13 +150,13 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         [ValidateAntiForgeryToken]
         [ModelStateToTempData]
         [RequireExistingProfile("Profile", "Create")]
-        public ActionResult Update(AddAssertionFormModel addAssertion)
+        public ActionResult Update(AddAssertionFormModel formModel)
         {
             var identity = this.identityTasks.GetCurrentIdentity();
 
             try
             {
-                this.userTasks.AddAssertion(identity.UserName, addAssertion.CategoryId, addAssertion.TagName);
+                this.userTasks.AddAssertion(identity.UserName, formModel.CategoryId, formModel.TagName);
             }
             catch (RulesException ex)
             {

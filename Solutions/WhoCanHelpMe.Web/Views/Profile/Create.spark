@@ -12,16 +12,16 @@ Hey there stranger!
 	!{Html.AntiForgeryToken()}
 
 	<div class="formInput">
-		!{this.TextBox(x => x.FirstName).Label("First name:")}
-		!{this.ValidationMessage(x => x.FirstName)}
-	</div>
+    !{this.TextBox(x => x.FormModel.FirstName).Label("First name:")}
+    !{this.ValidationMessage(x => x.FormModel.FirstName)}
+  </div>
 
 	<div class="formInput">
-		!{this.TextBox(x => x.LastName).Label("Last name:")}
-		!{this.ValidationMessage(x => x.LastName)}
-	</div>
+    !{this.TextBox(x => x.FormModel.LastName).Label("Last name:")}
+    !{this.ValidationMessage(x => x.FormModel.LastName)}
+  </div>
 	
 	!{this.SubmitButton("Continue")}
-    !{Html.ClientSideValidation<WhoCanHelpMe.Web.Controllers.Profile.ViewModels.CreateProfileFormModel>()}
+  !{Html.ClientSideValidation<WhoCanHelpMe.Web.Controllers.Profile.ViewModels.CreateProfileFormModel>()}
 
 </form>
