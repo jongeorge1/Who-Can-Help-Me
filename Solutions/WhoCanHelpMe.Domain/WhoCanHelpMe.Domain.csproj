@@ -140,7 +140,6 @@
     <Compile Include="Specifications\TagByFirstCharactersOfNameSpecification.cs" />
     <Compile Include="Specifications\TagByNameSpecification.cs" />
     <Compile Include="Tag.cs" />
-    <Compile Include="ValidatableValueObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
