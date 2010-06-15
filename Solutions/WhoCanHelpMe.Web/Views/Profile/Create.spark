@@ -22,6 +22,6 @@ Hey there stranger!
 	</div>
 	
 	!{this.SubmitButton("Continue")}
-    !{Html.ClientSideValidation<WhoCanHelpMe.Web.Controllers.Profile.ViewModels.CreateProfileFormViewModel>()}
+    !{Html.ClientSideValidation<WhoCanHelpMe.Web.Controllers.Profile.ViewModels.CreateProfileFormModel>()}
 
 </form>
