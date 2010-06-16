@@ -10,11 +10,13 @@ namespace WhoCanHelpMe.Web.Controllers.Profile.ActionFilters
 
     using Microsoft.Practices.ServiceLocation;
 
+    using WhoCanHelpMe.Framework.Security;
+
     #endregion
 
     public abstract class ProfileCheckBaseAttribute : ActionFilterAttribute
     {
-        private readonly IIdentityTasks identityTasks;
+        private readonly IIdentityService identityService;
 
         private readonly IProfileTasks profileTasks;
 
@@ -28,7 +30,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile.ActionFilters
         {
             this.redirectController = redirectController;
             this.redirectAction = redirectAction;
-            this.identityTasks = ServiceLocator.Current.GetInstance<IIdentityTasks>();
+            this.identityService = ServiceLocator.Current.GetInstance<IIdentityService>();
             this.profileTasks = ServiceLocator.Current.GetInstance<IProfileTasks>();
         }
 
@@ -45,9 +47,9 @@ namespace WhoCanHelpMe.Web.Controllers.Profile.ActionFilters
 
         protected Profile GetProfile()
         {
-            var identity = this.identityTasks.GetCurrentIdentity();
+            var identity = this.identityService.GetCurrentIdentity();
 
-            return this.profileTasks.GetProfileByUserName(identity.UserName);
+            return this.profileTasks.GetProfileByUserName(identity.Name);
         }
     }
 }

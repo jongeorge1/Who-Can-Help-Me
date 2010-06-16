@@ -1,4 +1,4 @@
-﻿namespace MSpecTests.WhoCanHelpMe.Web.Controllers
+namespace MSpecTests.WhoCanHelpMe.Web.Controllers
 {
     #region Using Directives
 
@@ -7,6 +7,7 @@
 
     using global::WhoCanHelpMe.Domain.Contracts.Tasks;
     using global::WhoCanHelpMe.Framework.Mapper;
+    using global::WhoCanHelpMe.Framework.Security;
     using global::WhoCanHelpMe.Web.Controllers.Home;
     using global::WhoCanHelpMe.Web.Controllers.User;
     using global::WhoCanHelpMe.Web.Controllers.User.ViewModels;
@@ -21,11 +22,11 @@
     public abstract class specification_for_user_controller : Specification<UserController>
     {
         protected static IMapper<string, string, LoginPageViewModel> login_page_view_model_mapper;
-        protected static IIdentityTasks identity_tasks;
+        protected static IIdentityService identity_service;
 
         Establish context = () =>
             {
-                identity_tasks = DependencyOf<IIdentityTasks>();
+                identity_service = DependencyOf<IIdentityService>();
                 login_page_view_model_mapper = DependencyOf<IMapper<string, string, LoginPageViewModel>>();
             };
     }
@@ -35,12 +36,12 @@
     {
         static ActionResult result;
 
-        Establish context = () => identity_tasks.Stub(i => i.IsSignedIn()).Return(true);
+        Establish context = () => identity_service.Stub(i => i.IsSignedIn()).Return(true);
 
         Because of = () => result = subject.Index();
 
-        It should_ask_the_identity_tasks_if_the_user_is_signed_in =
-            () => identity_tasks.AssertWasCalled(i => i.IsSignedIn());
+        It should_ask_the_identity_service_if_the_user_is_signed_in =
+            () => identity_service.AssertWasCalled(i => i.IsSignedIn());
 
         It should_redirect_to_home = () => result.ShouldRedirectToAction<HomeController>(x => x.Index());
     }
@@ -50,12 +51,12 @@
     {
         static ActionResult result;
 
-        Establish context = () => identity_tasks.Stub(i => i.IsSignedIn()).Return(false);
+        Establish context = () => identity_service.Stub(i => i.IsSignedIn()).Return(false);
 
         Because of = () => result = subject.Index();
 
-        It should_ask_the_identity_tasks_if_the_user_is_signed_in =
-            () => identity_tasks.AssertWasCalled(i => i.IsSignedIn());
+        It should_ask_the_identity_service_if_the_user_is_signed_in =
+            () => identity_service.AssertWasCalled(i => i.IsSignedIn());
 
         It should_redirect_to_the_login_action = () =>
             result.ShouldRedirectToAction<UserController>(x => x.Login(null));
@@ -66,12 +67,12 @@
     {
         static ActionResult result;
 
-        Establish context = () => identity_tasks.Stub(i => i.IsSignedIn()).Return(true);
+        Establish context = () => identity_service.Stub(i => i.IsSignedIn()).Return(true);
 
         Because of = () => result = subject.Login(string.Empty);
 
-        It should_ask_the_identity_tasks_if_the_user_is_signed_in =
-            () => identity_tasks.AssertWasCalled(i => i.IsSignedIn());
+        It should_ask_the_identity_service_if_the_user_is_signed_in =
+            () => identity_service.AssertWasCalled(i => i.IsSignedIn());
 
         It should_redirect_to_home = () => result.ShouldRedirectToAction<HomeController>(x => x.Index());
     }
@@ -82,12 +83,12 @@
         static ActionResult result;
         private static object the_view_model;
 
-        Establish context = () => identity_tasks.Stub(i => i.IsSignedIn()).Return(false);
+        Establish context = () => identity_service.Stub(i => i.IsSignedIn()).Return(false);
 
         Because of = () => result = subject.Login(string.Empty);
 
-        It should_ask_the_identity_tasks_if_the_user_is_signed_in =
-            () => identity_tasks.AssertWasCalled(i => i.IsSignedIn());
+        It should_ask_the_identity_service_if_the_user_is_signed_in =
+            () => identity_service.AssertWasCalled(i => i.IsSignedIn());
 
         It should_ask_the_login_page_view_model_mapper_to_map_the_view_model =
             () => login_page_view_model_mapper.AssertWasCalled(
@@ -106,12 +107,12 @@
     {
         static ActionResult result;
 
-        Establish context = () => identity_tasks.Stub(i => i.IsSignedIn()).Return(true);
+        Establish context = () => identity_service.Stub(i => i.IsSignedIn()).Return(true);
 
         Because of = () => result = subject.SignOut();
 
-        It should_ask_the_identity_tasks_to_log_the_current_user_out =
-            () => identity_tasks.AssertWasCalled(i => i.SignOut());
+        It should_ask_the_identity_service_to_log_the_current_user_out =
+            () => identity_service.AssertWasCalled(i => i.SignOut());
 
         It should_redirect_to_home = () => result.ShouldRedirectToAction<HomeController>(x => x.Index());
     }
@@ -131,8 +132,8 @@
 
         Because of = () => result = subject.Authenticate(the_user_id, the_return_url);
 
-        It should_ask_the_identity_tasks_to_authenticate_the_user =
-            () => identity_tasks.AssertWasCalled(i => i.Authenticate(the_user_id));
+        It should_ask_the_identity_service_to_authenticate_the_user =
+            () => identity_service.AssertWasCalled(i => i.Authenticate(the_user_id));
 
         It should_redirect_to_the_return_url = 
             () => result.ShouldBeARedirect().And().Url.ShouldEqual(the_return_url);
@@ -153,8 +154,8 @@
 
         Because of = () => result = subject.Authenticate(the_user_id, the_return_url);
 
-        It should_ask_the_identity_tasks_to_authenticate_the_user =
-            () => identity_tasks.AssertWasCalled(i => i.Authenticate(the_user_id));
+        It should_ask_the_identity_service_to_authenticate_the_user =
+            () => identity_service.AssertWasCalled(i => i.Authenticate(the_user_id));
 
         It should_redirect_to_home = () => result.ShouldRedirectToAction<HomeController>(x => x.Index());
     }
@@ -171,13 +172,13 @@
             the_user_id = "open id";
             the_return_url = "return url";
 
-            identity_tasks.Stub(i => i.Authenticate(the_user_id)).Throw(new AuthenticationException());
+            identity_service.Stub(i => i.Authenticate(the_user_id)).Throw(new AuthenticationException());
         };
 
         Because of = () => result = subject.Authenticate(the_user_id, the_return_url);
 
-        It should_ask_the_identity_tasks_to_authenticate_the_user =
-            () => identity_tasks.AssertWasCalled(i => i.Authenticate(the_user_id));
+        It should_ask_the_identity_service_to_authenticate_the_user =
+            () => identity_service.AssertWasCalled(i => i.Authenticate(the_user_id));
 
         It should_redirect_to_the_login_view = () => 
             result.ShouldRedirectToAction<UserController>(x => x.Login(null));

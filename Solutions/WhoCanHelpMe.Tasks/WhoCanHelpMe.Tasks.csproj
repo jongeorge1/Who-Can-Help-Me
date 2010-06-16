@@ -105,7 +105,6 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="CategoryTasks.cs" />
-    <Compile Include="IdentityTasks.cs" />
     <Compile Include="NewsTasks.cs" />
     <Compile Include="Properties\TasksRegistrarMarker.cs" />
     <Compile Include="Registrars\TaskRegistrar.cs" />

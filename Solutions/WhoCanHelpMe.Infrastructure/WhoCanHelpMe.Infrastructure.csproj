@@ -75,6 +75,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\Castle\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="DotNetOpenAuth">
+      <HintPath>..\..\ReferencedAssemblies\DotNetOpenAuth\DotNetOpenAuth.dll</HintPath>
+    </Reference>
     <Reference Include="FluentNHibernate, Version=1.0.0.593, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\NHibernate\FluentNHibernate.dll</HintPath>
@@ -155,6 +158,7 @@
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\ProfileRepository.cs" />
     <Compile Include="Repositories\TagRepository.cs" />
+    <Compile Include="Security\IdentityService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WhoCanHelpMe.Domain\WhoCanHelpMe.Domain.csproj">

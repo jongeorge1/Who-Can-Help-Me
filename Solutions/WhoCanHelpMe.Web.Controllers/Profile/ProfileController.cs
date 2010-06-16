@@ -22,6 +22,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
     using ViewModels;
 
     using WhoCanHelpMe.Framework.Mapper;
+    using WhoCanHelpMe.Framework.Security;
     using WhoCanHelpMe.Web.Controllers.Profile.Mappers.Contracts;
 
     using xVal.ServerSide;
@@ -32,7 +33,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
     {
         private readonly ICategoryTasks categoryTasks;
 
-        private readonly IIdentityTasks identityTasks;
+        private readonly IIdentityService identityService;
 
         private readonly ICreateProfilePageViewModelBuilder createProfilePageViewModelBuilder;
 
@@ -43,14 +44,14 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         private readonly IProfileTasks userTasks;
 
         public ProfileController(
-            IIdentityTasks identityTasks,
+            IIdentityService identityService,
             IProfileTasks userTasks,
             ICategoryTasks categoryTasks,
             IMapper<Profile, ViewProfilePageViewModel> viewProfilePageViewModelMapper,
             IMapper<Profile, IList<Category>, UpdateProfilePageViewModel> updateProfilePageViewModelMapper, 
             ICreateProfilePageViewModelBuilder createProfilePageViewModelBuilder)
         {
-            this.identityTasks = identityTasks;
+            this.identityService = identityService;
             this.createProfilePageViewModelBuilder = createProfilePageViewModelBuilder;
             this.userTasks = userTasks;
             this.categoryTasks = categoryTasks;
@@ -76,11 +77,11 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         [RequireNoExistingProfile("Profile", "Update")]
         public ActionResult Create(CreateProfileFormModel formModel)
         {
-            var identity = this.identityTasks.GetCurrentIdentity();
+            var identity = this.identityService.GetCurrentIdentity();
 
             try
             {
-                this.userTasks.CreateProfile(identity.UserName, formModel.FirstName, formModel.LastName);
+                this.userTasks.CreateProfile(identity.Name, formModel.FirstName, formModel.LastName);
 
                 return this.RedirectToAction(x => x.Update());
             }
@@ -97,9 +98,9 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         [RequireExistingProfile("Profile", "Create")]
         public ActionResult Delete()
         {
-            var identity = this.identityTasks.GetCurrentIdentity();
+            var identity = this.identityService.GetCurrentIdentity();
 
-            this.userTasks.DeleteProfile(identity.UserName);
+            this.userTasks.DeleteProfile(identity.Name);
 
             return this.RedirectToAction<HomeController>(x => x.Index());
         }
@@ -109,9 +110,9 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         [RequireExistingProfile("Profile", "Create")]
         public ActionResult DeleteAssertion(int assertionId)
         {
-            var identity = this.identityTasks.GetCurrentIdentity();
+            var identity = this.identityService.GetCurrentIdentity();
 
-            var user = this.userTasks.GetProfileByUserName(identity.UserName);
+            var user = this.userTasks.GetProfileByUserName(identity.Name);
 
             this.userTasks.RemoveAssertion(
                 user,
@@ -132,9 +133,9 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         [RequireExistingProfile("Profile", "Create")]
         public ActionResult Update()
         {
-            var identity = this.identityTasks.GetCurrentIdentity();
+            var identity = this.identityService.GetCurrentIdentity();
 
-            var user = this.userTasks.GetProfileByUserName(identity.UserName);
+            var user = this.userTasks.GetProfileByUserName(identity.Name);
 
             var categories = this.categoryTasks.GetAll();
 
@@ -152,11 +153,11 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         [RequireExistingProfile("Profile", "Create")]
         public ActionResult Update(AddAssertionFormModel formModel)
         {
-            var identity = this.identityTasks.GetCurrentIdentity();
+            var identity = this.identityService.GetCurrentIdentity();
 
             try
             {
-                this.userTasks.AddAssertion(identity.UserName, formModel.CategoryId, formModel.TagName);
+                this.userTasks.AddAssertion(identity.Name, formModel.CategoryId, formModel.TagName);
             }
             catch (RulesException ex)
             {

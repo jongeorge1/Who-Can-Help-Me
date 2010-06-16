@@ -14,6 +14,11 @@ namespace WhoCanHelpMe.Infrastructure.Registrars
 
     using Properties;
 
+    using WhoCanHelpMe.Domain.Contracts.Services;
+    using WhoCanHelpMe.Framework.Security;
+    using WhoCanHelpMe.Infrastructure.News;
+    using WhoCanHelpMe.Infrastructure.Security;
+
     #endregion
 
     [Export(typeof(IComponentRegistrar))]
@@ -21,13 +26,8 @@ namespace WhoCanHelpMe.Infrastructure.Registrars
     {
         public void Register(IWindsorContainer container)
         {
-            container.Register(
-                    AllTypes.Pick()
-                            .FromAssembly(Assembly.GetAssembly(typeof(InfrastructureRegistrarMarker)))
-                            .If(f => f.Namespace.Equals("WhoCanHelpMe.Infrastructure.News"))
-                            .WithService.FirstNonGenericCoreInterface("WhoCanHelpMe.Domain.Contracts.Services"));
-
-            
+            container.Register(Component.For<INewsService>().ImplementedBy<TwitterNewsService>());
+            container.Register(Component.For<IIdentityService>().ImplementedBy<IdentityService>());            
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace WhoCanHelpMe.Web.Controllers.Navigation
+namespace WhoCanHelpMe.Web.Controllers.Navigation
 {
     #region Using Directives
 
@@ -8,22 +8,24 @@
 
     using ViewModels;
 
+    using WhoCanHelpMe.Framework.Security;
+
     #endregion
 
     public class NavigationController : BaseController
     {
-        private readonly IIdentityTasks identityTasks;
+        private readonly IIdentityService identityService;
 
-        public NavigationController(IIdentityTasks identityTasks)
+        public NavigationController(IIdentityService identityService)
         {
-            this.identityTasks = identityTasks;
+            this.identityService = identityService;
         }
 
         public ActionResult Menu()
         {
             var viewModel = new MenuViewModel
                 {
-                    IsLoggedIn = this.identityTasks.IsSignedIn()
+                    IsLoggedIn = this.identityService.IsSignedIn()
                 };
 
             return this.View(

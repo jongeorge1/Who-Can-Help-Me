@@ -133,6 +133,8 @@
     <Compile Include="Mapper\Mapper.cs" />
     <Compile Include="Mapper\Extensions.cs" />
     <Compile Include="Mapper\IMapper.cs" />
+    <Compile Include="Security\Identity.cs" />
+    <Compile Include="Security\IIdentityService.cs" />
     <Compile Include="Threading\LockableObjectProvider.cs" />
     <Compile Include="Traversal\TraversalExtensions.cs" />
     <Compile Include="Validation\IValidateMultipleProperties.cs" />

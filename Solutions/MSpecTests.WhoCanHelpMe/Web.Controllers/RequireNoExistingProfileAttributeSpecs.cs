@@ -1,4 +1,4 @@
-﻿namespace MSpecTests.WhoCanHelpMe.Web.Controllers
+namespace MSpecTests.WhoCanHelpMe.Web.Controllers
 {
     #region Using Directives
 
@@ -6,6 +6,7 @@
     using System.Web.Mvc;
     using global::WhoCanHelpMe.Domain;
     using global::WhoCanHelpMe.Domain.Contracts.Tasks;
+    using global::WhoCanHelpMe.Framework.Security;
     using global::WhoCanHelpMe.Web.Controllers.Profile.ActionFilters;
     using Machine.Specifications;
     using Machine.Specifications.AutoMocking.Rhino;
@@ -18,7 +19,7 @@
     {
         protected static ActionExecutingContext filter_context;
         protected static IProfileTasks profile_tasks;
-        protected static IIdentityTasks identity_tasks;
+        protected static IIdentityService identity_service;
         protected static string redirect_controller_name;
         protected static string redirect_action_name;
 
@@ -26,7 +27,7 @@
             {
                 ServiceLocatorHelper.InitialiseServiceLocator();
 
-                identity_tasks = An<IIdentityTasks>().AddToServiceLocator();
+                identity_service = An<IIdentityService>().AddToServiceLocator();
                 profile_tasks = An<IProfileTasks>().AddToServiceLocator();
 
                 filter_context = new ActionExecutingContext();
@@ -51,22 +52,20 @@
             {
                 user_name = "username";
 
-                the_identity = new Identity {
-                                                UserName = user_name
-                                            };
+                the_identity = new Identity(user_name, string.Empty, true);
 
                 the_profile = new Profile();
 
                 redirect_controller_name = "controller";
                 redirect_action_name = "action";
 
-                identity_tasks.Stub(i => i.GetCurrentIdentity()).Return(the_identity);
+                identity_service.Stub(i => i.GetCurrentIdentity()).Return(the_identity);
                 profile_tasks.Stub(p => p.GetProfileByUserName(user_name)).Return(the_profile);
             };
 
         Because of = () => subject.OnActionExecuting(filter_context);
 
-        It should_ask_the_identity_tasks_for_the_current_identity = () => identity_tasks.AssertWasCalled(i => i.GetCurrentIdentity());
+        It should_ask_the_identity_service_for_the_current_identity = () => identity_service.AssertWasCalled(i => i.GetCurrentIdentity());
 
         It should_ask_the_profile_tasks_for_the_current_user_profile = () => profile_tasks.AssertWasCalled(p => p.GetProfileByUserName(user_name));
 
@@ -87,21 +86,18 @@
         {
             user_name = "username";
 
-            the_identity = new Identity
-            {
-                UserName = user_name
-            };
+            the_identity = new Identity(user_name, string.Empty, true);
 
             redirect_controller_name = "controller";
             redirect_action_name = "action";
 
-            identity_tasks.Stub(i => i.GetCurrentIdentity()).Return(the_identity);
+            identity_service.Stub(i => i.GetCurrentIdentity()).Return(the_identity);
             profile_tasks.Stub(p => p.GetProfileByUserName(user_name)).Return(null);
         };
 
         Because of = () => subject.OnActionExecuting(filter_context);
 
-        It should_ask_the_identity_tasks_for_the_current_identity = () => identity_tasks.AssertWasCalled(i => i.GetCurrentIdentity());
+        It should_ask_the_identity_service_for_the_current_identity = () => identity_service.AssertWasCalled(i => i.GetCurrentIdentity());
 
         It should_ask_the_profile_tasks_for_the_current_user_profile = () => profile_tasks.AssertWasCalled(p => p.GetProfileByUserName(user_name));
 

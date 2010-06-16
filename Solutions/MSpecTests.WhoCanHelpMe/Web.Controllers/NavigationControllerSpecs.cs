@@ -1,10 +1,11 @@
-﻿namespace MSpecTests.WhoCanHelpMe.Web.Controllers
+namespace MSpecTests.WhoCanHelpMe.Web.Controllers
 {
     #region Using Directives
 
     using System.Web.Mvc;
 
     using global::WhoCanHelpMe.Domain.Contracts.Tasks;
+    using global::WhoCanHelpMe.Framework.Security;
     using global::WhoCanHelpMe.Web.Controllers.Home;
     using global::WhoCanHelpMe.Web.Controllers.Navigation;
     using global::WhoCanHelpMe.Web.Controllers.Navigation.ViewModels;
@@ -17,9 +18,9 @@
 
     public abstract class specification_for_navigation_controller : Specification<NavigationController>
     {
-        protected static IIdentityTasks identity_tasks;
+        protected static IIdentityService identity_service;
 
-        Establish context = () => identity_tasks = DependencyOf<IIdentityTasks>();
+        Establish context = () => identity_service = DependencyOf<IIdentityService>();
     }
 
     [Subject(typeof(HomeController))]
@@ -27,12 +28,12 @@
     {
         static ActionResult result;
 
-        Establish context = () => identity_tasks.Stub(i => i.IsSignedIn()).Return(true);
+        Establish context = () => identity_service.Stub(i => i.IsSignedIn()).Return(true);
 
         Because of = () => result = subject.Menu();
 
-        It should_ask_the_identity_tasks_if_the_user_is_signed_in = () => 
-            identity_tasks.AssertWasCalled(x => x.IsSignedIn());
+        It should_ask_the_identity_service_if_the_user_is_signed_in = () => 
+            identity_service.AssertWasCalled(x => x.IsSignedIn());
 
         It should_return_the_default_view = () => result.ShouldBeAView().And().ViewName.ShouldBeEmpty();
 

@@ -13,21 +13,22 @@
     using MvcContrib.Filters;
 
     using WhoCanHelpMe.Framework.Mapper;
+    using WhoCanHelpMe.Framework.Security;
     using WhoCanHelpMe.Web.Controllers.User.ViewModels;
 
     #endregion
 
     public class UserController : BaseController
     {
-        private readonly IIdentityTasks identityTasks;
+        private readonly IIdentityService identityService;
 
         private readonly IMapper<string, string, LoginPageViewModel> loginPageViewModelMapper;
 
         public UserController(
-            IIdentityTasks identityTasks,
+            IIdentityService identityService,
             IMapper<string, string, LoginPageViewModel> loginPageViewModelMapper)
         {
-            this.identityTasks = identityTasks;
+            this.identityService = identityService;
             this.loginPageViewModelMapper = loginPageViewModelMapper;
         }
 
@@ -39,7 +40,7 @@
         {
             try
             {
-                this.identityTasks.Authenticate(openId);
+                this.identityService.Authenticate(openId);
 
                 if (!string.IsNullOrEmpty(returnUrl))
                 {
@@ -59,7 +60,7 @@
 
         public ActionResult Index()
         {
-            if (this.identityTasks.IsSignedIn())
+            if (this.identityService.IsSignedIn())
             {
                 return this.RedirectToAction<HomeController>(x => x.Index());
             }
@@ -70,7 +71,7 @@
         [ModelStateToTempData]
         public ActionResult Login(string returnUrl)
         {
-            if (this.identityTasks.IsSignedIn())
+            if (this.identityService.IsSignedIn())
             {
                 //  Redirect to home page
                 return this.RedirectToAction<HomeController>(x => x.Index());
@@ -87,7 +88,7 @@
 
         public ActionResult SignOut()
         {
-            this.identityTasks.SignOut();
+            this.identityService.SignOut();
 
             return this.RedirectToAction<HomeController>(x => x.Index());
         }
