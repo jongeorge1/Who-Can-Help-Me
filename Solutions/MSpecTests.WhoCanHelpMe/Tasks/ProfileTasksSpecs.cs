@@ -26,6 +26,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
     using Rhino.Mocks;
 
     using SharpArch.Core;
+    using SharpArch.Testing;
 
     public abstract class specification_for_profile_tasks : Specification<IProfileTasks, ProfileTasks>
     {
@@ -142,7 +143,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
             the_assertion_id = 10;
 
             the_assertion = new Assertion();
-            the_assertion.SetNonPublicProperty(a => a.Id, the_assertion_id);
+            the_assertion.SetIdTo(the_assertion_id);
 
             the_profile = new Profile
             {

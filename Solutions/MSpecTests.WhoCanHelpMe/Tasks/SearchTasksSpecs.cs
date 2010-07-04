@@ -11,8 +11,6 @@
 
 namespace MSpecTests.WhoCanHelpMe.Tasks
 {
-    #region Using Directives
-
     using System.Collections.Generic;
     using System.Linq;
 
@@ -25,8 +23,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
     using Machine.Specifications;
     using Machine.Specifications.AutoMocking.Rhino;
     using Rhino.Mocks;
-
-    #endregion
+    using SharpArch.Testing;
 
     public abstract class specification_for_search_tasks : Specification<ISearchTasks, SearchTasks>
     {
@@ -56,10 +53,8 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
                                       Name = the_tag_name,
                                       Views = 1
                                   };
-                
-                the_tag.SetNonPublicProperty(
-                    t => t.Id,
-                    5);
+
+                the_tag.SetIdTo(5);
 
                 matching_tags = new List<Assertion>
                     {
@@ -113,7 +108,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
                 Views = 1
             };
 
-            the_tag.SetNonPublicProperty(t => t.Id, 5);
+            the_tag.SetIdTo(5);
 
             matching_tags = new List<Assertion>().AsQueryable();
             
