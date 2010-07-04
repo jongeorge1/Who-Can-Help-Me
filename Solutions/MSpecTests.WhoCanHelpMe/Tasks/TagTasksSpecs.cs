@@ -120,24 +120,38 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
         static IQueryable<Tag> the_matching_tags;
         static IList<Tag> result;
 
+        static Tag tag_1;
+        static Tag tag_2;
+        static Tag tag_3;
+
         Establish context = () =>
         {
-            the_tag_count = 10;
+            the_tag_count = 2;
+ 
+            tag_1 = new Tag { Name = "X", Views = 1 };
+            tag_2 = new Tag { Name = "A", Views = 50 };
+            tag_3 = new Tag { Name = "M", Views = 100 };
 
             the_matching_tags = new List<Tag> {
-                                                  new Tag { Name = "X" },
-                                                  new Tag { Name = "A" },
-                                                  new Tag { Name = "M" },
+                                                  tag_1,
+                                                  tag_2,
+                                                  tag_3,
                                               }.AsQueryable();
 
-            the_tag_repository.Stub(r => r.PopularTags(the_tag_count)).Return(the_matching_tags);
+            the_tag_repository.Stub(r => r.FindAll()).Return(the_matching_tags);
         };
 
         Because of = () => result = subject.GetMostPopularTags(the_tag_count);
 
-        It should_ask_the_tag_repository_for_the_popular_tags = () => the_tag_repository.AssertWasCalled(r => r.PopularTags(the_tag_count));
+        It should_ask_the_tag_repository_for_the_popular_tags = () => the_tag_repository.AssertWasCalled(r => r.FindAll());
 
-        It should_return_the_list_of_tags = () => result.ShouldContainOnly(the_matching_tags);
+        It should_return_two_tags = () => result.Count.ShouldEqual(2);
+
+        It should_sort_the_tag_list_correctly = () =>
+            {
+                result[0].ShouldEqual(tag_3);
+                result[1].ShouldEqual(tag_2);
+            };
     }
 
     [Subject(typeof(TagTasks))]
