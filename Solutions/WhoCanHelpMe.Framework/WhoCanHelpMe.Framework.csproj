@@ -122,14 +122,14 @@
     <Compile Include="Container\MEF\MvcCatalog.cs" />
     <Compile Include="Container\ComponentInitialiser.cs" />
     <Compile Include="Container\ComponentRegistrar.cs" />
-    <Compile Include="Enumerable\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\WindsorExtensions.cs" />
     <Compile Include="Mapper\Mapper.cs" />
     <Compile Include="Mapper\Extensions.cs" />
     <Compile Include="Mapper\IMapper.cs" />
     <Compile Include="Threading\LockableObjectProvider.cs" />
-    <Compile Include="Traversal\TraversalExtensions.cs" />
     <Compile Include="Validation\IValidateMultipleProperties.cs" />
     <Compile Include="Validation\ValidatableExtensions.cs" />
   </ItemGroup>

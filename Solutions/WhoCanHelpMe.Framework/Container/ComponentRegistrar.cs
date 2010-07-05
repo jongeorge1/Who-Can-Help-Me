@@ -1,38 +1,38 @@
 namespace WhoCanHelpMe.Framework.Container
 {
-    #region Using Directives
+	#region Using Directives
 
-    using System.Reflection;
-    using System.Security.Permissions;
-    using System.Web;
+	using System.Reflection;
+	using System.Security.Permissions;
+	using System.Web;
 
-    using Castle.Windsor;
+	using Castle.Windsor;
 
-    using Domain.Contracts.Container;
+	using Domain.Contracts.Container;
 
-    using System.ComponentModel.Composition.Hosting;
+	using System.ComponentModel.Composition.Hosting;
 
-    using Enumerable;
+	using MEF;
 
-    using MEF;
+	using WhoCanHelpMe.Framework.Extensions;
 
-    #endregion
+	#endregion
 
-    public static class ComponentRegistrar
-    {
-        public static void Register(IWindsorContainer container)
-        {
-            var catalog = new CatalogBuilder()
-                              .ForAssembly(typeof(IComponentRegistrarMarker).Assembly)
-                              .ForMvcAssembly(Assembly.GetExecutingAssembly())
-                              .ForMvcAssembliesInDirectory(HttpRuntime.BinDirectory, "WhoCanHelpMe*.dll") // Won't work in Partial trust
-                              .Build();
+	public static class ComponentRegistrar
+	{
+		public static void Register(IWindsorContainer container)
+		{
+			var catalog = new CatalogBuilder()
+							  .ForAssembly(typeof(IComponentRegistrarMarker).Assembly)
+							  .ForMvcAssembly(Assembly.GetExecutingAssembly())
+							  .ForMvcAssembliesInDirectory(HttpRuntime.BinDirectory, "WhoCanHelpMe*.dll") // Won't work in Partial trust
+							  .Build();
 
-            var compositionContainer = new CompositionContainer(catalog);
+			var compositionContainer = new CompositionContainer(catalog);
 
-            compositionContainer
-                .GetExports<IComponentRegistrar>()
-                .Each(e => e.Value.Register(container));
-        }
-    }
+			compositionContainer
+				.GetExports<IComponentRegistrar>()
+				.Each(e => e.Value.Register(container));
+		}
+	}
 }

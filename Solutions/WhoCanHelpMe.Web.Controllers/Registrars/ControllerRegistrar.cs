@@ -13,11 +13,11 @@ namespace WhoCanHelpMe.Web.Controllers.Registrars
 
     using Domain.Contracts.Container;
 
-    using Framework.Enumerable;
-
     using Properties;
 
-    #endregion
+    using WhoCanHelpMe.Framework.Extensions;
+
+	#endregion
 
     [Export(typeof(IComponentRegistrar))]
     public class ControllerRegistrar : IComponentRegistrar

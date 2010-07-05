@@ -25,7 +25,7 @@ namespace WhoCanHelpMe.Infrastructure.Registrars
                     AllTypes.Pick()
                             .FromAssembly(Assembly.GetAssembly(typeof(InfrastructureRegistrarMarker)))
                             .If(f => f.Namespace.Equals("WhoCanHelpMe.Infrastructure.Repositories"))
-                            .WithService.FirstNonGenericCoreInterface("WhoCanHelpMe.Domain.Contracts.Repositories"));
+                            .WithService.FirstNonGenericInterface("WhoCanHelpMe.Domain.Contracts.Repositories"));
         }
     }
 }

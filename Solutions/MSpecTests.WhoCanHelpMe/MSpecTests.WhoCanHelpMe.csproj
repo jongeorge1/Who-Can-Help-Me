@@ -113,6 +113,9 @@
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Framework\Extensions\EnumerableExtensionsSpecs.cs" />
+    <Compile Include="Framework\Extensions\ListExtensionsSpecs.cs" />
+    <Compile Include="Framework\Extensions\StringExtensionsSpecs.cs" />
     <Compile Include="ServiceLocatorHelper.cs" />
     <Compile Include="Tasks\CategoryTasksSpecs.cs" />
     <Compile Include="Tasks\NewsTasksSpecs.cs" />
