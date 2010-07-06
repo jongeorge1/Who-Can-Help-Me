@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+
+ *   This file is part of compile-time components of PostSharp.                *
+
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- Users may install an override file on their machine. Properties set in this file
+       will take precedence on the default values. -->
+  <Import Project="PostSharp-2.0.Override.targets" Condition="Exists('PostSharp-2.0.Override.targets')"/>
+  
+  <!-- Import project overrides -->
+  <Import Project="$(MSBuildProjectDirectory)\..\..\..\..\..\..\..\..\PostSharp.Custom.targets" Condition="Exists('$(MSBuildProjectDirectory)\..\..\..\..\..\..\..\..\PostSharp.Custom.targets')"/>
+  <Import Project="$(MSBuildProjectDirectory)\..\..\..\..\..\..\..\PostSharp.Custom.targets" Condition="Exists('$(MSBuildProjectDirectory)\..\..\..\..\..\..\..\PostSharp.Custom.targets')"/>
+  <Import Project="$(MSBuildProjectDirectory)\..\..\..\..\..\..\PostSharp.Custom.targets" Condition="Exists('$(MSBuildProjectDirectory)\..\..\..\..\..\..\PostSharp.Custom.targets')"/>
+  <Import Project="$(MSBuildProjectDirectory)\..\..\..\..\..\PostSharp.Custom.targets" Condition="Exists('$(MSBuildProjectDirectory)\..\..\..\..\..\PostSharp.Custom.targets')"/>
+  <Import Project="$(MSBuildProjectDirectory)\..\..\..\..\PostSharp.Custom.targets" Condition="Exists('$(MSBuildProjectDirectory)\..\..\..\..\PostSharp.Custom.targets')"/>
+  <Import Project="$(MSBuildProjectDirectory)\..\..\..\PostSharp.Custom.targets" Condition="Exists('$(MSBuildProjectDirectory)\..\..\..\PostSharp.Custom.targets')"/>
+  <Import Project="$(MSBuildProjectDirectory)\..\..\PostSharp.Custom.targets" Condition="Exists('$(MSBuildProjectDirectory)\..\..\PostSharp.Custom.targets')"/>
+  <Import Project="$(MSBuildProjectDirectory)\..\PostSharp.Custom.targets" Condition="Exists('$(MSBuildProjectDirectory)\..\PostSharp.Custom.targets')"/>
+  <Import Project="$(MSBuildProjectDirectory)\PostSharp.Custom.targets" Condition="Exists('$(MSBuildProjectDirectory)\PostSharp.Custom.targets')"/>
+
+  <PropertyGroup>
+    <_PostSharp20ImportedTwice Condition="'$(PostSharp20Imported)'=='True'">True</_PostSharp20ImportedTwice>
+    <PostSharp20Imported>True</PostSharp20Imported>
+
+    <!-- Determines whether a PostSharp project is named after the principal project. -->
+    <PostSharp20Project Condition=" '$(PostSharp20Project)'=='' AND Exists('$(MSBuildProjectDirectory)\$(MSBuildProjectName).$(Configuration).$(Platform).psproj') ">$(MSBuildProjectDirectory)\$(MSBuildProjectName).$(Configuration).$(Platform).psproj</PostSharp20Project>
+    <PostSharp20Project Condition=" '$(PostSharp20Project)'=='' AND Exists('$(MSBuildProjectDirectory)\$(MSBuildProjectName).$(Configuration).psproj') ">$(MSBuildProjectDirectory)\$(MSBuildProjectName).$(Configuration).psproj</PostSharp20Project>
+    <PostSharp20Project Condition=" '$(PostSharp20Project)'=='' AND Exists('$(MSBuildProjectDirectory)\$(MSBuildProjectName).psproj') ">$(MSBuildProjectDirectory)\$(MSBuildProjectName).psproj</PostSharp20Project>
+
+    <!-- PostSharp properties -->
+    <PostSharpBuild Condition="'$(PostSharpBuild)'==''">Release</PostSharpBuild>
+    <PostSharpIgnoreError Condition="'$(PostSharpIgnoreError)'==''">False</PostSharpIgnoreError>
+    <PostSharpFailOnUnexpectedMessage Condition="'$(PostSharpFailOnUnexpectedMessage)'==''">False</PostSharpFailOnUnexpectedMessage>
+    <PostSharpIntermediateDirectory Condition="'$(PostSharpIntermediateDirectory)'==''">$(IntermediateOutputPath)PostSharp</PostSharpIntermediateDirectory>
+    <PostSharpBackupDirectory Condition="'$(PostSharpBackupDirectory)'==''">$(IntermediateOutputPath)Before-PostSharp</PostSharpBackupDirectory>
+    <PostSharpCleanIntermediate Condition="'$(PostSharpCleanIntermediate)'==''">False</PostSharpCleanIntermediate>
+    <PostSharpSignAssembly Condition="'$(PostSharpSignAssembly)'=='' AND '$(SignAssembly)'!=''">$(SignAssembly)</PostSharpSignAssembly>
+    <PostSharpSignAssembly Condition="'$(PostSharpSignAssembly)'==''">False</PostSharpSignAssembly>
+    <PostSharpAttachDebugger Condition="'$(PostSharpAttachDebugger)'==''">False</PostSharpAttachDebugger>
+    <PostSharpWriteWeavingSymbols Condition="'$(PostSharpWriteWeavingSymbols)'==''">True</PostSharpWriteWeavingSymbols>
+    <PostSharpSymbolFile Condition="'$(PostSharpSymbolFile)'==''">$(OutDir)$(AssemblyName).pssym</PostSharpSymbolFile>
+    <PostSharpClientAttachDebugger Condition="'$(PostSharpClientAttachDebugger)'==''">False</PostSharpClientAttachDebugger>
+    <PostSharpTargetFrameworkVersion Condition="'$(PostSharpTargetFrameworkVersion)'=='' AND '$(TargetFrameworkVersion)'=='v4.0'">4.0</PostSharpTargetFrameworkVersion>
+    <PostSharpTargetFrameworkVersion Condition="'$(PostSharpTargetFrameworkVersion)'==''">2.0</PostSharpTargetFrameworkVersion>
+    <PostSharpTargetProcessor Condition="'$(PostSharpTargetProcessor)'=='' AND ('$(PlatformTarget)'=='x86' OR ('$(PROCESSOR_ARCHITECTURE)'!='AMD64' AND '$(PROCESSOR_ARCHITEW6432)'!='AMD64'))">x86</PostSharpTargetProcessor>
+    <PostSharpTargetProcessor Condition="'$(PostSharpTargetProcessor)'==''">x64</PostSharpTargetProcessor>
+    <PostSharpTargetPlatform Condition="'$(PostSharpTargetPlatform)'==''">$(PostSharpTargetFrameworkVersion)-$(PostSharpTargetProcessor)</PostSharpTargetPlatform>
+
+    <PostSharpHost Condition="'$(PostSharpHost)'=='' AND '$(PostSharpUsePipeServer)'=='False'">Native</PostSharpHost>
+    <PostSharpHost Condition="'$(PostSharpHost)'==''">PipeServer</PostSharpHost>
+    
+
+  </PropertyGroup>
+
+
+  <!-- Import tasks -->
+  <UsingTask	AssemblyFile="$(PostSharpBuild)\PostSharp.MSBuild.dll"
+        TaskName="PostSharp.MSBuild.PostSharp20" />
+
+  <UsingTask	AssemblyFile="$(PostSharpBuild)\PostSharp.MSBuild.dll"
+        TaskName="PostSharp.MSBuild.PostSharp20TouchWithDelay"
+        />
+
+  <UsingTask	AssemblyFile="$(PostSharpBuild)\PostSharp.MSBuild.dll"
+         TaskName="PostSharp.MSBuild.PostSharp20CheckPfx"
+         />
+
+  <UsingTask	AssemblyFile="$(PostSharpBuild)\PostSharp.MSBuild.dll"
+       TaskName="PostSharp.MSBuild.PostSharp20Sign"
+       />
+
+  <UsingTask	AssemblyFile="$(PostSharpBuild)\PostSharp.MSBuild.dll"
+      TaskName="PostSharp.MSBuild.PostSharp20GetCurrentProjectDirectory"/>
+
+  <UsingTask	AssemblyFile="$(PostSharpBuild)\PostSharp.MSBuild.dll"
+      TaskName="PostSharp.MSBuild.PostSharp20MoveWithRetry"/>
+
+
+  <Target Name="PostSharp20GetDirectory">
+    <PostSharp20GetCurrentProjectDirectory>
+      <Output TaskParameter="Directory" PropertyName="_PostSharp20Directory"/>
+    </PostSharp20GetCurrentProjectDirectory>
+
+    <CreateProperty Value="@(IntermediateAssembly->'%(FullPath)')">
+      <Output TaskParameter="Value" PropertyName="_IntermediateAssemblyFullPath"/>
+    </CreateProperty>
+  </Target>
+
+  <!-- Inspect project references for PostSharp.dll -->
+  <Target Name="PostSharp20InspectReferences"
+      Condition="'$(BuildingProject)'=='true' And '$(SkipPostSharp)'!='True' And '$(PostSharp20Project)'=='' "
+      DependsOnTargets="ResolveAssemblyReferences;PostSharp20InspectConstants">
+
+    <Message Text="PostSharp parses the following references: @(ReferencePath -> '%(Filename)')."
+        Importance="low"/>
+
+    <!-- Check that all references have strict version -->
+    <Warning Text="For side-by-side compatibility, the reference to assembly PostSharp should be version-specific."
+           Condition="'%(ReferencePath.FileName)'=='PostSharp' AND
+                      '%(ReferencePath.SpecificVersion)'=='False'" />
+
+    <!-- Inspect direct references -->
+    <CreateProperty Condition="
+                    ('%(ReferencePath.FusionName)'=='PostSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7' OR
+                    '%(ReferencePath.FusionName)'=='PostSharp.CF, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7' OR
+                    '%(ReferencePath.FusionName)'=='PostSharp.SL, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7')
+                    " Value="%(ReferencePath.FileName)">
+      <Output TaskParameter="Value" PropertyName="PostSharp20Reference" />
+    </CreateProperty>
+
+    <!-- Inspect indirect references -->
+    <CreateProperty Condition="'$(PostSharp20Reference)'=='' AND 
+                    ( '%(ReferenceDependencyPaths.FusionName)'=='PostSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7' OR
+                      '%(ReferenceDependencyPaths.FusionName)'=='PostSharp.CF, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7' OR
+                      '%(ReferenceDependencyPaths.FusionName)'=='PostSharp.SL, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7' )"
+                    Value="%(ReferenceDependencyPaths.FileName)">
+      <Output TaskParameter="Value" PropertyName="PostSharp20Reference" />
+    </CreateProperty>
+
+
+    <Message Text="Detected reference to '$(PostSharp20Reference)'." Condition="'$(PostSharp20Reference)'!=''" />
+
+    <CreateProperty Condition="'$(PostSharp20Reference)'!=''" Value="$(_PostSharp20Directory)\$(PostSharpBuild)\Default.psproj">
+      <Output TaskParameter="Value" PropertyName="PostSharp20Project" />
+    </CreateProperty>
+
+  </Target>
+
+  <!-- Determines whether the SkipPostSharp or PostSharpVerify constant has been defined -->
+  <Target Name="PostSharp20InspectConstants"
+      Condition="'$(BuildingProject)'=='true' And '$(SkipPostSharp)'!='True'"
+      DependsOnTargets="PostSharp20GetDirectory"
+          >
+
+    <CreateItem Include="$(DefineConstants)">
+      <Output TaskParameter="Include" ItemName="_DefineConstants"/>
+    </CreateItem>
+
+    <CreateProperty Condition="'%(_DefineConstants.Identity)'=='SkipPostSharp' AND '$(SkipPostSharp)'==''" Value="True">
+      <Output TaskParameter="Value" PropertyName="SkipPostSharp" />
+    </CreateProperty>
+
+    <Message	Condition="'$(SkipPostSharp)'=='True'"
+          Importance="low"
+          Text="SkipPostSharp constant detected. The PostSharp target will be ignored." />
+
+    <CreateProperty Condition="'%(_DefineConstants.Identity)'=='PostSharpVerify'" Value="True">
+      <Output TaskParameter="Value" PropertyName="PostSharpVerify" />
+    </CreateProperty>
+
+  </Target>
+
+
+  <!-- Define compiler constants if PostSharp has been detected. -->
+  <Target Name="PostSharp20DefineConstant" DependsOnTargets="PostSharp20InspectConstants;PostSharp20InspectReferences"
+          Condition="'$(BuildingProject)'=='true' AND '$(PostSharp20Project)'!='' AND '$(SkipPostSharp)'==''">
+    <CreateProperty Value="POSTSHARP;$(DefineConstants)" Condition="'$(Language)'=='C#'">
+      <Output TaskParameter="Value" PropertyName="DefineConstants"/>
+    </CreateProperty>
+    <CreateProperty Value="POSTSHARP=200,$(FinalDefineConstants)" Condition="'$(Language)'=='VB'">
+      <Output TaskParameter="Value" PropertyName="FinalDefineConstants"/>
+    </CreateProperty>
+  </Target>
+
+
+  <!-- Task PostSharp: executes PostSharp if the PostSharp20Project is defined. -->
+  <Target	Name="PostSharp20"
+      Condition="'$(BuildingProject)'=='true' AND '$(PostSharp20Project)'!='' AND '$(SkipPostSharp)'!='True' AND Exists('$(_IntermediateAssemblyFullPath)')"
+      Inputs="$(PostSharp20Project);@(IntermediateAssembly->'%(FullPath)')"
+      Outputs="@(IntermediateAssembly->'%(FullPath).postsharp')"
+      DependsOnTargets="_CopyFilesMarkedCopyLocal;ResolveKeySource">
+
+    <!-- Check that PostSharp targets have not been imported twice. -->
+    <Error Text="PostSharp targets have been imported twice in the project. Be sure to set the 'DontImportPostSharp' property to 'True' when you import PostSharp manually, so that it does not get imported automatically."
+           Condition="'$(_PostSharp20ImportedTwice)'=='True'"/>
+
+    <!-- Emit warnings and errors -->
+    <Warning Condition="'$(PostSharpUsePipeServer)'!=''" Text="The MSBuild property PostSharpUsePipeServer is obsolete. Use property PostSharpHost instead (values: Managed, PipeServer, Native)."/>
+    <Error Condition="'$(PlatformTarget)'=='x64' AND '$(PostSharpTargetProcessor)'=='x86'" Text="Platform mismatch. You cannot run PostSharp on a 64-bit application from a 32-bit operating system."/>
+
+    <!-- Set framework-specific properties -->
+    <CreateProperty Condition="'$(PostSharpAssemblyBindingPolicySet)'=='' AND '$(CustomAfterMicrosoftCompactFrameworkCommonTargets)'!='' AND '$(TargetFrameworkVersion)'=='v2.0'" Value="CompactFramework20">
+      <Output PropertyName="PostSharpAssemblyBindingPolicySet" TaskParameter="Value"/>
+    </CreateProperty>
+
+    <CreateProperty Condition="'$(PostSharpAssemblyBindingPolicySet)'=='' AND '$(CustomAfterMicrosoftCompactFrameworkCommonTargets)'!='' AND '$(TargetFrameworkVersion)'=='v3.5'" Value="CompactFramework35">
+      <Output PropertyName="PostSharpAssemblyBindingPolicySet" TaskParameter="Value"/>
+    </CreateProperty>
+
+    <CreateProperty Condition="'$(PostSharpAssemblyBindingPolicySet)'=='' AND ('$(CreateSilverlightAppManifestDependsOn)'!='' OR '$(XnaPlatform)'=='Windows Phone')" Value="Silverlight20">
+      <Output PropertyName="PostSharpAssemblyBindingPolicySet" TaskParameter="Value"/>
+    </CreateProperty>
+
+    <CreateProperty Condition="'$(PostSharpAssemblyBindingPolicySet)'!=''" Value="True">
+      <Output TaskParameter="Value" PropertyName="PostSharpDisableReflection"/>
+    </CreateProperty>
+    
+    <CreateProperty Condition="'$(PostSharpDisableReflection)'==''" Value="False">
+      <Output TaskParameter="Value" PropertyName="PostSharpDisableReflection"/>
+    </CreateProperty>
+
+
+  
+
+    <!-- Move the old intermediate files -->
+    <MakeDir Directories="$(PostSharpBackupDirectory)"/>
+
+    <CreateProperty Value="@(IntermediateAssembly->'$(PostSharpBackupDirectory)\%(Filename)%(Extension)')">
+      <Output TaskParameter="Value" PropertyName="_PostSharpInputBin"/>
+    </CreateProperty>
+    <CreateProperty Value="@(IntermediateAssembly->'$(PostSharpBackupDirectory)\%(Filename).pdb')">
+      <Output TaskParameter="Value" PropertyName="_PostSharpInputPdb"/>
+    </CreateProperty>
+
+    <PostSharp20MoveWithRetry Source="$(_IntermediateAssemblyFullPath)" Destination="$(_PostSharpInputBin)" />
+    <PostSharp20MoveWithRetry Source="@(IntermediateAssembly->'%(RelativeDir)%(Filename).pdb')" Destination="$(_PostSharpInputPdb)"
+          Condition="Exists('@(IntermediateAssembly->'%(RelativeDir)%(Filename).pdb')')"/>
+
+    <!-- Redefine the properties where FxCop expects the location of the source file. -->
+    <CreateProperty Value="$(_PostSharpInputBin)">
+      <Output TaskParameter="Value" PropertyName="CodeAnalysisInputAssemblyForTask"/>
+    </CreateProperty>
+    <CreateProperty Value="$(_PostSharpInputBin)">
+      <Output TaskParameter="Value" PropertyName="CodeAnalysisInputAssembly"/>
+    </CreateProperty>
+
+
+
+    <!-- If the private key is a PFX, we extract the public key into an SNK file,
+         because ILASM does not support PFX. ILASM will delay-sign the assembly
+         using the SNK, and we will resign it after. -->
+    <PostSharp20CheckPfx KeyFile="$(AssemblyOriginatorKeyFile)"
+                      Condition="'$(SignAssembly)' == 'true' And '$(AssemblyOriginatorKeyFile)' != ''">
+      <Output TaskParameter="PostSharpKeyFile" PropertyName="_PostSharpKeyFile"/>
+      <Output TaskParameter="SignAfterPostSharp" PropertyName="_SignAfterPostSharp"/>
+    </PostSharp20CheckPfx>
+
+
+    <!-- Prepare properties sent to PostSharp -->
+
+
+    <CreateItem Include="$(ReferencePath);$(PostSharpSearchPath);$(TargetFrameworkDirectory)">
+      <Output TaskParameter="Include" ItemName="_PostSharpSearchPathItem"/>
+    </CreateItem>
+
+    <CreateProperty Value="@(_PostSharpSearchPathItem->'%(FullPath)', ',')">
+      <Output TaskParameter="Value" PropertyName="_ReferencePathAsCommaSeparatedList"/>
+    </CreateProperty>
+
+    <CreateProperty Value="@(_ResolveAssemblyReferenceResolvedFiles->'%(FullPath)', ',')">
+      <Output TaskParameter="Value" PropertyName="_ResolveAssemblyReferenceResolvedFilesAbsoluteAsCommaSeparatedList" />
+    </CreateProperty>
+
+    <CreateProperty Value="@(IntermediateAssembly->'%(FullPath)',',')">
+      <Output TaskParameter="Value" PropertyName="_PostSharpOutput"/>
+    </CreateProperty>
+
+
+    <!-- Convert PostSharp properties into an item group so that we can better format them. -->
+    <CreateProperty Value="
+              Output=$(_PostSharpOutput);
+              ReferenceDirectory=$(MSBuildProjectDirectory);
+              Configuration=$(Configuration);
+              Platform=$(Platform);
+              SearchPath=$(OutDir),$(IntermediateOutputPath),$(_ReferencePathAsCommaSeparatedList);
+              IntermediateDirectory=$(PostSharpIntermediateDirectory);
+              CleanIntermediate=$(PostSharpCleanIntermediate);
+              MSBuildProjectFullPath=$(MSBuildProjectFullPath);
+              SignAssembly=$(PostSharpSignAssembly);
+              PrivateKeyLocation=$(_PostSharpKeyFile);
+              ResolvedReferences=$(_ResolveAssemblyReferenceResolvedFilesAbsoluteAsCommaSeparatedList);
+              MapFile=$(PostSharpSymbolFile);
+              WriteWeavingSymbols=$(PostSharpWriteWeavingSymbols);
+              AssemblyBindingPolicySet=$(PostSharpAssemblyBindingPolicySet);
+              $(PostSharpProperties)">
+      <Output TaskParameter="Value" PropertyName="PostSharpProperties"/>
+    </CreateProperty>
+    
+    <!-- Read the license key, if provided as in a file -->
+    <!-- Load the user-level license file, if present. We have to do that with a CreateProperty because PropertyGroups are considered constant. -->
+    <CreateProperty Value="$(PostSharpLicenseFile)">
+      <Output TaskParameter="Value" PropertyName="_PostSharpLicenseFile"/>
+    </CreateProperty>
+
+    <CreateProperty Value="$(APPDATA)\PostSharp 2.0\PostSharp.license" 
+                    Condition="'$(_PostSharpLicenseFile)'=='' AND '$(PostSharpLicenseKey)'=='' AND '$(APPDATA)'!='' AND Exists('$(APPDATA)\PostSharp 2.0\PostSharp.license')">
+      <Output TaskParameter="Value" PropertyName="_PostSharpLicenseFile"/>
+    </CreateProperty>
+    
+    <CreateProperty Value="$(LOCALAPPDATA)\PostSharp 2.0\PostSharp.license"
+                    Condition="'$(_PostSharpLicenseFile)'=='' AND '$(PostSharpLicenseKey)'=='' AND '$(LOCALAPPDATA)'!='' AND Exists('$(LOCALAPPDATA)\PostSharp 2.0\PostSharp.license')">
+      <Output TaskParameter="Value" PropertyName="_PostSharpLicenseFile"/>
+    </CreateProperty>
+
+    <Message Text="Reading license from file '$(_PostSharpLicenseFile)'." Importance="Low" Condition="'$(_PostSharpLicenseFile)'!='' AND '$(PostSharpLicenseKey)'==''"/>
+    <ReadLinesFromFile File="$(_PostSharpLicenseFile)" Condition="'$(_PostSharpLicenseFile)'!='' AND '$(PostSharpLicenseKey)'==''">
+      <Output TaskParameter="Lines" ItemName="_PostSharpLicenseLines"/>
+    </ReadLinesFromFile>
+    <CreateProperty Value="@(_PostSharpLicenseLines->'%(Identity)','')" Condition="'$(_PostSharpLicenseFile)'!='' AND '$(PostSharpLicenseKey)'==''">
+      <Output TaskParameter="Value" PropertyName="PostSharpLicenseKey"/>
+    </CreateProperty>
+
+    <!-- Create our working directory. -->
+    <MakeDir Directories="$(PostSharpIntermediateDirectory)"/>
+
+    <!-- Execute PostSharp. We support both in-process MSBuild task and standalone command line utility. -->
+    <Message Text="Passing parameters: $(PostSharpProperties)" Importance="low"/>
+
+    <PostSharp20	Project="$(PostSharp20Project)"
+                Input="$(_PostSharpInputBin)"
+                Properties="$(PostSharpProperties)"
+                AttachDebugger="$(PostSharpAttachDebugger)"
+                ClientAttachDebugger="$(PostSharpClientAttachDebugger)"
+                TraceCategories="$(PostSharpTrace)"
+                DisableReflection="$(PostSharpDisableReflection)"
+                Host="$(PostSharpHost)"
+                TargetPlatform="$(PostSharpTargetPlatform)"
+                NoLogo="true"
+                ExpectedMessages="$(PostSharpExpectedMessages)"
+                IgnoreError="$(PostSharpIgnoreError)"
+                FailOnUnexpectedMessage="$(PostSharpFailOnUnexpectedMessage)"
+                LicenseKey="$(PostSharpLicenseKey)"
+          >
+      <Output TaskParameter="ExitCode" PropertyName="PostSharpExitCode"/>
+    </PostSharp20>
+
+    <!-- If PostSharp failed and we are still here, we have to create a dummy output file so that the
+         build process can continue. -->
+    <Touch  Files="$(_PostSharpOutput)"  ForceTouch="True"  AlwaysCreate="True" Condition="'$(PostSharpExitCode)'!='0'" />
+
+
+    <!-- Resign the assembly if neccesary -->
+    <PostSharp20Sign Assembly="@(IntermediateAssembly)"
+              KeyFile="$(AssemblyOriginatorKeyFile)"
+              Condition="'$(_SignAfterPostSharp)'=='True' AND '$(PostSharpExitCode)'=='0'"
+              />
+
+
+    <!-- Touch the semaphore file to enable incremental building (with a delay of 1 s
+         to avoid to post-compile the result of post-compilation during incremental rebuild   -->
+    <PostSharp20TouchWithDelay Files="@(IntermediateAssembly->'%(FullPath).postsharp')"
+            ReferenceFile="@(IntermediateAssembly)"
+            Delay="100"
+            Condition="'$(PostSharpExitCode)'=='0'"/>
+
+    <!-- Create a property to remember we are done. -->
+    <CreateProperty Value="True">
+      <Output TaskParameter="Value" PropertyName="PostSharp20Completed" />
+    </CreateProperty>
+
+    <!-- Write our files to the list of files written by this build process (for later cleaning) -->
+    <CreateItem Include="$(PostSharpSymbolFile)" Condition="'$(PostSharpWriteWeavingSymbols)'=='True'" >
+      <Output TaskParameter="Include"  ItemName="FileWritesShareable" />
+    </CreateItem>
+
+    <CreateItem Include="@(IntermediateAssembly->'%(FullPath).postsharp')">
+      <Output TaskParameter="Include"  ItemName="FileWritesShareable" />
+    </CreateItem>
+
+
+  </Target>
+
+  <Target Name="PostSharp20Verify" DependsOnTargets="GetFrameworkPaths"
+          Condition="'$(PostSharpVerify)'!='' And '$(_PostSharpOutput)'!=''">
+    <Exec Command="&quot;$(FrameworkSDKDir)bin\peverify&quot; &quot;$(OutDir)$(TargetFileName)&quot; /nologo /verbose"
+          Condition="'$(FrameworkSDKDir)'!=''"/>
+    <Warning Text="PostSharp could not be verified because the .NET Framework SDK is not installed."
+             Condition="'$(FrameworkSDKDir)'==''"/>
+  </Target>
+
+  <Target Name="PostSharp20Clean">
+    <RemoveDir Directories="$(PostSharpIntermediateDirectory);$(PostSharpBackupDirectory)" ContinueOnError="true"/>
+  </Target>
+
+  <!-- Introduces PostSharp in the chain of compilation targets -->
+  <PropertyGroup>
+    <CompileDependsOn>
+      PostSharp20InspectConstants;
+      PostSharp20InspectReferences;
+      PostSharp20DefineConstant;
+      $(CompileDependsOn);
+      PostSharp20
+    </CompileDependsOn>
+    <BuildDependsOn>
+      $(BuildDependsOn);
+      PostSharp20Verify
+    </BuildDependsOn>
+    <CleanDependsOn>
+      $(CleanDependsOn);
+      PostSharp20Clean
+    </CleanDependsOn>
+  </PropertyGroup>
+
+  <!-- If we have code analysis, we have to change the PrepareForRun chain so that
+       we copy output files to the backup directory before code analysis runs. -->
+  <PropertyGroup Condition="'$(RunCodeAnalysis)'=='true' or '$(RunCodeAnalysisOnce)'=='true'">
+    <PrepareForRunDependsOn>$(PrepareForRunDependsOn);PostSharp20CopyOutputToCodeAnalysis;RunCodeAnalysis</PrepareForRunDependsOn>
+  </PropertyGroup>
+
+  <Target Name="PostSharp20CopyOutputToCodeAnalysis" DependsOnTargets="CopyFilesToOutputDirectory" Condition="'$(PostSharp20Completed)'=='True'">
+
+    <!-- We copy all files from the output directory to the backup directory, 
+         expected the output assembly and pdb themselves (and xml serializers, since they could be invalid) -->
+    <CreateItem Include="$(OutDir)\*"
+                Exclude="$(IntermediateOutputPath)$(TargetName).pdb;@(IntermediateAssembly);$(IntermediateOutputPath)$(_SGenDllName)">
+      <Output ItemName="_PostSharpCompanionFiles" TaskParameter="Include"/>
+    </CreateItem>
+
+    <Copy SourceFiles="@(_PostSharpCompanionFiles)"  DestinationFolder="$(PostSharpBackupDirectory)"/>
+
+  </Target>
+</Project>

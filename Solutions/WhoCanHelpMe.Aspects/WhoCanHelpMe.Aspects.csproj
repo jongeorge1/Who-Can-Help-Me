@@ -65,7 +65,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\Microsoft\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="PostSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
+    <Reference Include="PostSharp">
+      <HintPath>..\..\ReferencedAssemblies\PostSharp\Reference Assemblies\.NET Framework 2.0\PostSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>

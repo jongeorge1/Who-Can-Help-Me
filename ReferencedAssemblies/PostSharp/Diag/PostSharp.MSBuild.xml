@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>PostSharp.MSBuild</name>
+  </assembly>
+  <members>
+    <member name="T:PostSharp.MSBuild.PostSharp20">
+      <summary>
+            <b>[MSBuild Task]</b> Execute PostSharp.
+            </summary>
+    </member>
+    <member name="M:PostSharp.MSBuild.PostSharp20.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:PostSharp.MSBuild.PostSharp20" /> task.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.AttachDebugger">
+      <summary>
+            If <c>true</c>, the method <see cref="T:System.Diagnostics.Debugger" />.<see cref="M:System.Diagnostics.Debugger.Launch" />
+            will be invoked before the execution of PostSharp, given the opportunity to
+            attach a debugger to the building process.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.ClientAttachDebugger">
+      <summary>
+            If <c>true</c>, the method <see cref="T:System.Diagnostics.Debugger" />.<see cref="M:System.Diagnostics.Debugger.Launch" />
+            will be invoked before the execution of PostSharp, given the opportunity to
+            attach a debugger to the building process.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.DisableReflection">
+      <summary>
+            If <c>true</c>, user assemblies will not be loaded into the CLR. This behavior is
+            typically desired when user assemblies are linked against the Compact Framework or Silverlight.
+            </summary>
+    </member>
+    <member name="M:PostSharp.MSBuild.PostSharp20.Execute">
+      <summary>
+            Executes the task.
+            </summary>
+      <returns>
+        <c>true</c> if the task was successful, otherwise <c>false</c>.</returns>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.ExitCode">
+      <summary>
+            Gets or sets the exit code of PostSharp.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.ExpectedMessages">
+      <summary>
+            A list of semicolon-separated message codes that are expected during the execution of PostSharp. The
+            task will fail if some expected message was not emitted.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.FailOnUnexpectedMessage">
+      <summary>
+            If <c>true</c>, this MSBuild task will fail if the task emits some message that was not listed in
+            <see cref="P:PostSharp.MSBuild.PostSharp20.ExpectedMessages" />, even if this message is not an error.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.Host">
+      <summary>
+            Gets or sets the kind of process that will host PostSharp.
+            Valid values are <c>Native</c>, <c>Managed</c>, and <c>PipeServer</c>.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.IgnoreError">
+      <summary>
+            If <c>true</c>, this MSBuild task will return successfully even in case of error.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.Input">
+      <summary>
+            Gets or sets the location of the assembly to be processed.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.InputReferenceDirectory">
+      <summary>
+            Directory according to which the <see cref="P:PostSharp.MSBuild.PostSharp20.Input" /> property should be
+            resolved, if a relative filename is given in <see cref="P:PostSharp.MSBuild.PostSharp20.Input" />.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.LicenseKey">
+      <summary>
+            Gets or sets the user license key.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.NoLogo">
+      <summary>
+            Indicates that the PostSharp tag line should not be printed.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.PipeTimeout">
+      <summary>
+            Gets or sets the timeout, in millisecond, of communication between the MSBuild task
+            and the pipe server. The default value is -1 (infinite).
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.Project">
+      <summary>
+            Gets or sets the PostSharp project to be executed. Required.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.Properties">
+      <summary>
+            Gets or sets the proerties passed to the PostSharp project.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.TargetPlatform">
+      <summary>
+            Gets or sets the platform (a combination of CLR version and processor architecture) under which PostSharp should be started. Valid values
+            are <c>2.0-x86</c>, <c>2.0-x64</c>, <c>4.0-x86</c>, and <c>4.0-x64</c>.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20.TraceCategories">
+      <summary>
+            A semicolon-separated list of trace categories that should be enabled.
+            </summary>
+    </member>
+    <member name="T:PostSharp.MSBuild.PostSharp20CheckPfx">
+      <summary>
+            <b>[MSBuild Task]</b> Checks the kind of key being used to sign an assembly.
+            If the key is a PFX, exports the SNK from it, sets the <see cref="P:PostSharp.MSBuild.PostSharp20CheckPfx.PublicKeyFile" />
+            to the path of this key and sets the <see cref="P:PostSharp.MSBuild.PostSharp20CheckPfx.SignAfterPostSharp" /> property
+            to <c>true</c>
+            </summary>
+    </member>
+    <member name="M:PostSharp.MSBuild.PostSharp20CheckPfx.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:PostSharp.MSBuild.PostSharp20CheckPfx" /> class</summary>
+    </member>
+    <member name="M:PostSharp.MSBuild.PostSharp20CheckPfx.Execute">
+      <summary>
+                    When overridden in a derived class, executes the task.
+                </summary>
+      <returns>true if the task successfully executed; otherwise, false.
+                </returns>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20CheckPfx.KeyFile">
+      <summary>
+            Full path to the key file.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20CheckPfx.PostSharpKeyFile">
+      <summary>
+            After task execution, gets the full path of the key that should
+            be used to sign the assembly after PostSharp.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20CheckPfx.PublicKeyFile">
+      <summary>
+            After task execution, gets the full path to the public key.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20CheckPfx.SignAfterPostSharp">
+      <summary>
+            After task exection, determines whether the assembly should be 
+            signed after PostSharp execution.
+            </summary>
+    </member>
+    <member name="T:PostSharp.MSBuild.PostSharp20GetCurrentProjectDirectory">
+      <summary>
+            <b>[MSBuild Task]</b> Gets the directory containing the current project 
+            or targets file.
+            </summary>
+    </member>
+    <member name="M:PostSharp.MSBuild.PostSharp20GetCurrentProjectDirectory.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:PostSharp.MSBuild.PostSharp20GetCurrentProjectDirectory" /> class</summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20GetCurrentProjectDirectory.Directory">
+      <summary>
+            After task execution, gets the directory containing the project or
+            target file that invoked the task.
+            </summary>
+    </member>
+    <member name="M:PostSharp.MSBuild.PostSharp20GetCurrentProjectDirectory.Execute">
+      <summary>
+                    When overridden in a derived class, executes the task.
+                </summary>
+      <returns>true if the task successfully executed; otherwise, false.
+                </returns>
+    </member>
+    <member name="T:PostSharp.MSBuild.PostSharp20MoveWithRetry">
+      <summary>
+            <b>[MSBuild Task]</b> Move or rename a file and
+            retries the operation during a defined amount of time
+            in case that a sharing violation exception occurs.
+            </summary>
+    </member>
+    <member name="M:PostSharp.MSBuild.PostSharp20MoveWithRetry.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:PostSharp.MSBuild.PostSharp20MoveWithRetry" /> class</summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20MoveWithRetry.Destination">
+      <summary>
+            Gets or sets the target file path.
+            </summary>
+    </member>
+    <member name="M:PostSharp.MSBuild.PostSharp20MoveWithRetry.Execute">
+      <summary>
+                    When overridden in a derived class, executes the task.
+                </summary>
+      <returns>true if the task successfully executed; otherwise, false.
+                </returns>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20MoveWithRetry.Source">
+      <summary>
+            Gets or sets the source file path.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20MoveWithRetry.Timeout">
+      <summary>
+            Gets or sets the timeout, in milliseconds, for the whole operation.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20MoveWithRetry.WarningTimeout">
+      <summary>
+            Gets or sets the timeout before a warning is emitted.
+            </summary>
+    </member>
+    <member name="T:PostSharp.MSBuild.PostSharp20Sign">
+      <summary>
+            <b>[MSBuild Task]</b> Signs an assembly using the <c>sn</c> utility.
+            </summary>
+    </member>
+    <member name="M:PostSharp.MSBuild.PostSharp20Sign.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:PostSharp.MSBuild.PostSharp20Sign" /> class</summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20Sign.Assembly">
+      <summary>
+            Full path of the assembly to be signed.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20Sign.KeyFile">
+      <summary>
+            Full path of the file containing the strong name key.
+            </summary>
+    </member>
+    <member name="T:PostSharp.MSBuild.PostSharp20TouchWithDelay">
+      <summary>
+            <b>[MSBuild Task]</b> Touches a file according to the modification time of another file.
+            </summary>
+    </member>
+    <member name="M:PostSharp.MSBuild.PostSharp20TouchWithDelay.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:PostSharp.MSBuild.PostSharp20TouchWithDelay" /> class</summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20TouchWithDelay.Delay">
+      <summary>
+            Gets or sets the delay w.r.t. <see cref="P:PostSharp.MSBuild.PostSharp20TouchWithDelay.ReferenceFile" />.
+            </summary>
+    </member>
+    <member name="M:PostSharp.MSBuild.PostSharp20TouchWithDelay.Execute">
+      <summary>
+                    When overridden in a derived class, executes the task.
+                </summary>
+      <returns>true if the task successfully executed; otherwise, false.
+                </returns>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20TouchWithDelay.Files">
+      <summary>
+            Gets or sets the files to be touched. Required.
+            </summary>
+    </member>
+    <member name="P:PostSharp.MSBuild.PostSharp20TouchWithDelay.ReferenceFile">
+      <summary>
+            Gets or sets the file giving the reference time.
+            </summary>
+    </member>
+  </members>
+</doc>

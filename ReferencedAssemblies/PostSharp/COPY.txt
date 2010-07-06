@@ -1,0 +1,27 @@
+======================================================================================
+ABOUT THE LIMITED REDISTRIBUTION LICENSE
+======================================================================================
+
+The License Agreement for PostSharp allows you to this software, or upload it to
+a public server, under some conditions (see License.pdf).
+
+However, you can only copy this software in whole, not in parts, and 
+in unmodified form:
+
+
+1. You can distribute the digitally signed setup program (PostSharp-2.x.x.x.exe), 
+
+- or -
+
+2. You can distribute the zip package (PostSharp-2.x.x.x.zip) or its
+   uncompressed content. To ensure that the content of a zip package of PostSharp 
+   is complete and genuine, execute the digitally signed utility:
+   PostSharp.IntegrityChecker.exe.
+
+
+THE LIMITED REDISTRIBUTION LICENSE DOES NOT APPLY TO SOURCE CODE.
+
+
+For details about the Limited Redistribution License, read file License.pdf or
+contact SharpCrafters at sales@sharpcrafters.com.
+

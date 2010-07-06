@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  
+  <!-- Override some properties-->
+  <PropertyGroup>
+    <BuildingProject>True</BuildingProject>
+    <PostSharpHost>Managed</PostSharpHost>
+    <PostSharpTargetPlatform>2.0-x86</PostSharpTargetPlatform>
+  </PropertyGroup>
+  
+  <!-- Import default PostSharp targets -->
+  <Import Project="PostSharp.targets"/>
+
+  <!-- Override the inspection of project references. XBuild does not support FusionName-->
+  <Target Name="PostSharp20InspectReferences"
+			Condition="'$(BuildingProject)'=='true' And '$(SkipPostSharp)'!='True' And '$(PostSharp20Project)'=='' "
+			DependsOnTargets="ResolveAssemblyReferences;PostSharp20InspectConstants;PostSharp20GetDirectory">
+
+    <Message Text="PostSharp parses the following references: @(ReferencePath -> '%(Filename)')."
+		    Importance="low"/>
+
+
+    <!-- Inspect direct references -->
+    <CreateProperty Condition="'%(ReferencePath.Filename)'=='PostSharp'" 
+                    Value="%(ReferencePath.FileName)">
+      <Output TaskParameter="Value" PropertyName="PostSharp20Reference" />
+    </CreateProperty>
+
+    <!-- Inspect indirect references -->
+    <CreateProperty Condition="'$(PostSharp20Reference)'=='' AND 
+                    '%(ReferenceDependencyPaths.Filename)'=='PostSharp'">
+      <Output TaskParameter="Value" PropertyName="PostSharp20Reference" />
+    </CreateProperty>
+
+
+    <Message Text="Detected reference to '$(PostSharp20Reference)'." Condition="'$(PostSharp20Reference)'!=''" />
+
+    <CreateProperty Condition="'$(PostSharp20Reference)'!=''" Value="$(_PostSharp20Directory)\$(PostSharpBuild)\Default.psproj">
+      <Output TaskParameter="Value" PropertyName="PostSharp20Project" />
+    </CreateProperty>
+
+  </Target>  
+  
+  
+  <!-- Define empty tasks for compatibility with Microsoft's implementation -->
+  <Target Name="_CopyFilesMarkedCopyLocal" DependsOnTargets="_CopyDeployFilesToOutputDirectory"/>
+  <Target Name="ResolveKeySource"/>
+  
+</Project>
