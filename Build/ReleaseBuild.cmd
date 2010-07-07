@@ -1,2 +1,2 @@
-%windir%\Microsoft.NET\Framework\v3.5\msbuild %0\..\Build.proj /p:IsDesktopBuild=false
+%windir%\Microsoft.NET\Framework\v4.0.30319\msbuild %0\..\Build.proj /p:IsDesktopBuild=false
 pause
