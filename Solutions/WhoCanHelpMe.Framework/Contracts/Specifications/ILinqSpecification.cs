@@ -1,4 +1,4 @@
-namespace WhoCanHelpMe.Domain.Contracts.Specifications
+namespace WhoCanHelpMe.Framework.Contracts.Specifications
 {
     #region Using Directives
 

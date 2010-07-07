@@ -6,7 +6,7 @@ namespace WhoCanHelpMe.Domain.Specifications
     using System.Linq;
     using System.Linq.Expressions;
 
-    using Contracts.Specifications;
+    using Framework.Contracts.Specifications;
 
     #endregion
     

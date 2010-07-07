@@ -5,7 +5,7 @@ namespace WhoCanHelpMe.Framework.Container
     using System.Reflection;
     using System.Web;
 
-    using Domain.Contracts.Container;
+    using Framework.Contracts.Container;
 
     using System.ComponentModel.Composition.Hosting;
 

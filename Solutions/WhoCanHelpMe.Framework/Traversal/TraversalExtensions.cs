@@ -6,7 +6,7 @@ namespace WhoCanHelpMe.Framework.Traversal
     using System.Collections.Generic;
     using System.Linq;
 
-    using Domain.Contracts.Specifications;
+	using Framework.Contracts.Specifications;
 
     using Enumerable;
 

@@ -8,7 +8,7 @@ namespace WhoCanHelpMe.Tasks.Registrars
     using Castle.MicroKernel.Registration;
     using Castle.Windsor;
 
-    using Domain.Contracts.Container;
+    using Framework.Contracts.Container;
 
     using Framework.Extensions;
 

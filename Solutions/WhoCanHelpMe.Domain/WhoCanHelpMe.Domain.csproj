@@ -103,17 +103,12 @@
     <Compile Include="Category.cs" />
     <Compile Include="Contracts\Configuration\IAnalyticsConfiguration.cs" />
     <Compile Include="Contracts\Configuration\INewsConfiguration.cs" />
-    <Compile Include="Contracts\Container\IComponentInitialiser.cs" />
-    <Compile Include="Contracts\Container\IComponentRegistrar.cs" />
-    <Compile Include="Contracts\Container\IComponentRegistrarMarker.cs" />
     <Compile Include="Contracts\Repositories\IAssertionRepository.cs" />
     <Compile Include="Contracts\Repositories\ICategoryRepository.cs" />
     <Compile Include="Contracts\Repositories\ILinqRepository.cs" />
     <Compile Include="Contracts\Repositories\IProfileRepository.cs" />
     <Compile Include="Contracts\Repositories\ITagRepository.cs" />
     <Compile Include="Contracts\Configuration\IConfigurationService.cs" />
-    <Compile Include="Contracts\Specifications\ILinqSpecification.cs" />
-    <Compile Include="Contracts\Specifications\ISpecification.cs" />
     <Compile Include="Contracts\Tasks\ICategoryTasks.cs" />
     <Compile Include="Contracts\Tasks\IIdentityTasks.cs" />
     <Compile Include="Contracts\Tasks\INewsTasks.cs" />
@@ -156,6 +151,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WhoCanHelpMe.Framework\WhoCanHelpMe.Framework.csproj">
+      <Project>{B3CA9DAB-0279-4637-BF8E-DFAE36F7A7CB}</Project>
+      <Name>WhoCanHelpMe.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

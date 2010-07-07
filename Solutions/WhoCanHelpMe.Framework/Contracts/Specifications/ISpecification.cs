@@ -1,4 +1,4 @@
-namespace WhoCanHelpMe.Domain.Contracts.Specifications
+namespace WhoCanHelpMe.Framework.Contracts.Specifications
 {
     /// <summary>
     /// Defines the behaviour of a specification which is used to select

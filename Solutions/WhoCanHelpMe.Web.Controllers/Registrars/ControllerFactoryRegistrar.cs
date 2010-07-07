@@ -7,7 +7,7 @@ namespace WhoCanHelpMe.Web.Controllers.Registrars
 
     using Castle.Windsor;
 
-    using Domain.Contracts.Container;
+    using Framework.Contracts.Container;
 
     using MvcContrib.Castle;
 

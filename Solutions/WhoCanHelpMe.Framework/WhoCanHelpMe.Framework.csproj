@@ -122,6 +122,11 @@
     <Compile Include="Container\MEF\MvcCatalog.cs" />
     <Compile Include="Container\ComponentInitialiser.cs" />
     <Compile Include="Container\ComponentRegistrar.cs" />
+    <Compile Include="Contracts\Container\IComponentInitialiser.cs" />
+    <Compile Include="Contracts\Container\IComponentRegistrar.cs" />
+    <Compile Include="Contracts\Container\IComponentRegistrarMarker.cs" />
+    <Compile Include="Contracts\Specifications\ILinqSpecification.cs" />
+    <Compile Include="Contracts\Specifications\ISpecification.cs" />
     <Compile Include="Enumerable\EnumerableExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\WindsorExtensions.cs" />
@@ -132,12 +137,6 @@
     <Compile Include="Traversal\TraversalExtensions.cs" />
     <Compile Include="Validation\IValidateMultipleProperties.cs" />
     <Compile Include="Validation\ValidatableExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WhoCanHelpMe.Domain\WhoCanHelpMe.Domain.csproj">
-      <Project>{8DEF56CD-601E-443C-9DCE-C4EC54C0B6A6}</Project>
-      <Name>WhoCanHelpMe.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

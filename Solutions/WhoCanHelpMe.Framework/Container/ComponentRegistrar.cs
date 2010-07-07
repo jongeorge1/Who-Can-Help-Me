@@ -8,7 +8,7 @@ namespace WhoCanHelpMe.Framework.Container
 
     using Castle.Windsor;
 
-    using Domain.Contracts.Container;
+    using Framework.Contracts.Container;
 
     using System.ComponentModel.Composition.Hosting;
 

@@ -4,6 +4,7 @@ namespace WhoCanHelpMe.Domain.Contracts.Repositories
 
     using System.Linq;
     using Specifications;
+    using Framework.Contracts.Specifications;
 
     #endregion
 
