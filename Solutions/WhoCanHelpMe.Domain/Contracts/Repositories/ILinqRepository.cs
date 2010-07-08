@@ -3,7 +3,6 @@ namespace WhoCanHelpMe.Domain.Contracts.Repositories
     #region Using Directives
 
     using System.Linq;
-    using Specifications;
     using Framework.Contracts.Specifications;
 
     #endregion

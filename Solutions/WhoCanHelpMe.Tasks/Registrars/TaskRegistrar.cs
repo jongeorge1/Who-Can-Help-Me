@@ -8,13 +8,13 @@ namespace WhoCanHelpMe.Tasks.Registrars
 	using Castle.MicroKernel.Registration;
 	using Castle.Windsor;
 
-	using Domain.Contracts.Container;
-
 	using Framework.Extensions;
 
 	using Properties;
 
 	using SharpArch.Web.Castle;
+
+	using WhoCanHelpMe.Framework.Contracts.Container;
 
 	#endregion
 
