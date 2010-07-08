@@ -8,7 +8,11 @@ namespace WhoCanHelpMe.Framework.Container
 
 	using Castle.Windsor;
 
+<<<<<<< HEAD
 	using Domain.Contracts.Container;
+=======
+	using Framework.Contracts.Container;
+>>>>>>> sonomofo/master
 
 	using System.ComponentModel.Composition.Hosting;
 

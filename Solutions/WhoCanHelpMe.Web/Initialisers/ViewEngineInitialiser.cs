@@ -4,8 +4,8 @@ namespace WhoCanHelpMe.Web.Initialisers
 
     using System.ComponentModel.Composition;
     using System.Web.Mvc;
-    
-    using Domain.Contracts.Container;
+
+    using Framework.Contracts.Container;
     
     using Spark;
     using Spark.Web.Mvc;

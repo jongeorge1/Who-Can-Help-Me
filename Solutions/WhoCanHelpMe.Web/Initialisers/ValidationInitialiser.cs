@@ -3,8 +3,8 @@ namespace WhoCanHelpMe.Web.Initialisers
     #region Using Directives
 
     using System.ComponentModel.Composition;
-    
-    using Domain.Contracts.Container;
+
+    using Framework.Contracts.Container;
 
     using Code;
 

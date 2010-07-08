@@ -5,7 +5,7 @@ namespace WhoCanHelpMe.Web.Registrars
     using System.ComponentModel.Composition;
     using Castle.Windsor;
 
-    using Domain.Contracts.Container;
+    using Framework.Contracts.Container;
 
 
     using SharpArch.Core.CommonValidator;
