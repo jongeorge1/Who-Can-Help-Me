@@ -107,9 +107,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\NHibernate\NHibernate.Validator.dll</HintPath>
     </Reference>
-    <Reference Include="PostSharp">
-      <HintPath>..\..\ReferencedAssemblies\PostSharp\Reference Assemblies\.NET Framework 2.0\PostSharp.dll</HintPath>
-    </Reference>
     <Reference Include="SharpArch">
       <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.dll</HintPath>
     </Reference>
