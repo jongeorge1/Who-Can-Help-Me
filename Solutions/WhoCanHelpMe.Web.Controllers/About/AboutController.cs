@@ -6,8 +6,6 @@ namespace WhoCanHelpMe.Web.Controllers.About
     using System.Collections.Generic;
     using System.Web.Mvc;
 
-    using Aspects.Caching;
-
     using Domain.Contracts.Tasks;
 
     using Framework.Caching;
@@ -22,15 +20,21 @@ namespace WhoCanHelpMe.Web.Controllers.About
 
     public class AboutController : BaseController
     {
+        private static readonly ICacheKey IndexInnerCacheKey = new CacheKey(CacheName.AdHoc, "AboutController.IndexInner");
+
         private readonly IMapper<IList<NewsItem>, AboutPageViewModel> aboutPageViewModelMapper;
 
         private readonly INewsTasks newsTasks;
 
+        private readonly ICachingService cachingService;
+
         public AboutController(
             INewsTasks newsTasks,
-            IMapper<IList<NewsItem>, AboutPageViewModel> aboutPageViewModelMapper)
+            IMapper<IList<NewsItem>, AboutPageViewModel> aboutPageViewModelMapper, 
+            ICachingService cachingService)
         {
             this.newsTasks = newsTasks;
+            this.cachingService = cachingService;
             this.aboutPageViewModelMapper = aboutPageViewModelMapper;
         }
 
@@ -41,12 +45,25 @@ namespace WhoCanHelpMe.Web.Controllers.About
             return this.View(pageViewModel);
         }
 
-        [Cached(CacheName.AdHoc)]
         private PageViewModel IndexInner()
         {
-            var developmentTeamBuzz = this.newsTasks.GetDevelopmentTeamBuzz();
+            var viewModel = this.cachingService[IndexInnerCacheKey] as PageViewModel;
 
-            return this.aboutPageViewModelMapper.MapFrom(developmentTeamBuzz);
+            if (viewModel == null)
+            {
+                lock (IndexInnerCacheKey)
+                {
+                    viewModel = this.cachingService[IndexInnerCacheKey] as PageViewModel;
+                    if (viewModel == null)
+                    {
+                        var buzz = this.newsTasks.GetDevelopmentTeamBuzz();
+                        viewModel = this.aboutPageViewModelMapper.MapFrom(buzz);
+                        this.cachingService.Add(IndexInnerCacheKey, viewModel);
+                    }
+                }
+            }
+
+            return viewModel;
         }
 
         public ActionResult DemonstrateErrorHandling()
