@@ -137,6 +137,7 @@
     <Compile Include="News\Configuration\NewsConfiguration.cs" />
     <Compile Include="News\Configuration\NewsConfigurationSectionCode.cs" />
     <Compile Include="News\TwitterNewsService.cs" />
+    <Compile Include="NHibernateMaps\AutomappingConfiguration.cs" />
     <Compile Include="NHibernateMaps\Conventions\CustomForeignKeyConvention.cs" />
     <Compile Include="Registrars\ConfigurationRegistrar.cs" />
     <Compile Include="Registrars\GenericRepositoryRegistrar.cs" />
