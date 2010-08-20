@@ -140,6 +140,8 @@
 
         private void InitialiseNHibernateSessions()
         {
+            NHibernateSession.ConfigurationCache = new NHibernateConfigurationFileCache();
+
             NHibernateSession.Init(
                 this.webSessionStorage,
                 new[] { Server.MapPath("~/bin/WhoCanHelpMe.Infrastructure.dll") },
