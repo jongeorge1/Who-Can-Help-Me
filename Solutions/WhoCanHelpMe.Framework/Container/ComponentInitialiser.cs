@@ -1,19 +1,15 @@
 namespace WhoCanHelpMe.Framework.Container
 {
-    #region Using Directives
-
     using System.Reflection;
     using System.Web;
 
-    using Domain.Contracts.Container;
+    using Framework.Contracts.Container;
 
     using System.ComponentModel.Composition.Hosting;
 
-    using Enumerable;
-
     using MEF;
 
-    #endregion
+    using WhoCanHelpMe.Framework.Extensions;
 
     public static class ComponentInitialiser
     {

@@ -34,7 +34,9 @@
         public IList<Tag> GetMostPopularTags(int count)
         {
             return this.tagRepository
-                       .PopularTags(count)
+                       .FindAll()
+                       .OrderByDescending(tag => tag.Views)
+                       .Take(count)
                        .ToList();
         }
 

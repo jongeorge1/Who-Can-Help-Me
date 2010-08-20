@@ -3,19 +3,24 @@
     using System.Linq;
     using System.Web.Mvc;
 
-    using Aspects.Caching;
-
     using Domain.Contracts.Tasks;
 
     using Framework.Caching;
 
     public class TagController : BaseController
     {
+        private const string CacheKeyBase = "TagController.StartingWithInner:";
+
+        private static readonly object StartingWithInnerSyncRoot = new object();
+
         private readonly ITagTasks tagTasks;
 
-        public TagController(ITagTasks tagTasks)
+        private readonly ICachingService cachingService;
+
+        public TagController(ITagTasks tagTasks, ICachingService cachingService)
         {
             this.tagTasks = tagTasks;
+            this.cachingService = cachingService;
         }
 
         /// <summary>
@@ -35,14 +40,30 @@
                 };
         }
 
-        [Cached(CacheName.AdHoc)]
         private string StartingWithInner(string value)
         {
-            var result = this.tagTasks.GetWhereNameStartsWith(value);
+            var cacheKey = new CacheKey(CacheName.AdHoc, CacheKeyBase + value);
 
-            var resultStrings = result.ToList().ConvertAll(t => t.Name).ToArray();
+            var result = this.cachingService[cacheKey] as string;
 
-            return string.Join("\n", resultStrings);
+            if (result == null)
+            {
+                lock (StartingWithInnerSyncRoot)
+                {
+                    result = this.cachingService[cacheKey] as string;
+
+                    if (result == null)
+                    {
+                        var matchingTags = this.tagTasks.GetWhereNameStartsWith(value);
+                        var resultStrings = matchingTags.Select(t => t.Name).ToArray();
+                        result = string.Join("\n", resultStrings);
+                        this.cachingService.Add(cacheKey, result);
+                    }
+                }
+
+            }
+
+            return result;
         }
     }
 }

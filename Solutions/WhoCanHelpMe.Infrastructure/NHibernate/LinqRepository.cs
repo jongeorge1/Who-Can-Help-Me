@@ -3,7 +3,7 @@ namespace WhoCanHelpMe.Infrastructure.NHibernate
     #region Using Directives
 
     using System.Linq;
-    using Domain.Contracts.Specifications;
+    using Framework.Contracts.Specifications;
 
     using global::NHibernate.Linq;
 

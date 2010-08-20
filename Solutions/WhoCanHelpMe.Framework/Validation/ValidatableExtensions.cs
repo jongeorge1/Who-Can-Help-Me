@@ -6,7 +6,6 @@ namespace WhoCanHelpMe.Framework.Validation
     using System.Linq;
 
     using WhoCanHelpMe.Framework.Extensions;
-    using WhoCanHelpMe.Framework.Traversal;
 
     using SharpArch.Core.CommonValidator;
     using SharpArch.Core.NHibernateValidator.CommonValidatorAdapter;
@@ -34,7 +33,7 @@ namespace WhoCanHelpMe.Framework.Validation
             {
                 var errors = new List<ErrorInfo>();
 
-                entity.ValidationResults().ForEach(x => errors.Add(x.GetErrorInfo()));
+                entity.ValidationResults().Each(x => errors.Add(x.GetErrorInfo()));
 
                 throw new RulesException(errors);
             }
@@ -92,7 +91,7 @@ namespace WhoCanHelpMe.Framework.Validation
 
             // If the validation message matches one of the attributes messages,
             // then set the correct property path, based on the primary property name
-            validatorProperties.ForEach(x =>
+            validatorProperties.Each(x =>
                 {
                     if (result.Message == ((IValidateMultipleProperties) x).Message)
                     {

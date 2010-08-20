@@ -87,13 +87,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\RhinoMocks\Rhino.Mocks.dll</HintPath>
     </Reference>
-    <Reference Include="SharpArch.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpArch.Core.NHibernateValidator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.Core.NHibernateValidator.dll</HintPath>
+    <Reference Include="SharpArch">
+      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -118,6 +113,9 @@
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Framework\Extensions\EnumerableExtensionsSpecs.cs" />
+    <Compile Include="Framework\Extensions\ListExtensionsSpecs.cs" />
+    <Compile Include="Framework\Extensions\StringExtensionsSpecs.cs" />
     <Compile Include="ServiceLocatorHelper.cs" />
     <Compile Include="Tasks\CategoryTasksSpecs.cs" />
     <Compile Include="Tasks\NewsTasksSpecs.cs" />
@@ -125,7 +123,6 @@
     <Compile Include="Tasks\SearchTasksSpecs.cs" />
     <Compile Include="Tasks\SiteMetaDataTasks.cs" />
     <Compile Include="Tasks\TagTasksSpecs.cs" />
-    <Compile Include="TestHelperExtensions.cs" />
     <Compile Include="Web.Controllers\RequireNoExistingProfileAttributeSpecs.cs" />
     <Compile Include="Web.Controllers\HomeControllerSpecs.cs" />
     <Compile Include="Web.Controllers\NavigationControllerSpecs.cs" />

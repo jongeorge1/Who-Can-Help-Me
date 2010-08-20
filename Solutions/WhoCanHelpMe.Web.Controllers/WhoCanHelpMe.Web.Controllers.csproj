@@ -107,10 +107,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\NHibernate\NHibernate.Validator.dll</HintPath>
     </Reference>
-    <Reference Include="PostSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
-    <Reference Include="SharpArch.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5f559ae0ac4e006, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.Core.dll</HintPath>
+    <Reference Include="SharpArch">
+      <HintPath>..\..\ReferencedAssemblies\SharpArchitecture\SharpArch.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -192,10 +190,6 @@
     <Compile Include="Search\ViewModels\TagViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WhoCanHelpMe.Aspects\WhoCanHelpMe.Aspects.csproj">
-      <Project>{A557B251-FE2C-481E-9E28-CCD7FAEBF398}</Project>
-      <Name>WhoCanHelpMe.Aspects</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WhoCanHelpMe.Domain\WhoCanHelpMe.Domain.csproj">
       <Project>{8DEF56CD-601E-443C-9DCE-C4EC54C0B6A6}</Project>
       <Name>WhoCanHelpMe.Domain</Name>
@@ -222,6 +216,5 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

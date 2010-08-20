@@ -3,18 +3,17 @@ namespace WhoCanHelpMe.Framework.Container
     #region Using Directives
 
     using System.Reflection;
-    using System.Security.Permissions;
     using System.Web;
 
     using Castle.Windsor;
 
-    using Domain.Contracts.Container;
+    using Framework.Contracts.Container;
 
     using System.ComponentModel.Composition.Hosting;
 
-    using Enumerable;
-
     using MEF;
+
+    using WhoCanHelpMe.Framework.Extensions;
 
     #endregion
 

@@ -8,7 +8,7 @@ namespace WhoCanHelpMe.Infrastructure.Registrars
     using Castle.MicroKernel.Registration;
     using Castle.Windsor;
 
-    using Domain.Contracts.Container;
+    using Framework.Contracts.Container;
 
     using Framework.Extensions;
 
@@ -25,7 +25,7 @@ namespace WhoCanHelpMe.Infrastructure.Registrars
                     AllTypes.Pick()
                             .FromAssembly(Assembly.GetAssembly(typeof(InfrastructureRegistrarMarker)))
                             .If(f => f.Namespace.Equals("WhoCanHelpMe.Infrastructure.Repositories"))
-                            .WithService.FirstNonGenericCoreInterface("WhoCanHelpMe.Domain.Contracts.Repositories"));
+                            .WithService.FirstNonGenericInterface("WhoCanHelpMe.Domain.Contracts.Repositories"));
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace WhoCanHelpMe.Domain.Contracts.Container
+namespace WhoCanHelpMe.Framework.Contracts.Container
 {
     public interface IComponentRegistrarMarker { }
 }
