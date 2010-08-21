@@ -23,10 +23,5 @@ namespace WhoCanHelpMe.Infrastructure.NHibernateMaps
         {
             return member.Name == "Id";
         }
-
-        public override bool AbstractClassIsLayerSupertype(System.Type type)
-        {
-            return type == typeof(Entity) || type == typeof(EntityWithTypedId<>);
-        }
     }
 }

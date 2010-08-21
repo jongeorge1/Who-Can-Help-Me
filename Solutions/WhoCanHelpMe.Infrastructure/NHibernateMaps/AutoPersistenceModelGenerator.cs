@@ -26,6 +26,8 @@ namespace WhoCanHelpMe.Infrastructure.NHibernateMaps
         public AutoPersistenceModel Generate()
         {
             var mappings = AutoMap.AssemblyOf<Profile>(new AutomappingConfiguration());
+            mappings.IgnoreBase<Entity>();
+            mappings.IgnoreBase(typeof(EntityWithTypedId<>));
             mappings.Conventions.Setup(GetConventions());
             mappings.UseOverridesFromAssemblyOf<AutoPersistenceModelGenerator>();
 
@@ -42,6 +44,5 @@ namespace WhoCanHelpMe.Infrastructure.NHibernateMaps
                        c.Add<TableNameConvention>();
                    };
         }
-
     }
 }
