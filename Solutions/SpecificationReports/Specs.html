@@ -1,0 +1,2048 @@
+<html>
+<head>
+  <title>Machine.Specifications Report</title>
+  <style type="text/css">body {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: .9em;
+}
+
+.count {
+  color: lightgrey;
+}
+
+.failure {
+  color: red;
+  font-weight: bold;
+  display: inline;
+}
+
+.notimplemented {
+  color: orange;
+  font-weight: bold;
+  display: inline;
+}
+
+p.exception_type {
+  color: black;
+  font-weight: bold;
+  display: inline;
+}
+
+pre.exception_message {
+  border-style: dashed;
+  border-color: #FF828D;
+  border-width: thin;
+  background-color: #FFD2CF;
+  white-space: pre-wrap; /* CSS2.1 compliant */
+  white-space: -moz-pre-wrap; /* Mozilla-based browsers */
+  white-space: o-pre-wrap; /* Opera 7+ */
+  padding: 1em;
+}
+
+hr {
+  color: lightgrey;
+  border: 1px solid lightgrey;
+  height: 1px;
+}
+
+ul.prev-next {
+  padding: 0;
+  margin: 0;
+  font-size: 2em;
+  }
+  
+.spec ul.prev-next {
+  float: right;
+  right: 30%;
+  position: absolute;
+  margin-top: -1em;
+  }
+
+ul.prev-next li {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+ul.prev-next li a {
+  color: lightgrey;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0 .3em;
+  border: 1px solid lightgrey;
+}
+
+ul.prev-next li.notimplemented a {
+  border-color: orange;
+}
+
+ul.prev-next li.failure a {
+  border-color: red;
+}
+
+ul.prev-next li.notimplemented a:hover {
+  background-color: orange;
+  color: #000;
+}
+
+ul.prev-next li.failure a:hover {
+  background-color: red;
+  color: #fff;
+}
+
+ul.prev-next li.back a:hover {
+  background-color: #444;
+  color: #fff;
+}
+
+div.supplement {
+  display: none;
+}
+  
+@media print {
+  ul.prev-next {
+    display: none;
+  }
+}
+  </style>
+</head>
+<body>
+  <ul class="prev-next">
+  </ul>
+<h1>
+    MSpecTests.WhoCanHelpMe
+</h1>
+<h2 class="count">
+  16 concerns,
+  85 contexts,
+  188 specifications
+</h2>
+
+  <hr/>
+  <hr/>
+<h2 class="concern">
+  CategoryTasks specifications
+</h2>
+<h3 class="count">
+  4 contexts, 8 specifications
+</h3><h3 class="context">
+  when the category tasks are asked for a category by id
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="29">should ask the category repository for the category by id</a>
+
+
+
+
+<script type="text/javascript">
+  function toggleVisibility(id, description)
+  {
+    var section = document.getElementById(id);
+    var link = document.getElementById(id + "_link");
+
+    if (section.style.display == "block")
+    {
+      section.style.display = "none";
+      link.innerHTML = "Show " + description;
+    } else
+    {
+      section.style.display = "block";
+      link.innerHTML = "Hide " + description;
+    }
+  };
+</script> 
+
+          </li><li class="spec"><a name="30">should return the matching category</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the category tasks are asked for a category by id and there is no matching category
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="31">should ask the category repository for the category by id</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="32">should return null</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the category tasks are asked to get all
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="25">should ask the category repository to get all</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="26">should return the list of categories</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the category tasks are asked to get all but there are no categories in the repository
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="27">should ask the category repository to get all</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="28">should return an empty list</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  EnumerableExtensions specifications
+</h2>
+<h3 class="count">
+  4 contexts, 4 specifications
+</h3><h3 class="context">
+  when the enumerable extensions each method is used
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="1">should call the action for each item in the list</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the enumerable extensions each method is used with a null action
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="4">should throw an argument null exception</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the enumerable extensions each method is used with a null collection
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="3">should throw an argument null exception</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the enumerable extensions each method is used with an empty list
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="2">should not call the target method</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  HomeController specifications
+</h2>
+<h3 class="count">
+  2 contexts, 8 specifications
+</h3><h3 class="context">
+  when the home controller is asked for the default view
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="110">should return the default view</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="111">should get the view model from the home view model mapper</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="112">should pass the view model to the view</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the navigation controller is asked for the header
+</h3>
+<h4 class="count">
+  5 specifications
+</h4><ul><li class="spec"><a name="113">should ask the identity service if the user is signed in</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="114">should return the default view</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="115">should not use a master page</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="116">should set the view model property to a new menu view model</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="117">should set the properties of the view model correctly</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  ListExtensions specifications
+</h2>
+<h3 class="count">
+  3 contexts, 3 specifications
+</h3><h3 class="context">
+  when the list extensions add range method is called
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="5">should add the contents of the collection to the target list</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the list extensions add range method is called and the list to add is null
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="7">should throw an argument null exception</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the list extensions add range method is called and the target list is null
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="6">should throw an argument null exception</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  NewsTasks specifications
+</h2>
+<h3 class="count">
+  1 context, 1 specification
+</h3><h3 class="context">
+  when the news tasks are asked to get headlines
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="33">should return the list of headlines</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  ProfileController specifications
+</h2>
+<h3 class="count">
+  11 contexts, 35 specifications
+</h3><h3 class="context">
+  when the profile controller is asked for a specific profile
+</h3>
+<h4 class="count">
+  4 specifications
+</h4><ul><li class="spec"><a name="147">should ask the user tasks for the user</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="148">should ask the profile view model mapper to map the user</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="149">should return the default view</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="150">should pass the view model to the profile view</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile controller is asked for a specific profile but the profile does not exist
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="151">should ask the user tasks for the profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="152">should return a not found result</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile controller is asked for the create view
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="118">should ask the create profile page view model builder to map the view model</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="119">should return the default view</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="120">should pass the view model to the view</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile controller is asked for the default action
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="134">should redirect to the update action</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile controller is asked for the update view
+</h3>
+<h4 class="count">
+  6 specifications
+</h4><ul><li class="spec"><a name="135">should ask the identity service for the current identity</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="136">should ask the user tasks for the user</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="137">should ask the category tasks for all categories</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="138">should ask the profile view model mapper to map the user and categories</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="139">should return the profile view</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="140">should pass the view model to the profile view</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile controller is asked to delete a profile
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="127">should ask the identity service for the logged in user</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="128">should ask the user tasks to delete the profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="129">should redirect to home</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile controller is asked to delete an assertion
+</h3>
+<h4 class="count">
+  4 specifications
+</h4><ul><li class="spec"><a name="130">should ask the identity service for the current identity</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="131">should ask the user tasks for the user</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="132">should tell the user tasks to remove the assertion</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="133">should redirect to the update action</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile controller is told to create a new profile
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="121">should ask the identity service for the logged in user</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="122">should ask the user tasks to create the new profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="123">should redirect to the update action</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile controller is told to create a new profile with invalid data
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="124">should ask the identity service for the logged in user</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="125">should ask the user tasks to create the new profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="126">should redirect to the create action</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile controller is told to update a profile
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="141">should ask the identity service for the current identity</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="142">should ask the user tasks to add the new assertion</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="143">should redirect to the update action</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile controller is told to update a profile with invalid data
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="144">should ask the identity service for the current identity</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="145">should ask the user tasks to add the new assertion</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="146">should redirect to the update action</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  ProfileTasks specifications
+</h2>
+<h3 class="count">
+  18 contexts, 38 specifications
+</h3><h3 class="context">
+  when the profile tasks is asked to add an assertion with a new tag name
+</h3>
+<h4 class="count">
+  6 specifications
+</h4><ul><li class="spec"><a name="51">should ask the profile repository for the users profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="52">should ask the tag repository for the tag to add</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="53">should ask the category repository for the matching category</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="54">should add the new assertion to the profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="55">should ask the profile repository to save the profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="56">should ask the tag repository to save the new tag</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to add an assertion with an existing tag name
+</h3>
+<h4 class="count">
+  6 specifications
+</h4><ul><li class="spec"><a name="45">should ask the profile repository for the users profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="46">should ask the tag repository for the tag to add</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="47">should ask the category repository for the matching category</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="48">should add the new assertion to the profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="49">should ask the profile repository to save the profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="50">should not modify the existing tag</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to add an assertion with an invalid category id
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="59">should throw a postcondition exception containing the error</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to add an assertion without specifying a tag name
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="57">should throw a precondition exception containing the error</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to add an assertion without specifying a user name
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="58">should throw a precondition exception containing the error</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to create a profile
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="60">should create a new profile based on the create profile details</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="61">should ask the profile repository to save the new profile</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to create a profile with a user name that already has a profile
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="65">should ask the profile repository to save the new profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="66">should catch the exception thrown by the repository</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="67">should throw a postcondition exception containing the error</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to create a profile without specifying a first name
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="63">should throw a precondition exception containing the error</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to create a profile without specifying a last name
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="64">should throw a precondition exception containing the error</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to create a profile without specifying a user name
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="62">should throw a precondition exception containing the error</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to delete a profile
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="68">should ask the profile repository for the users profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="69">should ask the profile repository to delete the profie</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to delete a profile for a user name that does not have a profile
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="70">should ask the profile repository for the users profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="71">should not try and delete anything</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to get a profile by profile id
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="38">should ask the repository for the profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="39">should return the profile it retrieved from the repository</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to get a profile by profile id and there is no matching profile
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="40">should ask the repository for the profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="41">should return null</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to get a profile by user name
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="34">should ask the repository for the profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="35">should return the profile it retrieved from the repository</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to get a profile by user name and there is no matching profile
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="36">should ask the repository for the profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="37">should return null</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to remove an assertion
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="42">should remove the assertion from the profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="43">should ask the profile repository to save the profile</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the profile tasks is asked to remove an assertion that does not belong to the specified profile
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="44">should do nothing</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  RequireExistingProfileAttribute specifications
+</h2>
+<h3 class="count">
+  2 contexts, 6 specifications
+</h3><h3 class="context">
+  when the require existing profile attribute is used and the user does not have a profile
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="156">should ask the identity service for the current identity</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="157">should ask the profile tasks for the current user profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="158">should redirect</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the require existing profile attribute is used and the user has a profile
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="153">should ask the identity service for the current identity</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="154">should ask the profile tasks for the current user profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="155">should not redirect</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  RequireNoExistingProfileAttribute specifications
+</h2>
+<h3 class="count">
+  2 contexts, 6 specifications
+</h3><h3 class="context">
+  when the require no existing profile attribute is used and the user does not have a profile
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="107">should ask the identity service for the current identity</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="108">should ask the profile tasks for the current user profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="109">should not redirect</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the require no existing profile attribute is used and the user has a profile
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="104">should ask the identity service for the current identity</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="105">should ask the profile tasks for the current user profile</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="106">should redirect</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  SearchController specifications
+</h2>
+<h3 class="count">
+  2 contexts, 9 specifications
+</h3><h3 class="context">
+  when the search controller is asked for the default view
+</h3>
+<h4 class="count">
+  4 specifications
+</h4><ul><li class="spec"><a name="159">should return the default view</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="160">should get the popular tags from the tag tasks</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="161">should get the view model from the search view model mapper</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="162">should pass the view model to the view</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the search controller is asked to search by tag name
+</h3>
+<h4 class="count">
+  5 specifications
+</h4><ul><li class="spec"><a name="163">should return the search results by tag view</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="164">should get the view model from the search results view model mapper</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="165">should pass the view model to the view</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="166">should get the popular tags from the tag tasks</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="167">should get the matching assertions from the search tasks</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  SearchTasks specifications
+</h2>
+<h3 class="count">
+  3 contexts, 12 specifications
+</h3><h3 class="context">
+  when the search tasks are asked to search by tag name and there are matching assertions
+</h3>
+<h4 class="count">
+  5 specifications
+</h4><ul><li class="spec"><a name="72">should ask the tag repository for the tag with the specified name</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="73">should update the view count on the tag</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="74">should ask the assertion repository for the matching assertions</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="75">should return the list of matching assertions</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="76">should sort the matching assertions by profile last name</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the search tasks are asked to search by tag name and there are no matching assertions
+</h3>
+<h4 class="count">
+  4 specifications
+</h4><ul><li class="spec"><a name="77">should ask the tag repository for the tag with the specified name</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="78">should update the view count on the tag</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="79">should ask the assertion repository for the matching assertions</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="80">should return an empty list</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the search tasks are asked to search by tag name and there is no matching tag
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="81">should ask the tag repository for the tag with the specified name</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="82">should not ask the assertion repository for matching assertions</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="83">should return an empty list</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  SiteMetaDataTasks specifications
+</h2>
+<h3 class="count">
+  1 context, 6 specifications
+</h3><h3 class="context">
+  when the site metadata tasks is asked to get metadata
+</h3>
+<h4 class="count">
+  6 specifications
+</h4><ul><li class="spec"><a name="84">should return site metadata</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="85">should return the correct analytics identifier</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="86">should return the correct site verification</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="87">should return the correct site title</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="88">should return the list of scripts to include</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="89">should return the list of stylesheets to include</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  StringExtensions specifications
+</h2>
+<h3 class="count">
+  17 contexts, 17 specifications
+</h3><h3 class="context">
+  when the string extensions first n characters method is called
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="12">should get the requested number of characters</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions first n characters method is called with a null input string
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="13">should throw an argument exception</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions first n characters method is called with an empty input string
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="14">should throw an argument exception</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions first n characters method is called with an input string shorter than the number of characters requested
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="15">should throw an argument exception</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions first n words method is called
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="20">should return the requested number of words</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions first n words method is called and no words are requested
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="23">should return an empty string</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions first n words method is called and the input string contains fewer words than the number requested
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="24">should return the input string</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions first n words method is called with a null input string
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="21">should throw an argument exception</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions first n words method is called with an empty input string
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="22">should throw an argument exception</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions format with method is called
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="11">should format the string with the specified value</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions is null or empty method is called with a null string
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="8">should return true</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions is null or empty method is called with a string that has a value
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="10">should return true</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions is null or empty method is called with an empty string
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="9">should return true</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions last n characters method is called
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="16">should get the requested number of characters</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions last n characters method is called with a null input string
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="17">should throw an argument exception</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions last n characters method is called with an empty input string
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="18">should throw an argument exception</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the string extensions last n characters method is called with an input string shorter than the number of characters requested
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="19">should throw an argument exception</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  TagController specifications
+</h2>
+<h3 class="count">
+  1 context, 3 specifications
+</h3><h3 class="context">
+  when the tag controller is asked for tags starting with a string
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="168">should return a content result</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="169">should ask the tag tasks for the matching tags</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="170">should set the content result data to the list of matching tags</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  TagTasks specifications
+</h2>
+<h3 class="count">
+  6 contexts, 14 specifications
+</h3><h3 class="context">
+  when the tag tasks are asked for the most popular tags
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="97">should ask the tag repository for the popular tags</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="98">should return two tags</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="99">should sort the tag list correctly</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the tag tasks are asked to get a tag by name
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="100">should ask the tag repository for the matching tag</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="101">should return the matching tag</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the tag tasks are asked to get a tag by name and there is no matching tag
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="102">should ask the tag repository for the matching tag</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="103">should return null</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the tag tasks are asked to get tags matching starting characters and there are matching tags
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="92">should ask the tag repository for the matching tags</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="93">should return the list of matching tags</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="94">should sort the matching tags alphabetically</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the tag tasks are asked to get tags matching starting characters and there are no matching tags
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="95">should ask the tag repository for the matching tags</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="96">should return an empty list</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the tag tasks are asked to get tags matching starting characters but no characters are supplied
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="90">should not ask the repository for matching tags</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="91">should return an empty list</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  UserController specifications
+</h2>
+<h3 class="count">
+  8 contexts, 18 specifications
+</h3><h3 class="context">
+  when the user controller is asked for the default view and the user is logged in
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="171">should ask the identity service if the user is signed in</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="172">should redirect to home</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the user controller is asked for the default view and the user is not logged in
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="173">should ask the identity service if the user is signed in</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="174">should redirect to the login action</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the user controller is asked for the login view and the user is logged in
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="175">should ask the identity service if the user is signed in</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="176">should redirect to home</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the user controller is asked for the login view and the user is not logged in
+</h3>
+<h4 class="count">
+  4 specifications
+</h4><ul><li class="spec"><a name="177">should ask the identity service if the user is signed in</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="178">should ask the login page view model mapper to map the view model</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="179">should return the default view</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="180">should pass the view model to the view</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the user controller is asked to authenticate and authentication is unsuccessful
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="187">should ask the identity service to authenticate the user</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="188">should redirect to the login view</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the user controller is asked to authenticate with a return url and authentication is successful
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="183">should ask the identity service to authenticate the user</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="184">should redirect to the return url</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the user controller is asked to authenticate without a return url and authentication is successful
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="185">should ask the identity service to authenticate the user</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="186">should redirect to home</a>
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  when the user controller is asked to logout
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="181">should ask the identity service to log the current user out</a>
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="182">should redirect to home</a>
+
+
+
+
+ 
+
+          </li>
+        </ul>
+    <hr/>
+</body>
+</html>

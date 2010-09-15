@@ -8,9 +8,48 @@
   
   <PropertyGroup>
     <SolutionName>WhoCanHelpMe</SolutionName>
+    <SolutionsPath>$(MSBuildProjectDirectory)\..\Solutions</SolutionsPath>
     <BuildPath>$(MSBuildProjectDirectory)\..\BuildSystem</BuildPath>
+    <WebAppPath>$(SolutionsPath)\$(SolutionName).Web</WebAppPath>
+    <SolutionRoot>$(BuildPath)\..\..</SolutionRoot>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageFiles Include="$(WebAppPath)\**\*.*"
+                  Exclude="$(WebAppPath)\**\*.cs;
+                             $(WebAppPath)\**\*.csproj;
+                             $(WebAppPath)\**\*.user;
+                             $(WebAppPath)\**\*.vspscc;
+                             $(WebAppPath)\**\bin\*.pdb;
+                             $(WebAppPath)\**\*.xml;
+                             $(WebAppPath)\**\Code\**;
+                             $(WebAppPath)\**\Initialisers\**;
+                             $(WebAppPath)\**\obj\**;
+                             $(WebAppPath)\**\Properties\**;
+                             $(WebAppPath)\**\Registrars\**;
+                             $(WebAppPath)\**\ResourceFiles\**;">
+      <PackageName>$(DropsPath)\$(GlobalBuildVersionNumber)\$(PackageName).v$(GlobalBuildVersionNumber).zip</PackageName>
+    </PackageFiles>
+
+    <PackageFiles Include="$(WebAppPath)\**\*.*"
+                       Exclude="$(WebAppPath)\**\bin\**;
+                                  $(WebAppPath)\**\Logs\**;
+                                  $(WebAppPath)\**\obj\**;">
+      <PackageName>$(DropsPath)\$(GlobalBuildVersionNumber)\$(PackageName).Source.v$(GlobalBuildVersionNumber).zip</PackageName>
+    </PackageFiles>
+
+    <PackageFiles Include="$(SpecificationReportPath)\**\*.*">
+      <PackageName>$(DropsPath)\$(GlobalBuildVersionNumber)\$(PackageName).Specifications.v$(GlobalBuildVersionNumber).zip</PackageName>
+    </PackageFiles>
+  </ItemGroup>
+
   <Import Project="$(BuildPath)\BuildSystem.proj" />
+
+  <Target Name="Build"
+          DependsOnTargets="CleanSolution;
+                            BuildSolutions;
+                            RunMSpecSpecifications;
+                            Package;
+                            BuildSuccess" />
 
 </Project>
