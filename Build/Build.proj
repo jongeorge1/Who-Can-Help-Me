@@ -1,29 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="PackageArtefacts" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <PropertiesPath>$(MSBuildProjectDirectory)\Properties</PropertiesPath>
+    <RunMSpecTests>True</RunMSpecTests>
+    <MSpecSpecificationAssemblies>"$(MSBuildProjectDirectory)\..\Solutions\MSpecTests.WhoCanHelpMe\Bin\Release\MSpecTests.WhoCanHelpMe.dll"</MSpecSpecificationAssemblies>
   </PropertyGroup>
 
-  <Import Project="$(PropertiesPath)\Global.Imports" />
+  <PropertyGroup>
+    <SolutionName>WhoCanHelpMe</SolutionName>
+    <SolutionsPath>$(MSBuildProjectDirectory)\..\Solutions</SolutionsPath>
+    <BuildPath>$(MSBuildProjectDirectory)\..\BuildSystem</BuildPath>
+    <WebAppPath>$(SolutionsPath)\$(SolutionName).Web</WebAppPath>
+    <SolutionRoot>$(BuildPath)\..\..</SolutionRoot>
+  </PropertyGroup>
 
-  <Target Name="All" 
-          DependsOnTargets="Build" />
+  <ItemGroup>
+    <PackageFiles Include="$(WebAppPath)\**\*.*"
+                  Exclude="$(WebAppPath)\**\*.cs;
+                             $(WebAppPath)\**\*.csproj;
+                             $(WebAppPath)\**\*.user;
+                             $(WebAppPath)\**\*.vspscc;
+                             $(WebAppPath)\**\bin\*.pdb;
+                             $(WebAppPath)\**\*.xml;
+                             $(WebAppPath)\**\Code\**;
+                             $(WebAppPath)\**\Initialisers\**;
+                             $(WebAppPath)\**\obj\**;
+                             $(WebAppPath)\**\Properties\**;
+                             $(WebAppPath)\**\Registrars\**;
+                             $(WebAppPath)\**\ResourceFiles\**;">
+      <PackageName>$(DropsPath)\$(GlobalBuildVersionNumber)\$(PackageName).v$(GlobalBuildVersionNumber).zip</PackageName>
+    </PackageFiles>
 
-  <Target Name="ConfigureSolution" 
-          DependsOnTargets="VersionNumberGenerate;" />
+    <PackageFiles Include="$(WebAppPath)\**\*.*"
+                       Exclude="$(WebAppPath)\**\bin\**;
+                                  $(WebAppPath)\**\Logs\**;
+                                  $(WebAppPath)\**\obj\**;">
+      <PackageName>$(DropsPath)\$(GlobalBuildVersionNumber)\$(PackageName).Source.v$(GlobalBuildVersionNumber).zip</PackageName>
+    </PackageFiles>
 
-  <Target Name="Build" 
-          DependsOnTargets="PreBuild;
-                            BuildSolutions;
-                            RunSpecs;
+    <PackageFiles Include="$(SpecificationReportPath)\**\*.*">
+      <PackageName>$(DropsPath)\$(GlobalBuildVersionNumber)\$(PackageName).Specifications.v$(GlobalBuildVersionNumber).zip</PackageName>
+    </PackageFiles>
+  </ItemGroup>
+
+  <Import Project="$(BuildPath)\BuildSystem.proj" />
+
+  <Target Name="Build"
+        DependsOnTargets="CleanSolution;
+                            UpdateAssemblyVersion;
+                            BuildSolutions;" />
+
+  <Target Name="RunSpecs"
+      DependsOnTargets="Build;
+                        RunMSpecSpecifications;" />
+
+  <Target Name="PackageArtefacts"
+          DependsOnTargets="RunSpecs;
                             Package;
                             BuildSuccess" />
-
-  <Target Name="PreBuild" 
-          DependsOnTargets="CleanSolution;
-                            SyncWithSourceControl;
-                            ConfigureSolution;
-                            VersionNumberIncrement;" />
 
 </Project>

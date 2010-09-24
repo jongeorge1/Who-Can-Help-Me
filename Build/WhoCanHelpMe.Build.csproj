@@ -87,33 +87,13 @@
     <None Include="Build.proj" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Migrated rules for WhoCanHelpMe.Build.ruleset" />
     <None Include="Package.cmd" />
     <None Include="RunSpecs.cmd" />
-    <None Include="ReleaseBuild.cmd" />
     <None Include="FullBuild.cmd" />
     <None Include="Properties\Common.properties" />
     <None Include="Properties\Global.Imports" />
     <None Include="Properties\CPUArchitecture.properties" />
     <None Include="Properties\Build.properties" />
-    <None Include="ReleaseBuild_Dont_Increment_Version.cmd" />
-    <None Include="RunFirst.cmd" />
-    <None Include="Signing\WhoCanHelpMe.snk" />
-    <None Include="Targets\BuildSolutions.target" />
-    <None Include="Targets\BuildSuccess.target" />
-    <None Include="Targets\CleanSolution.target" />
-    <None Include="Targets\CreateDrops.target" />
-    <None Include="Targets\RunSpecs.target" />
-    <None Include="Targets\VersionNumberGenerate.target" />
-    <None Include="Targets\SyncWithSourceControl.target" />
-    <None Include="Targets\VersionNumberGetLast.target" />
-    <None Include="Targets\Package.target" />
-    <None Include="Targets\VersionNumberIncrement.target" />
-    <None Include="Targets\Template.target" />
-    <None Include="Tasks\Microsoft.Sdc.Common.tasks" />
-    <None Include="Tasks\MSBuild.Community.tasks" />
-    <None Include="Tasks\MSBuild.Extended.tasks" />
-    <None Include="Versioning\VersionNumber.exe.config" />
   </ItemGroup>
   <PropertyGroup>
     <PreBuildEvent>
@@ -154,12 +134,5 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.XML" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Tasks\ICSharpCode.SharpZipLib.dll" />
-    <Content Include="Tasks\Microsoft.Sdc.Tasks.dll" />
-    <Content Include="Tasks\MSBuild.Community.Tasks.dll" />
-    <Content Include="Tasks\MSBuild.Extended.Tasks.dll" />
-    <Content Include="Versioning\VersionNumber.exe" />
   </ItemGroup>
 </Project>
