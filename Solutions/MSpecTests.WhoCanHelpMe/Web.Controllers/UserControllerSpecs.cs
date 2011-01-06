@@ -6,7 +6,7 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
     using System.Web.Mvc;
 
     using global::WhoCanHelpMe.Domain.Contracts.Tasks;
-    using global::WhoCanHelpMe.Framework.Mapper;
+    using SharpArch.Futures.Core.Mapping;
     using global::WhoCanHelpMe.Framework.Security;
     using global::WhoCanHelpMe.Web.Controllers.Home;
     using global::WhoCanHelpMe.Web.Controllers.User;

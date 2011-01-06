@@ -9,6 +9,7 @@ namespace WhoCanHelpMe.Web.Controllers.Registrars
     using System.Web.Mvc;
 
     using Castle.Core;
+    using Castle.MicroKernel.Registration;
     using Castle.Windsor;
 
     using Framework.Contracts.Container;
@@ -26,10 +27,7 @@ namespace WhoCanHelpMe.Web.Controllers.Registrars
         {
             Assembly.GetAssembly(typeof(ControllersRegistrarMarker)).GetExportedTypes()
                     .Where(IsController)
-                    .Each(type => container.AddComponentLifeStyle(
-                                          type.Name.ToLower(),
-                                          type,
-                                          LifestyleType.Transient));
+                    .Each(type => container.Register(Component.For(type).ImplementedBy(type).Named(type.Name.ToLower()).LifeStyle.Is(LifestyleType.Transient)));
         }
 
         /// <summary>

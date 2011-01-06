@@ -5,6 +5,8 @@
     using System;
     using System.Linq.Expressions;
 
+    using SharpArch.Futures.Core.Specifications;
+
     #endregion
 
     public class TagByFirstCharactersOfNameSpecification : QuerySpecification<Tag>

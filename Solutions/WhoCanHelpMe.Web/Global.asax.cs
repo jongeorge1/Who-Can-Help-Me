@@ -74,8 +74,6 @@
 
             showCustomErrorPages = Convert.ToBoolean(ConfigurationManager.AppSettings["showCustomErrorPages"]);
 
-            HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
-
             ComponentRegistrar.Register(container);
             ComponentInitialiser.Initialise();
         }

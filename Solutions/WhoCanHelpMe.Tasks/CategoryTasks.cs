@@ -6,17 +6,18 @@
     using System.Linq;
 
     using Domain;
-    using Domain.Contracts.Repositories;
     using Domain.Contracts.Tasks;
     using Domain.Specifications;
+
+    using SharpArch.Futures.Core.PersistanceSupport;
 
     #endregion
 
     public class CategoryTasks : ICategoryTasks
     {
-        private readonly ICategoryRepository categoryRepository;
+        private readonly ILinqRepository<Category> categoryRepository;
 
-        public CategoryTasks(ICategoryRepository categoryRepository)
+        public CategoryTasks(ILinqRepository<Category> categoryRepository)
         {
             this.categoryRepository = categoryRepository;
         }

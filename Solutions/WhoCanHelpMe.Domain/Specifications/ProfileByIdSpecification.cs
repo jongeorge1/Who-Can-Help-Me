@@ -4,6 +4,8 @@
 
     using System;
 
+    using SharpArch.Futures.Core.Specifications;
+
     #endregion
 
     public class ProfileByIdSpecification : QuerySpecification<Profile>

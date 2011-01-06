@@ -5,14 +5,13 @@
     using System.Security.Authentication;
     using System.Web.Mvc;
 
-    using Domain.Contracts.Tasks;
-
     using Home;
 
     using MvcContrib;
     using MvcContrib.Filters;
 
-    using WhoCanHelpMe.Framework.Mapper;
+    using SharpArch.Futures.Core.Mapping;
+
     using WhoCanHelpMe.Framework.Security;
     using WhoCanHelpMe.Web.Controllers.User.ViewModels;
 

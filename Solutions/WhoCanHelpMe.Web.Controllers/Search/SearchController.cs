@@ -7,10 +7,11 @@
 
     using Domain.Contracts.Tasks;
 
+    using SharpArch.Futures.Core.Mapping;
+
     using ViewModels;
 
     using WhoCanHelpMe.Domain;
-    using WhoCanHelpMe.Framework.Mapper;
 
     #endregion
 

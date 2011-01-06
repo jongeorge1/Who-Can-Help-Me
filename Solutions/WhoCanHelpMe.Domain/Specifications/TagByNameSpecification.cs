@@ -1,9 +1,12 @@
 ﻿namespace WhoCanHelpMe.Domain.Specifications
 {
+    using System.Linq;
     #region Using Directives
 
     using System;
     using System.Linq.Expressions;
+
+    using SharpArch.Futures.Core.Specifications;
 
     #endregion
 

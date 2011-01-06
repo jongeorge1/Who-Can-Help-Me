@@ -2,7 +2,8 @@ namespace WhoCanHelpMe.Web.Controllers.User.Mappers
 {
     #region Using Directives
 
-    using WhoCanHelpMe.Framework.Mapper;
+    using SharpArch.Futures.Core.Mapping;
+
     using WhoCanHelpMe.Web.Controllers.Shared.Mappers.Contracts;
     using WhoCanHelpMe.Web.Controllers.User.ViewModels;
 

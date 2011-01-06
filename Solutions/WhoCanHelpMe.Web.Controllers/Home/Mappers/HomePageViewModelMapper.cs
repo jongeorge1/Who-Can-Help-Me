@@ -8,16 +8,15 @@
 
     using Domain;
 
-    using Framework.Mapper;
-
     using Shared.Mappers.Contracts;
+
+    using SharpArch.Futures.Core.Mapping;
 
     using ViewModels;
 
     #endregion
 
-    public class HomePageViewModelMapper : BasePageViewModelMapper<IList<NewsItem>, HomePageViewModel>,
-                                           IMapper<IList<NewsItem>, HomePageViewModel>
+    public class HomePageViewModelMapper : BasePageViewModelMapper<IList<NewsItem>, HomePageViewModel>
     {
         private readonly IMapper<NewsItem, NewsItemViewModel> newsItemViewModelMapper;
 

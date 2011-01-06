@@ -6,9 +6,9 @@
 
     using Domain;
 
-    using Framework.Mapper;
-
     using Shared.Mappers.Contracts;
+
+    using SharpArch.Futures.Core.Mapping;
 
     using ViewModels;
 

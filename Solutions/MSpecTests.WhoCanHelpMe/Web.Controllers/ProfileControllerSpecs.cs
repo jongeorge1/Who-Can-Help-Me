@@ -13,7 +13,7 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
 
     using global::WhoCanHelpMe.Domain;
     using global::WhoCanHelpMe.Domain.Contracts.Tasks;
-    using global::WhoCanHelpMe.Framework.Mapper;
+    using SharpArch.Futures.Core.Mapping;
     using global::WhoCanHelpMe.Framework.Security;
     using global::WhoCanHelpMe.Web.Controllers.Home;
     using global::WhoCanHelpMe.Web.Controllers.Profile;

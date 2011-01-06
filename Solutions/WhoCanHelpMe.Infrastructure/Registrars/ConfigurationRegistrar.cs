@@ -22,10 +22,10 @@ namespace WhoCanHelpMe.Infrastructure.Registrars
         public void Register(IWindsorContainer container)
         {
             container.Register(
-                    AllTypes.Pick()
-                            .FromAssembly(Assembly.GetAssembly(typeof(InfrastructureRegistrarMarker)))
+                    AllTypes.FromAssembly(Assembly.GetAssembly(typeof(InfrastructureRegistrarMarker)))
+                            .Pick()
                             .If(f => f.Namespace.Contains("Configuration"))
-                            .WithService.FirstNonGenericInterface("WhoCanHelpMe.Domain.Contracts.Configuration"));
+                            .WithService.DefaultInterface());
         }
     }
 }

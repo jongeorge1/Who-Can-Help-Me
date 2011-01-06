@@ -6,21 +6,22 @@
     using System.Linq;
 
     using Domain;
-    using Domain.Contracts.Repositories;
     using Domain.Contracts.Tasks;
     using Domain.Specifications;
+
+    using SharpArch.Futures.Core.PersistanceSupport;
 
     #endregion
 
     public class SearchTasks : ISearchTasks
     {
-        private readonly IAssertionRepository assertionRepository;
+        private readonly ILinqRepository<Assertion> assertionRepository;
 
-        private readonly ITagRepository tagRepository;
+        private readonly ILinqRepository<Tag> tagRepository;
 
         public SearchTasks(
-            IAssertionRepository assertionRepository,
-            ITagRepository tagRepository)
+            ILinqRepository<Assertion> assertionRepository,
+            ILinqRepository<Tag> tagRepository)
         {
             this.assertionRepository = assertionRepository;
             this.tagRepository = tagRepository;

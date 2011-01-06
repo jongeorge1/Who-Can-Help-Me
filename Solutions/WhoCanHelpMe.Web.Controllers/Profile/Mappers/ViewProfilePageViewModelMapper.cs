@@ -2,20 +2,19 @@ namespace WhoCanHelpMe.Web.Controllers.Profile.Mappers
 {
     #region Using Directives
 
-    using System.Collections.Generic;
     using System.Linq;
 
     using AutoMapper;
 
     using Domain;
 
-    using Framework.Mapper;
-
     using Shared.Mappers.Contracts;
+
+    using SharpArch.Futures.Core.Mapping;
 
     using ViewModels;
 
-    using Profile=WhoCanHelpMe.Domain.Profile;
+    using Profile = WhoCanHelpMe.Domain.Profile;
 
     #endregion
 

@@ -16,7 +16,6 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
     using System.Linq;
 
     using global::WhoCanHelpMe.Domain;
-    using global::WhoCanHelpMe.Domain.Contracts.Repositories;
     using global::WhoCanHelpMe.Domain.Contracts.Tasks;
     using global::WhoCanHelpMe.Domain.Specifications;
     using global::WhoCanHelpMe.Tasks;
@@ -26,19 +25,20 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
     using Rhino.Mocks;
 
     using SharpArch.Core;
+    using SharpArch.Futures.Core.PersistanceSupport;
     using SharpArch.Testing;
 
     public abstract class specification_for_profile_tasks : Specification<IProfileTasks, ProfileTasks>
     {
-        protected static IProfileRepository the_profile_repository;
-        protected static ITagRepository the_tag_repository;
-        protected static ICategoryRepository the_category_repository;
+        protected static ILinqRepository<Profile> the_profile_repository;
+        protected static ILinqRepository<Tag> the_tag_repository;
+        protected static ILinqRepository<Category> the_category_repository;
 
         Establish context = () =>
             {
-                the_profile_repository = DependencyOf<IProfileRepository>();
-                the_tag_repository = DependencyOf<ITagRepository>();
-                the_category_repository = DependencyOf<ICategoryRepository>();
+                the_profile_repository = DependencyOf<ILinqRepository<Profile>>();
+                the_tag_repository = DependencyOf<ILinqRepository<Tag>>();
+                the_category_repository = DependencyOf<ILinqRepository<Category>>();
 
                 ServiceLocatorHelper.InitialiseServiceLocator();
                 ServiceLocatorHelper.AddValidator();

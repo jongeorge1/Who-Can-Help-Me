@@ -19,9 +19,10 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
 
     using Shared.ActionResults;
 
+    using SharpArch.Futures.Core.Mapping;
+
     using ViewModels;
 
-    using WhoCanHelpMe.Framework.Mapper;
     using WhoCanHelpMe.Framework.Security;
     using WhoCanHelpMe.Web.Controllers.Profile.Mappers.Contracts;
 

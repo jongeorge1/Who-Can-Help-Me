@@ -9,13 +9,13 @@ namespace WhoCanHelpMe.Web.Controllers.Profile.Mappers
 
     using Domain;
 
-    using Framework.Mapper;
-
     using Shared.Mappers.Contracts;
+
+    using SharpArch.Futures.Core.Mapping;
 
     using ViewModels;
 
-    using Profile=WhoCanHelpMe.Domain.Profile;
+    using Profile = WhoCanHelpMe.Domain.Profile;
 
     #endregion
 

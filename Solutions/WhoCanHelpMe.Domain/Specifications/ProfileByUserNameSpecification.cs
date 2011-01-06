@@ -5,6 +5,8 @@ namespace WhoCanHelpMe.Domain.Specifications
     using System;
     using System.Linq.Expressions;
 
+    using SharpArch.Futures.Core.Specifications;
+
     #endregion
 
     /// <summary>

@@ -1,5 +1,7 @@
 ﻿namespace WhoCanHelpMe.Domain.Specifications
 {
+    using SharpArch.Futures.Core.Specifications;
+
     public class AssertionByTagNameSpecification : QuerySpecification<Assertion>
     {
         private readonly string tagName;

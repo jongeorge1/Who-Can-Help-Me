@@ -5,16 +5,18 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
     using System.Collections.Generic;
     using System.Web.Mvc;
 
-    using global::WhoCanHelpMe.Domain;
-    using global::WhoCanHelpMe.Domain.Contracts.Tasks;
-    using global::WhoCanHelpMe.Framework.Mapper;
-    using global::WhoCanHelpMe.Web.Controllers.Search;
-    using global::WhoCanHelpMe.Web.Controllers.Search.ViewModels;
-
     using Machine.Specifications;
     using Machine.Specifications.AutoMocking.Rhino;
     using Machine.Specifications.Mvc;
+
     using Rhino.Mocks;
+
+    using SharpArch.Futures.Core.Mapping;
+
+    using global::WhoCanHelpMe.Domain;
+    using global::WhoCanHelpMe.Domain.Contracts.Tasks;
+    using global::WhoCanHelpMe.Web.Controllers.Search;
+    using global::WhoCanHelpMe.Web.Controllers.Search.ViewModels;
 
     #endregion
 

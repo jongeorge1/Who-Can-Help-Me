@@ -1,5 +1,7 @@
 ﻿namespace WhoCanHelpMe.Domain.Specifications
 {
+    using SharpArch.Futures.Core.Specifications;
+
     public class AssertionByCategoryIdSpecification : QuerySpecification<Assertion>
     {
         private readonly int categoryId;

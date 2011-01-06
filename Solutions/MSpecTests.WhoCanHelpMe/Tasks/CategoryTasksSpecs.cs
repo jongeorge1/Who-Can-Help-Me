@@ -15,7 +15,6 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
     using System.Linq;
 
     using global::WhoCanHelpMe.Domain;
-    using global::WhoCanHelpMe.Domain.Contracts.Repositories;
     using global::WhoCanHelpMe.Domain.Contracts.Tasks;
     using global::WhoCanHelpMe.Domain.Specifications;
     using global::WhoCanHelpMe.Tasks;
@@ -24,11 +23,13 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
     using Machine.Specifications.AutoMocking.Rhino;
     using Rhino.Mocks;
 
+    using SharpArch.Futures.Core.PersistanceSupport;
+
     public abstract class specification_for_category_tasks : Specification<ICategoryTasks, CategoryTasks>
     {
-        protected static ICategoryRepository the_category_repository;
+        protected static ILinqRepository<Category> the_category_repository;
 
-        Establish context = () => the_category_repository = DependencyOf<ICategoryRepository>();
+        Establish context = () => the_category_repository = DependencyOf<ILinqRepository<Category>>();
     }
 
     [Subject(typeof(CategoryTasks))]

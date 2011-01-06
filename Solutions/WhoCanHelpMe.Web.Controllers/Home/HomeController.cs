@@ -11,8 +11,9 @@
 
     using Shared.ViewModels;
 
+    using SharpArch.Futures.Core.Mapping;
+
     using WhoCanHelpMe.Domain;
-    using WhoCanHelpMe.Framework.Mapper;
     using WhoCanHelpMe.Web.Controllers.Home.ViewModels;
 
     #endregion

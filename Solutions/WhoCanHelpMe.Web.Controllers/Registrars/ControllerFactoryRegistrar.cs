@@ -9,7 +9,7 @@ namespace WhoCanHelpMe.Web.Controllers.Registrars
 
     using Framework.Contracts.Container;
 
-    using MvcContrib.Castle;
+    using SharpArch.Web.Castle;
 
     #endregion
 

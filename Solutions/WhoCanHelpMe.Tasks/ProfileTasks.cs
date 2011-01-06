@@ -6,17 +6,13 @@
     using System.Linq;
 
     using Domain;
-    using Domain.Contracts.Repositories;
     using Domain.Contracts.Tasks;
     using Domain.Specifications;
 
-    using Framework.Validation;
-
     using SharpArch.Core;
+    using SharpArch.Futures.Core.PersistanceSupport;
 
     using WhoCanHelpMe.Framework.Extensions;
-
-    using xVal.ServerSide;
 
     #endregion
 
@@ -24,16 +20,16 @@
     {
         #region Fields
 
-        private readonly ICategoryRepository categoryRepository;
-        private readonly IProfileRepository profileRepository;
-        private readonly ITagRepository tagRepository;
+        private readonly ILinqRepository<Category> categoryRepository;
+        private readonly ILinqRepository<Profile> profileRepository;
+        private readonly ILinqRepository<Tag> tagRepository;
 
         #endregion
 
         public ProfileTasks(
-            IProfileRepository profileRepository, 
-            ITagRepository tagRepository,
-            ICategoryRepository categoryRepository)
+            ILinqRepository<Profile> profileRepository, 
+            ILinqRepository<Tag> tagRepository,
+            ILinqRepository<Category> categoryRepository)
         {
             this.profileRepository = profileRepository;
             this.tagRepository = tagRepository;

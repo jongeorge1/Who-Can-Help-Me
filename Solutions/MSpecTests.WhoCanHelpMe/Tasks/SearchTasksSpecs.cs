@@ -15,7 +15,6 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
     using System.Linq;
 
     using global::WhoCanHelpMe.Domain;
-    using global::WhoCanHelpMe.Domain.Contracts.Repositories;
     using global::WhoCanHelpMe.Domain.Contracts.Tasks;
     using global::WhoCanHelpMe.Domain.Specifications;
     using global::WhoCanHelpMe.Tasks;
@@ -23,17 +22,19 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
     using Machine.Specifications;
     using Machine.Specifications.AutoMocking.Rhino;
     using Rhino.Mocks;
+
+    using SharpArch.Futures.Core.PersistanceSupport;
     using SharpArch.Testing;
 
     public abstract class specification_for_search_tasks : Specification<ISearchTasks, SearchTasks>
     {
-        protected static IAssertionRepository the_assertion_repository;
-        protected static ITagRepository the_tag_repository;
+        protected static ILinqRepository<Assertion> the_assertion_repository;
+        protected static ILinqRepository<Tag> the_tag_repository;
 
         Establish context = () =>
         {
-            the_assertion_repository = DependencyOf<IAssertionRepository>();
-            the_tag_repository = DependencyOf<ITagRepository>();
+            the_assertion_repository = DependencyOf<ILinqRepository<Assertion>>();
+            the_tag_repository = DependencyOf<ILinqRepository<Tag>>();
         };
     }
 

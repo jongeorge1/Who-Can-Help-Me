@@ -6,17 +6,19 @@
     using System.Linq;
 
     using Domain;
-    using Domain.Contracts.Repositories;
     using Domain.Contracts.Tasks;
     using Domain.Specifications;
+
+    using SharpArch.Futures.Core.PersistanceSupport;
+    using SharpArch.Futures.Core.Specifications;
 
     #endregion
 
     public class TagTasks : ITagTasks
     {
-        private readonly ITagRepository tagRepository;
+        private readonly ILinqRepository<Tag> tagRepository;
 
-        public TagTasks(ITagRepository tagRepository)
+        public TagTasks(ILinqRepository<Tag> tagRepository)
         {
             this.tagRepository = tagRepository;
         }

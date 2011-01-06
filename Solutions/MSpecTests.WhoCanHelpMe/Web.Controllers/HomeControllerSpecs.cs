@@ -7,7 +7,7 @@
 
     using global::WhoCanHelpMe.Domain;
     using global::WhoCanHelpMe.Domain.Contracts.Tasks;
-    using global::WhoCanHelpMe.Framework.Mapper;
+    using SharpArch.Futures.Core.Mapping;
     using global::WhoCanHelpMe.Web.Controllers.Home;
     using global::WhoCanHelpMe.Web.Controllers.Home.ViewModels;
 

@@ -17,7 +17,6 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
     using System.Linq;
 
     using global::WhoCanHelpMe.Domain;
-    using global::WhoCanHelpMe.Domain.Contracts.Repositories;
     using global::WhoCanHelpMe.Domain.Contracts.Tasks;
     using global::WhoCanHelpMe.Domain.Specifications;
     using global::WhoCanHelpMe.Tasks;
@@ -28,15 +27,17 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
 
     using Rhino.Mocks;
 
+    using SharpArch.Futures.Core.PersistanceSupport;
+
     #endregion
 
     public abstract class specification_for_tag_tasks : Specification<ITagTasks, TagTasks>
     {
-        protected static ITagRepository the_tag_repository;
+        protected static ILinqRepository<Tag> the_tag_repository;
 
         Establish context = () =>
         {
-            the_tag_repository = DependencyOf<ITagRepository>();
+            the_tag_repository = DependencyOf<ILinqRepository<Tag>>();
         };
     }
 

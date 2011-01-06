@@ -4,11 +4,13 @@ namespace WhoCanHelpMe.Domain.Specifications
 
     using System;
 
+    using SharpArch.Futures.Core.Specifications;
+
     using WhoCanHelpMe.Domain;
 
     #endregion
 
-    public class CategoryByIdSpecification :  QuerySpecification<Category>
+    public class CategoryByIdSpecification : QuerySpecification<Category>
     {
         private readonly int categoryId;
 

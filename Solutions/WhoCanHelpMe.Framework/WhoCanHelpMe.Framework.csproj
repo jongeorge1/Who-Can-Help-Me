@@ -71,10 +71,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\Castle\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Castle.MicroKernel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ReferencedAssemblies\Castle\Castle.MicroKernel.dll</HintPath>
-    </Reference>
     <Reference Include="Castle.Windsor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\Castle\Castle.Windsor.dll</HintPath>
@@ -125,15 +121,9 @@
     <Compile Include="Contracts\Container\IComponentInitialiser.cs" />
     <Compile Include="Contracts\Container\IComponentRegistrar.cs" />
     <Compile Include="Contracts\Container\IComponentRegistrarMarker.cs" />
-    <Compile Include="Contracts\Specifications\ILinqSpecification.cs" />
-    <Compile Include="Contracts\Specifications\ISpecification.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Extensions\WindsorExtensions.cs" />
-    <Compile Include="Mapper\Mapper.cs" />
-    <Compile Include="Mapper\Extensions.cs" />
-    <Compile Include="Mapper\IMapper.cs" />
     <Compile Include="Security\Identity.cs" />
     <Compile Include="Security\IIdentityService.cs" />
     <Compile Include="Threading\LockableObjectProvider.cs" />
