@@ -78,20 +78,16 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         [RequireNoExistingProfile("Profile", "Update")]
         public ActionResult Create(CreateProfileFormModel formModel)
         {
-            var identity = this.identityService.GetCurrentIdentity();
-
-            try
+            if (this.ModelState.IsValid)
             {
+                var identity = this.identityService.GetCurrentIdentity();
+
                 this.userTasks.CreateProfile(identity.Name, formModel.FirstName, formModel.LastName);
 
-                return this.RedirectToAction(x => x.Update());
-            }
-            catch (RulesException ex)
-            {
-                ex.AddModelStateErrors(this.ModelState);
+                return this.RedirectToAction("Update");
             }
 
-            return this.RedirectToAction(x => x.Create());
+            return this.RedirectToAction("Create");
         }
 
         [Authorize]
@@ -103,7 +99,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
 
             this.userTasks.DeleteProfile(identity.Name);
 
-            return this.RedirectToAction<HomeController>(x => x.Index());
+            return this.RedirectToAction("Index", "Home");
         }
 
         [Authorize]
@@ -119,13 +115,13 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
                 user,
                 assertionId);
 
-            return this.RedirectToAction(x => x.Update());
+            return this.RedirectToAction("Update");
         }
 
         [HttpGet]
         public ActionResult Index()
         {
-            return this.RedirectToAction(x => x.Update());
+            return this.RedirectToAction("Update");
         }
 
         [Authorize]
@@ -167,7 +163,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
                     "addAssertion");
             }
 
-            return this.RedirectToAction(x => x.Update());
+            return this.RedirectToAction("Update");
         }
 
         [HttpGet]

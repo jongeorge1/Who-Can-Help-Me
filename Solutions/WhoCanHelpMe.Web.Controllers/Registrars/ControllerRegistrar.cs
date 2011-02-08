@@ -10,35 +10,22 @@ namespace WhoCanHelpMe.Web.Controllers.Registrars
 
     using Castle.Core;
     using Castle.MicroKernel.Registration;
+    using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
-
-    using Framework.Contracts.Container;
-
-    using Properties;
 
     using WhoCanHelpMe.Framework.Extensions;
 
 	#endregion
 
-    [Export(typeof(IComponentRegistrar))]
-    public class ControllerRegistrar : IComponentRegistrar
+    public class ControllerRegistrar : IWindsorInstaller
     {
-        public void Register(IWindsorContainer container)
+        public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            Assembly.GetAssembly(typeof(ControllersRegistrarMarker)).GetExportedTypes()
+            Assembly.GetAssembly(typeof(ControllerRegistrar)).GetExportedTypes()
                     .Where(IsController)
                     .Each(type => container.Register(Component.For(type).ImplementedBy(type).Named(type.Name.ToLower()).LifeStyle.Is(LifestyleType.Transient)));
         }
 
-        /// <summary>
-        /// Helper method to check to see if the specified type a MVC Controller
-        /// </summary>
-        /// <param name="type">
-        /// The type to test.
-        /// </param>
-        /// <returns>
-        /// Whether the type specified is a MVC Controller.
-        /// </returns>
         private static bool IsController(Type type)
         {
             return typeof(IController).IsAssignableFrom(type);

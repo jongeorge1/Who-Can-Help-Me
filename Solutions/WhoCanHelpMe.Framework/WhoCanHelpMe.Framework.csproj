@@ -113,14 +113,6 @@
     <Compile Include="Caching\ICacheable.cs" />
     <Compile Include="Caching\ICacheKey.cs" />
     <Compile Include="Caching\ICachingService.cs" />
-    <Compile Include="Container\MEF\CatalogBuilder.cs" />
-    <Compile Include="Container\MEF\MefConstants.cs" />
-    <Compile Include="Container\MEF\MvcCatalog.cs" />
-    <Compile Include="Container\ComponentInitialiser.cs" />
-    <Compile Include="Container\ComponentRegistrar.cs" />
-    <Compile Include="Contracts\Container\IComponentInitialiser.cs" />
-    <Compile Include="Contracts\Container\IComponentRegistrar.cs" />
-    <Compile Include="Contracts\Container\IComponentRegistrarMarker.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
@@ -146,6 +138,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Contracts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

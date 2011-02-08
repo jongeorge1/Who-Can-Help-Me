@@ -11,7 +11,7 @@ Who goes there?
 <form method="get" action="Authenticate" id="openid_form">
 	<input type="hidden" name="action" value="verify" />
 	<fieldset>
-			!{this.Hidden(x => x.ReturnUrl)}
+			!{Html.HiddenFor(x => x.ReturnUrl)}
     		
     		<div id="openid_choice">
 	    		<p>Please click your account provider to sign-in:</p>

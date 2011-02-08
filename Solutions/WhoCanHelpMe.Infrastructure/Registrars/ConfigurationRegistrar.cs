@@ -2,27 +2,22 @@ namespace WhoCanHelpMe.Infrastructure.Registrars
 {
     #region Using Directives
 
+    using System;
     using System.ComponentModel.Composition;
     using System.Reflection;
 
     using Castle.MicroKernel.Registration;
+    using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
-
-    using Framework.Contracts.Container;
-
-    using Framework.Extensions;
-
-    using Properties;
 
     #endregion
 
-    [Export(typeof(IComponentRegistrar))]
-    public class ConfigurationRegistrar : IComponentRegistrar
+    public class ConfigurationRegistrar : IWindsorInstaller
     {
-        public void Register(IWindsorContainer container)
+        public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
-                    AllTypes.FromAssembly(Assembly.GetAssembly(typeof(InfrastructureRegistrarMarker)))
+                    AllTypes.FromAssembly(Assembly.GetAssembly(typeof(ConfigurationRegistrar)))
                             .Pick()
                             .If(f => f.Namespace.Contains("Configuration"))
                             .WithService.DefaultInterface());

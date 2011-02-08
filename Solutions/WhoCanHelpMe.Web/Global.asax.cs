@@ -12,6 +12,7 @@
 
     using Castle.Windsor;
     using Castle.Windsor.Configuration.Interpreters;
+    using Castle.Windsor.Installer;
 
     using CommonServiceLocator.WindsorAdapter;
 
@@ -20,15 +21,17 @@
     using Microsoft.Practices.ServiceLocation;
 
     using SharpArch.Data.NHibernate;
+    using SharpArch.Futures.Data.NHibernate;
     using SharpArch.Web.NHibernate;
 
-    using WhoCanHelpMe.Framework.Container;
     using WhoCanHelpMe.Framework.Extensions;
 
     using WhoCanHelpMe.Infrastructure.NHibernate;
     using WhoCanHelpMe.Infrastructure.NHibernateMaps;
-
+    using WhoCanHelpMe.Infrastructure.Registrars;
+    using WhoCanHelpMe.Tasks.Registrars;
     using WhoCanHelpMe.Web.Code;
+    using WhoCanHelpMe.Web.Controllers.Registrars;
 
     #endregion
 
@@ -70,12 +73,9 @@
 
         protected void Application_Start()
         {
-            IWindsorContainer container = InitializeServiceLocator();
+            InitializeServiceLocator();
 
             showCustomErrorPages = Convert.ToBoolean(ConfigurationManager.AppSettings["showCustomErrorPages"]);
-
-            ComponentRegistrar.Register(container);
-            ComponentInitialiser.Initialise();
         }
 
         protected void Application_Error()
@@ -147,13 +147,20 @@
                 Server.MapPath("~/Configuration/NHibernate/{0}.config").FormatWith(SessionKeys.Data));
         }
 
-        private static IWindsorContainer InitializeServiceLocator()
+        private static void InitializeServiceLocator()
         {
             IWindsorContainer container = new WindsorContainer(new XmlInterpreter());
 
             ServiceLocator.SetLocatorProvider(() => new WindsorServiceLocator(container));
 
-            return container;
+            container.Install(
+                FromAssembly.Containing<ServiceRegistrar>(),
+                FromAssembly.This(),
+                FromAssembly.Containing<ControllerRegistrar>(),
+                FromAssembly.Containing<TasksRegistrar>(),
+                FromAssembly.Containing<GenericRepositoryInstaller>());
+
+            return;
         }
     }
 }

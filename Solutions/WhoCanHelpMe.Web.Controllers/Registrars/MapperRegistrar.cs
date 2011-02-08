@@ -2,28 +2,21 @@ namespace WhoCanHelpMe.Web.Controllers.Registrars
 {
     #region Using Directives
 
-    using System.ComponentModel.Composition;
     using System.Reflection;
 
     using Castle.MicroKernel.Registration;
+    using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
-
-    using Framework.Contracts.Container;
-
-    using Properties;
 
     #endregion
 
-    [Export(typeof(IComponentRegistrar))]
-    public class MapperRegistrar : IComponentRegistrar
+    public class MapperRegistrar : IWindsorInstaller
     {
-        public void Register(IWindsorContainer container)
+        public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(
-                   AllTypes.FromAssembly(Assembly.GetAssembly(typeof(ControllersRegistrarMarker)))
-                           .Pick()
-                           .If(f => f.Namespace.Contains(".Mappers"))
-                           .WithService.DefaultInterface());
+            container.Register(AllTypes.FromThisAssembly()
+                                       .Where(t => t.Namespace.EndsWith("Mappers"))
+                                       .WithService.FirstInterface());
         }
     }
 }

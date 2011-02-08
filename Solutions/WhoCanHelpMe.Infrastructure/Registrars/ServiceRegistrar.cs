@@ -2,17 +2,9 @@ namespace WhoCanHelpMe.Infrastructure.Registrars
 {
     #region Using Directives
 
-    using System.ComponentModel.Composition;
-    using System.Reflection;
-
     using Castle.MicroKernel.Registration;
+    using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
-
-    using Framework.Contracts.Container;
-
-    using Framework.Extensions;
-
-    using Properties;
 
     using WhoCanHelpMe.Domain.Contracts.Services;
     using WhoCanHelpMe.Framework.Security;
@@ -21,13 +13,12 @@ namespace WhoCanHelpMe.Infrastructure.Registrars
 
     #endregion
 
-    [Export(typeof(IComponentRegistrar))]
-    public class ServiceRegistrar : IComponentRegistrar
+    public class ServiceRegistrar : IWindsorInstaller
     {
-        public void Register(IWindsorContainer container)
+        public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(Component.For<INewsService>().ImplementedBy<TwitterNewsService>());
-            container.Register(Component.For<IIdentityService>().ImplementedBy<IdentityService>());            
+            container.Register(Component.For<IIdentityService>().ImplementedBy<IdentityService>());
         }
     }
 }

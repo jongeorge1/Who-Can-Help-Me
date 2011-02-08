@@ -1,4 +1,6 @@
 ﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Profile.ViewModels.CreateProfilePageViewModel"/>
+#Html.EnableClientValidation();
+#Html.EnableUnobtrusiveJavaScript();
 
 <content name="title">
 Hey there stranger!
@@ -7,21 +9,17 @@ Hey there stranger!
 <h2>Tell me about yourself!</h2>
 <p>You haven't created a profile yet, please supply the following details:</p>
 
-<form method="post">
-
+#using (Html.BeginForm()) {
 	!{Html.AntiForgeryToken()}
 
 	<div class="formInput">
-    !{this.TextBox(x => x.FormModel.FirstName).Label("First name:")}
-    !{this.ValidationMessage(x => x.FormModel.FirstName)}
+    !{Html.LabelFor(x => x.FormModel.FirstName)} !{Html.TextBoxFor(x => x.FormModel.FirstName)}
+    !{Html.ValidationMessageFor(x => x.FormModel.FirstName)}
   </div>
 
 	<div class="formInput">
-    !{this.TextBox(x => x.FormModel.LastName).Label("Last name:")}
-    !{this.ValidationMessage(x => x.FormModel.LastName)}
+    !{Html.LabelFor(x => x.FormModel.LastName)} !{Html.TextBoxFor(x => x.FormModel.LastName)}
+    !{Html.ValidationMessageFor(x => x.FormModel.LastName)}
   </div>
-	
-	!{this.SubmitButton("Continue")}
-  !{Html.ClientSideValidation<WhoCanHelpMe.Web.Controllers.Profile.ViewModels.CreateProfileFormModel>()}
-
-</form>
+	<button type="submit">Continue</button>
+#}

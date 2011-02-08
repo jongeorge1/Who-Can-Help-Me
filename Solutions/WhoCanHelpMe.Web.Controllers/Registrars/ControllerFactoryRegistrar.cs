@@ -2,21 +2,19 @@ namespace WhoCanHelpMe.Web.Controllers.Registrars
 {
     #region Using Directives
 
-    using System.ComponentModel.Composition;
     using System.Web.Mvc;
 
+    using Castle.MicroKernel.Registration;
+    using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
-
-    using Framework.Contracts.Container;
 
     using SharpArch.Web.Castle;
 
     #endregion
 
-    [Export(typeof(IComponentRegistrar))]
-    public class ControllerFactoryRegistrar : IComponentRegistrar
+    public class ControllerFactoryRegistrar : IWindsorInstaller
     {
-        public void Register(IWindsorContainer container)
+        public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(container));
         }

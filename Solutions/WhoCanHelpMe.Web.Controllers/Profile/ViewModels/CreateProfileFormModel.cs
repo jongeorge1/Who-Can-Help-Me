@@ -1,19 +1,15 @@
 namespace WhoCanHelpMe.Web.Controllers.Profile.ViewModels
 {
-    #region Using Directives
-
-    using NHibernate.Validator.Constraints;
-
-    #endregion
+    using System.ComponentModel.DataAnnotations;
 
     public class CreateProfileFormModel
     {
-        [NotNull(Message = "*")]
-        [NotEmpty(Message = "*")]
+        [Required(ErrorMessage = "*")]
+        [Display(Name = "First name")]
         public string FirstName { get; set; }
 
-        [NotNull(Message = "*")]
-        [NotEmpty(Message = "*")]
+        [Required(ErrorMessage = "*")]
+        [Display(Name = "Last name")]
         public string LastName { get; set; }
     }
 }

@@ -132,12 +132,12 @@
     <Compile Include="NHibernateMaps\Conventions\CustomForeignKeyConvention.cs" />
     <Compile Include="Registrars\ConfigurationRegistrar.cs" />
     <Compile Include="Registrars\ServiceRegistrar.cs" />
-    <Compile Include="Properties\InfrastructureRegistrarMarker.cs" />
     <Compile Include="NHibernateMaps\Conventions\HasManyConvention.cs" />
     <Compile Include="NHibernateMaps\Conventions\PrimaryKeyConvention.cs" />
     <Compile Include="NHibernateMaps\Conventions\TableNameConvention.cs" />
     <Compile Include="NHibernateMaps\AutoPersistenceModelGenerator.cs" />
     <Compile Include="NHibernate\SessionKeys.cs" />
+    <Compile Include="Registrars\SessionKeyProviderInstaller.cs" />
     <Compile Include="Security\IdentityService.cs" />
   </ItemGroup>
   <ItemGroup>

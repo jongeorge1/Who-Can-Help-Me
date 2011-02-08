@@ -90,13 +90,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\ASP.NET MVC\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="MvcContrib.Castle, Version=0.0.1.904, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="MvcContrib, Version=2.0.96.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ReferencedAssemblies\MvcContrib\MvcContrib.Castle.dll</HintPath>
-    </Reference>
-    <Reference Include="MvcContrib.FluentHtml, Version=1.5.996.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ReferencedAssemblies\MvcContrib\MvcContrib.FluentHtml.dll</HintPath>
+      <HintPath>..\..\ReferencedAssemblies\MvcContrib\MvcContrib.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -171,17 +167,30 @@
     </Compile>
     <Compile Include="Initialisers\ValidationInitialiser.cs" />
     <Compile Include="Initialisers\ViewEngineInitialiser.cs" />
-    <Compile Include="Registrars\FuturesRegistrar.cs" />
     <Compile Include="Registrars\ValidatorRegistrar.cs" />
     <Compile Include="ResourceFiles\Site.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Site.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\SparkModelViewPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.4.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
@@ -213,10 +222,6 @@
   <ItemGroup>
     <Content Include="Configuration\NHibernate\nhibernate.current_session.config" />
     <Content Include="favicon.ico" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.min-vsdoc.js" />
     <Content Include="Views\_Content\img\indicator.gif" />
@@ -229,7 +234,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.pack.js" />
     <Content Include="Scripts\openid-jquery.js" />
-    <Content Include="Scripts\xVal.jquery.validate.js" />
     <Content Include="Views\_Content\css\jquery.autocomplete.css" />
     <Content Include="Views\_Content\css\openid.css" />
     <Content Include="Views\_Content\img\openid-images\aol.gif" />

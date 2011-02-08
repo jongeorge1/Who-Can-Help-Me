@@ -1,29 +1,22 @@
 ﻿namespace WhoCanHelpMe.Web.Controllers.Initialisers
 {
     #region Using Directives
-    
-    using System.ComponentModel.Composition;
+
     using System.Web.Mvc;
     using System.Web.Routing;
 
-    using WhoCanHelpMe.Framework.Contracts.Container;
-
-    // use for route debugging
-    using MvcContrib.Routing;
-    using Extensions;
+    using Castle.MicroKernel.Registration;
+    using Castle.MicroKernel.SubSystems.Configuration;
+    using Castle.Windsor;
 
     #endregion
 
     /// <summary>
     /// Responsible for all the MVC route registration
     /// </summary>
-    [Export(typeof(IComponentInitialiser))]
-    public class RouteInitialiser : IComponentInitialiser
+    public class RouteInitialiser : IWindsorInstaller
     {
-        /// <summary>
-        /// Registers the routes into the routes collection
-        /// </summary>
-        public void Initialise()
+        public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             AreaRegistration.RegisterAllAreas();
 

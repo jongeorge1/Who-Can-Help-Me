@@ -87,7 +87,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\ASP.NET MVC\Microsoft.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="MvcContrib, Version=1.5.996.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="MvcContrib, Version=2.0.96.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\MvcContrib\MvcContrib.dll</HintPath>
     </Reference>
@@ -103,6 +103,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -144,7 +145,6 @@
     <Compile Include="Home\HomeController.cs" />
     <Compile Include="Shared\Mappers\Contracts\IPageViewModelBuilder.cs" />
     <Compile Include="About\Mappers\AboutPageViewModelMapper.cs" />
-    <Compile Include="Properties\ControllersRegistrarMarker.cs" />
     <Compile Include="Profile\Mappers\CreateProfilePageViewModelBuilder.cs" />
     <Compile Include="User\Mappers\LoginPageViewModelMapper.cs" />
     <Compile Include="Search\Mappers\SearchResultsPageViewModelMapper.cs" />

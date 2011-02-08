@@ -104,7 +104,6 @@
     </Compile>
     <Compile Include="CategoryTasks.cs" />
     <Compile Include="NewsTasks.cs" />
-    <Compile Include="Properties\TasksRegistrarMarker.cs" />
     <Compile Include="Registrars\TaskRegistrar.cs" />
     <Compile Include="SearchTasks.cs" />
     <Compile Include="SiteMetaDataTasks.cs" />

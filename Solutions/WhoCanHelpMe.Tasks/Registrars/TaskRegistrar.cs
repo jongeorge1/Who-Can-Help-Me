@@ -6,19 +6,16 @@ namespace WhoCanHelpMe.Tasks.Registrars
     using System.Reflection;
 
     using Castle.MicroKernel.Registration;
+    using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
-
-    using WhoCanHelpMe.Framework.Contracts.Container;
-    using WhoCanHelpMe.Tasks.Properties;
 
     #endregion
 
-    [Export(typeof(IComponentRegistrar))]
-    public class TasksRegistrar : IComponentRegistrar
+    public class TasksRegistrar : IWindsorInstaller
     {
-        public void Register(IWindsorContainer container)
+        public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(AllTypes.FromAssembly(Assembly.GetAssembly(typeof(TasksRegistrarMarker))).Pick().WithService.DefaultInterface());
+            container.Register(AllTypes.FromAssembly(Assembly.GetAssembly(typeof(TasksRegistrar))).Pick().WithService.DefaultInterface());
         }
     }
 }

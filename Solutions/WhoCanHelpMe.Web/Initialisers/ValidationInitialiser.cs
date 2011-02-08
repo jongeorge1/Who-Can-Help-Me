@@ -2,9 +2,12 @@ namespace WhoCanHelpMe.Web.Initialisers
 {
     #region Using Directives
 
+    using System;
     using System.ComponentModel.Composition;
 
-    using Framework.Contracts.Container;
+    using Castle.MicroKernel.Registration;
+    using Castle.MicroKernel.SubSystems.Configuration;
+    using Castle.Windsor;
 
     using Code;
 
@@ -12,10 +15,9 @@ namespace WhoCanHelpMe.Web.Initialisers
 
     #endregion
 
-    [Export(typeof(IComponentInitialiser))]
-    public class ValidationInitialiser : IComponentInitialiser
+    public class ValidationInitialiser : IWindsorInstaller
     {
-        public void Initialise()
+        public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             var provider = new NHibernateSharedEngineProvider();
             NHibernate.Validator.Cfg.Environment.SharedEngineProvider = provider;
