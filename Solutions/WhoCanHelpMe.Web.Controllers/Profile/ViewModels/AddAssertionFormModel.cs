@@ -1,17 +1,13 @@
 ﻿namespace WhoCanHelpMe.Web.Controllers.Profile.ViewModels
 {
-    #region Using Directives
-
-    using NHibernate.Validator.Constraints;
-
-    #endregion
+    using System.ComponentModel.DataAnnotations;
 
     public class AddAssertionFormModel
     {
         public int CategoryId { get; set; }
 
-        [NotNull(Message = "*")]
-        [NotEmpty(Message = "*")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "*")]
+        [Display(Name ="Tag Name")]
         public string TagName { get; set; }
     }
 }

@@ -1,7 +1,5 @@
 namespace WhoCanHelpMe.Web.Controllers.Profile
 {
-    #region Using Directives
-
     using System.Collections.Generic;
     using System.Web.Mvc;
 
@@ -10,11 +8,6 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
     using Domain;
     using Domain.Contracts.Tasks;
 
-    using Extensions;
-
-    using Home;
-
-    using MvcContrib;
     using MvcContrib.Filters;
 
     using Shared.ActionResults;
@@ -25,10 +18,6 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
 
     using WhoCanHelpMe.Framework.Security;
     using WhoCanHelpMe.Web.Controllers.Profile.Mappers.Contracts;
-
-    using xVal.ServerSide;
-
-    #endregion
 
     public class ProfileController : BaseController
     {
@@ -150,17 +139,11 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
         [RequireExistingProfile("Profile", "Create")]
         public ActionResult Update(AddAssertionFormModel formModel)
         {
-            var identity = this.identityService.GetCurrentIdentity();
+            if (this.ModelState.IsValid)
+            {
+                var identity = this.identityService.GetCurrentIdentity();
 
-            try
-            {
                 this.userTasks.AddAssertion(identity.Name, formModel.CategoryId, formModel.TagName);
-            }
-            catch (RulesException ex)
-            {
-                ex.AddModelStateErrors(
-                    this.ModelState,
-                    "addAssertion");
             }
 
             return this.RedirectToAction("Update");

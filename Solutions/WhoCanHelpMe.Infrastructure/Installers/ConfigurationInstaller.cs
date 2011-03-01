@@ -1,23 +1,17 @@
-namespace WhoCanHelpMe.Infrastructure.Registrars
+namespace WhoCanHelpMe.Infrastructure.Installers
 {
-    #region Using Directives
-
-    using System;
-    using System.ComponentModel.Composition;
     using System.Reflection;
 
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
 
-    #endregion
-
-    public class ConfigurationRegistrar : IWindsorInstaller
+    public class ConfigurationInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
-                    AllTypes.FromAssembly(Assembly.GetAssembly(typeof(ConfigurationRegistrar)))
+                    AllTypes.FromAssembly(Assembly.GetAssembly(typeof(ConfigurationInstaller)))
                             .Pick()
                             .If(f => f.Namespace.Contains("Configuration"))
                             .WithService.DefaultInterface());

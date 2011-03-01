@@ -1,6 +1,6 @@
-namespace WhoCanHelpMe.Web.Initialisers
+namespace WhoCanHelpMe.Web.Installers
 {
-    using System;
+    using System.Linq;
     using System.Web.Mvc;
 
     using Castle.MicroKernel.Registration;
@@ -10,7 +10,9 @@ namespace WhoCanHelpMe.Web.Initialisers
     using Spark;
     using Spark.Web.Mvc;
 
-    public class ViewEngineInitialiser : IWindsorInstaller
+    using WhoCanHelpMe.Web.Controllers.Home;
+
+    public class ViewEngineInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
@@ -25,8 +27,15 @@ namespace WhoCanHelpMe.Web.Initialisers
                 .AddNamespace("System.Web.Mvc")
                 .AddNamespace("System.Web.Mvc.Html")
                 .AddNamespace("WhoCanHelpMe.Framework.Extensions")
-                .AddNamespace("WhoCanHelpMe.Web.Code")
-                .AddNamespace("xVal.Html");
+                .AddNamespace("WhoCanHelpMe.Web.Code");
+
+            // Add all namespaces from controllers project.
+            typeof(HomeController).Assembly
+                                  .GetExportedTypes()
+                                  .Select(t => t.Namespace)
+                                  .Distinct()
+                                  .ToList()
+                                  .ForEach(n => settings.AddNamespace(n));
 
             var services = SparkEngineStarter.CreateContainer(settings);
 

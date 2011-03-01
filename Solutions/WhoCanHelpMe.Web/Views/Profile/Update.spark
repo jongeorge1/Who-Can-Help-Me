@@ -1,4 +1,4 @@
-﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Profile.ViewModels.UpdateProfilePageViewModel"/>
+﻿<viewdata model="UpdateProfilePageViewModel"/>
 #Html.EnableClientValidation();
 #Html.EnableUnobtrusiveJavaScript();
 
@@ -12,7 +12,7 @@ Show off your 'Guns'
   !{Html.AntiForgeryToken()}
   !{Html.DropDownListFor(x => x.FormModel.CategoryId, new SelectList(Model.Categories, "Id", "Name"))}
   !{Html.TextBoxFor(x => x.FormModel.TagName)}
-  !{Html.ValidationMessageFor(x => x.FormModel.TagName")}
+  !{Html.ValidationMessageFor(x => x.FormModel.TagName)}
   <button type="submit">Add</button>
 #}
 
@@ -21,7 +21,6 @@ Show off your 'Guns'
 		${assertion.CategoryName}&nbsp;
         !{Html.ActionLink(assertion.TagName, "ByTag", "Search", new { tagName = assertion.TagName })}
         !{Html.ActionLink("Delete", "DeleteAssertion", "Profile", new { assertionId = assertion.Id })}
- <!--		!{Html.ActionLink<WhoCanHelpMe.Web.Controllers.Profile.ProfileController>(p => p.DeleteAssertion(assertion.Id), "Delete", new { class = "remove_tag" })}	-->
 	</li>
 </ul>
 

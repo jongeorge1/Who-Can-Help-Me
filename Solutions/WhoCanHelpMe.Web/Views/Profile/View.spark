@@ -1,4 +1,4 @@
-﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Profile.ViewModels.ViewProfilePageViewModel"/>
+﻿<viewdata model="ViewProfilePageViewModel"/>
 
 <content name="title">
 Is this who you're after?

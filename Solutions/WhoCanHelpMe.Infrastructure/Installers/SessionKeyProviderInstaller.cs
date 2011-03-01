@@ -1,7 +1,5 @@
-namespace WhoCanHelpMe.Infrastructure.Registrars
+namespace WhoCanHelpMe.Infrastructure.Installers
 {
-    using System;
-
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;

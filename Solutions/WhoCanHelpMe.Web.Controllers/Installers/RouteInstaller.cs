@@ -1,7 +1,5 @@
-﻿namespace WhoCanHelpMe.Web.Controllers.Initialisers
+﻿namespace WhoCanHelpMe.Web.Controllers.Installers
 {
-    #region Using Directives
-
     using System.Web.Mvc;
     using System.Web.Routing;
 
@@ -9,12 +7,10 @@
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
 
-    #endregion
-
     /// <summary>
     /// Responsible for all the MVC route registration
     /// </summary>
-    public class RouteInitialiser : IWindsorInstaller
+    public class RouteInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {

@@ -165,9 +165,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Initialisers\ValidationInitialiser.cs" />
-    <Compile Include="Initialisers\ViewEngineInitialiser.cs" />
-    <Compile Include="Registrars\ValidatorRegistrar.cs" />
+    <Compile Include="Installers\ViewEngineInstaller.cs" />
     <Compile Include="ResourceFiles\Site.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

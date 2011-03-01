@@ -150,9 +150,9 @@
     <Compile Include="Search\Mappers\SearchResultsPageViewModelMapper.cs" />
     <Compile Include="Extensions\TempDataExtensions.cs" />
     <Compile Include="Navigation\NavigationController.cs" />
-    <Compile Include="Registrars\ControllerFactoryRegistrar.cs" />
-    <Compile Include="Registrars\ControllerRegistrar.cs" />
-    <Compile Include="Registrars\MapperRegistrar.cs" />
+    <Compile Include="Installers\ControllerFactoryInstaller.cs" />
+    <Compile Include="Installers\ControllerInstaller.cs" />
+    <Compile Include="Installers\MapperInstaller.cs" />
     <Compile Include="User\UserController.cs" />
     <Compile Include="Profile\ViewModels\AddAssertionFormModel.cs" />
     <Compile Include="Search\ViewModels\AssertionViewModel.cs" />
@@ -169,7 +169,7 @@
     <Compile Include="Profile\Mappers\ViewProfilePageViewModelMapper.cs" />
     <Compile Include="Search\Mappers\SearchPageViewModelMapper.cs" />
     <Compile Include="Profile\ProfileController.cs" />
-    <Compile Include="Initialisers\RouteInitialiser.cs" />
+    <Compile Include="Installers\RouteInstaller.cs" />
     <Compile Include="Search\SearchController.cs" />
     <Compile Include="Tag\TagController.cs" />
     <Compile Include="Shared\ViewModels\MetaDataViewModel.cs" />

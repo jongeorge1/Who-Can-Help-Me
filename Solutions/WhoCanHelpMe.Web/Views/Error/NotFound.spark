@@ -1,4 +1,4 @@
-﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Shared.ViewModels.PageViewModel"/>
+﻿<viewdata model="PageViewModel"/>
 
 <content name="title">
 404!

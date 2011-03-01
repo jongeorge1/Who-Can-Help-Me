@@ -1,4 +1,4 @@
-﻿<viewdata model="WhoCanHelpMe.Web.Controllers.User.ViewModels.LoginPageViewModel"/>
+﻿<viewdata model="LoginPageViewModel"/>
 
 <content name="title">
 Who goes there?

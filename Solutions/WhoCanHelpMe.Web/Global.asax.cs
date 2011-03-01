@@ -25,13 +25,12 @@
     using SharpArch.Web.NHibernate;
 
     using WhoCanHelpMe.Framework.Extensions;
-
+    using WhoCanHelpMe.Infrastructure.Installers;
     using WhoCanHelpMe.Infrastructure.NHibernate;
     using WhoCanHelpMe.Infrastructure.NHibernateMaps;
-    using WhoCanHelpMe.Infrastructure.Registrars;
-    using WhoCanHelpMe.Tasks.Registrars;
+    using WhoCanHelpMe.Tasks.Installers;
     using WhoCanHelpMe.Web.Code;
-    using WhoCanHelpMe.Web.Controllers.Registrars;
+    using WhoCanHelpMe.Web.Controllers.Installers;
 
     #endregion
 
@@ -154,10 +153,10 @@
             ServiceLocator.SetLocatorProvider(() => new WindsorServiceLocator(container));
 
             container.Install(
-                FromAssembly.Containing<ServiceRegistrar>(),
+                FromAssembly.Containing<ServiceInstaller>(),
                 FromAssembly.This(),
-                FromAssembly.Containing<ControllerRegistrar>(),
-                FromAssembly.Containing<TasksRegistrar>(),
+                FromAssembly.Containing<ControllerInstaller>(),
+                FromAssembly.Containing<TasksInstaller>(),
                 FromAssembly.Containing<GenericRepositoryInstaller>());
 
             return;

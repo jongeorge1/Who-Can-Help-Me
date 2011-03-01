@@ -1,8 +1,7 @@
-namespace WhoCanHelpMe.Tasks.Registrars
+namespace WhoCanHelpMe.Tasks.Installers
 {
     #region Using Directives
 
-    using System.ComponentModel.Composition;
     using System.Reflection;
 
     using Castle.MicroKernel.Registration;
@@ -11,11 +10,11 @@ namespace WhoCanHelpMe.Tasks.Registrars
 
     #endregion
 
-    public class TasksRegistrar : IWindsorInstaller
+    public class TasksInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(AllTypes.FromAssembly(Assembly.GetAssembly(typeof(TasksRegistrar))).Pick().WithService.DefaultInterface());
+            container.Register(AllTypes.FromAssembly(Assembly.GetAssembly(typeof(TasksInstaller))).Pick().WithService.DefaultInterface());
         }
     }
 }

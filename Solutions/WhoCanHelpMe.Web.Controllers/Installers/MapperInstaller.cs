@@ -1,16 +1,10 @@
-namespace WhoCanHelpMe.Web.Controllers.Registrars
+namespace WhoCanHelpMe.Web.Controllers.Installers
 {
-    #region Using Directives
-
-    using System.Reflection;
-
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
 
-    #endregion
-
-    public class MapperRegistrar : IWindsorInstaller
+    public class MapperInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {

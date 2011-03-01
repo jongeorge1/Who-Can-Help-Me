@@ -1,4 +1,4 @@
-﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Navigation.ViewModels.MenuViewModel"/>
+﻿<viewdata model="MenuViewModel"/>
 # Html.BeginForm("ByTag","Search");
 	!{Html.TextBox("tagName", "Search", new
         {

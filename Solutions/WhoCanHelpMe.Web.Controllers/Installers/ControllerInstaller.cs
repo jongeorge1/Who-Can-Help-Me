@@ -1,9 +1,6 @@
-namespace WhoCanHelpMe.Web.Controllers.Registrars
+namespace WhoCanHelpMe.Web.Controllers.Installers
 {
-    #region Using Directives
-
     using System;
-    using System.ComponentModel.Composition;
     using System.Linq;
     using System.Reflection;
     using System.Web.Mvc;
@@ -15,13 +12,11 @@ namespace WhoCanHelpMe.Web.Controllers.Registrars
 
     using WhoCanHelpMe.Framework.Extensions;
 
-	#endregion
-
-    public class ControllerRegistrar : IWindsorInstaller
+    public class ControllerInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            Assembly.GetAssembly(typeof(ControllerRegistrar)).GetExportedTypes()
+            Assembly.GetAssembly(typeof(ControllerInstaller)).GetExportedTypes()
                     .Where(IsController)
                     .Each(type => container.Register(Component.For(type).ImplementedBy(type).Named(type.Name.ToLower()).LifeStyle.Is(LifestyleType.Transient)));
         }

@@ -1,4 +1,4 @@
-﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Search.ViewModels.SearchPageViewModel"/>
+﻿<viewdata model="SearchPageViewModel"/>
 <p>Search for a skill, technology, client or interest</p>
 <SearchForm />
 <PopularTags tags="Model.PopularTags" />

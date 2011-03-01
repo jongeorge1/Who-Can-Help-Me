@@ -1,4 +1,4 @@
-﻿<viewdata model="WhoCanHelpMe.Web.Controllers.About.ViewModels.AboutPageViewModel"/>
+﻿<viewdata model="AboutPageViewModel"/>
 
 <content name="title">
 What is going on here?
@@ -6,7 +6,7 @@ What is going on here?
 
 <p>Who Can Help Me? allows you to create a profile of your skills, knowledge and experience so that other people within the community can seek your advice.</p>
 <h2>Who Can Help Me is Open Source</h2>
-<p>Who Can Help Me? is a technology demo, using the following Open Source Frameworks & Tools:</p>
+<p>Who Can Help Me? is a technology demo, using the following Open Source Frameworks &amp; Tools:</p>
 <ul class="about_list">
 	<li><a href="http://sharparchitecture.net/">Sharp Architecture</a></li>  
 	<li><a href="http://www.asp.net/mvc/">ASP.NET MVC</a></li> 
@@ -24,9 +24,8 @@ What is going on here?
 	<li><a href="http://www.ayende.com/projects/rhino-mocks.aspx">RhinoMocks</a></li> 
 	<li><a href="http://sparkviewengine.com/">Spark View Engine</a></li> 
 	<li><a href="http://tweetsharp.com/">TweetSharp</a></li> 
-	<li><a href="http://xval.codeplex.com/">xVal Validation Framework</a></li>
 </ul> 
-<p>The source for Who Can Help Me? is available on Codeplex: <a href="http://whocanhelpme.codeplex.com">http://whocanhelpme.codeplex.com</a></p>
+<p>The source for Who Can Help Me? is available on GitHub: <a href="https://github.com/sharparchitecture/Who-Can-Help-Me">https://github.com/sharparchitecture/Who-Can-Help-Me</a></p>
 <h2>The Development Team</h2>
 <p>Who Can Help Me? was developed by:</p>
 <ul class="about_list">

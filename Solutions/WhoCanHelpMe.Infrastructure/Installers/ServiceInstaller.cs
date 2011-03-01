@@ -1,7 +1,5 @@
-namespace WhoCanHelpMe.Infrastructure.Registrars
+namespace WhoCanHelpMe.Infrastructure.Installers
 {
-    #region Using Directives
-
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
@@ -11,9 +9,7 @@ namespace WhoCanHelpMe.Infrastructure.Registrars
     using WhoCanHelpMe.Infrastructure.News;
     using WhoCanHelpMe.Infrastructure.Security;
 
-    #endregion
-
-    public class ServiceRegistrar : IWindsorInstaller
+    public class ServiceInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {

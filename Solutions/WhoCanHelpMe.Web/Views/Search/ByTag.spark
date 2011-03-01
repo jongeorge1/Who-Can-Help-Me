@@ -1,4 +1,4 @@
-﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Search.ViewModels.SearchResultsPageViewModel"/>
+﻿<viewdata model="SearchResultsPageViewModel"/>
 
 <content name="title">
 Et Voila!

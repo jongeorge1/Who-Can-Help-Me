@@ -1,4 +1,4 @@
-﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Home.ViewModels.HomePageViewModel"/>
+﻿<viewdata model="HomePageViewModel"/>
 
 <content name="title">
 What's all this then?

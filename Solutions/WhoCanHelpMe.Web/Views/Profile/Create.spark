@@ -1,4 +1,4 @@
-﻿<viewdata model="WhoCanHelpMe.Web.Controllers.Profile.ViewModels.CreateProfilePageViewModel"/>
+﻿<viewdata model="CreateProfilePageViewModel"/>
 #Html.EnableClientValidation();
 #Html.EnableUnobtrusiveJavaScript();
 

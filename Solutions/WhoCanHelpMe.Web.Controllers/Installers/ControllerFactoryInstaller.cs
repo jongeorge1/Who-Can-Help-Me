@@ -1,4 +1,4 @@
-namespace WhoCanHelpMe.Web.Controllers.Registrars
+namespace WhoCanHelpMe.Web.Controllers.Installers
 {
     #region Using Directives
 
@@ -12,7 +12,7 @@ namespace WhoCanHelpMe.Web.Controllers.Registrars
 
     #endregion
 
-    public class ControllerFactoryRegistrar : IWindsorInstaller
+    public class ControllerFactoryInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
