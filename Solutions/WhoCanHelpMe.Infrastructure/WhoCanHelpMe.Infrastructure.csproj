@@ -136,7 +136,6 @@
     <Compile Include="NHibernateMaps\Conventions\PrimaryKeyConvention.cs" />
     <Compile Include="NHibernateMaps\Conventions\TableNameConvention.cs" />
     <Compile Include="NHibernateMaps\AutoPersistenceModelGenerator.cs" />
-    <Compile Include="NHibernate\SessionKeys.cs" />
     <Compile Include="Installers\SessionKeyProviderInstaller.cs" />
     <Compile Include="Security\IdentityService.cs" />
   </ItemGroup>

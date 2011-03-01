@@ -19,9 +19,9 @@ Show off your 'Guns'
 <ul id="skill_list">
 	<li each="var assertion in Model.Assertions">
 		${assertion.CategoryName}&nbsp;
-        !{Html.ActionLink(assertion.TagName, "ByTag", "Search", new { tagName = assertion.TagName })}
-        !{Html.ActionLink("Delete", "DeleteAssertion", "Profile", new { assertionId = assertion.Id })}
-	</li>
+    !{Html.ActionLink(assertion.TagName, "ByTag", "Search", new { tagName = assertion.TagName }, null)}
+    !{Html.ActionLink("Delete", "DeleteAssertion", "Profile", new { assertionId = assertion.Id }, null)}
+  </li>
 </ul>
 
 <p>&nbsp;</p>

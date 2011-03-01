@@ -26,7 +26,6 @@
 
     using WhoCanHelpMe.Framework.Extensions;
     using WhoCanHelpMe.Infrastructure.Installers;
-    using WhoCanHelpMe.Infrastructure.NHibernate;
     using WhoCanHelpMe.Infrastructure.NHibernateMaps;
     using WhoCanHelpMe.Tasks.Installers;
     using WhoCanHelpMe.Web.Code;
@@ -41,7 +40,7 @@
     /// For instructions on enabling IIS6 or IIS7 classic mode, 
     /// visit http://go.microsoft.com/?LinkId=9394801
     /// </remarks>
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         private WebSessionStorage webSessionStorage;
 
@@ -143,7 +142,7 @@
                 this.webSessionStorage,
                 new[] { Server.MapPath("~/bin/WhoCanHelpMe.Infrastructure.dll") },
                 new AutoPersistenceModelGenerator().Generate(),
-                Server.MapPath("~/Configuration/NHibernate/{0}.config").FormatWith(SessionKeys.Data));
+                Server.MapPath("~/Configuration/NHibernate/nhibernate.current_session.config"));
         }
 
         private static void InitializeServiceLocator()
