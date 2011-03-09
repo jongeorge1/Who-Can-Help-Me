@@ -20,7 +20,7 @@ Show off your 'Guns'
 	<li each="var assertion in Model.Assertions">
 		${assertion.CategoryName}&nbsp;
     !{Html.ActionLink(assertion.TagName, "ByTag", "Search", new { tagName = assertion.TagName }, null)}
-    !{Html.ActionLink("Delete", "DeleteAssertion", "Profile", new { assertionId = assertion.Id }, null)}
+    !{Html.ActionLink("Delete", "DeleteAssertion", "Profile", new { assertionId = assertion.Id }, new { class = "delete" })}
   </li>
 </ul>
 
