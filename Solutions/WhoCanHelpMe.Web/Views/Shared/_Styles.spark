@@ -1,1 +1,4 @@
-﻿<link each="var styleSheet in Model.Styles" href="${Url.Stylesheet(styleSheet)}" rel="stylesheet" type="text/css" media="all"/> 
+﻿<link href="${Url.Stylesheet('reset.css')}" rel="stylesheet" type="text/css" media="all"/>
+<link href="${Url.Stylesheet('jquery.autocomplete.css')}" rel="stylesheet" type="text/css" media="all"/>
+<link href="${Url.Stylesheet('openid.css')}" rel="stylesheet" type="text/css" media="all"/>
+<link href="${Url.Stylesheet('site.less')}" rel="stylesheet" type="text/css" media="all"/>

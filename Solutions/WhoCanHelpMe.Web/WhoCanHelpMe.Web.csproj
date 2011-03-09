@@ -189,6 +189,9 @@
     <Content Include="Scripts\MicrosoftMvcAjax.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\openid-en.js" />
+    <Content Include="Views\_Content\css\openid-shadow.css" />
+    <Content Include="Views\_Content\img\openid-images\openid-providers-en.png" />
     <Content Include="Web.config" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
@@ -250,17 +253,22 @@
     <Content Include="Views\_Content\img\openid-images\wordpress.ico" />
     <Content Include="Views\_Content\img\openid-images\yahoo.gif" />
     <Content Include="Configuration\Container.Components.config" />
+    <Content Include="Scripts\web.config" />
     <None Include="Views\About\Index.spark" />
     <None Include="Views\Error\Error.spark" />
     <None Include="Views\Error\InvalidInput.spark" />
     <None Include="Views\Error\NotFound.spark" />
     <None Include="Views\Home\Index.spark" />
     <None Include="Views\Layouts\Site.spark" />
-    <None Include="Views\Navigation\Menu.spark" />
+    <None Include="Views\Navigation\Menu.spark">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Views\Shared\_Analytics.spark" />
     <None Include="Views\Shared\_NewsHeadlines.spark" />
     <None Include="Views\Profile\Create.spark" />
-    <None Include="Views\Profile\Update.spark" />
+    <None Include="Views\Profile\Update.spark">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Views\Profile\View.spark" />
     <None Include="Views\Search\Index.spark" />
     <None Include="Views\Search\ByTag.spark" />

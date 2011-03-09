@@ -1,1 +1,7 @@
-﻿<script each="var script in Model.Scripts" type="text/javascript" src="${Url.Scripts(script)}"></script> 
+﻿<script type="text/javascript" src="${Url.Scripts('jquery-1.4.4.js')}"></script>
+<script type="text/javascript" src="${Url.Scripts('jquery.autocomplete.custom.js')}"></script>
+<script type="text/javascript" src="${Url.Scripts('jquery.validate.js')}"></script>
+<script type="text/javascript" src="${Url.Scripts('jquery.validate.unobtrusive.js')}"></script>
+<script type="text/javascript" src="${Url.Scripts('openid-jquery.js')}"></script>
+<script type="text/javascript" src="${Url.Scripts('openid-en.js')}"></script>
+<script type="text/javascript" src="${Url.Scripts('bespoke.js')}"></script>
