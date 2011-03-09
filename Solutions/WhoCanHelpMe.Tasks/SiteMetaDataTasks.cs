@@ -1,14 +1,8 @@
 namespace WhoCanHelpMe.Tasks
 {
-    #region Using Directives
-
-    using System.Collections.Generic;
-    
     using Domain;
     using Domain.Contracts.Tasks;
     using Domain.Contracts.Configuration;
-
-    #endregion
 
     public class SiteMetaDataTasks : ISiteMetaDataTasks
     {
@@ -24,41 +18,10 @@ namespace WhoCanHelpMe.Tasks
             var siteMetaData = new SiteMetaData
                                    {
                                        AnalyticsIdentifier = this.configurationService.Analytics.Idenfitier,
-                                       Scripts = this.GetScripts(),
                                        SiteVerification = this.configurationService.Analytics.Verification, 
-                                       Styles = this.GetStyles(),
-                                       Title = "Who Can Help Me?"
                                    };
 
             return siteMetaData;
-        }
-
-        private IList<string> GetScripts()
-        {
-            var scripts = new List<string>
-                              {
-                                  "jquery-1.4.4.js",
-                                  "jquery.autocomplete.custom.js",
-                                  "jquery.validate.js",
-                                  "jquery.validate.unobtrusive.js",
-                                  "openid-jquery.js",
-                                  "bespoke.js"
-                              };
-
-            return scripts;
-        }
-
-        private IList<string> GetStyles()
-        {
-            var styles = new List<string>
-                              {
-                                  "reset.css",
-                                  "jquery.autocomplete.css",
-                                  "openid.css",
-                                  "site.less"
-                              };
-
-            return styles;
         }
     }
 }

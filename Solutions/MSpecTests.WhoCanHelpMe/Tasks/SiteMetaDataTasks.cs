@@ -64,11 +64,5 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
         It should_return_the_correct_analytics_identifier = () => result.AnalyticsIdentifier.ShouldEqual(analytics_identifier);
         
         It should_return_the_correct_site_verification = () => result.SiteVerification.ShouldEqual(site_verification);
-
-        It should_return_the_correct_site_title = () => result.Title.ShouldEqual(site_title);
-
-        It should_return_the_list_of_scripts_to_include = () => result.Scripts.Count.ShouldBeGreaterThan(0);
-
-        It should_return_the_list_of_stylesheets_to_include= () => result.Styles.Count.ShouldBeGreaterThan(0);
     }
 }

@@ -29,10 +29,7 @@
             var siteMetaData = this.siteMetaDataTasks.GetSiteMetaData();
 
             pageViewModel.AnalyticsIdentifier = siteMetaData.AnalyticsIdentifier;
-            pageViewModel.Scripts = siteMetaData.Scripts;
             pageViewModel.SiteVerification = siteMetaData.SiteVerification;
-            pageViewModel.Styles = siteMetaData.Styles;
-            pageViewModel.WebTitle = siteMetaData.Title;
 
             return pageViewModel;
         }
