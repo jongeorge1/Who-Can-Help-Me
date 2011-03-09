@@ -29,7 +29,6 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
     using Machine.Specifications.AutoMocking.Rhino;
     using Rhino.Mocks;
 
-    using xVal.ServerSide;
     using Machine.Specifications.Mvc;
 
     #endregion;

@@ -94,10 +94,6 @@
       <HintPath>..\..\ReferencedAssemblies\ASP.NET MVC\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
-    <Reference Include="xVal, Version=4.5.14361.0, Culture=neutral, PublicKeyToken=7d36a26be2c5e23c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ReferencedAssemblies\xVal\xVal.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\Common\AssemblyVersion.cs">
@@ -119,8 +115,6 @@
     <Compile Include="Security\Identity.cs" />
     <Compile Include="Security\IIdentityService.cs" />
     <Compile Include="Threading\LockableObjectProvider.cs" />
-    <Compile Include="Validation\IValidateMultipleProperties.cs" />
-    <Compile Include="Validation\ValidatableExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
