@@ -46,7 +46,7 @@
                     return this.Redirect(returnUrl);
                 }
 
-                return this.RedirectToAction("Index");
+                return this.RedirectToAction<HomeController>(c => c.Index());
             }
             catch (AuthenticationException ex)
             {
@@ -54,7 +54,7 @@
                     "Message",
                     ex.Message);
 
-                return this.RedirectToAction("Login");
+                return this.RedirectToAction(c => c.Login(returnUrl));
             }
         }
 
@@ -62,10 +62,10 @@
         {
             if (this.identityService.IsSignedIn())
             {
-                return this.RedirectToAction("Index");
+                return this.RedirectToAction<HomeController>(c => c.Index());
             }
 
-            return this.RedirectToAction("Login");
+            return this.RedirectToAction(c => c.Login(string.Empty));
         }
 
         [ModelStateToTempData]
@@ -74,7 +74,7 @@
             if (this.identityService.IsSignedIn())
             {
                 //  Redirect to home page
-                return this.RedirectToAction("Index", "Home");
+                return this.RedirectToAction<HomeController>(c => c.Index());
             }
 
             var message = this.TempData["Message"] as string;
@@ -90,7 +90,7 @@
         {
             this.identityService.SignOut();
 
-            return this.RedirectToAction("Index", "Home");
+            return this.RedirectToAction<HomeController>(c => c.Index());
         }
     }
 }

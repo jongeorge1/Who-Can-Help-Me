@@ -4,6 +4,11 @@
 // </auto-generated>
 //-------------------------------------------------------------------------------------------------
 
+#pragma warning disable 169
+// ReSharper disable InconsistentNaming
+// ReSharper disable UnusedMember.Global
+// ReSharper disable UnusedMember.Local
+
 namespace MSpecTests.WhoCanHelpMe.Web.Controllers
 {
     #region Using Directives
@@ -109,42 +114,6 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
 
         It should_redirect_to_the_update_action =
             () => result.ShouldRedirectToAction<ProfileController>(x => x.Update()); 
-    }
-
-    [Subject(typeof(ProfileController))]
-    public class when_the_profile_controller_is_told_to_create_a_new_profile_with_invalid_data : specification_for_profile_controller
-    {
-        static string user_name;
-        static Identity the_identity;
-        static ActionResult result;
-        static CreateProfileFormModel create_profile_view_model;
-
-        Establish context = () =>
-        {
-            user_name = "user_name";
-
-            the_identity = new Identity(user_name, string.Empty, true);
-
-            create_profile_view_model = new CreateProfileFormModel
-                {
-                    FirstName = "First name", 
-                    LastName = "Last name"
-                };
-
-            identity_service.Stub(i => i.GetCurrentIdentity()).Return(the_identity);
-            user_tasks.Stub(u => u.CreateProfile(user_name, create_profile_view_model.FirstName, create_profile_view_model.LastName)).Throw(new RulesException(new List<ErrorInfo>()));
-        };
-
-        Because of = () => result = subject.Create(create_profile_view_model);
-
-        It should_ask_the_identity_service_for_the_logged_in_user =
-            () => identity_service.AssertWasCalled(i => i.GetCurrentIdentity());
-
-        It should_ask_the_user_tasks_to_create_the_new_profile =
-            () => user_tasks.AssertWasCalled(u => u.CreateProfile(user_name, create_profile_view_model.FirstName, create_profile_view_model.LastName));
-
-        It should_redirect_to_the_create_action =
-            () => result.ShouldRedirectToAction<ProfileController>(x => x.Create());
     }
 
     [Subject(typeof(ProfileController))]
@@ -294,41 +263,6 @@ namespace MSpecTests.WhoCanHelpMe.Web.Controllers
 
                 identity_service.Stub(i => i.GetCurrentIdentity()).Return(the_identity);
             };
-
-        Because of = () => result = subject.Update(the_view_model);
-
-        It should_ask_the_identity_service_for_the_current_identity =
-            () => identity_service.AssertWasCalled(i => i.GetCurrentIdentity());
-
-        It should_ask_the_user_tasks_to_add_the_new_assertion =
-            () => user_tasks.AssertWasCalled(u => u.AddAssertion(the_identity.Name, the_view_model.CategoryId, the_view_model.TagName));
-
-        It should_redirect_to_the_update_action =
-            () => result.ShouldRedirectToAction<ProfileController>(x => x.Update());
-    }
-
-    [Subject(typeof(ProfileController))]
-    public class when_the_profile_controller_is_told_to_update_a_profile_with_invalid_data : specification_for_profile_controller
-    {
-        static ActionResult result;
-        static AddAssertionFormModel the_view_model;
-        static Identity the_identity;
-
-        Establish context = () =>
-        {
-            the_view_model = new AddAssertionFormModel
-                {
-                    CategoryId = 1,
-                    TagName = "Tag name"
-                };
-
-            the_identity = new Identity("User name", string.Empty, true);
-
-            identity_service.Stub(i => i.GetCurrentIdentity()).Return(the_identity);
-            
-            user_tasks.Stub(u => u.AddAssertion(the_identity.Name, the_view_model.CategoryId, the_view_model.TagName))
-                .Throw(new RulesException(new List<ErrorInfo>()));
-        };
 
         Because of = () => result = subject.Update(the_view_model);
 

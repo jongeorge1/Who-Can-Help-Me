@@ -8,6 +8,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
     using Domain;
     using Domain.Contracts.Tasks;
 
+    using MvcContrib;
     using MvcContrib.Filters;
 
     using Shared.ActionResults;
@@ -17,6 +18,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
     using ViewModels;
 
     using WhoCanHelpMe.Framework.Security;
+    using WhoCanHelpMe.Web.Controllers.Home;
     using WhoCanHelpMe.Web.Controllers.Profile.Mappers.Contracts;
 
     public class ProfileController : BaseController
@@ -73,10 +75,10 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
 
                 this.userTasks.CreateProfile(identity.Name, formModel.FirstName, formModel.LastName);
 
-                return this.RedirectToAction("Update");
+                return this.RedirectToAction(c => c.Update());
             }
 
-            return this.RedirectToAction("Create");
+            return this.RedirectToAction(c => c.Create());
         }
 
         [Authorize]
@@ -88,7 +90,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
 
             this.userTasks.DeleteProfile(identity.Name);
 
-            return this.RedirectToAction("Index", "Home");
+            return this.RedirectToAction<HomeController>(c => c.Index());
         }
 
         [Authorize]
@@ -104,13 +106,13 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
                 user,
                 assertionId);
 
-            return this.RedirectToAction("Update");
+            return this.RedirectToAction(c => c.Update());
         }
 
         [HttpGet]
         public ActionResult Index()
         {
-            return this.RedirectToAction("Update");
+            return this.RedirectToAction(c => c.Update());
         }
 
         [Authorize]
@@ -146,7 +148,7 @@ namespace WhoCanHelpMe.Web.Controllers.Profile
                 this.userTasks.AddAssertion(identity.Name, formModel.CategoryId, formModel.TagName);
             }
 
-            return this.RedirectToAction("Update");
+            return this.RedirectToAction(c => c.Update());
         }
 
         [HttpGet]
