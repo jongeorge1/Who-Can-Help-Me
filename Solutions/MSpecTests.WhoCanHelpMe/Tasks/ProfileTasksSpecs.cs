@@ -203,7 +203,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
 
                 the_profile_repository.Stub(r => r.FindOne(Arg<ProfileByUserNameSpecification>.Is.Anything)).Return(the_profile);
 
-                the_category_repository.Stub(r => r.FindOne(Arg<CategoryByIdSpecification>.Is.Anything)).Return(the_category);
+                the_category_repository.Stub(r => r.FindOne(the_category_id)).Return(the_category);
 
                 the_tag_repository.Stub(r => r.FindOne(Arg<TagByNameSpecification>.Is.Anything)).Return(the_tag);
             };
@@ -214,7 +214,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
 
         It should_ask_the_tag_repository_for_the_tag_to_add = () => the_tag_repository.AssertWasCalled(r => r.FindOne(Arg<TagByNameSpecification>.Matches(spec => spec.Name == the_tag_name)));
 
-        It should_ask_the_category_repository_for_the_matching_category = () => the_category_repository.AssertWasCalled(r => r.FindOne(Arg<CategoryByIdSpecification>.Matches(spec => spec.Id == the_category_id)));
+        It should_ask_the_category_repository_for_the_matching_category = () => the_category_repository.AssertWasCalled(r => r.FindOne(the_category_id));
 
         It should_add_the_new_assertion_to_the_profile =
             () => the_profile.Assertions.Count.ShouldEqual(1);
@@ -247,7 +247,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
 
                 the_profile_repository.Stub(r => r.FindOne(Arg<ProfileByUserNameSpecification>.Is.Anything)).Return(the_profile);
 
-                the_category_repository.Stub(r => r.FindOne(Arg<CategoryByIdSpecification>.Is.Anything)).Return(the_category);
+                the_category_repository.Stub(r => r.FindOne(the_category_id)).Return(the_category);
 
                 the_tag_repository.Stub(r => r.FindOne(Arg<TagByNameSpecification>.Is.Anything)).Return(null);
             };
@@ -258,7 +258,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
 
         It should_ask_the_tag_repository_for_the_tag_to_add = () => the_tag_repository.AssertWasCalled(r => r.FindOne(Arg<TagByNameSpecification>.Matches(spec => spec.Name == the_tag_name)));
 
-        It should_ask_the_category_repository_for_the_matching_category = () => the_category_repository.AssertWasCalled(r => r.FindOne(Arg<CategoryByIdSpecification>.Matches(spec => spec.Id == the_category_id)));
+        It should_ask_the_category_repository_for_the_matching_category = () => the_category_repository.AssertWasCalled(r => r.FindOne(the_category_id));
 
         It should_add_the_new_assertion_to_the_profile = () =>
             {
@@ -341,7 +341,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
 
             the_profile_repository.Stub(r => r.FindOne(Arg<ProfileByUserNameSpecification>.Is.Anything)).Return(the_profile);
 
-            the_category_repository.Stub(r => r.FindOne(Arg<CategoryByIdSpecification>.Is.Anything)).Return(null);
+            the_category_repository.Stub(r => r.FindOne(the_category_id)).Return(null);
         };
 
         Because of = () => the_exception = Catch.Exception(() => subject.AddAssertion(the_user_name, the_category_id, the_tag_name));

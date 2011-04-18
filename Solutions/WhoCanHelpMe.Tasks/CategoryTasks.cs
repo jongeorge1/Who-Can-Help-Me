@@ -29,7 +29,7 @@
 
         public Category Get(int categoryId)
         {
-            return this.categoryRepository.FindOne(new CategoryByIdSpecification(categoryId));
+            return this.categoryRepository.FindOne(categoryId);
         }
     }
 }

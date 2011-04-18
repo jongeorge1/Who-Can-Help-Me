@@ -145,7 +145,7 @@
 
         private Category GetCategory(int categoryId)
         {
-            var category = this.categoryRepository.FindOne(new CategoryByIdSpecification(categoryId));
+            var category = this.categoryRepository.FindOne(categoryId);
             
             Check.Ensure(category != null, "Invalid categoryId");
 

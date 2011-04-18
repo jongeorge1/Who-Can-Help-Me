@@ -89,12 +89,12 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
 
                 the_category = new Category();
 
-                the_category_repository.Stub(r => r.FindOne(Arg<CategoryByIdSpecification>.Is.Anything)).Return(the_category);
+                the_category_repository.Stub(r => r.FindOne(category_id)).Return(the_category);
             };
 
         Because of = () => result = subject.Get(category_id);
 
-        It should_ask_the_category_repository_for_the_category_by_id = () => the_category_repository.AssertWasCalled(r => r.FindOne(Arg<CategoryByIdSpecification>.Matches(s => s.Id == category_id)));
+        It should_ask_the_category_repository_for_the_category_by_id = () => the_category_repository.AssertWasCalled(r => r.FindOne(category_id));
 
         It should_return_the_matching_category = () => result.ShouldEqual(the_category);
     }
@@ -109,12 +109,12 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
         {
             category_id = 1;
 
-            the_category_repository.Stub(r => r.FindOne(Arg<CategoryByIdSpecification>.Is.Anything)).Return(null);
+            the_category_repository.Stub(r => r.FindOne(category_id)).Return(null);
         };
 
         Because of = () => result = subject.Get(category_id);
 
-        It should_ask_the_category_repository_for_the_category_by_id = () => the_category_repository.AssertWasCalled(r => r.FindOne(Arg<CategoryByIdSpecification>.Matches(s => s.Id == category_id)));
+        It should_ask_the_category_repository_for_the_category_by_id = () => the_category_repository.AssertWasCalled(r => r.FindOne(category_id));
 
         It should_return_null = () => result.ShouldBeNull();
     }
