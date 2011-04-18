@@ -119,7 +119,7 @@
 
         public Profile GetProfileById(int profileId)
         {
-            return this.profileRepository.FindOne(new ProfileByIdSpecification(profileId));
+            return this.profileRepository.FindOne(profileId);
         }
 
         public Profile GetProfileByUserName(string userName)

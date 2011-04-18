@@ -100,12 +100,12 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
 
             the_profile = new Profile();
 
-            the_profile_repository.Stub(r => r.FindOne(Arg<ProfileByIdSpecification>.Is.Anything)).Return(the_profile);
+            the_profile_repository.Stub(r => r.FindOne(profile_id)).Return(the_profile);
         };
 
         Because of = () => result = subject.GetProfileById(profile_id);
 
-        It should_ask_the_repository_for_the_profile = () => the_profile_repository.AssertWasCalled(r => r.FindOne(Arg<ProfileByIdSpecification>.Matches(s => s.Id == profile_id)));
+        It should_ask_the_repository_for_the_profile = () => the_profile_repository.AssertWasCalled(r => r.FindOne(profile_id));
 
         It should_return_the_profile_it_retrieved_from_the_repository = () => result.ShouldBeTheSameAs(the_profile);
     }
@@ -115,18 +115,17 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
     {
         static Profile result;
         static int profile_id;
-        static ProfileByIdSpecification specification;
 
         Establish context = () =>
         {
             profile_id = 1;
 
-            the_profile_repository.Stub(r => r.FindOne(Arg<ProfileByIdSpecification>.Is.Anything)).Return(null);
+            the_profile_repository.Stub(r => r.FindOne(profile_id)).Return(null);
         };
 
         Because of = () => result = subject.GetProfileById(profile_id);
 
-        It should_ask_the_repository_for_the_profile = () => the_profile_repository.AssertWasCalled(r => r.FindOne(Arg<ProfileByIdSpecification>.Matches(s => s.Id == profile_id)));
+        It should_ask_the_repository_for_the_profile = () => the_profile_repository.AssertWasCalled(r => r.FindOne(profile_id));
 
         It should_return_null = () => result.ShouldBeNull();
     }

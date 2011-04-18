@@ -118,7 +118,6 @@
     <Compile Include="Specifications\AssertionByTagNameSpecification.cs" />
     <Compile Include="Specifications\AssertionByCategoryIdSpecification.cs" />
     <Compile Include="Specifications\ProfileByUserNameSpecification.cs" />
-    <Compile Include="Specifications\ProfileByIdSpecification.cs" />
     <Compile Include="Specifications\TagByFirstCharactersOfNameSpecification.cs" />
     <Compile Include="Specifications\TagByNameSpecification.cs" />
     <Compile Include="Tag.cs" />
