@@ -113,7 +113,6 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Security\Identity.cs" />
     <Compile Include="Security\IIdentityService.cs" />
-    <Compile Include="Threading\LockableObjectProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
