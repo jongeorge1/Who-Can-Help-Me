@@ -122,14 +122,14 @@
     <Compile Include="Tasks\SearchTasksSpecs.cs" />
     <Compile Include="Tasks\SiteMetaDataTasks.cs" />
     <Compile Include="Tasks\TagTasksSpecs.cs" />
-    <Compile Include="Web.Controllers\RequireNoExistingProfileAttributeSpecs.cs" />
-    <Compile Include="Web.Controllers\HomeControllerSpecs.cs" />
-    <Compile Include="Web.Controllers\NavigationControllerSpecs.cs" />
-    <Compile Include="Web.Controllers\ProfileControllerSpecs.cs" />
-    <Compile Include="Web.Controllers\RequireExistingProfileAttributeSpecs.cs" />
-    <Compile Include="Web.Controllers\SearchControllerSpecs.cs" />
-    <Compile Include="Web.Controllers\TagControllerSpecs.cs" />
-    <Compile Include="Web.Controllers\UserControllerSpecs.cs" />
+    <Compile Include="Presentation.Controllers\RequireNoExistingProfileAttributeSpecs.cs" />
+    <Compile Include="Presentation.Controllers\HomeControllerSpecs.cs" />
+    <Compile Include="Presentation.Controllers\NavigationControllerSpecs.cs" />
+    <Compile Include="Presentation.Controllers\ProfileControllerSpecs.cs" />
+    <Compile Include="Presentation.Controllers\RequireExistingProfileAttributeSpecs.cs" />
+    <Compile Include="Presentation.Controllers\SearchControllerSpecs.cs" />
+    <Compile Include="Presentation.Controllers\TagControllerSpecs.cs" />
+    <Compile Include="Presentation.Controllers\UserControllerSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WhoCanHelpMe.Domain\WhoCanHelpMe.Domain.csproj">
@@ -140,13 +140,13 @@
       <Project>{B3CA9DAB-0279-4637-BF8E-DFAE36F7A7CB}</Project>
       <Name>WhoCanHelpMe.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WhoCanHelpMe.Presentation\WhoCanHelpMe.Presentation.csproj">
+      <Project>{6F92992D-8D75-4BA8-87C3-146581235054}</Project>
+      <Name>WhoCanHelpMe.Presentation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WhoCanHelpMe.Tasks\WhoCanHelpMe.Tasks.csproj">
       <Project>{C9AAC14B-E695-4508-83B7-ACB8FC5A7284}</Project>
       <Name>WhoCanHelpMe.Tasks</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WhoCanHelpMe.Web\WhoCanHelpMe.Web.csproj">
-      <Project>{6F92992D-8D75-4BA8-87C3-146581235054}</Project>
-      <Name>WhoCanHelpMe.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

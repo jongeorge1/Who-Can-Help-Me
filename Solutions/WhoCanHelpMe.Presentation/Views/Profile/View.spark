@@ -1,0 +1,14 @@
+﻿<viewdata model="ViewProfilePageViewModel"/>
+
+<content name="title">
+Is this who you're after?
+</content>
+
+<h2>${Model.FirstName}&nbsp;${Model.LastName}</h2>
+
+<ul>
+	<li each="var assertion in Model.Assertions">
+		${assertion.CategoryName}&nbsp;
+		!{Html.ActionLink<WhoCanHelpMe.Presentation.Controllers.Search.SearchController>(c => c.ByTag(assertion.TagName), assertion.TagName)}
+	</li>
+</ul>
