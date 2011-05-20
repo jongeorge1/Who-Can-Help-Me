@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=0.3.0.54, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ReferencedAssemblies\AutoMapper\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Cadenza.Web.ResourceVersioning, Version=1.0.3637.42721, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ReferencedAssemblies\ResourceVersioning\Cadenza.Web.ResourceVersioning.dll</HintPath>
@@ -120,6 +124,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Abstractions" />
@@ -149,6 +154,56 @@
     <Compile Include="Code\Resource.cs" />
     <Compile Include="Code\ResourceSets.cs" />
     <Compile Include="Code\UrlHelperExtensions.cs" />
+    <Compile Include="Controllers\About\AboutController.cs" />
+    <Compile Include="Controllers\About\Mappers\AboutPageViewModelMapper.cs" />
+    <Compile Include="Controllers\About\ViewModels\AboutPageViewModel.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BasePageViewModelMapper.cs" />
+    <Compile Include="Controllers\Error\ErrorController.cs" />
+    <Compile Include="Controllers\Extensions\RouteCollectionExtensions.cs" />
+    <Compile Include="Controllers\Extensions\TempDataExtensions.cs" />
+    <Compile Include="Controllers\Home\HomeController.cs" />
+    <Compile Include="Controllers\Home\Mappers\HomePageViewModelMapper.cs" />
+    <Compile Include="Controllers\Home\ViewModels\HomePageViewModel.cs" />
+    <Compile Include="Controllers\Home\ViewModels\NewsItemViewModel.cs" />
+    <Compile Include="Installers\ControllerFactoryInstaller.cs" />
+    <Compile Include="Installers\ControllerInstaller.cs" />
+    <Compile Include="Installers\MapperInstaller.cs" />
+    <Compile Include="Installers\RouteInstaller.cs" />
+    <Compile Include="Controllers\LowerCaseRoute.cs" />
+    <Compile Include="Controllers\Navigation\NavigationController.cs" />
+    <Compile Include="Controllers\Navigation\ViewModels\MenuViewModel.cs" />
+    <Compile Include="Controllers\Profile\ActionFilters\ProfileCheckBaseAttribute.cs" />
+    <Compile Include="Controllers\Profile\ActionFilters\RequireExistingProfileAttribute.cs" />
+    <Compile Include="Controllers\Profile\ActionFilters\RequireNoExistingProfileAttribute.cs" />
+    <Compile Include="Controllers\Profile\Mappers\Contracts\ICreateProfilePageViewModelBuilder.cs" />
+    <Compile Include="Controllers\Profile\Mappers\CreateProfilePageViewModelBuilder.cs" />
+    <Compile Include="Controllers\Profile\Mappers\UpdateProfilePageViewModelMapper.cs" />
+    <Compile Include="Controllers\Profile\Mappers\ViewProfilePageViewModelMapper.cs" />
+    <Compile Include="Controllers\Profile\ProfileController.cs" />
+    <Compile Include="Controllers\Profile\ViewModels\AddAssertionFormModel.cs" />
+    <Compile Include="Controllers\Profile\ViewModels\CategoryViewModel.cs" />
+    <Compile Include="Controllers\Profile\ViewModels\CreateProfileFormModel.cs" />
+    <Compile Include="Controllers\Profile\ViewModels\CreateProfilePageViewModel.cs" />
+    <Compile Include="Controllers\Profile\ViewModels\ProfileAssertionViewModel.cs" />
+    <Compile Include="Controllers\Profile\ViewModels\UpdateProfilePageViewModel.cs" />
+    <Compile Include="Controllers\Profile\ViewModels\ViewProfilePageViewModel.cs" />
+    <Compile Include="Controllers\Search\Mappers\SearchPageViewModelMapper.cs" />
+    <Compile Include="Controllers\Search\Mappers\SearchResultsPageViewModelMapper.cs" />
+    <Compile Include="Controllers\Search\SearchController.cs" />
+    <Compile Include="Controllers\Search\ViewModels\AssertionViewModel.cs" />
+    <Compile Include="Controllers\Search\ViewModels\SearchPageViewModel.cs" />
+    <Compile Include="Controllers\Search\ViewModels\SearchResultsPageViewModel.cs" />
+    <Compile Include="Controllers\Search\ViewModels\TagViewModel.cs" />
+    <Compile Include="Controllers\Shared\ActionResults\NotFoundResult.cs" />
+    <Compile Include="Controllers\Shared\Mappers\Contracts\IPageViewModelBuilder.cs" />
+    <Compile Include="Controllers\Shared\Mappers\PageViewModelBuilder.cs" />
+    <Compile Include="Controllers\Shared\ViewModels\MetaDataViewModel.cs" />
+    <Compile Include="Controllers\Shared\ViewModels\PageViewModel.cs" />
+    <Compile Include="Controllers\Tag\TagController.cs" />
+    <Compile Include="Controllers\User\Mappers\LoginPageViewModelMapper.cs" />
+    <Compile Include="Controllers\User\UserController.cs" />
+    <Compile Include="Controllers\User\ViewModels\LoginPageViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,10 +253,6 @@
     <ProjectReference Include="..\WhoCanHelpMe.Tasks\WhoCanHelpMe.Tasks.csproj">
       <Project>{C9AAC14B-E695-4508-83B7-ACB8FC5A7284}</Project>
       <Name>WhoCanHelpMe.Tasks</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WhoCanHelpMe.Web.Controllers\WhoCanHelpMe.Web.Controllers.csproj">
-      <Project>{DBCFAF64-DD59-4D14-887B-BB98B8E63540}</Project>
-      <Name>WhoCanHelpMe.Web.Controllers</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

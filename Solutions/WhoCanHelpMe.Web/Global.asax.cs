@@ -29,7 +29,6 @@
     using WhoCanHelpMe.Infrastructure.NHibernateMaps;
     using WhoCanHelpMe.Tasks.Installers;
     using WhoCanHelpMe.Web.Code;
-    using WhoCanHelpMe.Web.Controllers.Installers;
 
     #endregion
 
@@ -154,7 +153,6 @@
             container.Install(
                 FromAssembly.Containing<ServiceInstaller>(),
                 FromAssembly.This(),
-                FromAssembly.Containing<ControllerInstaller>(),
                 FromAssembly.Containing<TasksInstaller>(),
                 FromAssembly.Containing<GenericRepositoryInstaller>());
 

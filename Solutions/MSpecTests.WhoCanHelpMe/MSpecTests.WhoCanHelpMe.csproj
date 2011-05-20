@@ -144,9 +144,9 @@
       <Project>{C9AAC14B-E695-4508-83B7-ACB8FC5A7284}</Project>
       <Name>WhoCanHelpMe.Tasks</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WhoCanHelpMe.Web.Controllers\WhoCanHelpMe.Web.Controllers.csproj">
-      <Project>{DBCFAF64-DD59-4D14-887B-BB98B8E63540}</Project>
-      <Name>WhoCanHelpMe.Web.Controllers</Name>
+    <ProjectReference Include="..\WhoCanHelpMe.Web\WhoCanHelpMe.Web.csproj">
+      <Project>{6F92992D-8D75-4BA8-87C3-146581235054}</Project>
+      <Name>WhoCanHelpMe.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

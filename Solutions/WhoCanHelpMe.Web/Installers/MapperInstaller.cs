@@ -1,4 +1,4 @@
-namespace WhoCanHelpMe.Web.Controllers.Installers
+namespace WhoCanHelpMe.Web.Installers
 {
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.SubSystems.Configuration;
