@@ -123,7 +123,6 @@
     </Compile>
     <Compile Include="Analytics\Configuration\AnalyticsConfiguration.cs" />
     <Compile Include="Analytics\Configuration\AnalyticsConfigurationSectionCode.cs" />
-    <Compile Include="Caching\HttpCachingService.cs" />
     <Compile Include="Configuration\ConfigurationService.cs" />
     <Compile Include="News\Configuration\NewsConfiguration.cs" />
     <Compile Include="News\Configuration\NewsConfigurationSectionCode.cs" />

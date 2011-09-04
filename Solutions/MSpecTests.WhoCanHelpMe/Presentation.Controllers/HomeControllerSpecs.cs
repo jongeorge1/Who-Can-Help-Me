@@ -38,8 +38,6 @@ namespace MSpecTests.WhoCanHelpMe.Presentation.Controllers
         {
             home_view_model_mapper = DependencyOf<IMapper<IList<NewsItem>, HomePageViewModel>>();
             news_tasks = DependencyOf<INewsTasks>();
-
-            ServiceLocatorHelper.AddCachingService();
         };
     }
 

@@ -114,7 +114,6 @@
     <Compile Include="Profile.cs" />
     <Compile Include="Assertion.cs" />
     <Compile Include="SiteMetaData.cs" />
-    <Compile Include="Specifications\AssertionByTagIdSpecification.cs" />
     <Compile Include="Specifications\AssertionByTagNameSpecification.cs" />
     <Compile Include="Specifications\ProfileByUserNameSpecification.cs" />
     <Compile Include="Specifications\TagByFirstCharactersOfNameSpecification.cs" />

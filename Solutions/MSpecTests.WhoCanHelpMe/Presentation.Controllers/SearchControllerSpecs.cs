@@ -49,8 +49,6 @@ namespace MSpecTests.WhoCanHelpMe.Presentation.Controllers
             the_popular_tags = new List<Tag>();
 
             tag_tasks.Stub(tt => tt.GetMostPopularTags(10)).Return(the_popular_tags);
-
-            ServiceLocatorHelper.AddCachingService();
         };
     }
 

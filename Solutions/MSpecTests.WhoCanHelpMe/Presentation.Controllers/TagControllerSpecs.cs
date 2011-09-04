@@ -33,8 +33,6 @@ namespace MSpecTests.WhoCanHelpMe.Presentation.Controllers
         Establish context = () =>
             {
                 tag_tasks = DependencyOf<ITagTasks>();
-
-                ServiceLocatorHelper.AddCachingService();
             };
     }
 

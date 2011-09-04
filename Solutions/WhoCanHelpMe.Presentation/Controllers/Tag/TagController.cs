@@ -5,22 +5,13 @@
 
     using Domain.Contracts.Tasks;
 
-    using Framework.Caching;
-
     public class TagController : BaseController
     {
-        private const string CacheKeyBase = "TagController.StartingWithInner:";
-
-        private static readonly object StartingWithInnerSyncRoot = new object();
-
         private readonly ITagTasks tagTasks;
 
-        private readonly ICachingService cachingService;
-
-        public TagController(ITagTasks tagTasks, ICachingService cachingService)
+        public TagController(ITagTasks tagTasks)
         {
             this.tagTasks = tagTasks;
-            this.cachingService = cachingService;
         }
 
         /// <summary>
@@ -34,36 +25,14 @@
         /// <returns>Array of results matching the specified tag</returns>
         public ActionResult StartingWith(string q)
         {
+            var matchingTags = this.tagTasks.GetWhereNameStartsWith(q);
+            var resultStrings = matchingTags.Select(t => t.Name).ToArray();
+            var result = string.Join("\n", resultStrings);
+
             return new ContentResult 
                 {
-                    Content = this.StartingWithInner(q)
+                    Content = result
                 };
-        }
-
-        private string StartingWithInner(string value)
-        {
-            var cacheKey = new CacheKey(CacheName.AdHoc, CacheKeyBase + value);
-
-            var result = this.cachingService[cacheKey] as string;
-
-            if (result == null)
-            {
-                lock (StartingWithInnerSyncRoot)
-                {
-                    result = this.cachingService[cacheKey] as string;
-
-                    if (result == null)
-                    {
-                        var matchingTags = this.tagTasks.GetWhereNameStartsWith(value);
-                        var resultStrings = matchingTags.Select(t => t.Name).ToArray();
-                        result = string.Join("\n", resultStrings);
-                        this.cachingService.Add(cacheKey, result);
-                    }
-                }
-
-            }
-
-            return result;
         }
     }
 }

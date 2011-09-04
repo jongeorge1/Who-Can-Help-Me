@@ -2,8 +2,6 @@
 {
     #region Using Directives
 
-    using global::WhoCanHelpMe.Framework.Caching;
-
     using Microsoft.Practices.ServiceLocation;
 
     using Rhino.Mocks;
@@ -35,19 +33,6 @@
             provider.Stub(p => p.GetInstance<IValidator>()).Return(validator);
 
             return validator;
-        }
-
-        public static ICachingService AddCachingService()
-        {
-            if (provider == null)
-            {
-                InitialiseServiceLocator();
-            }
-
-            var cachingService = MockRepository.GenerateStub<ICachingService>();
-            cachingService.Stub(c => c[null]).IgnoreArguments().Return(null);
-            cachingService.AddToServiceLocator();
-            return cachingService;
         }
 
         public static T AddToServiceLocator<T>(this T o)

@@ -40,7 +40,8 @@
 
                 // Find and return matching assertions
                 return this.assertionRepository
-                           .FindAll(new AssertionByTagIdSpecification(tag.Id))
+                           .FindAll()
+                           .Where(a => a.Tag == tag)
                            .OrderBy(o => o.Profile.LastName)
                            .ToList();
             }

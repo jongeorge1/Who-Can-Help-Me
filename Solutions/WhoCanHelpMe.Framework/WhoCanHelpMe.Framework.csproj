@@ -101,13 +101,6 @@
     <Compile Include="..\..\Common\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Caching\Cacheable.cs" />
-    <Compile Include="Caching\CacheDuration.cs" />
-    <Compile Include="Caching\CacheKey.cs" />
-    <Compile Include="Caching\CacheName.cs" />
-    <Compile Include="Caching\ICacheable.cs" />
-    <Compile Include="Caching\ICacheKey.cs" />
-    <Compile Include="Caching\ICachingService.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
@@ -131,9 +124,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Contracts\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

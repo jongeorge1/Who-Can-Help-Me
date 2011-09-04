@@ -59,13 +59,13 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
 
                 matching_tags = new List<Assertion>
                     {
-                        new Assertion { Profile = new Profile { LastName = "X" } },
-                        new Assertion { Profile = new Profile { LastName = "A" } },
-                        new Assertion { Profile = new Profile { LastName = "M" } }
+                        new Assertion { Profile = new Profile { LastName = "X" }, Tag = the_tag },
+                        new Assertion { Profile = new Profile { LastName = "A" }, Tag = the_tag },
+                        new Assertion { Profile = new Profile { LastName = "M" }, Tag = the_tag }
                     }.AsQueryable();
 
                 the_tag_repository.Stub(r => r.FindOne(Arg<TagByNameSpecification>.Is.Anything)).Return(the_tag);
-                the_assertion_repository.Stub(r => r.FindAll(Arg<AssertionByTagIdSpecification>.Is.Anything)).Return(matching_tags);
+                the_assertion_repository.Stub(r => r.FindAll()).Return(matching_tags);
             };
 
         Because of = () => result = subject.ByTag(the_tag_name);
@@ -78,7 +78,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
             the_tag_repository.AssertWasCalled(t => t.Save(the_tag));
         };
 
-        It should_ask_the_assertion_repository_for_the_matching_assertions = () => the_assertion_repository.AssertWasCalled(r => r.FindAll(Arg<AssertionByTagIdSpecification>.Matches(s => s.TagId == the_tag.Id)));
+        It should_ask_the_assertion_repository_for_the_matching_assertions = () => the_assertion_repository.AssertWasCalled(r => r.FindAll());
 
         It should_return_the_list_of_matching_assertions = () => result.ShouldContainOnly(matching_tags);
 
@@ -115,7 +115,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
             
             the_tag_repository.Stub(r => r.FindOne(Arg<TagByNameSpecification>.Is.Anything)).Return(the_tag);
 
-            the_assertion_repository.Stub(r => r.FindAll(Arg<AssertionByTagIdSpecification>.Is.Anything)).Return(matching_tags);
+            the_assertion_repository.Stub(r => r.FindAll()).Return(matching_tags);
         };
 
         Because of = () => result = subject.ByTag(the_tag_name);
@@ -128,7 +128,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
             the_tag_repository.AssertWasCalled(t => t.Save(the_tag));
         };
 
-        It should_ask_the_assertion_repository_for_the_matching_assertions = () => the_assertion_repository.AssertWasCalled(r => r.FindAll(Arg<AssertionByTagIdSpecification>.Matches(s => s.TagId == the_tag.Id)));
+        It should_ask_the_assertion_repository_for_the_matching_assertions = () => the_assertion_repository.AssertWasCalled(r => r.FindAll());
 
         It should_return_an_empty_list = () => result.ShouldBeEmpty();
     }
@@ -150,7 +150,7 @@ namespace MSpecTests.WhoCanHelpMe.Tasks
 
         It should_ask_the_tag_repository_for_the_tag_with_the_specified_name = () => the_tag_repository.AssertWasCalled(r => r.FindOne(Arg<TagByNameSpecification>.Matches(t => t.Name == the_tag_name)));
 
-        It should_not_ask_the_assertion_repository_for_matching_assertions = () => the_assertion_repository.AssertWasNotCalled(r => r.FindAll(Arg<AssertionByTagIdSpecification>.Is.Anything));
+        It should_not_ask_the_assertion_repository_for_matching_assertions = () => the_assertion_repository.AssertWasNotCalled(r => r.FindAll());
         
         It should_return_an_empty_list = () => result.ShouldBeEmpty();
     }

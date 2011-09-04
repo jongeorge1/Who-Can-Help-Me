@@ -7,10 +7,6 @@
 
     using Domain.Contracts.Tasks;
 
-    using Framework.Caching;
-
-    using Shared.ViewModels;
-
     using SharpArch.Futures.Core.Mapping;
 
     using WhoCanHelpMe.Domain;
@@ -20,50 +16,24 @@
 
     public class HomeController : BaseController
     {
-        private static readonly ICacheKey IndexInnerCacheKey = new CacheKey(CacheName.AdHoc, "HomeController.IndexInner");
-
         private readonly IMapper<IList<NewsItem>, HomePageViewModel> homePageViewModelMapper;
-
-        private readonly ICachingService cachingService;
 
         private readonly INewsTasks newsTasks;
 
         public HomeController(
             INewsTasks newsTasks,
-            IMapper<IList<NewsItem>, HomePageViewModel> homePageViewModelMapper,
-            ICachingService cachingService)
+            IMapper<IList<NewsItem>, HomePageViewModel> homePageViewModelMapper)
         {
             this.newsTasks = newsTasks;
             this.homePageViewModelMapper = homePageViewModelMapper;
-            this.cachingService = cachingService;
         }
 
         public ActionResult Index()
         {
-            var pageViewModel = this.IndexInner();
+            var buzz = this.newsTasks.GetProjectBuzz();
+            var viewModel = this.homePageViewModelMapper.MapFrom(buzz);
 
-            return this.View(pageViewModel);
-        }
-
-        private PageViewModel IndexInner()
-        {
-            var viewModel = this.cachingService[IndexInnerCacheKey] as PageViewModel;
-
-            if (viewModel == null)
-            {
-                lock (IndexInnerCacheKey)
-                {
-                    viewModel = this.cachingService[IndexInnerCacheKey] as PageViewModel;
-                    if (viewModel == null)
-                    {
-                        var buzz = this.newsTasks.GetProjectBuzz();
-                        viewModel = this.homePageViewModelMapper.MapFrom(buzz);
-                        this.cachingService.Add(IndexInnerCacheKey, viewModel);
-                    }
-                }
-            }
-
-            return viewModel;
+            return this.View(viewModel);
         }
     }
 }
