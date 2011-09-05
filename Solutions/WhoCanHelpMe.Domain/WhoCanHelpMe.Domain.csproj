@@ -100,20 +100,15 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Category.cs" />
-    <Compile Include="Contracts\Configuration\IAnalyticsConfiguration.cs" />
-    <Compile Include="Contracts\Configuration\INewsConfiguration.cs" />
-    <Compile Include="Contracts\Configuration\IConfigurationService.cs" />
     <Compile Include="Contracts\Tasks\ICategoryTasks.cs" />
     <Compile Include="Contracts\Tasks\INewsTasks.cs" />
     <Compile Include="Contracts\Tasks\ISearchTasks.cs" />
-    <Compile Include="Contracts\Tasks\ISiteMetaDataTasks.cs" />
     <Compile Include="Contracts\Tasks\ITagTasks.cs" />
     <Compile Include="Contracts\Tasks\IProfileTasks.cs" />
     <Compile Include="NewsItem.cs" />
     <Compile Include="Contracts\Services\INewsService.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Assertion.cs" />
-    <Compile Include="SiteMetaData.cs" />
     <Compile Include="Specifications\AssertionByTagNameSpecification.cs" />
     <Compile Include="Specifications\ProfileByUserNameSpecification.cs" />
     <Compile Include="Specifications\TagByFirstCharactersOfNameSpecification.cs" />

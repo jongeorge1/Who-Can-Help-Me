@@ -120,7 +120,6 @@
     <Compile Include="Tasks\NewsTasksSpecs.cs" />
     <Compile Include="Tasks\ProfileTasksSpecs.cs" />
     <Compile Include="Tasks\SearchTasksSpecs.cs" />
-    <Compile Include="Tasks\SiteMetaDataTasks.cs" />
     <Compile Include="Tasks\TagTasksSpecs.cs" />
     <Compile Include="Presentation.Controllers\RequireNoExistingProfileAttributeSpecs.cs" />
     <Compile Include="Presentation.Controllers\HomeControllerSpecs.cs" />

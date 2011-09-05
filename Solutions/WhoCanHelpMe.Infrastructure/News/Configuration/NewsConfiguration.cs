@@ -1,27 +1,24 @@
 namespace WhoCanHelpMe.Infrastructure.News.Configuration
 {
-    #region Using Directives
-
-    using System.Linq;
     using System.Collections.Generic;
-    using Domain.Contracts.Configuration;
+    using System.Linq;
 
-    #endregion
+    using WhoCanHelpMe.Infrastructure.News.Contracts;
 
     public class NewsConfiguration : INewsConfiguration
     {
         private readonly NewsConfigurationSection configSection;
-        
+
         public NewsConfiguration()
         {
-            configSection = NewsConfigurationSection.Instance;
+            this.configSection = NewsConfigurationSection.Instance;
         }
 
         public IList<string> BuzzHeadlineTags
         {
             get
             {
-                return (from SearchTag tag in configSection.BuzzHeadlineTags select tag.Name).ToList();
+                return (from SearchTag tag in this.configSection.BuzzHeadlineTags select tag.Name).ToList();
             }
         }
 
@@ -29,23 +26,32 @@ namespace WhoCanHelpMe.Infrastructure.News.Configuration
         {
             get
             {
-                return (from SearchTag tag in configSection.DevTeamHeadlineTags select tag.Name).ToList();
+                return (from SearchTag tag in this.configSection.DevTeamHeadlineTags select tag.Name).ToList();
             }
         }
 
         public int NoOfBuzzHeadlines
         {
-            get { return configSection.NoOfBuzzHeadlines; }
+            get
+            {
+                return this.configSection.NoOfBuzzHeadlines;
+            }
         }
 
         public int NoOfDevTeamHeadlines
         {
-            get { return configSection.NoOfDevTeamHeadlines; }
+            get
+            {
+                return this.configSection.NoOfDevTeamHeadlines;
+            }
         }
 
         public int SearchTimeoutSeconds
         {
-            get { return configSection.SearchTimeoutSeconds; }
+            get
+            {
+                return this.configSection.SearchTimeoutSeconds;
+            }
         }
     }
 }

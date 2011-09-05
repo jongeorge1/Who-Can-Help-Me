@@ -123,9 +123,10 @@
     </Compile>
     <Compile Include="Analytics\Configuration\AnalyticsConfiguration.cs" />
     <Compile Include="Analytics\Configuration\AnalyticsConfigurationSectionCode.cs" />
-    <Compile Include="Configuration\ConfigurationService.cs" />
+    <Compile Include="Analytics\Contracts\IAnalyticsConfiguration.cs" />
     <Compile Include="News\Configuration\NewsConfiguration.cs" />
     <Compile Include="News\Configuration\NewsConfigurationSectionCode.cs" />
+    <Compile Include="News\Contracts\INewsConfiguration.cs" />
     <Compile Include="News\TwitterNewsService.cs" />
     <Compile Include="NHibernateMaps\AutomappingConfiguration.cs" />
     <Compile Include="NHibernateMaps\Conventions\CustomForeignKeyConvention.cs" />

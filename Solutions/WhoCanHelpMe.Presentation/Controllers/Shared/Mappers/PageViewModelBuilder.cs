@@ -6,15 +6,17 @@
     using Contracts;
     using ViewModels;
 
+    using WhoCanHelpMe.Domain.Contracts.Configuration;
+
     #endregion
 
     public class PageViewModelBuilder : IPageViewModelBuilder
     {
-        private readonly ISiteMetaDataTasks siteMetaDataTasks;
+        private readonly IAnalyticsConfiguration analyticsConfiguration;
 
-        public PageViewModelBuilder(ISiteMetaDataTasks siteMetaDataTasks)
+        public PageViewModelBuilder(IAnalyticsConfiguration analyticsConfiguration)
         {
-            this.siteMetaDataTasks = siteMetaDataTasks;
+            this.analyticsConfiguration = analyticsConfiguration;
         }
 
         public PageViewModel Get()
@@ -26,10 +28,8 @@
 
         public T UpdateSiteProperties<T>(T pageViewModel) where T : PageViewModel
         {
-            var siteMetaData = this.siteMetaDataTasks.GetSiteMetaData();
-
-            pageViewModel.AnalyticsIdentifier = siteMetaData.AnalyticsIdentifier;
-            pageViewModel.SiteVerification = siteMetaData.SiteVerification;
+            pageViewModel.AnalyticsIdentifier = this.analyticsConfiguration.Idenfitier;
+            pageViewModel.SiteVerification = this.analyticsConfiguration.Verification;
 
             return pageViewModel;
         }

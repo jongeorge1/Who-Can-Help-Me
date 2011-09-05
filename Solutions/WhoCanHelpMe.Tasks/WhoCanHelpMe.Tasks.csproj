@@ -102,7 +102,6 @@
     <Compile Include="NewsTasks.cs" />
     <Compile Include="Installers\TaskRegistrar.cs" />
     <Compile Include="SearchTasks.cs" />
-    <Compile Include="SiteMetaDataTasks.cs" />
     <Compile Include="TagTasks.cs" />
     <Compile Include="ProfileTasks.cs" />
   </ItemGroup>
