@@ -4,7 +4,7 @@
     <title>Who Can Help Me?</title>
     <Styles />
     <Scripts />
-    <SeoContent />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/> 
     <Analytics />
 </head>
 <body leftmargin="0" marginwidth="0" topmargin="0" rightmargin="0">

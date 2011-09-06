@@ -167,6 +167,7 @@
     <Compile Include="Controllers\Home\Mappers\HomePageViewModelMapper.cs" />
     <Compile Include="Controllers\Home\ViewModels\HomePageViewModel.cs" />
     <Compile Include="Controllers\Home\ViewModels\NewsItemViewModel.cs" />
+    <Compile Include="Controllers\RouteCollectionExtensions.cs" />
     <Compile Include="Installers\ControllerFactoryInstaller.cs" />
     <Compile Include="Installers\ControllerInstaller.cs" />
     <Compile Include="Installers\MapperInstaller.cs" />
@@ -199,7 +200,6 @@
     <Compile Include="Controllers\Shared\ActionResults\NotFoundResult.cs" />
     <Compile Include="Controllers\Shared\Mappers\Contracts\IPageViewModelBuilder.cs" />
     <Compile Include="Controllers\Shared\Mappers\PageViewModelBuilder.cs" />
-    <Compile Include="Controllers\Shared\ViewModels\MetaDataViewModel.cs" />
     <Compile Include="Controllers\Shared\ViewModels\PageViewModel.cs" />
     <Compile Include="Controllers\Tag\TagController.cs" />
     <Compile Include="Controllers\User\Mappers\LoginPageViewModelMapper.cs" />

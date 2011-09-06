@@ -7,6 +7,8 @@
     using Castle.MicroKernel.SubSystems.Configuration;
     using Castle.Windsor;
 
+    using WhoCanHelpMe.Presentation.Controllers;
+
     /// <summary>
     /// Responsible for all the MVC route registration
     /// </summary>
@@ -24,7 +26,7 @@
             RouteTable.Routes.IgnoreRoute("elmah.axd");
 
             // Add Default Route
-            RouteTable.Routes.MapRoute("Default", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+            RouteTable.Routes.MapLowerCaseRoute("Default", "{controller}/{action}/{id}", new { controller = "Home", action = "Index", id = UrlParameter.Optional });
 
             // Uncomment to enable the route debugger, then browse to the URL you want to test as normal.
             // RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
